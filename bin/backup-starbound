@@ -1,0 +1,6 @@
+#/bin/sh
+# Just something more automated.
+SOURCE="$HOME/.steam/steam/SteamApps/common/Starbound/linux32/player"
+DEST="$HOME/Dropbox/Vidya/Starbound"
+
+rsync -avz $SOURCE $DEST
