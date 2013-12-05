@@ -1,0 +1,54 @@
+#!/bin/sh
+# dmenu-network: A dmenu wrapper for NetworkManager (!)
+# Written by Renan Guilherme <japareaggae@gmail.com>
+
+# Get current Wi-Fi status
+status=$(nmcli -t -f WIFI nm wifi)
+
+toggleWiFi(){
+case $status in
+	enabled) nmcli nm wifi off;;
+	disabled) nmcli nm wifi on;;
+esac
+}
+
+connectWiFi(){
+# Don't even try connecting if Wi-Fi is disabled
+# We could enable Wi-Fi on demand here, but zzz...
+if [ $status == "disabled" ]; then exit 1; fi
+
+# What network should we connect to?
+network=$(nmcli -t -f SSID d wifi | dmenu -p SSID)
+
+# This will break networks with ' on their SSIDs, but SSIDs /should/ be
+# always alphanumeric anyway
+network=$(echo $network | sed s/\'//g)
+
+if [ "$network" ]; then
+	if ( nmcli -t -f NAME c list | grep "$network" > /dev/null ); then
+		# Network is known, activate it's connection
+		nmcli con up id "$network"
+	else
+		# nm-applet lets you see the password, so this shouldn't be a problem
+		password=$( echo "" | dmenu -p "Password (if any)" )
+		# Network is not known, create and activate a connection
+		if [ -z "$password" ] ; then
+			nmcli d wifi connect "$network"
+		else
+			nmcli d wifi connect "$network" password "$password"
+		fi
+	fi
+# If no networks are selected, leave
+else exit 2
+fi
+}
+
+options="connect\nedit\ntoggle (c. $status)"
+option=$(echo -e $options | dmenu -p Wi-Fi)
+
+case $option in
+	"connect") connectWiFi;;
+	"edit") nm-connection-editor;;
+	*"toggle"*) toggleWiFi;;
+esac
+

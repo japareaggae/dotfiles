@@ -1,0 +1,10 @@
+#!/bin/sh
+# Xfce autostarts applications in a "whatever goes" manner.
+# See: https://bugzilla.xfce.org/show_bug.cgi?id=10296
+# This bug breaks certain apps - especially PulseAudio mixers.
+# Thanks to Maximilien Noal for posting this workaround
+
+start-pulseaudio-x11 &
+sleep 7
+xfce4-volumed-pulse &
+#pnmixer &

@@ -1,0 +1,45 @@
+out_to_x no
+own_window no
+out_to_console yes
+update_interval 1.0
+total_run_times 0
+short_units yes
+use_spacer none
+
+cpu_avg_samples 2
+if_up_strictness link
+
+TEXT
+[
+{
+	"full_text": " ${cpu cpu0}% ",
+	"color": "\#FF4040"
+},
+{
+	"full_text": " ${mem} + ${swap} / ${memmax} ",
+	"color": "\#FFFF40"
+},
+{
+	"full_text": " ${if_up wlp4s0}${wireless_essid wlp4s0} / ${wireless_link_qual_perc wlp4s0}% / ${downspeed wlp4s0}/s${else}No Wi-Fi${endif} ",
+	"color": "${if_up wlp4s0}\#40FF40${else}\#FF4040${endif}"
+},
+{
+	"full_text": " ${execi 6 ~/.bin/ponymix-conky} ",
+	"color": "\#40FFFF"
+},
+{
+	"full_text": " ${if_mpd_playing}${mpd_artist} - ${mpd_title}${else}Zzz...${endif} ",
+	"color": "${if_mpd_playing}\#40FF40${else}\#808080${endif}"
+},
+{
+	"full_text": " ${battery BAT1} ",
+	"color": "\#4040FF"
+},
+{
+	"full_text": " ${time %F} - ${time %X} ",
+	"color": "\#FFFFFF"
+},
+{
+	"full_text": ""
+}
+],

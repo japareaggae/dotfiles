@@ -1,0 +1,9 @@
+#
+# ~/.zshrc.local - zsh config while using grml-zsh-config
+#
+
+### Prompt
+prompt off
+PROMPT="%{$fg_bold[blue]%}[%1~]%{$reset_color%}$ "
+RPROMPT=""
+

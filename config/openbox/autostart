@@ -1,0 +1,38 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# LXPolkit - A light polkit implementation
+/usr/lib/lxpolkit/lxpolkit &
+
+# GNOME Keyring - For NetworkManager, possibly others
+gnome-keyring-daemon --start --components=secrets &
+
+# Dropbox - File sync
+dropboxd &
+
+# NetworkManager - Pretty menus for wi-fi
+nm-applet &
+
+# xfce4-power-manager - Brightness keys and things like that
+xfce4-power-manager &
+
+# Compton - standalone X compositor (vsync, shadows)
+compton &
+
+# MPD - Music Player Daemon
+mpd &
+
+# PulseAudio Oneshooter - Starts PulseAudio and friends
+~/.bin/pulseaudio-oneshot &
+
+# XRandR Adjuster - Set up dual monitors
+~/.bin/xrandr-adjust &
+
+# Nitrogen - Wallpaper
+nitrogen --restore &
+
+# Tint2
+tint2 &

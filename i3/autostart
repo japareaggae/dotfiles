@@ -1,0 +1,41 @@
+#!/bin/sh
+# ~/.i3/autostart - i3 autostart script
+# While you can autostart things using .i3/config, I thought it would be a better
+# idea to use a specific file to do these things.
+
+# LXPolkit - A light polkit implementation
+/usr/lib/lxpolkit/lxpolkit &
+
+# GNOME Keyring - For NetworkManager, possibly others
+gnome-keyring-daemon --start --components=secrets &
+
+# Dropbox - File sync
+dropboxd &
+
+# NetworkManager - Pretty menus for wi-fi
+nm-applet &
+
+# xfce4-power-manager - Brightness keys and things like that
+xfce4-power-manager &
+
+# Clipit - Clipboard manager
+clipit &
+
+# Compton - standalone X compositor (vsync, shadows)
+compton &
+
+# MPD - Music Player Daemon
+mpd &
+
+# PulseAudio Oneshooter - Starts PulseAudio and friends
+~/.bin/pulseaudio-oneshot &
+
+# XRandR Adjuster - Set up dual monitors
+~/.bin/xrandr-adjust &
+
+# Nitrogen - Wallpaper
+#nitrogen --restore &
+
+# fehbg - Wallpaper
+~/.fehbg &
+

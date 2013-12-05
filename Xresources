@@ -1,0 +1,58 @@
+!
+! .Xresources - configurations for basic X applications
+!
+
+! --- Font Rendering
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.autohint: true
+Xft.lcdfilter: lcddefault
+
+! --- Terminal Colors
+! black, red, green, yellow, blue, magenta, cyan, light gray
+*color0: #000000
+*color1: #C00000
+*color2: #00C000
+*color3: #C0C000
+*color4: #0000C0
+*color5: #C000C0
+*color6: #00C0C0
+*color7: #C0C0C0
+! dark gray, light {red, green, yellow, blue, magenta, cyan}, white
+*color8: #404040
+*color9: #FF4040
+*color10: #40FF40
+*color11: #FFFF40
+*color12: #4040FF
+*color13: #FF40FF
+*color14: #40FFFF
+*color15: #FFFFFF
+
+! --- XTerm
+xterm*termName: xterm-256color
+xterm*background: #000000
+xterm*foreground: #FFFFFF
+xterm*font: xft:Terminus:size=8
+
+! --- urxvt
+URxvt.termName: rxvt-unicode-256color
+URxvt.depth: 32
+URxvt.background: [192]#000000
+URxvt.foreground: #FFFFFF
+URxvt.font: xft:Terminus:size=8
+URxvt.scrollBar: false
+!URxvt.scrollstyle: plain
+URxvt.scrollBar_right: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: false
+
+! --- XScreenSaver
+xscreensaver.newLoginCommand: dm-tool switch-to-greeter
+
+! --- dzen2
+dzen2.font: -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
+dzen2.foreground: #FFFFFF
+dzen2.background: #000000

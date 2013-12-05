@@ -1,0 +1,14 @@
+#!/bin/sh
+WHERE="/home/japareaggae/Dropbox/Public/Linux/dotfiles"
+
+FILES="zshenv zshrc.local vimrc conkyrc fehbg Xresources xinitrc config/compton.conf"
+for dot in $FILES; do
+	echo -e "\e[1;32m==>\e[0m Copying $dot"
+	cp -u ~/.$dot $WHERE/$dot
+done
+
+FOLDERS="bin i3 vim ncmpcpp config/cower config/openbox config/nitrogen config/ranger config/dunst"
+for dot in $FOLDERS; do
+	echo -e "\e[1;34m==>\e[0m Copying folder $dot"
+	rsync -avz ~/.$dot/ $WHERE/$dot
+done

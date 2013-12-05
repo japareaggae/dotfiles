@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DEVICE=$(ponymix | sed -n '2p' -)
+case $DEVICE in
+		*"Headset"*) DEFSINK="Headset";;
+		*"HDMI"*) DEFSINK="HDMI";;
+		*"Analog"*) DEFSINK="Speakers";;
+		*) DEFSINK="Unknown";;
+esac
+
+if ( ponymix is-muted ); then
+	echo -n "$DEFSINK - Muted"
+else
+	echo -n "$DEFSINK - $(ponymix get-volume)%"
+fi
+
