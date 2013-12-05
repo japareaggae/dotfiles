@@ -1,0 +1,15 @@
+#!/bin/sh
+LOCAL="$HOME/.steam/steam/SteamApps/common/Starbound/linux32/player"
+REMOTE="$HOME/Dropbox/Vidya/Starbound/player"
+
+usage(){
+	echo "Usage: $(basename $0) [import/export]"
+	echo "    - import: Copy from Dropbox into Starbound"
+	echo "    - export: Copy from Starbound into Dropbox"
+}
+
+case $1 in
+	export) rsync -avz $LOCAL/ $REMOTE;;
+	import) rsync -avz $REMOTE/ $LOCAL;;
+	*) usage;;
+esac
