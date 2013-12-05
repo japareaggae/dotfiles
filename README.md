@@ -12,7 +12,6 @@ Don't forget to install the following packages before you install these dots:
 - ranger
 - tmux
 - vim
-
 - compton
 - dmenu
 - dunst
