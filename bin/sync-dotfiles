@@ -1,4 +1,6 @@
 #!/bin/sh
+# TODO: We don't need this anymore - we github now!
+
 WHERE="/home/japareaggae/Dropbox/Public/Linux/dotfiles"
 
 FILES="zshenv zshrc.local vimrc conkyrc fehbg Xresources xinitrc config/compton.conf"

@@ -1,4 +1,5 @@
 #!/bin/sh
+# TODO: We github now! We should be symlinking those things.
 # Edit accordingly
 WHERE="$HOME"
 
