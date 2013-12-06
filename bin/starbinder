@@ -9,7 +9,7 @@ usage(){
 }
 
 case $1 in
-	export) rsync -avz $LOCAL/ $REMOTE;;
-	import) rsync -avz $REMOTE/ $LOCAL;;
+	export) rsync -avzu $LOCAL/ $REMOTE;;
+	import) rsync -avzu $REMOTE/ $LOCAL;;
 	*) usage;;
 esac
