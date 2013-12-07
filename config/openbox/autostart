@@ -1,37 +1,25 @@
-#!/bin/sh
-# openbox/autostart - Applications to run along with Openbox
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
 
-# LXPolkit - A light polkit implementation
-# I think this is a system-wide autostart though
-#/usr/lib/lxpolkit/lxpolkit &
+# Tint2 - Panel
+(sleep 2s && tint2) &
 
-# GNOME Keyring - For NetworkManager, possibly others
-gnome-keyring-daemon --start --components=secrets &
-
-# Dropbox - File sync
-dropboxd &
-
-# NetworkManager - Pretty menus for wi-fi
 nm-applet &
 
-# xfce4-power-manager - Brightness keys and things like that
-xfce4-power-manager &
+dropboxd &
 
-# Compton - standalone X compositor (vsync, shadows)
-compton &
+(sleep 1s && compton) &
 
-# MPD - Music Player Daemon
+(sleep 1s && ~/.bin/xrandr-adjuster) &
+
+(sleep 1s && ~/.bin/pulseaudio-oneshot) &
+
+(sleep 2s && ~/.fehbg) &
+
 mpd &
 
-# PulseAudio Oneshooter - Starts PulseAudio and friends
-~/.bin/pulseaudio-oneshot &
-
-# XRandR Adjuster - Set up dual monitors
-~/.bin/xrandr-adjust &
-
-# fehbg
-~/.fehbg &
-
-# Tint2
-tint2 &
+xfce4-power-manager &
 

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 	<menu id="root-menu" label="Openbox 3">
-		<item label="Terminal">
-			<action name="Execute">
-				<execute>urxvt</execute>
-			</action>
-		</item>
 		<item label="Thunar">
 			<action name="Execute">
 				<execute>thunar</execute>
@@ -16,22 +11,21 @@
 				<execute>google-chrome-unstable</execute>
 			</action>
 		</item>
+		<item label="Terminal">
+			<action name="Execute">
+				<execute>xfce4-terminal</execute>
+			</action>
+		</item>
+		<item label="Steam">
+			<action name="Execute">
+				<execute>steam</execute>
+			</action>
+		</item>
 		<separator/>
-		<menu id="menu-accessories" label="Accessories">
-			<item label="Catfish">
-				<action name="Execute">
-					<execute>catfish</execute>
-				</action>
-			</item>
-			<item label="Galculator">
-				<action name="Execute">
-					<execute>galculator</execute>
-				</action>
-			</item>
-		</menu>
+		<menu execute="obmenu-generator -i" id="xdg" label="All Applications"/>
 		<separator/>
-		<menu id="menu-settings" label="Settings">
-			<menu id="menu-openbox" label="Openbox">
+		<menu id="settings" label="Settings">
+			<menu id="obsettings" label="Openbox">
 				<item label="Obconf">
 					<action name="Execute">
 						<execute>obconf</execute>
@@ -43,17 +37,8 @@
 					</action>
 				</item>
 				<separator/>
-				<item label=".openbox">
-					<action name="Execute">
-						<execute>thunar ~/.config/openbox</execute>
-					</action>
-				</item>
-				<separator/>
 				<item label="Reconfigure">
 					<action name="Reconfigure"/>
-				</item>
-				<item label="Restart">
-					<action name="Restart"/>
 				</item>
 			</menu>
 			<item label="LXAppearance">
@@ -61,24 +46,16 @@
 					<execute>lxappearance</execute>
 				</action>
 			</item>
-			<item label="Nitrogen">
-				<action name="Execute">
-					<execute>nitrogen</execute>
-				</action>
-			</item>
 		</menu>
 		<separator/>
-		<menu id="menu-leave" label="Leave">
+		<menu id="exitmenu" label="Leave">
 			<item label="Lock">
 				<action name="Execute">
 					<execute>i3lock -c 000000 -p win</execute>
 				</action>
 			</item>
-			<separator/>
-			<item label="Logout">
-				<action name="Exit">
-					<prompt>yes</prompt>
-				</action>
+			<item label="Log Out">
+				<action name="Exit"/>
 			</item>
 			<separator/>
 			<item label="Reboot">
