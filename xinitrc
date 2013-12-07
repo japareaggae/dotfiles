@@ -1,9 +1,8 @@
 #!/bin/sh
-#
 # ~/.xinitrc - Shell script for starting X
-# This file is executed by startx
+# This file is executed by startx and certain DMs such as SLiM
 
-### xinitrc.d - Starts basic daemons such as D-Bus or PulseAudio
+# --- xinitrc.d - Starts basic daemons such as D-Bus or PulseAudio
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
     [ -x "$f" ] && . "$f"
@@ -12,8 +11,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # --- WM/DE
-# You can hardcode something here, or use $1 to specify what you want at runtime.
+# You can hardcode something here, or use $1 to specify what you want at runtime (eg. startx i3)
 #exec $1
 #exec i3
-exec startxfce4
+#exec openbox-session
 

@@ -7,4 +7,6 @@
 start-pulseaudio-x11 &
 sleep 7
 xfce4-volumed-pulse &
-pnmixer &
+
+[ $DESKTOP_SESSION != 'i3' ] && pnmixer &
+

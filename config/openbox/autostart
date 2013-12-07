@@ -1,11 +1,9 @@
-#
-# These things are run when an Openbox X Session is started.
-# You may place a similar script in $HOME/.config/openbox/autostart
-# to run user-specific things.
-#
+#!/bin/sh
+# openbox/autostart - Applications to run along with Openbox
 
 # LXPolkit - A light polkit implementation
-/usr/lib/lxpolkit/lxpolkit &
+# I think this is a system-wide autostart though
+#/usr/lib/lxpolkit/lxpolkit &
 
 # GNOME Keyring - For NetworkManager, possibly others
 gnome-keyring-daemon --start --components=secrets &
@@ -31,8 +29,9 @@ mpd &
 # XRandR Adjuster - Set up dual monitors
 ~/.bin/xrandr-adjust &
 
-# Nitrogen - Wallpaper
-nitrogen --restore &
+# fehbg
+~/.fehbg &
 
 # Tint2
 tint2 &
+
