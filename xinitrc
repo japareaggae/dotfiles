@@ -14,5 +14,6 @@ fi
 # --- WM/DE
 # You can hardcode something here, or use $1 to specify what you want at runtime.
 #exec $1
-exec i3
+#exec i3
+exec startxfce4
 

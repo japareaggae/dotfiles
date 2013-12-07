@@ -3,6 +3,9 @@
 # While you can autostart things using .i3/config, I thought it would be a better
 # idea to use a specific file to do these things.
 
+# Desktop Session - so dmenu-session knows who we are
+export DESKTOP_SESSION='i3'
+
 # LXPolkit - A light polkit implementation
 /usr/lib/lxpolkit/lxpolkit &
 

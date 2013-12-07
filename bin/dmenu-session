@@ -1,11 +1,12 @@
 #!/bin/sh
+# TODO: For some reason logging out of i3 isn't working as it should.
 option=$( echo -e "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate" | dmenu -p Session)
 
 GetOut(){
 case $DESKTOP_SESSION in
 	"xfce") xfce4-session-logout --fast --logout;;
 	"openbox") openbox --exit;;
-	"i3") i3-msg exit;;
+	"i3") 'i3-msg exit';;
 esac
 }
 
