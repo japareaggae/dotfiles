@@ -4,7 +4,6 @@
 # to run user-specific things.
 #
 
-# Tint2 - Panel
 (sleep 2s && tint2) &
 
 nm-applet &
@@ -13,7 +12,7 @@ dropboxd &
 
 (sleep 1s && compton) &
 
-(sleep 1s && ~/.bin/xrandr-adjuster) &
+(sleep 1s && ~/.bin/xrandr-adjust) &
 
 (sleep 1s && ~/.bin/pulseaudio-oneshot) &
 

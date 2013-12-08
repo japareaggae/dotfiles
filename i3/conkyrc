@@ -21,7 +21,7 @@ TEXT
 },
 {
 	"full_text": " ${if_up wlp4s0}${wireless_essid wlp4s0} / ${wireless_link_qual_perc wlp4s0}% / ${downspeed wlp4s0}/s${else}No Wi-Fi${endif} ",
-	"color": "${if_up wlp4s0}\#40FF40${else}\#FF4040${endif}"
+	"color": "${if_up wlp4s0}\#40FF40${else}\#808080${endif}"
 },
 {
 	"full_text": " ${execi 6 ~/.bin/ponymix-conky} ",
@@ -33,7 +33,7 @@ TEXT
 },
 {
 	"full_text": " ${battery BAT1} ",
-	"color": "\#4040FF"
+	"color": "\#FF40FF"
 },
 {
 	"full_text": " ${time %F} - ${time %X} ",

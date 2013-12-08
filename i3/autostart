@@ -34,11 +34,8 @@ mpd &
 ~/.bin/pulseaudio-oneshot &
 
 # XRandR Adjuster - Set up dual monitors
-~/.bin/xrandr-adjust &
-
-# Nitrogen - Wallpaper
-#nitrogen --restore &
+(sleep 2s && ~/.bin/xrandr-adjust) &
 
 # fehbg - Wallpaper
-~/.fehbg &
+(sleep 4s && ~/.fehbg) &
 
