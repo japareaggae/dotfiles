@@ -37,7 +37,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Mire_v2_lime</name>
+    <name>Murrina-Tangoesque</name>
     <titleLayout>NDLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -54,40 +54,40 @@
     <!-- font weight can be bold or normal 
        font slant can be italic or normal-->
     <font place="ActiveWindow">
-      <name>sans</name>
+      <name>Roboto</name>
       <size>8</size>
-      <weight>bold</weight>
-      <slant>normal</slant>
+      <weight>Bold</weight>
+      <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
-      <name>sans</name>
+      <name>Roboto</name>
       <size>8</size>
-      <weight>bold</weight>
-      <slant>normal</slant>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
-      <name>sans</name>
+      <name>Roboto</name>
       <size>9</size>
-      <weight>normal</weight>
-      <slant>normal</slant>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
     </font>
     <font place="MenuItem">
-      <name>sans</name>
+      <name>Roboto</name>
       <size>9</size>
-      <weight>normal</weight>
-      <slant>normal</slant>
+      <weight>Normal</weight>
+      <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>sans</name>
+      <name>Roboto</name>
       <size>9</size>
-      <weight>bold</weight>
-      <slant>normal</slant>
+      <weight>Bold</weight>
+      <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>sans</name>
+      <name>Roboto</name>
       <size>9</size>
-      <weight>bold</weight>
-      <slant>normal</slant>
+      <weight>Bold</weight>
+      <slant>Normal</slant>
     </font>
   </theme>
   <desktops>
@@ -294,6 +294,11 @@
     <keybind key="W-S-Delete">
       <action name="Execute">
         <command>dmenu-session</command>
+      </action>
+    </keybind>
+    <keybind key="W-Tab">
+      <action name="Execute">
+        <command>skippy-xd</command>
       </action>
     </keybind>
   </keyboard>
