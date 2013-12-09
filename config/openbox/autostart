@@ -13,8 +13,14 @@ neap &
 # compton
 compton &
 
-# pulseaudio + volumed + pnmixer
-( sleep 1s && ~/.bin/pulseaudio-oneshot ) &
+# pulseaudio
+( pidof pulseaudio ) || start-pulseaudio-x11 &
+
+# xfce4-volumed
+(sleep 2s && xfce4-volumed-pulse ) &
+
+# pnmixer
+(sleep 2s && pnmixer ) &
 
 # xrandr
 ( sleep 1s && ~/.bin/xrandr-adjust ) &
