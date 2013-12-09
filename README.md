@@ -9,11 +9,13 @@ Basic packages
 - zsh and grml-zsh-config
 - cower (aur)
 - htop
-- ncmpcpp
 - ponymix (aur)
 - ranger
 - tmux
 - vim
+- mpd
+- ncmpcpp
+- mpdscribble
 
 X-dependent packages
 -----

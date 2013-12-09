@@ -10,6 +10,12 @@ xfce4-power-manager &
 # pulseaudio
 (sleep 1s && ~/.bin/pulseaudio-oneshot) &
 
+# mpd
+(sleep 2s && mpd) &
+
+# mpdscribble
+(sleep 3s && mpdscribble) &
+
 # compton
 (sleep 1s && compton) &
 

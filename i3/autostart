@@ -3,32 +3,35 @@
 # While you can autostart things using .i3/config, I thought it would be a better
 # idea to use a specific file to do these things.
 
-# Desktop Session - so dmenu-session knows who we are
+# Desktop session - so dmenu-session knows who we are
 export DESKTOP_SESSION='i3'
 
-# LXPolkit - A light polkit implementation
+# LXPolkit - So we can mount Terezi from Thunar
 /usr/lib/lxpolkit/lxpolkit &
 
-# GNOME Keyring - For NetworkManager, possibly others
+# GNOME Keyring - For nm-applet, possibly others
 gnome-keyring-daemon --start --components=secrets &
 
 # Dropbox - File sync
 dropboxd &
 
-# NetworkManager - Pretty menus for wi-fi
+# NetworkManager - Because I don't trust dmenu-network just yet
 nm-applet &
 
-# xfce4-power-manager - Brightness keys and things like that
+# xfce4-power-manager - Brightness keys only work when it's running
 xfce4-power-manager &
 
 # Clipit - Clipboard manager
 clipit &
 
-# Compton - standalone X compositor (vsync, shadows)
-compton &
+# Compton - vsync
+(sleep 1s && compton) &
 
 # MPD - Music Player Daemon
 mpd &
+
+# mpdscribble - Scrobbler for MPD
+mpdscribble &
 
 # PulseAudio Oneshooter - Starts PulseAudio and friends
 ~/.bin/pulseaudio-oneshot &
