@@ -7,6 +7,9 @@ tint2 &
 # power
 xfce4-power-manager &
 
+# neap
+neap &
+
 # compton
 compton &
 

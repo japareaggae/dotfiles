@@ -3,8 +3,10 @@ Delicious dotfiles
 
 Don't forget to install the following packages before you install these dots:
 
+Basic packages
+-----
+
 - zsh and grml-zsh-config
-- conky
 - cower (aur)
 - htop
 - ncmpcpp
@@ -12,12 +14,22 @@ Don't forget to install the following packages before you install these dots:
 - ranger
 - tmux
 - vim
+
+X-dependent packages
+-----
+
+- i3 and/or openbox
+- conky
 - compton
 - dmenu
 - dunst
-- i3
 - feh
 - xfce4-volumed-pulse (aur)
-- nitrogen (optional)
-- openbox (optional)
-- tint2 (optional)
+
+Openbox-oriented packages
+-----
+
+- neap (aur)
+- obmenu-generator (aur)
+- tint2
+

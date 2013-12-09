@@ -4,7 +4,7 @@ WHERE="$HOME"
 BACKUP="$HOME/.old-dotfiles"
 
 DOTS="zshenv zshrc.local vimrc tmux.conf \
-		conkyrc fehbg Xresources xinitrc \
+		conkyrc fehbg Xresources xinitrc neaprc \
 		config/compton.conf \
 		bin i3 vim ncmpcpp \
 		config/cower config/ranger config/dunst config/htop \
