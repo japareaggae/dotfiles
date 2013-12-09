@@ -7,23 +7,18 @@ tint2 &
 # power
 xfce4-power-manager &
 
-# neap
-neap &
+# pulseaudio
+(sleep 1s && ~/.bin/pulseaudio-oneshot) &
 
 # compton
-compton &
-
-# pulseaudio
-( pidof pulseaudio ) || start-pulseaudio-x11 &
-
-# xfce4-volumed
-(sleep 2s && xfce4-volumed-pulse ) &
-
-# pnmixer
-(sleep 2s && pnmixer ) &
+(sleep 1s && compton) &
 
 # xrandr
-( sleep 1s && ~/.bin/xrandr-adjust ) &
+(sleep 2s && ~/.bin/xrandr-adjust) &
 
 # fehbg
-( sleep 3s && ~/.fehbg ) &
+(sleep 4s && ~/.fehbg) &
+
+# neap
+(sleep 4s && neap) &
+

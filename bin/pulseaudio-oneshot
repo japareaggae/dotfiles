@@ -4,9 +4,8 @@
 # This bug breaks certain apps - especially PulseAudio mixers.
 # Thanks to Maximilien Noal for posting this workaround
 
-start-pulseaudio-x11 &
-sleep 7
+( pidof pulseaudio ) || start-pulseaudio-x11 &
+sleep 3s
 xfce4-volumed-pulse &
-
 [ $DESKTOP_SESSION != 'i3' ] && pnmixer &
 
