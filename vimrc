@@ -7,6 +7,7 @@
 set nocompatible
 set mouse=a
 set autowrite
+set wildmenu
 
 " -- dangerous options, only enable if you are a TRAINED PROFESSIONAL
 set noswapfile
