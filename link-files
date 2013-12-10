@@ -8,7 +8,8 @@ DOTS="zshenv zshrc.local vimrc tmux.conf \
 		config/compton.conf \
 		bin i3 vim ncmpcpp \
 		config/cower config/ranger config/dunst config/htop \
-		config/openbox config/tint2"
+		config/openbox config/tint2
+		config/skippy-xd"
 
 # Check if there is a .config folder at destination, make one if needed
 if [ ! -d "$WHERE/.config" ]; then

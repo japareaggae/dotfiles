@@ -34,4 +34,5 @@ Openbox-oriented packages
 - neap (aur)
 - obmenu-generator (aur)
 - tint2
+- skippy-xd (aur)
 
