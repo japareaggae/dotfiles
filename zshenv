@@ -4,7 +4,7 @@
 
 # --- Path
 typeset -U path    # makes sure only unique binaries appear
-path=(~/.bin /opt/android-sdk/tools $path)
+path=(~/.bin $path)
 
 # --- Default Applications
 export EDITOR=vim
@@ -16,4 +16,4 @@ export PAGER=less
 export DE=xfce
 
 # --- Arch Build System
-ABSROOT=/home/japareaggae/Development/abs
+export ABSROOT=/home/japareaggae/Development/abs

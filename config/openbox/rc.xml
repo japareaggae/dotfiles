@@ -756,5 +756,10 @@
 
   # end of the example
 -->
+	<!--
+	<application class="*">
+		<decor>no</decor>
+	</application>
+	-->
   </applications>
 </openbox_config>

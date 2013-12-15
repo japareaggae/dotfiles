@@ -1,2 +1,8 @@
+# --- Logs
 *.log
 *history
+
+# --- tint2conf cruft
+default.tint2rc
+snap.jpg
+tint2confrc
