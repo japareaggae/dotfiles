@@ -49,10 +49,3 @@ URxvt.scrollBar_right: true
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: false
 
-! --- XScreenSaver
-xscreensaver.newLoginCommand: dm-tool switch-to-greeter
-
-! --- dzen2
-dzen2.font: -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
-dzen2.foreground: #FFFFFF
-dzen2.background: #000000
