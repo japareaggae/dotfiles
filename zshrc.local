@@ -16,4 +16,5 @@ alias gitcom="git commit"
 alias gitd="git diff"
 alias gitdd="git diff --cached"
 alias gits="git status"
+alias gitgoing="git push origin master"
 
