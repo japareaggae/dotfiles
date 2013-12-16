@@ -8,7 +8,10 @@ usage(){
 	echo "  - export: Copy from Starbound into Dropbox"
 }
 
-(rsync --version > /dev/null) || echo "Oops: You need to install rsync before using starbinder" && exit 1
+if ! $(rsync --version > /dev/null); then
+	echo "Oops: You need to install rsync before using starbinder"
+	exit 1
+fi
 
 case $1 in
 	export) rsync -avzu $LOCAL/ $REMOTE;;
