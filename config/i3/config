@@ -192,7 +192,9 @@ bar {
 		tray_output primary
 		font pango:Terminus 8
 		colors {
+			background #000000
 			separator #404040
+			statusline #ffffff
 			# Class            Border  Backgr. Text
 			focused_workspace  #008000 #00C000 #000000
 			active_workspace   #008000 #004000 #ffffff

@@ -16,13 +16,16 @@ TEXT
 	"color": "\#FF4040"
 },
 {
-	"full_text": " ${mem} + ${swap} / ${memmax} ",
+	"full_text": " ${mem} + ${swap} ",
 	"short_text": " ${mem} ",
+	"color": "\#FF8040"
+},
+{
+	"full_text": " ${fs_used /} / ${fs_size /} ",
 	"color": "\#FFFF40"
 },
 {
-	"full_text": " ${if_up wlp4s0}${wireless_essid wlp4s0} / ${wireless_link_qual_perc wlp4s0}% / ${downspeed wlp4s0}/s${else}No Wi-Fi${endif} ",
-	"short_text": " ${if_up wlp4s0}W: ${wireless_link_qual_perc wlp4s0}% / ${downspeed wlp4s0}/s${else}No Wi-Fi${endif} ",
+	"full_text": " ${if_up wlp4s0}W: ${wireless_link_qual_perc wlp4s0}% / ${downspeed wlp4s0}/s${else}No Wi-Fi${endif} ",
 	"color": "${if_up wlp4s0}\#40FF40${else}\#808080${endif}"
 },
 {
@@ -31,17 +34,15 @@ TEXT
 },
 {
 	"full_text": " ${if_mpd_playing}${mpd_smart}${else}Zzz...${endif} ",
-	"short_text": " ${if_mpd_playing}${scroll 48 ${mpd_smart}}${else}Zzz...${endif} ",
-	"color": "${if_mpd_playing}\#40FF40${else}\#808080${endif}"
+	"color": "${if_mpd_playing}\#4040FF${else}\#808080${endif}"
 },
 {
-	"full_text": " ${battery BAT1} ",
+	"full_text": " ${battery_short BAT1}-${battery_percent BAT1}% ",
 	"color": "\#FF40FF"
 },
 {
-	"full_text": " ${time %F} - ${time %X} ",
-	"short_text": " ${time %X} ",
-	"color": "\#FFFFFF"
+	"full_text": " ${time %F - %R} ",
+	"short_text": " ${time %R} "
 },
 {
 	"full_text": ""
