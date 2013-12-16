@@ -6,6 +6,9 @@
 typeset -U path    # makes sure only unique binaries appear
 path=(~/.bin $path)
 
+# --- History
+export HISTSIZE=1000
+
 # --- Default Applications
 export EDITOR=vim
 export VISUAL=$EDITOR

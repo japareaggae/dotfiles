@@ -4,8 +4,8 @@
 
 # --- Prompt
 prompt off
-PROMPT="%{$fg_bold[blue]%}[%1~]%{$reset_color%}$ "
-RPROMPT=""
+PS1="%{$fg_bold[blue]%}[%1~]%{$reset_color%}$ "
+RPS1=""
 
 # --- Aliases
 # Git
