@@ -1,5 +1,4 @@
 #!/bin/sh
-
 if (pidof compton > /dev/null); then
 	killall compton
 else

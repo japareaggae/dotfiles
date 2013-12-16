@@ -2,7 +2,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # ----- AUTOSTARTS (from a separate file for tidyness)
-exec --no-startup-id ~/.i3/autostart
+exec --no-startup-id ~/.config/i3/autostart
 
 # ----- APPEARANCE
 # -- Font
@@ -183,7 +183,7 @@ workspace 10 output HDMI-0
 
 # ----- INFORMATION BAR
 bar {
-        status_command $HOME/.i3/conky-wrapper
+        status_command ~/.config/i3/conky-wrapper
 		position top
 		tray_output primary
 		font pango:Terminus 8

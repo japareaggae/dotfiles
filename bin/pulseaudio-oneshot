@@ -1,10 +1,9 @@
 #!/bin/sh
-# Xfce autostarts applications in a "whatever goes" manner.
+# This is a workaround for a Xfce bug where applications are autostarted
+# in a "whatever goes" order, breaking things like PulseAudio tray mixers.
 # See: https://bugzilla.xfce.org/show_bug.cgi?id=10296
-# This bug breaks certain apps - especially PulseAudio mixers.
 # Thanks to Maximilien Noal for posting this workaround
-
-( pidof pulseaudio ) || start-pulseaudio-x11 &
+start-pulseaudio-x11 &
 sleep 3s
 xfce4-volumed-pulse &
 [ $DESKTOP_SESSION != 'i3' ] && pnmixer &

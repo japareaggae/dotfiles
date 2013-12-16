@@ -87,5 +87,6 @@ font = Roboto-9:weight=bold
 
 [bindings]
 miwMouse1 = focus
-miwMouse2 = close-ewmh
+miwMouse2 = focus
 miwMouse3 = iconify
+

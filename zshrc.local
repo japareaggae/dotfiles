@@ -2,8 +2,18 @@
 # ~/.zshrc.local - zsh config while using grml-zsh-config
 #
 
-### Prompt
+# --- Prompt
 prompt off
 PROMPT="%{$fg_bold[blue]%}[%1~]%{$reset_color%}$ "
 RPROMPT=""
+
+# --- Aliases
+# Git
+alias gita="git add"
+alias gitaa="git add ."
+alias gitb="git branch"
+alias gitcom="git commit"
+alias gitd="git diff"
+alias gitdd="git diff --cached"
+alias gits="git status"
 

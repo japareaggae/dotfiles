@@ -2,7 +2,10 @@
 *.log
 *history
 
-# --- tint2conf cruft
+# --- Ranger
+**/ranger/bookmarks
+
+# --- tint2conf
 default.tint2rc
 snap.jpg
 tint2confrc

@@ -1,8 +1,7 @@
 #!/bin/sh
-
 PRI="LVDS"
 EXT="HDMI-0"
-EXTMODE="--mode 1360x768"	# replaceable with --auto
+EXTMODE="--mode 1360x768" # replaceable with --auto
 
 if (xrandr | grep "$EXT connected" > /dev/null); then
 	xrandr --output $PRI --primary --auto \

@@ -21,6 +21,11 @@
 				<execute>steam</execute>
 			</action>
 		</item>
+		<item label="TeamSpeak">
+			<action name="Execute">
+				<execute>teamspeak3</execute>
+			</action>
+		</item>
 		<separator/>
 		<menu execute="obmenu-generator -i" id="xdg" label="All Applications"/>
 		<separator/>
@@ -45,6 +50,18 @@
 				<separator/>
 				<item label="Reconfigure">
 					<action name="Reconfigure"/>
+				</item>
+			</menu>
+			<menu id="tint2" label="Tint2">
+				<item label="tintwizard">
+					<action name="Execute">
+						<execute>tintwizard.py</execute>
+					</action>
+				</item>
+				<item label="tint2rc">
+					<action name="Execute">
+						<execute>gvim ~/.config/tint2/tint2rc</execute>
+					</action>
 				</item>
 			</menu>
 			<item label="LXAppearance">

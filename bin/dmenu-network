@@ -20,13 +20,13 @@ if [ $status == "disabled" ]; then exit 1; fi
 # What network should we connect to?
 network=$(nmcli -t -f SSID d wifi | dmenu -p SSID)
 
-# This will break networks with ' on their SSIDs, but SSIDs /should/ be
-# always alphanumeric anyway
+# This will break networks with ' on their SSIDs, but most SSIDs
+# should be always alphanumeric anyway
 network=$(echo $network | sed s/\'//g)
 
 if [ "$network" ]; then
 	if ( nmcli -t -f NAME c list | grep "$network" > /dev/null ); then
-		# Network is known, activate it's connection
+		# Network is known, activate a connection
 		nmcli con up id "$network"
 	else
 		# nm-applet lets you see the password, so this shouldn't be a problem

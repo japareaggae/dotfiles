@@ -1,5 +1,5 @@
 #!/bin/sh
-option=$( echo -e "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate" | dmenu -p Session)
+option=$( echo -e "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate" | dmenu -p Session )
 
 GetOut(){
 case $DESKTOP_SESSION in

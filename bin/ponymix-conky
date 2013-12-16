@@ -1,5 +1,4 @@
 #!/bin/sh
-
 DEVICE=$(ponymix | sed -n '2p' -)
 case $DEVICE in
 		*"Headset"*) DEFSINK="Headset";;
