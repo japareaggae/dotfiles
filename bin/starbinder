@@ -1,5 +1,6 @@
 #!/bin/sh
-LOCAL="$HOME/.steam/steam/SteamApps/common/Starbound/linux32/player"
+ARCH="linux64"
+LOCAL="$HOME/.local/share/Steam/SteamApps/common/Starbound/$ARCH/player"
 REMOTE="$HOME/Dropbox/Vidya/Starbound/player"
 
 usage(){
@@ -18,3 +19,4 @@ case $1 in
 	import) rsync -avzu $REMOTE/ $LOCAL;;
 	*) usage;;
 esac
+
