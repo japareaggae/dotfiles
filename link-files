@@ -3,14 +3,14 @@ DOTLOC="$HOME/.dotfiles"
 WHERE="$HOME"
 BACKUP="$HOME/.old-dotfiles"
 
-DOTS="zshenv zshrc.local vimrc tmux.conf \
-		conkyrc fehbg Xresources xinitrc neaprc \
-		config/compton.conf \
-		bin vim ncmpcpp \
-		config/cower config/ranger config/dunst config/htop \
-		config/openbox config/tint2 \
-		config/i3 \
-		config/skippy-xd"
+DOTS="zshenv zshrc.local vimrc tmux.conf
+	conkyrc fehbg Xresources xinitrc neaprc
+	config/compton.conf
+	bin vim ncmpcpp
+	config/cower config/ranger config/dunst config/htop
+	config/openbox config/tint2
+	config/i3
+	config/skippy-xd"
 
 # Check if there is a .config folder at destination, make one if needed
 if [ ! -d "$WHERE/.config" ]; then
