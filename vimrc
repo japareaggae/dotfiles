@@ -1,60 +1,60 @@
 "
 " ~/.vimrc - Vim configuration file
-" Now slightly more readable!
 "
 
-" ----- General Settings
+" --- General
 set nocompatible
-set mouse=a
-set autowrite
-set wildmenu
 
-" -- dangerous options, only enable if you are a TRAINED PROFESSIONAL
+set history=500
+
+set mouse=a
+
+set autowrite
+set autoread
+
 set noswapfile
 set nobackup
 
-" ----- Vundle Packages
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set magic
 
-" -- list desired bundles here
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
+set ignorecase
+set smartcase
 
-filetype plugin indent on
-
-" ----- Appearance
+" --- Appearance
 syntax on
-set ruler
-set splitright
-set splitbelow
-
-" Highlight the 81st column
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
-
-" Show whitespace
-exec "set listchars=tab:\uBB\uB7,trail:\uB7,nbsp:~"
-set list
-
-" Enable 256 colors - Linux only
 if $COLORTERM == 'yes'
 	set t_Co=256
 	colorscheme molokai
 endif
 
-" -- Status Line - TODO
-"set statusline=%f
+set wildmenu
+set ruler
+set cursorline
 
-" ----- Editing
-set encoding=utf-8
-set autoindent
+set showmatch
+
+set hlsearch
+set incsearch
+
+exec "set listchars=tab:\uBB\uB7,trail:\uB7,nbsp:~"
+set list
+
+" --- Editing
 filetype plugin indent on
+set encoding=utf8
+set autoindent
+set smarttab
 set tabstop=4
+set shiftwidth=4
 
-" ----- Keybinds
-" -- Cut/Copy/Paste (visual mode)
-vmap <C-x> d
-vmap <C-c> y
-vmap <C-v> p
+" --- Keybinds
+let mapleader=","
+let g:mapleader=","
+" -- Quick Save
+map <leader>w :w<cr>
+
+" -- Window Movement
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
