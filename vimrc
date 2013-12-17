@@ -5,7 +5,7 @@
 " --- General
 set nocompatible
 
-set history=500
+set history=100
 
 set mouse=a
 
@@ -20,23 +20,26 @@ set magic
 set ignorecase
 set smartcase
 
+set confirm
+
 " --- Appearance
 syntax on
-if $COLORTERM == 'yes'
-	set t_Co=256
-	colorscheme molokai
-endif
+
+" TODO: hardcoding these will break if we're dealing with a TTY
+set t_Co=256
+colorscheme molokai
 
 set wildmenu
+set wildmode=longest,full
+
 set ruler
 set cursorline
 
-set showmatch
 
 set hlsearch
 set incsearch
 
-exec "set listchars=tab:\uBB\uB7,trail:\uB7,nbsp:~"
+exec "set listchars=tab:\uBB\uB7,trail:\uB7,nbsp:~,extends:$,precedes:$"
 set list
 
 " --- Editing
