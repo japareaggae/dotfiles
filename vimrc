@@ -2,7 +2,7 @@
 " ~/.vimrc - Vim configuration file
 "
 
-" --- General
+" ----- General
 set nocompatible
 
 set history=100
@@ -22,7 +22,7 @@ set smartcase
 
 set confirm
 
-" --- Appearance
+" ----- Appearance
 syntax on
 
 " TODO: hardcoding these will break if we're dealing with a TTY
@@ -35,6 +35,7 @@ set wildmode=longest,full
 set ruler
 set cursorline
 
+set laststatus=2
 
 set hlsearch
 set incsearch
@@ -50,7 +51,7 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 
-" --- Keybinds
+" ----- Keybinds
 let mapleader=","
 let g:mapleader=","
 " -- Quick Save
@@ -61,3 +62,18 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" ----- Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'bling/vim-airline'
+
+filetype plugin indent on
+
+" ----- Airline
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+

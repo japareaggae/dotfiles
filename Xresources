@@ -46,7 +46,8 @@ URxvt.font: xft:Terminus:size=8
 ! - Scrolling
 URxvt.scrollBar: false
 URxvt.scrollTtyOutput: false
-URxvt.scrollWithBuffer: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
 ! - Extensions
 URxvt.perl-ext-common: default,matcher,vtwheel
 URxvt.url-launcher: /usr/bin/google-chrome-unstable
