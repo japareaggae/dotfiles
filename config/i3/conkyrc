@@ -37,7 +37,7 @@ TEXT
 	"color": "${if_mpd_playing}\#4040FF${else}\#808080${endif}"
 },
 {
-	"full_text": " ${battery_short BAT1}-${battery_percent BAT1}% ",
+	"full_text": " ${battery_short BAT1} ",
 	"color": "\#FF40FF"
 },
 {

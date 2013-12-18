@@ -40,12 +40,15 @@ xterm*font: xft:Terminus:size=8
 ! --- urxvt
 URxvt.termName: rxvt-unicode-256color
 URxvt.depth: 32
-URxvt.background: [192]#000000
+URxvt.background: rgba:0000/0000/0000/E000
 URxvt.foreground: #FFFFFF
 URxvt.font: xft:Terminus:size=8
+! - Scrolling
 URxvt.scrollBar: false
-!URxvt.scrollstyle: plain
-URxvt.scrollBar_right: true
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: false
+! - Extensions
+URxvt.perl-ext-common: default,matcher,vtwheel
+URxvt.url-launcher: /usr/bin/google-chrome-unstable
+URxvt.matcher.button: 1
 

@@ -12,11 +12,7 @@ export HISTSIZE=1000
 # --- Default Applications
 export EDITOR=vim
 export VISUAL=$EDITOR
-export BROWSER=google-chrome-unstable
 export PAGER=less
-
-# --- Desktop Environment (because exo is gud)
-export DE=xfce
 
 # --- Arch Build System
 export ABSROOT=/home/japareaggae/Development/abs

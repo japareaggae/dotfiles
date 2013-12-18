@@ -10,9 +10,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+# --- Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
 # --- WM/DE
 # You can hardcode something here, or use $1 to specify what you want at runtime (eg. startx i3)
 #exec $1
-#exec i3
+exec i3
 #exec openbox-session
 

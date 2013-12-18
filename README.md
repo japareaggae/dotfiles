@@ -26,6 +26,8 @@ X-dependent packages
 - dmenu
 - dunst
 - feh
+- urxvt
+- urxvt-vtwheel (aur)
 - xfce4-volumed-pulse (aur)
 
 Openbox-oriented packages
