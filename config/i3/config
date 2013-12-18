@@ -128,22 +128,22 @@ bindsym $mod+Shift+e exec --no-startup-id dmenu-session
 
 # -- Resize Mode keybinds
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Left/Right: Shrink/Grow Width
-        # Up/Down: Shrink/Grow Height
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ccedilla resize grow width 10 px or 10 ppt
+	# These bindings trigger as soon as you enter the resize mode
+	# Left/Right: Shrink/Grow Width
+	# Up/Down: Shrink/Grow Height
+	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym k resize grow height 10 px or 10 ppt
+	bindsym l resize shrink height 10 px or 10 ppt
+	bindsym ccedilla resize grow width 10 px or 10 ppt
 
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -162,7 +162,7 @@ bindsym $mod+Shift+Delete exec --no-startup-id dmenu-session
 bindsym $mod+Shift+F12 exec --no-startup-id dmenu-network
 
 # -- Terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec xfce4-terminal
 
 # -- Screenshotting
 bindsym Print exec xfce4-screenshooter -f
@@ -187,19 +187,19 @@ workspace 10 output HDMI-0
 
 # ----- INFORMATION BAR
 bar {
-		status_command ~/.config/i3/conky-wrapper
-		position top
-		tray_output primary
-		font pango:Terminus 8
-		colors {
-			background #000000
-			separator #404040
-			statusline #ffffff
-			# Class            Border  Backgr. Text
-			focused_workspace  #008000 #00C000 #000000
-			active_workspace   #008000 #004000 #ffffff
-			inactive_workspace #004000 #004000 #ffffff
-			urgent_workspace   #800000 #800000 #ffffff
-		}
+	status_command ~/.config/i3/conky-wrapper
+	position top
+	tray_output primary
+	font pango:Terminus 8
+	colors {
+		background #000000
+		separator #404040
+		statusline #ffffff
+		# Class            Border  Backgr. Text
+		focused_workspace  #008000 #00C000 #000000
+		active_workspace   #008000 #004000 #ffffff
+		inactive_workspace #004000 #004000 #ffffff
+		urgent_workspace   #800000 #800000 #ffffff
+	}
 }
 

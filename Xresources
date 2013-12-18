@@ -39,6 +39,9 @@ xterm*font: xft:Terminus:size=8
 
 ! --- urxvt
 URxvt.termName: rxvt-unicode-256color
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+! - Appearance
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/E000
 URxvt.foreground: #FFFFFF
@@ -49,7 +52,17 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
 ! - Extensions
-URxvt.perl-ext-common: default,matcher,vtwheel
-URxvt.url-launcher: /usr/bin/google-chrome-unstable
-URxvt.matcher.button: 1
+URxvt.perl-ext-common: default,clipboard,url-select,vtwheel
+! url-select
+URxvt.keysym.C-i: perl:url-select:select_next
+URxvt.url-select.launcher: google-chrome-unstable
+URxvt.url-select.underline: true
+! clipboard
+URxvt.clipboard.autocopy: true
+URxvt.clipboard.copycmd: xcmenu -ci
+URxvt.clipboard.pastecmd: xcmenu -pi
+
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
