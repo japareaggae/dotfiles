@@ -26,11 +26,10 @@ client.urgent           #400000 #400000 #FFFFFF #800000
 # Mod1 = Alt; Mod4 = Super
 set $mod Mod4
 
-# -- Toggle Tiling/Floating
-bindsym $mod+Shift+space floating toggle
-
-# -- Dragging Floating Windows (modkey + mouse)
+# -- Floating Keybinds
 floating_modifier $mod
+bindsym $mod+Shift+n floating toggle
+bindsym $mod+n focus mode_toggle
 
 # -- dmenu (launches programs)
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -76,9 +75,6 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-
-# -- Change focus between tiling/floating windows
-bindsym $mod+space focus mode_toggle
 
 # -- Switch to workspace
 bindsym $mod+1 workspace 1
