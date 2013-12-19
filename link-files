@@ -5,7 +5,7 @@ BACKUP="$HOME/.old-dotfiles"
 
 DOTS="zshenv zshrc.local vimrc tmux.conf
 	conkyrc fehbg Xresources xinitrc neaprc
-	config/compton.conf
+	config/compton.conf config/weston.ini
 	bin vim ncmpcpp
 	config/cower config/ranger config/dunst config/htop
 	config/openbox config/tint2
