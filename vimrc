@@ -71,6 +71,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree.git'
 
 filetype plugin indent on
 

@@ -5,9 +5,6 @@
 # --- Ranger
 **/ranger/bookmarks
 
-# --- Bundle
-vim/bundle
-
 # --- tint2conf
 default.tint2rc
 snap.jpg

@@ -1,0 +1,16 @@
+[submodule "vundle"]
+	path = vim/bundle/vundle
+	url = git://github.com/gmarik/vundle.git
+
+[submodule "vim-airline"]
+	path = vim/bundle/vim-airline
+	url = git://github.com/bling/vim-airline.git
+
+[submodule "vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+
+[submodule "nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+
