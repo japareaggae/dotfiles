@@ -28,6 +28,7 @@ X-dependent packages
 - feh
 - urxvt
 - urxvt-vtwheel (aur)
+- clipit
 - xfce4-volumed-pulse (aur)
 
 Openbox-oriented packages

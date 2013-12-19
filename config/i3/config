@@ -162,7 +162,7 @@ bindsym $mod+Shift+Delete exec --no-startup-id dmenu-session
 bindsym $mod+Shift+F12 exec --no-startup-id dmenu-network
 
 # -- Terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec urxvt
 
 # -- Screenshotting
 bindsym Print exec xfce4-screenshooter -f

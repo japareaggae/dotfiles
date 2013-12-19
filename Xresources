@@ -52,17 +52,9 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
 ! - Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,vtwheel
+URxvt.perl-ext-common: default,url-select,vtwheel
 ! url-select
 URxvt.keysym.C-i: perl:url-select:select_next
 URxvt.url-select.launcher: google-chrome-unstable
 URxvt.url-select.underline: true
-! clipboard
-URxvt.clipboard.autocopy: true
-URxvt.clipboard.copycmd: xcmenu -ci
-URxvt.clipboard.pastecmd: xcmenu -pi
-
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
