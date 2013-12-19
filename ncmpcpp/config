@@ -35,9 +35,7 @@ visualizer_look = "██"
 #message_delay_time = "4"
 
 # ------ Formatting
-#
 # Valid tags:
-#
 # %l - length
 # %f - filename
 # %D - directory
@@ -56,7 +54,6 @@ visualizer_look = "██"
 # $R - begin right alignment
 #
 # Valid colors (colors can be nested!):
-#
 # $0 - default window color (discards all other colors)
 # $1 - black
 # $2 - red
@@ -79,7 +76,7 @@ visualizer_look = "██"
 #
 # To add color, enclose the text in color tags, such as: $3%l$9
 
-#song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3(%l)$9}"
+song_list_format = "{[%l]} {$7%a$9 - }{$3%t$9}|{$3%f$9} $R{#%n - }{$4%b$9}"
 song_status_format = "{{$3%a$9 // }{$3%t$9}{ // {$3#%n$9 from }{$3%b$9}}{ (%y)}}|{%f}"
 #song_library_format = "{%n - }{%t}|{%f}"
 #tag_editor_album_format = "{(%y) }%b"
@@ -203,7 +200,7 @@ fetch_lyrics_for_current_song_in_background = "yes"
 #store_lyrics_in_song_dir = "no"
 
 # If the following option is set, we try loading artist information from last.fm
-# with this language.. If no information is found, we fall back to English.
+# with this language. If no information is found, we fall back to English.
 # Language has to be expressed as an ISO 639 alpha-2 code.
 #lastfm_preferred_language = ""
 
@@ -214,13 +211,11 @@ fetch_lyrics_for_current_song_in_background = "yes"
 # Useless if header_visibility is "no".
 #display_screens_numbers_on_start = "yes"
 
-# How shall key_screen_switcher work?
-#
+# The following options are available for screen_switcher_mode.
 # - "previous" - switch between current and last used screen
 # - "sequence: 2 -> 9 -> 5" - switch between given sequence of screens.
 #
 # Screen numbers you can use after 'sequence' keyword are:
-#
 # - 1 - help
 # - 2 - playlist
 # - 3 - browser
@@ -303,38 +298,34 @@ ignore_leading_the = "yes"
 
 # ----- Colors
 # default (terminal fg), black, red, green, yellow, blue, magenta, cyan, white
-
-#colors_enabled = "yes"
+colors_enabled = "yes"
 
 main_window_color = "white"
 
-main_window_highlight_color = "cyan"
-
+# -- Highlights
+main_window_highlight_color = "default"
 active_column_color = "green"
 
-header_window_color = "cyan"
-
+# -- Header
+header_window_color = "green"
 #volume_color = "default"
-
-progressbar_color = "green"
-
-statusbar_color = "default"
-
-state_line_color = "cyan"
-
+state_line_color = "default"
 #alternative_ui_separator_color = "black"
 
-empty_tag_color = "red"
+# -- Footer
+progressbar_color = "green"
+statusbar_color = "default"
 
-#state_flags_color = "default"
-
+# -- Song info, tag editor and search engine
 #color1 = "white"
-
 #color2 = "green"
 
-visualizer_color = "white"
-
+# -- Multi-window mode
 #window_border_color = "green"
-
 #active_window_border = "red"
+
+# -- Others
+empty_tag_color = "red"
+#state_flags_color = "default"
+visualizer_color = "white"
 
