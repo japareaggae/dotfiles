@@ -1,0 +1,33 @@
+! Uncreative colors by Renan Guilherme <japareaggae@gmail.com>
+! black, dark grey
+*color0: #000000
+*color8: #404040
+
+! red, light red
+*color1: #C00000
+*color9: #FF4040
+
+! green, light green
+*color2: #00C000
+*color10: #40FF40
+
+! yellow, light yellow
+*color3: #C0C000
+*color11: #FFFF40
+
+! blue, light blue
+*color4: #0000C0
+*color12: #4040FF
+
+! magenta, pink
+*color5: #C000C0
+*color13: #FF40FF
+
+! cyan, light cyan
+*color6: #00C0C0
+*color14: #40FFFF
+
+! light gray, white
+*color7: #C0C0C0
+*color15: #FFFFFF
+

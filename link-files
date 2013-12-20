@@ -10,15 +10,15 @@ DOTS="zshenv zshrc.local vimrc tmux.conf
 	config/cower config/ranger config/dunst config/htop
 	config/openbox config/tint2
 	config/i3
-	config/skippy-xd"
+	config/xcolors config/skippy-xd"
 
 # Check if there is a .config folder at destination, make one if needed
-if [ ! -d "$WHERE/.config" ]; then
+if [[ ! -d "$WHERE/.config" ]]; then
 	mkdir -p "$WHERE/.config"
 fi
 
 # Check if there is a backup folder (and a config folder on it), make one if needed
-if [ ! -d "$BACKUP/config" ]; then
+if [[ ! -d "$BACKUP/config" ]]; then
 	mkdir -p "$BACKUP/config"
 fi
 
