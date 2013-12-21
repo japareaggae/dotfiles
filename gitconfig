@@ -1,0 +1,10 @@
+[user]
+	email = japareaggae@gmail.com
+	name = Renan Guilherme
+
+[credential]
+	helper = cache --timeout=3600
+
+[alias]
+	last10 = log -10 --oneline
+	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)

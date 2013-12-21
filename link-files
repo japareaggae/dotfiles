@@ -3,7 +3,7 @@ DOTLOC="$HOME/.dotfiles"
 WHERE="$HOME"
 BACKUP="$HOME/.old-dotfiles"
 
-DOTS="zshenv zshrc.local vimrc tmux.conf
+DOTS="zshenv zshrc.local vimrc tmux.conf gitconfig
 	conkyrc fehbg Xresources xinitrc neaprc
 	config/compton.conf config/weston.ini
 	bin vim ncmpcpp
