@@ -13,6 +13,7 @@ Xft.lcdfilter: lcddefault
 
 ! --- Terminal Colors
 #include "config/xcolors/64steps"
+!#include "config/xcolors/prettygirly"
 
 ! --- XTerm
 xterm*termName: xterm-256color
@@ -24,6 +25,7 @@ xterm*font: xft:Terminus:size=8,xft:Symbola:size=8
 URxvt.termName: rxvt-unicode-256color
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+URxvt.savelines: 8192
 ! - Appearance
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/E000
