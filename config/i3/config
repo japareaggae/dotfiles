@@ -119,7 +119,7 @@ bindsym $mod+Shift+q kill
 # -- General Keybinds
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec --no-startup-id dmenu-session
+#bindsym $mod+Shift+e exec --no-startup-id dmenu-session
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # -- Resize Mode keybinds
@@ -152,10 +152,10 @@ bindsym $mod+Shift+m move scratchpad
 bindsym $mod+m scratchpad show
 
 # -- Session Menu
-bindsym $mod+Shift+Delete exec --no-startup-id dmenu-session
+bindsym $mod+Shift+Delete exec --no-startup-id ~/.bin/dmenu-session
 
 # -- Network Menu
-bindsym $mod+Shift+F12 exec --no-startup-id dmenu-network
+bindsym $mod+Shift+F12 exec --no-startup-id ~/.bin/dmenu-network
 
 # -- Terminal
 bindsym $mod+Return exec urxvt
@@ -195,7 +195,7 @@ bar {
 		focused_workspace  #00E000 #00C000 #000000
 		active_workspace   #00A000 #008000 #ffffff
 		inactive_workspace #006000 #004000 #ffffff
-		urgent_workspace   #800000 #800000 #ffffff
+		urgent_workspace   #A00000 #800000 #ffffff
 	}
 }
 
