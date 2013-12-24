@@ -1,5 +1,6 @@
 #!/bin/sh
 # sxivall (actually rifle_sxiv.sh)
+# http://git.savannah.gnu.org/cgit/ranger.git/tree/doc/examples/rifle_sxiv.sh
 #
 # This script searches image files in a directory, opens them all with sxiv and
 # sets the first argument to the first image displayed by sxiv.
