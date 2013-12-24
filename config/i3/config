@@ -192,9 +192,9 @@ bar {
 		separator #202020
 		statusline #ffffff
 		# Class            Border  Backgr. Text
-		focused_workspace  #00C000 #00C000 #000000
-		active_workspace   #008000 #008000 #ffffff
-		inactive_workspace #004000 #004000 #ffffff
+		focused_workspace  #00E000 #00C000 #000000
+		active_workspace   #00A000 #008000 #ffffff
+		inactive_workspace #006000 #004000 #ffffff
 		urgent_workspace   #800000 #800000 #ffffff
 	}
 }
