@@ -2,6 +2,9 @@
 # ~/.zshrc.local - zsh config while using grml-zsh-config
 #
 
+# --- ???
+[ -e $HOME/.zshenv ] && . $HOME/.zshenv
+
 # --- Prompt
 prompt off
 PS1="%{$fg_bold[blue]%}[%1~]%{$reset_color%}$ "
@@ -21,6 +24,4 @@ alias gitgoing="git push origin master"
 
 # X
 alias xrefres="xrdb -merge ~/.Xresources"
-
-#alias sxiv="sxivall"
 

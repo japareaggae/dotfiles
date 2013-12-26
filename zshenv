@@ -3,8 +3,8 @@
 #
 
 # --- Path
-typeset -U path    # makes sure only unique binaries appear
-path=(~/.bin $path)
+typeset -U path
+path=($HOME/.bin $path)
 
 # --- History
 export HISTSIZE=1000
