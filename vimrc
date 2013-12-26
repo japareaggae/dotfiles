@@ -2,9 +2,19 @@
 " ~/.vimrc - Vim configuration file
 "
 
-" ----- General
 set nocompatible
 
+" ----- Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree.git'
+
+" ----- General
 set history=100
 
 set mouse=a
@@ -62,18 +72,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" ----- Vundle
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree.git'
-
-filetype plugin indent on
 
 " ----- Airline
 let g:airline_left_sep=''

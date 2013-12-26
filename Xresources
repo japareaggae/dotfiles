@@ -19,33 +19,37 @@ Xft.lcdfilter: lcddefault
 xterm*termName: xterm-256color
 xterm*background: #000000
 xterm*foreground: #FFFFFF
-xterm*font: xft:Terminus:size=8,xft:Symbola:size=8
+xterm*font: xft:Terminus:size=8
 
 ! --- urxvt
 URxvt.termName: rxvt-unicode-256color
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 URxvt.savelines: 8192
-! - Appearance
+
+! Appearance
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/E000
 URxvt.foreground: #FFFFFF
 URxvt.font: xft:Terminus:size=8
-! - Scrolling
+
+! Scrolling
 URxvt.scrollBar: false
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
-! - Extensions
+
+! Extensions
 URxvt.perl-ext-common: default,clipboard,url-select,vtwheel
-! url-select
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.button: 1
-URxvt.url-select.launcher: google-chrome-unstable
-URxvt.url-select.underline: true
-! clipboard
+
+! clipboard options
 URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
+! url-select options
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.button: 1
+URxvt.url-select.launcher: google-chrome-unstable
+URxvt.url-select.underline: true
 
