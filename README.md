@@ -20,13 +20,16 @@ Basic packages
 X-dependent packages
 -----
 
-- i3 and/or openbox
+- i3
 - conky
 - compton
 - dmenu
 - dunst
 - feh
+- sxiv
+- rifle-sxiv (aur, modded version on dropbox)
 - urxvt
+- urxvt-perls
 - urxvt-vtwheel (aur)
 - clipit
 - xfce4-volumed-pulse (aur)
@@ -34,6 +37,7 @@ X-dependent packages
 Openbox-oriented packages
 -----
 
+- openbox (lol)
 - neap (aur)
 - obmenu-generator (aur)
 - tint2

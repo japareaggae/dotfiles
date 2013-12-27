@@ -4,7 +4,7 @@
 # idea to use a specific file to do these things.
 
 # Desktop session - so dmenu-session knows who we are
-export DESKTOP_SESSION='i3'
+export DESKTOP_SESSION="i3"
 
 # LXPolkit - So we can mount Terezi from Thunar
 /usr/lib/lxpolkit/lxpolkit &

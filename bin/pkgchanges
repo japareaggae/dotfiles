@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ -z $1 ] || [ -z $2 ]; then
+if [ $# -ne 2 ]; then
 	echo "usage: pkgchanges [core/extra/community] [package]"
 	exit 1
 fi
@@ -9,8 +9,8 @@ if [ $1 == "core" ] || [ $1 == "extra" ]; then
 elif [ $1 == "community" ]; then
 	REPO="community"
 else
-	echo "error: not a valid repository"
-	exit 2
+	echo "error: $1 is not a valid repository"
+	exit 1
 fi
 
 xdg-open "https://projects.archlinux.org/svntogit/$REPO.git/log/trunk?h=packages/$2"

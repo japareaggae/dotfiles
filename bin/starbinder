@@ -13,7 +13,7 @@ usage(){
 	echo "  - export: Copy from Starbound into Dropbox"
 }
 
-if ! $(rsync --version > /dev/null); then
+if [ ! "$(rsync --version > /dev/null)" ]; then
 	echo "Oops: You need to install rsync before using starbinder"
 	exit 1
 fi
