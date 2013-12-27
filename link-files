@@ -1,28 +1,39 @@
 #!/bin/sh
+# --- Locations
+# DOTLOC = Where is the dotfile repo
+# WHERE  = Where the dotfiles should be linked to
+# BACKUP = Where to backup the dotfiles that already exist on the system
 DOTLOC="$HOME/.dotfiles"
 WHERE="$HOME"
 BACKUP="$HOME/.old-dotfiles"
 
-DOTS="zshenv zshrc.local vimrc tmux.conf gitconfig
-	conkyrc fehbg Xresources xinitrc neaprc
-	config/compton.conf config/weston.ini
+# --- Dotfile definitions
+# BASICDOTS = Configs for terminal applications
+BASICDOTS="zshenv zshrc.local gitconfig vimrc tmux.conf
 	bin vim ncmpcpp
-	config/cower config/ranger config/dunst config/htop
-	config/openbox config/tint2
-	config/i3
-	config/xcolors config/skippy-xd"
+	config/cower config/ranger config/htop"
+
+# XDITS = Configs for graphical applications
+XDOTS="conkyrc fehbg Xresources xinitrc
+	config/compton.conf config/weston.ini
+	config/i3 config/xcolors config/dunst"
+
+# OBDOTS = Configs for Openbox and related applications
+OBDOTS="neaprc config/openbox config/tint2 config/skippy-xd"
+
+ALLDOTS="$BASICDOTS $XDOTS $OBDOTS"
 
 # Check if there is a .config folder at destination, make one if needed
-if [[ ! -d "$WHERE/.config" ]]; then
+if [ ! -d "$WHERE/.config" ]; then
 	mkdir -p "$WHERE/.config"
 fi
 
 # Check if there is a backup folder (and a config folder on it), make one if needed
-if [[ ! -d "$BACKUP/config" ]]; then
+if [ ! -d "$BACKUP/config" ]; then
 	mkdir -p "$BACKUP/config"
 fi
 
-for dot in $DOTS; do
+for dot in $ALLDOTS; do
 	echo -e "\e[1;31m==>\e[0m Moving old $dot into $BACKUP"
 	mv $WHERE/.$dot $BACKUP/$dot
 	echo -e "\e[1;32m==>\e[0m Linking $dot into $WHERE"
