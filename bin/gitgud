@@ -1,0 +1,30 @@
+#!/usr/bin/python
+# git gud - BABBY'S FIRST PYTHON
+# Written by Renan Guilherme <japareaggae@gmail.com>
+
+import random
+import os
+
+# --- gud definitions
+lose = "http://grooveshark.com/s/Lose+Yourself/1MDPAM"
+spectra = "http://chipzelmusic.bandcamp.com/track/spectra"
+rawhide = "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2"
+danger = "http://grooveshark.com/s/Danger+Zone/3hRRXq"
+barkley = "http://www.youtube.com/watch?v=lWKQiZVBtu4"
+
+entries = 4
+
+# --- Spin the wheel
+spin = random.randrange(entries)
+
+if spin == 0:
+    os.system("xdg-open " + lose)
+elif spin == 1:
+    os.system("xdg-open " + spectra)
+elif spin == 2:
+    os.system("xdg-open " + rawhide)
+elif spin == 3:
+    os.system("xdg-open " + danger)
+elif spin == 4:
+    os.system("xdg-open " + barkley)
+

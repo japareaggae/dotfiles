@@ -8,3 +8,4 @@
 [alias]
 	last10 = log -10 --oneline
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
+	gud = !$HOME/.bin/gitgud

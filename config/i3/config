@@ -157,6 +157,9 @@ bindsym $mod+Shift+Delete exec --no-startup-id ~/.bin/dmenu-session
 # -- Network Menu
 bindsym $mod+Shift+F12 exec --no-startup-id ~/.bin/dmenu-network
 
+# --- xrandr-adjust
+bindsym $mod+F4 exec --no-startup-id ~/.bin/xrandr-adjust
+
 # -- Terminal
 bindsym $mod+Return exec urxvt
 
