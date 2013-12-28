@@ -3,7 +3,7 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 
 import random
-import os
+import webbrowser
 
 # --- gud definitions
 entries = [
@@ -11,10 +11,11 @@ entries = [
   "http://chipzelmusic.bandcamp.com/track/spectra",      # Chipzel - Spectra
   "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2",  # Blues Brothers - Theme from Rawhide
   "http://grooveshark.com/s/Danger+Zone/3hRRXq",         # Kenny Loggins - Danger Zone
-  "http://www.youtube.com/watch?v=lWKQiZVBtu4",          # Barkley, Shut Up and Jam: Gaiden - Theme Song 
+  "http://www.youtube.com/watch?v=lWKQiZVBtu4",          # Barkley, Shut Up and Jam: Gaiden - Theme Song
   "http://thebest404pageever.com/swf/smkwd3vryd4a.swf"   # Stole My Weed
 ]
 
 # --- Spin the wheel
 spin = random.randrange(len(entries))
-os.system("xdg-open " + entries[spin])
+webbrowser.open(entries[spin], new=0, autoraise=True)
+
