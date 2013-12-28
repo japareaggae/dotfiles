@@ -6,25 +6,15 @@ import random
 import os
 
 # --- gud definitions
-lose = "http://grooveshark.com/s/Lose+Yourself/1MDPAM"
-spectra = "http://chipzelmusic.bandcamp.com/track/spectra"
-rawhide = "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2"
-danger = "http://grooveshark.com/s/Danger+Zone/3hRRXq"
-barkley = "http://www.youtube.com/watch?v=lWKQiZVBtu4"
-
-entries = 4
+entries = [
+  "http://grooveshark.com/s/Lose+Yourself/1MDPAM",       # Eminem - Lose Yourself
+  "http://chipzelmusic.bandcamp.com/track/spectra",      # Chipzel - Spectra
+  "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2",  # Blues Brothers - Theme from Rawhide
+  "http://grooveshark.com/s/Danger+Zone/3hRRXq",         # Kenny Loggins - Danger Zone
+  "http://www.youtube.com/watch?v=lWKQiZVBtu4",          # Barkley, Shut Up and Jam: Gaiden - Theme Song 
+  "http://thebest404pageever.com/swf/smkwd3vryd4a.swf"   # Stole My Weed
+]
 
 # --- Spin the wheel
-spin = random.randrange(entries)
-
-if spin == 0:
-    os.system("xdg-open " + lose)
-elif spin == 1:
-    os.system("xdg-open " + spectra)
-elif spin == 2:
-    os.system("xdg-open " + rawhide)
-elif spin == 3:
-    os.system("xdg-open " + danger)
-elif spin == 4:
-    os.system("xdg-open " + barkley)
-
+spin = random.randrange(len(entries))
+os.system("xdg-open " + entries[spin])
