@@ -7,12 +7,20 @@ import webbrowser
 
 # --- gud definitions
 entries = [
-  "http://grooveshark.com/s/Lose+Yourself/1MDPAM",       # Eminem - Lose Yourself
-  "http://chipzelmusic.bandcamp.com/track/spectra",      # Chipzel - Spectra
-  "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2",  # Blues Brothers - Theme from Rawhide
-  "http://grooveshark.com/s/Danger+Zone/3hRRXq",         # Kenny Loggins - Danger Zone
-  "http://www.youtube.com/watch?v=lWKQiZVBtu4",          # Barkley, Shut Up and Jam: Gaiden - Theme Song
-  "http://thebest404pageever.com/swf/smkwd3vryd4a.swf"   # Stole My Weed
+    # Songs
+    "http://grooveshark.com/s/Lose+Yourself/1MDPAM",       # Eminem - Lose Yourself
+    "http://chipzelmusic.bandcamp.com/track/spectra",      # Chipzel - Spectra
+    "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2",  # Blues Brothers - Theme from Rawhide
+    "http://grooveshark.com/s/Danger+Zone/3hRRXq",         # Kenny Loggins - Danger Zone
+
+    # Soundtracks
+    "http://www.youtube.com/watch?v=Vjyhx49BIzc",          # Souleye - Potential for Anything
+    "http://www.youtube.com/watch?v=lWKQiZVBtu4",          # Barkley, Shut Up and Jam: Gaiden - Theme Song
+
+    # 404 SWFs
+    "http://thebest404pageever.com/swf/smkwd3vryd4a.swf",
+    "http://thebest404pageever.com/swf/octagon_zone.swf",
+    "http://thebest404pageever.com/swf/sprpeck.swf"
 ]
 
 # --- Spin the wheel

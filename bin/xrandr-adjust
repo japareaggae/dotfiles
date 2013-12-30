@@ -5,8 +5,10 @@ EXTMODE="--mode 1360x768" # replaceable with --auto
 
 if (xrandr | grep "$EXT connected" > /dev/null); then
 	xrandr --output $PRI --primary --auto \
-	--output $EXT $EXTMODE --right-of $PRI
+		--output $EXT $EXTMODE --right-of $PRI
+
+	[ -x $HOME/.fehbg  ] && $HOME/.fehbg
 else
 	xrandr --output $PRI --auto \
-	--output $EXT --off
+		--output $EXT --off
 fi
