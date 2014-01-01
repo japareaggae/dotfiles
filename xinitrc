@@ -13,6 +13,9 @@ fi
 # --- Xresources
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
+# --- urxvt daemon
+urxvtd -q -f -o
+
 # --- WM/DE
 # You can hardcode something here, or use $1 to specify what you want at runtime (eg. startx i3)
 #exec $1
