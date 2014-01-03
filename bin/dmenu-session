@@ -1,17 +1,9 @@
 #!/bin/sh
 option=$( echo -e "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate" | dmenu -p Session )
 
-GetOut(){
-case $DESKTOP_SESSION in
-	"xfce") xfce4-session-logout --fast --logout;;
-	"openbox") openbox --exit;;
-	"i3") i3 exit;;
-esac
-}
-
 case $option in
 	lock) i3lock -c 000000 -p win;;
-	logout) GetOut;;
+	logout) i3 exit;;
 	shutdown) systemctl poweroff;;
 	reboot) systemctl reboot;;
 	suspend) systemctl suspend;;

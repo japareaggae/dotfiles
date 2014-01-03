@@ -1,5 +1,5 @@
 #!/bin/sh
-# dmenu-network: A dmenu wrapper for NetworkManager (!)
+# dmenu-network: A dmenu wrapper for NetworkManager
 # Written by Renan Guilherme <japareaggae@gmail.com>
 
 # Get current Wi-Fi status
@@ -13,11 +13,9 @@ esac
 }
 
 connectWiFi(){
-# Don't even try connecting if Wi-Fi is disabled
-# We could enable Wi-Fi on demand here, but zzz...
-if [ $status == "disabled" ]; then exit 1; fi
+[ $status == "disabled" ] && exit 1
 
-# What network should we connect to?
+# Get a list of networks around us
 network=$(nmcli -t -f SSID d wifi | dmenu -p SSID)
 
 # This will break networks with ' on their SSIDs, but most SSIDs
@@ -29,8 +27,7 @@ if [ "$network" ]; then
 		# Network is known, activate a connection
 		nmcli con up id "$network"
 	else
-		# nm-applet lets you see the password, so this shouldn't be a problem
-		password=$( echo "" | dmenu -p "Password (if any)" )
+		password=$( echo "" | dmenu -p "Password for $network" )
 		# Network is not known, create and activate a connection
 		if [ -z "$password" ] ; then
 			nmcli d wifi connect "$network"
@@ -46,9 +43,11 @@ fi
 options="connect\nedit\ntoggle (c. $status)"
 option=$(echo -e $options | dmenu -p Wi-Fi)
 
+# The edit option requires nm-applet to be installed.
+# TODO: When nmtui percolates to stable NM, use it instead
 case $option in
 	"connect") connectWiFi;;
 	"edit") nm-connection-editor;;
-	*"toggle"*) toggleWiFi;;
+	"toggle"*) toggleWiFi;;
 esac
 

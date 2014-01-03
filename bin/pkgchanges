@@ -1,12 +1,12 @@
 #!/bin/sh
 if [ $# -ne 2 ]; then
-	echo "usage: pkgchanges [core/extra/community] [package]"
+	echo "usage: pkgchanges [core/extra/community/multilib] [package]"
 	exit 1
 fi
 
 if [ $1 == "core" ] || [ $1 == "extra" ]; then
 	REPO="packages"
-elif [ $1 == "community" ]; then
+elif [ $1 == "community" ] || [ $1 == "multilib" ]; then
 	REPO="community"
 else
 	echo "error: $1 is not a valid repository"

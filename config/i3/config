@@ -6,7 +6,7 @@ exec --no-startup-id ~/.config/i3/autostart
 
 # ----- APPEARANCE
 # -- Font
-# You can either set a X font description here (pls no) or use Pango.
+# You can either set a X font description here or use Pango.
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 font pango:Terminus 8
 
@@ -67,14 +67,11 @@ bindsym $mod+q layout tabbed
 bindsym $mod+w layout stacking
 bindsym $mod+e layout default
 bindsym $mod+p layout toggle
-
 #bindsym $mod+f fullscreen
 
-# focus the parent container
+# -- Parent/Child Container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+z focus child
 
 # -- Switch to workspace
 bindsym $mod+1 workspace 1
@@ -119,7 +116,6 @@ bindsym $mod+Shift+q kill
 # -- General Keybinds
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-#bindsym $mod+Shift+e exec --no-startup-id dmenu-session
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # -- Resize Mode keybinds
@@ -160,8 +156,9 @@ bindsym $mod+Shift+F12 exec --no-startup-id ~/.bin/dmenu-network
 # --- xrandr-adjust
 bindsym $mod+F4 exec --no-startup-id ~/.bin/xrandr-adjust
 
-# -- Terminal
+# -- Terminal/Thunar
 bindsym $mod+Return exec urxvtc
+bindsym $mod+Shift+Return exec thunar
 
 # -- Screenshotting
 bindsym Print exec xfce4-screenshooter -f
@@ -173,7 +170,6 @@ for_window [class="Steam"] floating enable
 for_window [title="^Steam$"] floating enable
 
 for_window [class="Gcolor3"] floating enable
-for_window [class="Viewnior"] floating enable
 for_window [class="Lxpolkit"] floating enable
 for_window [title="File Operation Progress"] floating enable
 

@@ -1,41 +1,46 @@
 #!/bin/sh
-# --- Locations
-# DOTLOC = Where is the dotfile repo
-# WHERE  = Where the dotfiles should be linked to
-# BACKUP = Where to backup the dotfiles that already exist on the system
+# link-files: links dotfiles from a repo into a folder
+# Originally written by Michael Smalley, kanged by Renan Guilherme
+
+# --- Where are our dotfiles?
 DOTLOC="$HOME/.dotfiles"
-WHERE="$HOME"
-BACKUP="$HOME/.old-dotfiles"
 
 # --- Dotfile definitions
 # BASICDOTS = Configs for terminal applications
 BASICDOTS="zshenv zshrc.local gitconfig vimrc tmux.conf
-	bin vim ncmpcpp
-	config/cower config/ranger config/htop"
+	bin vim ncmpcpp"
 
-# XDITS = Configs for graphical applications
-XDOTS="conkyrc fehbg Xresources xinitrc
-	config/compton.conf config/weston.ini
-	config/i3 config/xcolors config/dunst"
+# XDOTS = Configs for graphical applications
+XDOTS="conkyrc fehbg Xresources xinitrc"
 
-# OBDOTS = Configs for Openbox and related applications
-OBDOTS="neaprc config/openbox config/tint2 config/skippy-xd"
+# XDG_* = Configs stored in $XDG_CONFIG_HOME ($HOME/.config)
+XDG_BASICDOTS="cower ranger htop"
 
-ALLDOTS="$BASICDOTS $XDOTS $OBDOTS"
+XDG_XDOTS="compton.conf weston.ini
+	i3 xcolors dunst feh"
 
-# Check if there is a .config folder at destination, make one if needed
-if [ ! -d "$WHERE/.config" ]; then
-	mkdir -p "$WHERE/.config"
-fi
+HOMEDOTS="$BASICDOTS $XDOTS"
 
-# Check if there is a backup folder (and a config folder on it), make one if needed
-if [ ! -d "$BACKUP/config" ]; then
-	mkdir -p "$BACKUP/config"
-fi
+XDG_ALLDOTS="$XDG_BASICDOTS $XDG_XDOTS"
 
-for dot in $ALLDOTS; do
-	echo -e "\e[1;31m==>\e[0m Moving old $dot into $BACKUP"
-	mv $WHERE/.$dot $BACKUP/$dot
-	echo -e "\e[1;32m==>\e[0m Linking $dot into $WHERE"
-	ln -sf $DOTLOC/$dot $WHERE/.$dot
+# --- Link $HOMEDOTS
+echo "==> Installing \$HOME folder dotfiles"
+for dot in $HOMEDOTS; do
+	echo -e "\e[1;31m==>\e[0m $dot: removing old file"
+	rm -r "$HOME/.$dot"
+	echo -e "\e[1;32m==>\e[0m $dot: linking new file into $HOME"
+	ln -sf $DOTLOC/$dot $HOME/.$dot
 done
+
+# --- Link $XDG_ALLDOTS
+echo "==> Installing \$HOME/.config folder dotfiles"
+# Check if config folders exist
+[ ! -d "$HOME/.config" ] && mkdir -p "$HOME/.config" || echo "config folder already exists in $HOME"
+
+for dot in $XDG_ALLDOTS; do
+	echo -e "\e[1;31m==>\e[0m $dot: removing old file"
+	rm -r "$HOME/.config/$dot"
+	echo -e "\e[1;32m==>\e[0m $dot: linking new file into $HOME/.config"
+	ln -s $DOTLOC/config/$dot $HOME/.config/$dot
+done
+

@@ -1,0 +1,25 @@
+scroll_down  j Down
+scroll_up    k Up
+scroll_left  h Left
+scroll_right l Right
+
+next_img space
+prev_img BackSpace
+
+zoom_in      plus
+zoom_out     minus
+zoom_default equal
+zoom_fit     w
+
+toggle_fullscreen f
+toggle_aliasing   a
+
+render       r
+reload_image R
+
+remove
+delete
+save_image
+toggle_caption
+toggle_actions
+
