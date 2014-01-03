@@ -1,21 +1,23 @@
-scroll_down  j Down
-scroll_up    k Up
-scroll_left  h Left
-scroll_right l Right
+# action          keybind (up to three, empty unbinds)
 
-next_img space
-prev_img BackSpace
+scroll_down       j Down
+scroll_up         k Up
+scroll_left       h Left
+scroll_right      l Right
 
-zoom_in      plus
-zoom_out     minus
-zoom_default equal
-zoom_fit     w
+next_img          space
+prev_img          BackSpace
+
+zoom_in           plus
+zoom_out          minus
+zoom_default      equal
+zoom_fit          w
 
 toggle_fullscreen f
 toggle_aliasing   a
 
-render       r
-reload_image R
+render            r
+reload_image      R
 
 remove
 delete

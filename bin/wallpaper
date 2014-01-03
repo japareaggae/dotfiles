@@ -1,0 +1,19 @@
+#!/bin/sh
+MODE="--bg-fill"
+
+_usage(){
+	echo "Usage: $(basename $0) [primary/secondary] [file]"
+}
+
+if [ ! $1 = "primary" ] && [ ! $1 = "secondary" ]; then
+	_usage
+	exit 1
+fi
+
+# Create links to wallpapers
+[ $1 = 'primary' ] && ln -sf "$(realpath "$2")" "$HOME/.wallpaper0"
+[ $1 = 'secondary' ] && ln -sf "$(realpath "$2")" "$HOME/.wallpaper1"
+
+# Set wallpapers
+feh $MODE "$HOME/.wallpaper0" "$HOME/.wallpaper1"
+

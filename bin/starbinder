@@ -7,7 +7,7 @@ esac
 LOCAL="$HOME/.local/share/Steam/SteamApps/common/Starbound/$ARCH/player"
 REMOTE="$HOME/Dropbox/Vidya/Starbound/player"
 
-usage(){
+_usage(){
 	echo "Usage: $(basename $0) [import/export]"
 	echo "  - import: Copy from Dropbox into Starbound"
 	echo "  - export: Copy from Starbound into Dropbox"
@@ -24,6 +24,6 @@ fi
 case $1 in
 	export) rsync -avzu $LOCAL/ $REMOTE;;
 	import) rsync -avzu $REMOTE/ $LOCAL;;
-	*) usage;;
+	*) _usage;;
 esac
 

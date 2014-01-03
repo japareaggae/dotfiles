@@ -4,6 +4,7 @@
 
 # --- Ranger
 **/ranger/bookmarks
+**/ranger/tagged
 
 # --- tint2conf
 default.tint2rc
