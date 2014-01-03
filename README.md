@@ -1,9 +1,6 @@
-Delicious dotfiles
-=====
+This repository holds configuration files for the following applications:
 
-Don't forget to install the following packages before you install these dots:
-
-Basic packages
+Basic
 -----
 
 - zsh and grml-zsh-config
@@ -13,11 +10,9 @@ Basic packages
 - ranger
 - tmux
 - vim
-- mpd
 - ncmpcpp
-- mpdscribble
 
-X-dependent packages
+Graphical
 -----
 
 - i3
@@ -27,17 +22,19 @@ X-dependent packages
 - dunst
 - feh
 - sxiv
-- rifle-sxiv (aur, modded version on dropbox)
 - urxvt
 - urxvt-perls
 - urxvt-vtwheel (aur)
-- clipit
 - xfce4-volumed-pulse (aur)
 
-Openbox-oriented packages
+THE FUTURE
+-----
+- weston
+
+Openbox-oriented
 -----
 
-- openbox (lol)
+- openbox
 - neap (aur)
 - obmenu-generator (aur)
 - tint2
