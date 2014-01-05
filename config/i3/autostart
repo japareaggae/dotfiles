@@ -6,9 +6,6 @@
 # Desktop session - so dmenu-session knows who we are
 export DESKTOP_SESSION="i3"
 
-# LXPolkit - So we can mount Terezi from Thunar
-/usr/lib/lxpolkit/lxpolkit &
-
 # GNOME Keyring - For nm-applet, possibly others
 gnome-keyring-daemon --start --components=secrets &
 
