@@ -11,7 +11,7 @@ BASICDOTS="zshenv zshrc.local gitconfig vimrc tmux.conf
 	bin vim ncmpcpp"
 
 # XDOTS = Configs for graphical applications
-XDOTS="conkyrc fehbg Xresources xprofile"
+XDOTS="conkyrc fehbg Xresources xprofile xinitrc"
 
 # XDG_* = Configs stored in $XDG_CONFIG_HOME ($HOME/.config)
 XDG_BASICDOTS="cower ranger htop"
