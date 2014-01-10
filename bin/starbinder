@@ -16,8 +16,8 @@ _usage(){
 	echo "  Dropbox: $REMOTE"
 }
 
-if [ ! -x $(which rsync) ]; then
-	echo "Oops: you need to install rsync before using starbinder"
+if [ ! $(which rsync) ]; then
+	echo "E: You need to install rsync before using starbinder"
 	exit 1
 fi
 
