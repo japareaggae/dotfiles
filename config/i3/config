@@ -85,8 +85,8 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
-bindsym $mod+minus workspace prev_on_output
-bindsym $mod+equal workspace next_on_output
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
 
 # -- Move container to workspace
 bindsym $mod+Shift+1 move container to workspace 1

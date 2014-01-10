@@ -1,9 +1,14 @@
 #!/bin/sh
 option=$( echo -e "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate" | dmenu -p Session )
 
+_getOut(){
+	(pgrep 'i3' > /dev/null) && i3 exit
+	(pgrep 'bspwm' > /dev/null ) && bspc quit
+}
+
 case $option in
 	lock) i3lock -c 000000 -p win;;
-	logout) i3 exit;;
+	logout) _getOut;;
 	shutdown) systemctl poweroff;;
 	reboot) systemctl reboot;;
 	suspend) systemctl suspend;;
