@@ -8,7 +8,7 @@ DOTLOC="$HOME/.dotfiles"
 # --- Dotfile definitions
 # BASICDOTS = Configs for terminal applications
 BASICDOTS="zshenv zshrc.local gitconfig vimrc tmux.conf
-	bin vim ncmpcpp"
+	bin vim ncmpcpp sxiv"
 
 # XDOTS = Configs for graphical applications
 XDOTS="conkyrc fehbg Xresources xprofile xinitrc"
