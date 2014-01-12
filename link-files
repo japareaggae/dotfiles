@@ -8,7 +8,7 @@ DOTLOC="$HOME/.dotfiles"
 # --- Dotfile definitions
 # BASICDOTS = Configs for terminal applications
 BASICDOTS="zshenv zshrc.local gitconfig vimrc tmux.conf
-	bin vim ncmpcpp sxiv"
+	bin vim ncmpcpp"
 
 # XDOTS = Configs for graphical applications
 XDOTS="conkyrc fehbg Xresources xprofile xinitrc"
@@ -17,7 +17,7 @@ XDOTS="conkyrc fehbg Xresources xprofile xinitrc"
 XDG_BASICDOTS="cower ranger htop"
 
 XDG_XDOTS="compton.conf weston.ini
-	i3 xcolors dunst feh"
+	i3 xcolors dunst feh sxiv"
 
 HOMEDOTS="$BASICDOTS $XDOTS"
 
