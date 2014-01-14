@@ -6,7 +6,7 @@
 	helper = cache --timeout=3600
 
 [alias]
-	last10 = log -10 --decorate=short --stat
+	l10 = log -10 --decorate=short --stat
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
 	gud = !$HOME/.bin/gitgud
 	going = push origin master
