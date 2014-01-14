@@ -1,8 +1,18 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# ----- AUTOSTARTS (from a separate file for tidyness)
-exec --no-startup-id ~/.config/i3/autostart
+# ----- AUTOSTARTS
+set $execb exec --no-startup-id
+
+$execb $HOME/.bin/pulseaudio-oneshot
+$execb mpd
+$execb mpdscribble
+
+$execb nm-applet
+$execb dropboxd
+
+$execb compton
+$execb $HOME/.bin/xrandr-adjust
 
 # ----- APPEARANCE
 # -- Font
