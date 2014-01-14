@@ -2,6 +2,9 @@
 ! .Xresources - configurations for basic X applications
 !
 
+! --- Pointer
+Xcursor.theme: Vanilla-DMZ
+
 ! --- Font Rendering
 Xft.dpi: 96
 Xft.antialias: true
