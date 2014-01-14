@@ -14,16 +14,17 @@ for package in $DEVDIR/*/; do
 done
 }
 
-# Removes stale (week-old) packages
+# Removes week-old packages or all packages
 _clean(){
-for package in $DEVDIR/*/; do
-	cd "$package"
-	find . -iname "*.pkg.tar.*" -mtime +7 -delete
-	cd ..
-done
+find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n" -delete
+}
+
+_purge(){
+find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n" -delete
 }
 
 case $1 in
 	clean) _clean;;
+	purge) _purge;;
 	*)     _build;;
 esac
