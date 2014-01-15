@@ -22,5 +22,17 @@ case "$1" in
 "C-g") # Edits image with GIMP
 	gimp "$2" & ;;
 
+"C-less") # Rotates left
+	case "$2" in
+		*jp.g) exec jpegtran -rotate 270 -copy all -outfile "$2" "$2" ;;
+		*)     exec mogrify  -rotate -90 "$2" ;;
+	esac ;;
+
+"C-greater") # Rotates right
+	case "$2" in
+		*jp.g) exec jpegtran -rotate  90 -copy all -outfile "$2" "$2" ;;
+		*)     exec mogrify  -rotate +90 "$2" ;;
+	esac ;;
+
 esac
 
