@@ -8,7 +8,7 @@ $execb $HOME/.bin/pulseaudio-oneshot
 $execb mpd
 $execb mpdscribble
 
-$execb nm-applet
+$execb (sleep 2s; nm-applet)
 $execb dropboxd
 
 $execb compton
@@ -43,7 +43,8 @@ bindsym $mod+n focus mode_toggle
 
 # -- dmenu (launches programs)
 bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id j4-dmenu-desktop
 
 # -- Focus
 bindsym $mod+j focus left
