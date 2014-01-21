@@ -176,6 +176,12 @@ bindsym Print exec xfce4-screenshooter -f
 bindsym Shift+Print exec xfce4-screenshooter -w
 bindsym $mod+Print exec xfce4-screenshooter -r
 
+# -- MPD
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+
+
 # ----- WINDOW RULES
 for_window [class="Steam"] floating enable
 for_window [title="^Steam$"] floating enable
