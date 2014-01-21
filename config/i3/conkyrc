@@ -29,7 +29,7 @@ TEXT
 	"color": "${if_up wlp4s0}\#40FF40${else}\#808080${endif}"
 },
 {
-	"full_text": " ${execi 6 ~/.bin/ponymix-conky} ",
+	"full_text": " ${execi 3 ~/.bin/ponymix-conky} ",
 	"color": "\#40FFFF"
 },
 {
