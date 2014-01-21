@@ -25,8 +25,8 @@ TEXT
 	"color": "\#FFFF40"
 },
 {
-	"full_text": " ${if_up wlp4s0}W: ${wireless_link_qual_perc wlp4s0}% / ${downspeed wlp4s0}/s${else}No Wi-Fi${endif} ",
-	"color": "${if_up wlp4s0}\#40FF40${else}\#808080${endif}"
+	"full_text": " ${if_up wlp4s0}W: ${wireless_link_qual_perc wlp4s0}% / ${downspeed wlp4s0}/s${else}${if_up enp2s0}E: ${downspeed enp2s0}/s${else}No networks${endif}${endif}",
+	"color": "${if_up wlp4s0}\#40FF40${else}${if_up enp2s0}\#40FF40${else}\#808080${endif}${endif}"
 },
 {
 	"full_text": " ${execi 3 ~/.bin/ponymix-conky} ",
