@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 MODE="--bg-fill"
 
 _usage(){
@@ -10,8 +10,8 @@ if [ ! $1 = "primary" ] && [ ! $1 = "secondary" ]; then
 	exit 1
 fi
 
-if [ ! -e "$2" ]; then
-	echo "Error: $2 does not exist"
+if [[ ! $2 = *.@(png|jpg|jpeg|gif) ]]; then
+	echo "Error: $2 is not a image file"
 	exit 1
 fi
 
