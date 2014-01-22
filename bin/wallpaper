@@ -10,6 +10,11 @@ if [ ! $1 = "primary" ] && [ ! $1 = "secondary" ]; then
 	exit 1
 fi
 
+if [ ! -e "$2" ]; then
+	echo "Error: $2 does not exist"
+	exit 1
+fi
+
 # Create links to wallpapers
 [ $1 = 'primary' ] && ln -sf "$(realpath "$2")" "$HOME/.wallpaper0"
 [ $1 = 'secondary' ] && ln -sf "$(realpath "$2")" "$HOME/.wallpaper1"
