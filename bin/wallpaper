@@ -1,23 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 MODE="--bg-fill"
 
 _usage(){
 	echo "Usage: $(basename $0) [primary/secondary] [file]"
 }
 
-if [ ! $1 = "primary" ] && [ ! $1 = "secondary" ]; then
-	_usage
-	exit 1
-fi
-
-if [[ ! $2 = *.@(png|jpg|jpeg|gif) ]]; then
-	echo "Error: $2 is not a image file"
-	exit 1
-fi
-
-# Create links to wallpapers
-[ $1 = 'primary' ] && ln -sf "$(realpath "$2")" "$HOME/.wallpaper0"
-[ $1 = 'secondary' ] && ln -sf "$(realpath "$2")" "$HOME/.wallpaper1"
+case $1 in
+	primary)   ln -sf "$(realpath "$2")" "$HOME/.wallpaper0" ;;
+	secondary) ln -sf "$(realpath "$2")" "$HOME/.wallpaper1" ;;
+	*)         _usage; exit 1 ;;
+esac
 
 # Set wallpapers
 feh $MODE "$HOME/.wallpaper0" "$HOME/.wallpaper1"
