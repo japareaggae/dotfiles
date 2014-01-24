@@ -22,27 +22,21 @@ _usage(){
 
 _checkconfig(){
 	if [ -e "$HOME/.config" ]; then
-		echo "$HOME/.config exists"
+		echo "==> $HOME/.config exists"
 	else
-		echo "$HOME/.config does not exist, creating"
+		echo "==> $HOME/.config does not exist, creating"
 		mkdir -p "$HOME/.config"
 	fi
 }
 
-_linkheadless(){
-echo "==> Installing headless configuration files"
-for dot in $HEADLESS_DOTS; do
-	echo -e "==> Processing $dot"
-	echo -e "\e[1;31m ==> \e[0m removing existing on $HOME"
-	rm -r "$HOME/.$dot"
-	echo -e "\e[1;32m ==> \e[0m linking new file into $HOME"
-	ln -sf "$DOTLOC/$dot" "$HOME/.$dot"
-done
-}
+_linkfiles(){
+case "$1" in
+	"headless") QUEUE=$HEADLESS_DOTS;;
+	"graphical") QUEUE=$GRAPHICAL_DOTS;;
+esac
 
-_linkgraphical(){
-echo "==> Installing headless configuration files"
-for dot in $GRAPHICAL_DOTS; do
+echo "==> Installing $1 configuration files"
+for dot in $QUEUE; do
 	echo -e "==> Processing $dot"
 	echo -e "\e[1;31m ==> \e[0m removing existing on $HOME"
 	rm -r "$HOME/.$dot"
@@ -52,8 +46,8 @@ done
 }
 
 case "$1" in
-	"-h") _checkconfig ; _linkheadless ;;
-	"-x") _checkconfig ; _linkheadless ; _linkgraphical ;;
+	"-h") _checkconfig ; _linkfiles headless ;;
+	"-x") _checkconfig ; _linkfiles headless ; _linkfiles graphical ;;
 	   *) _usage ;;
 esac
 
