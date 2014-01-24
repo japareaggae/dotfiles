@@ -7,6 +7,7 @@
 
 [alias]
 	l10 = log -10 --decorate=short --stat
+	graph = log --oneline --graph
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
 	gud = !$HOME/.bin/gitgud
 	going = push origin master
