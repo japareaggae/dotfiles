@@ -2,45 +2,58 @@
 # link-files: links dotfiles from a repo into a folder
 # Originally written by Michael Smalley, kanged by Renan Guilherme
 
-# --- Where are our dotfiles?
+# --- Location
 DOTLOC="$HOME/.dotfiles"
 
-# --- Dotfile definitions
-# BASICDOTS = Configs for terminal applications
-BASICDOTS="zshenv zshrc.local gitconfig vimrc tmux.conf
-	bin vim ncmpcpp"
+# --- Defitions
+HEADLESS_DOTS="zshenv zshrc.local vimrc tmux.conf
+	bin vim ncmpcpp
+	config/git config/cower config/ranger config/htop"
 
-# XDOTS = Configs for graphical applications
-XDOTS="conkyrc fehbg Xresources xprofile xinitrc"
+GRAPHICAL_DOTS="conkyrc fehbg Xresources xprofile xinitrc
+	config/compton.conf config/weston.ini
+	config/i3 config/xcolors config/dunst config/feh config/sxiv"
 
-# XDG_* = Configs stored in $XDG_CONFIG_HOME ($HOME/.config)
-XDG_BASICDOTS="cower ranger htop"
+_usage(){
+	echo "Usage: $(basename "$0") [-h | -x]"
+	echo "    -h: Install headless configuration files"
+	echo "    -x: Install headless + graphical configuration files"
+}
 
-XDG_XDOTS="compton.conf weston.ini
-	i3 xcolors dunst feh sxiv"
+_checkconfig(){
+	if [ -e "$HOME/.config" ]; then
+		echo "$HOME/.config exists"
+	else
+		echo "$HOME/.config does not exist, creating"
+		mkdir -p "$HOME/.config"
+	fi
+}
 
-HOMEDOTS="$BASICDOTS $XDOTS"
-
-XDG_ALLDOTS="$XDG_BASICDOTS $XDG_XDOTS"
-
-# --- Link $HOMEDOTS
-echo "==> Installing \$HOME folder dotfiles"
-for dot in $HOMEDOTS; do
-	echo -e "\e[1;31m==>\e[0m $dot: removing old file"
+_linkheadless(){
+echo "==> Installing headless configuration files"
+for dot in $HEADLESS_DOTS; do
+	echo -e "==> Processing $dot"
+	echo -e "\e[1;31m ==> \e[0m removing existing on $HOME"
 	rm -r "$HOME/.$dot"
-	echo -e "\e[1;32m==>\e[0m $dot: linking new file into $HOME"
-	ln -sf $DOTLOC/$dot $HOME/.$dot
+	echo -e "\e[1;32m ==> \e[0m linking new file into $HOME"
+	ln -sf "$DOTLOC/$dot" "$HOME/.$dot"
 done
+}
 
-# --- Link $XDG_ALLDOTS
-echo "==> Installing \$HOME/.config folder dotfiles"
-# Check if config folders exist
-[ ! -d "$HOME/.config" ] && mkdir -p "$HOME/.config" || echo "config folder already exists in $HOME"
-
-for dot in $XDG_ALLDOTS; do
-	echo -e "\e[1;31m==>\e[0m $dot: removing old file"
-	rm -r "$HOME/.config/$dot"
-	echo -e "\e[1;32m==>\e[0m $dot: linking new file into $HOME/.config"
-	ln -s $DOTLOC/config/$dot $HOME/.config/$dot
+_linkgraphical(){
+echo "==> Installing headless configuration files"
+for dot in $GRAPHICAL_DOTS; do
+	echo -e "==> Processing $dot"
+	echo -e "\e[1;31m ==> \e[0m removing existing on $HOME"
+	rm -r "$HOME/.$dot"
+	echo -e "\e[1;32m ==> \e[0m linking new file into $HOME"
+	ln -sf "$DOTLOC/$dot" "$HOME/.$dot"
 done
+}
+
+case "$1" in
+	"-h") _checkconfig ; _linkheadless ;;
+	"-x") _checkconfig ; _linkheadless ; _linkgraphical ;;
+	   *) _usage ;;
+esac
 
