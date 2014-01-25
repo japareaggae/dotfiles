@@ -4,7 +4,7 @@
 
 # --- Path
 typeset -U path
-path=($(ruby -rubygems -e "puts Gem.user_dir")/bin $HOME/.bin $path)
+path=($HOME/.bin $path)
 
 # --- History
 export HISTSIZE=1000
