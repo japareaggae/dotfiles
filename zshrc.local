@@ -14,6 +14,7 @@ RPS1=""
 # Git
 alias gita="git add"
 alias gitaa="git add ."
+alias gitap="git add -p"
 alias gitb="git branch"
 alias gitcom="git commit"
 alias gitd="git diff"
