@@ -1,20 +1,22 @@
 #!/bin/sh
 _usage(){
-	echo "Usage: $(basename $0) [core/extra/community/multilib] package"
+	echo "Usage: $(basename $0) package"
 }
 
-if [ $# -ne 2 ]; then
+if [ $# -ne 1 ]; then
 	_usage
 	exit 1
 fi
 
-case $1 in
-	core)      REPO='packages' ;;
-	extra)     REPO='packages' ;;
-	community) REPO='community' ;;
-	multilib)  REPO='community' ;;
-	*)         echo "error: not a valid repository"; exit 1 ;;
+DB="$(pacman -Sii $1 | grep 'Repository' | awk '{print $3}')"
+
+case $DB in
+	*core)      REPO='packages' ;;
+	*extra)     REPO='packages' ;;
+	*community) REPO='community' ;;
+	*multilib)  REPO='community' ;;
+	*)         echo "error: $DB is not a valid repository"; exit 1 ;;
 esac
 
-xdg-open "https://projects.archlinux.org/svntogit/$REPO.git/log/trunk?h=packages/$2"
+xdg-open "https://projects.archlinux.org/svntogit/$REPO.git/log/trunk?h=packages/$1"
 
