@@ -4,7 +4,7 @@
 # Executed by startx (run your window manager from here)
 
 # --- xsession
-[ -x $HOME/.xprofile ] && source $HOME/.xprofile
+[ -e $HOME/.xprofile ] && source $HOME/.xprofile
 
 # --- WM/DE
 # You can use exec $1 to specify a WM at runtime, or hardcode something
