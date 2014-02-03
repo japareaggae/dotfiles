@@ -27,3 +27,7 @@ alias gitgoing="git push origin master"
 # Xresources
 alias xrefres="xrdb -merge ~/.Xresources"
 
+# Scrot
+alias scrotf="scrot %F_%H-%M-%S.png"
+alias scrotr="scrot -s %F_%H-%M-%S.png"
+
