@@ -32,7 +32,8 @@ URxvt.savelines: 8192
 
 ! Appearance
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0000/E000
+!URxvt.background: rgba:0000/0000/0000/E000
+URxvt.background: #000000
 URxvt.foreground: #FFFFFF
 URxvt.font: xft:Terminus:size=8
 
