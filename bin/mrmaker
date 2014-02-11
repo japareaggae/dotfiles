@@ -9,7 +9,7 @@ DEVDIR="$HOME/Development/vcs-pkgbuilds"
 _build(){
 for package in $DEVDIR/*/; do
 	cd "$package"
-	makepkg -si
+	makepkg -sic
 	cd ..
 done
 }
