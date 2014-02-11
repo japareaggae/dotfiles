@@ -31,3 +31,5 @@ alias xrefres="xrdb -merge ~/.Xresources"
 alias scrotf="scrot %F_%H-%M-%S.png"
 alias scrotr="scrot -s %F_%H-%M-%S.png"
 
+# mpv
+alias mpv-nv="mpv --no-video"
