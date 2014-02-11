@@ -11,11 +11,9 @@ fi
 DB="$(pacman -Sii $1 | grep 'Repository' | awk '{print $3}')"
 
 case $DB in
-	*core)      REPO='packages' ;;
-	*extra)     REPO='packages' ;;
-	*community) REPO='community' ;;
-	*multilib)  REPO='community' ;;
-	*)         echo "error: $DB is not a valid repository"; exit 1 ;;
+	*core | *extra)         REPO='packages' ;;
+	*community | *multilib) REPO='community' ;;
+	*)                      echo "error: $DB is not a valid repository"; exit 1 ;;
 esac
 
 xdg-open "https://projects.archlinux.org/svntogit/$REPO.git/log/trunk?h=packages/$1"
