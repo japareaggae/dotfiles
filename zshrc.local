@@ -7,7 +7,7 @@
 
 # --- Prompt
 prompt off
-PS1="%{$fg_bold[blue]%}[%1~]%{$reset_color%}$ "
+PS1="%{$fg_bold[blue]%}%~%{$reset_color%} $ "
 RPS1=""
 
 # --- Aliases
