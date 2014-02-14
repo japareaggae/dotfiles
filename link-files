@@ -14,10 +14,14 @@ GRAPHICAL_DOTS="conkyrc fehbg vimperatorrc Xresources xprofile xinitrc
 	config/compton.conf config/weston.ini
 	config/i3 config/xcolors config/dunst config/feh config/sxiv"
 
+OPENBOX_DOTS="neaprc
+	config/skippy-xd config/tint2 config/openbox"
+
 _usage(){
 	echo "Usage: $(basename "$0") [-h | -x]"
 	echo "    -h: Install headless configuration files"
 	echo "    -x: Install headless + graphical configuration files"
+	echo "    -o: Install Openbox configuration files (only)"
 }
 
 _checkconfig(){
@@ -33,6 +37,7 @@ _linkfiles(){
 case "$1" in
 	"headless") QUEUE=$HEADLESS_DOTS;;
 	"graphical") QUEUE=$GRAPHICAL_DOTS;;
+	"openbox") QUEUE=$OPENBOX_DOTS;;
 esac
 
 echo "==> Installing $1 configuration files"
@@ -48,6 +53,7 @@ done
 case "$1" in
 	"-h") _checkconfig ; _linkfiles headless ;;
 	"-x") _checkconfig ; _linkfiles headless ; _linkfiles graphical ;;
+	"-o") _checkconfig ; _linkfiles openbox ;;
 	   *) _usage ;;
 esac
 
