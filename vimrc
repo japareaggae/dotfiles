@@ -19,9 +19,12 @@ set confirm
 " ----- Appearance
 syntax on
 
-" TODO: hardcoding these will break if we're dealing with a TTY
-set t_Co=256
-colorscheme molokai
+if $TERM == "linux"
+	colorscheme default
+else
+	set t_Co=256
+	colorscheme molokai
+endif
 
 set wildmenu
 set wildmode=longest,full
