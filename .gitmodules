@@ -1,8 +1,0 @@
-[submodule "vundle"]
-	path = vim/bundle/vundle
-	url = git://github.com/gmarik/vundle.git
-
-[submodule "vim-airline"]
-	path = vim/bundle/vim-airline
-	url = git://github.com/bling/vim-airline.git
-
