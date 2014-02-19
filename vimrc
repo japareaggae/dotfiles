@@ -28,6 +28,7 @@ endif
 
 set wildmenu
 set wildmode=longest,full
+set number
 set ruler
 set cursorline
 set laststatus=2
@@ -39,7 +40,7 @@ set list
 
 set statusline=%f%(\ %r%m%)%=%y\ [%l,%c]\ [%p%%]
 
-" --- Editing
+" ----- Editing
 filetype plugin indent on
 set encoding=utf8
 set autoindent
