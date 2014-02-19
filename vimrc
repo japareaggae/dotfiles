@@ -54,11 +54,15 @@ let mapleader=","
 let g:mapleader=","
 
 " -- Quick Save
-map <leader>w :w<cr>
+nmap <Leader>w :w<CR>
+
+" -- Copy-Paste
+vmap <Leader>y "+y
+vmap <Leader>p "+p
 
 " -- Window Movement
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
 
