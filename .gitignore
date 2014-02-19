@@ -1,5 +1,8 @@
 .netrwhist
 
+# --- Vundle (from with-vundle branch)
+**/vim/bundle
+
 # --- Logs
 *.log
 *history
