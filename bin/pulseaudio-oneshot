@@ -6,5 +6,5 @@
 start-pulseaudio-x11 &
 sleep 3s
 xfce4-volumed-pulse &
-[ "$DESKTOP_SESSION" != 'i3' ] && [ -e "$(which pasystray)" ] && pasystray &
+pasystray &
 
