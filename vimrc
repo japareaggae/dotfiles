@@ -44,7 +44,6 @@ set statusline=%f%(\ %r%m%)%=%y\ [%l,%c]\ [%p%%]
 filetype plugin indent on
 set encoding=utf8
 set autoindent
-set smartindent
 set smarttab
 set tabstop=4
 set shiftwidth=4
