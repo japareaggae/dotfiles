@@ -8,8 +8,8 @@ case $DEVICE in
 esac
 
 if ( ponymix is-muted ); then
-	echo -n "$DEFSINK - $(ponymix get-volume)% (M)"
+	echo "$DEFSINK - $(ponymix get-volume)% (M)"
 else
-	echo -n "$DEFSINK - $(ponymix get-volume)%"
+	echo "$DEFSINK - $(ponymix get-volume)%"
 fi
 
