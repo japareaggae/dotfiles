@@ -22,7 +22,7 @@ font pango:Terminus 8
 
 # -- Borders
 #new_window normal 1
-new_window pixel 2
+new_window pixel 1
 
 # -- Colors
 # Background is not used if border type is not normal
