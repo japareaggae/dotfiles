@@ -1,6 +1,10 @@
 #!/bin/sh
-FT=$(xdg-mime query filetype "$1")
-
-echo "      MIME Filetype: $FT"
-echo "Default Application: $(xdg-mime query default $FT)"
+if [ -e "$1" ]; then
+	FT=$(xdg-mime query filetype "$1")
+	echo "      MIME Filetype: $FT"
+	echo "Default Application: $(xdg-mime query default $FT)"
+else
+	echo "error: file is invalid or does not exist"
+	exit 1
+fi
 
