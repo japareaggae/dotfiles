@@ -1,9 +1,12 @@
 #!/bin/sh
-# mistermaker: Automates building lots of VCS PKGBUILDS
+# mistermaker: Automates building lots of PKGBUILDS
 # Written by Renan Guilherme <japareaggae@gmail.com>
 
-# Where do you store your packages?
-DEVDIR="$HOME/Development/vcs-pkgbuilds"
+if [ -d "$2" ]; then
+	DEVDIR="$2"
+else
+	DEVDIR="$(pwd)"
+fi
 
 # Finds directories and builds packages inside them
 _build(){
@@ -24,7 +27,8 @@ find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n" -delete
 }
 
 case $1 in
+	build) _build;;
 	clean) _clean;;
 	purge) _purge;;
-	*)     _build;;
+	*) echo "Usage: mrmaker <build/clean/purge> [directory]" ;;
 esac
