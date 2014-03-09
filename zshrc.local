@@ -20,7 +20,7 @@ alias gitcom="git commit"
 alias gitd="git diff"
 alias gitdd="git diff --cached"
 alias gitl="git log --decorate=short --stat"
-alias gits="git status --short"
+alias gits="git status -sb"
 alias gitss="git status"
 alias gitgoing="git push origin master"
 
