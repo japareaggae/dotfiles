@@ -181,6 +181,9 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioNext exec mpc next
 
+# -- Brightness
+bindsym XF86MonBrightnessDown exec light -s 5
+bindsym XF86MonBrightnessUp   exec light -a 5
 
 # ----- WINDOW RULES
 for_window [class="Steam"] floating enable
