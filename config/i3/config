@@ -193,7 +193,7 @@ for_window [class="Gcolor3"] floating enable
 for_window [class="Lxpolkit"] floating enable
 for_window [title="File Operation Progress"] floating enable
 
-assign [class="Ts3client_linux_amd64"] 10
+assign [class="^TeamSpeak 3$"] 10
 assign [class="Steam"] 9
 
 # ----- WORKSPACE RULES
