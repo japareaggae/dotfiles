@@ -124,6 +124,12 @@ dmenu = /usr/bin/dmenu -p dunst:
 # browser for opening urls in context menu
 browser = /usr/bin/google-chrome-unstable
 
+# Align icons on the <left/right/off>
+icon_position = left
+
+# Paths to default icons
+icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+
 # --- Keybinds
 [shortcuts]
 # shortcuts are specified as [modifier+][modifier+]...key
