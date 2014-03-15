@@ -10,7 +10,7 @@ HEADLESS_DOTS="zshenv zshrc.local vimrc tmux.conf
 	bin vim ncmpcpp
 	config/git config/cower config/ranger config/htop"
 
-GRAPHICAL_DOTS="conkyrc fehbg vimperatorrc Xresources xprofile xinitrc
+GRAPHICAL_DOTS="conkyrc vimperatorrc Xresources xprofile xinitrc
 	config/compton.conf config/weston.ini
 	config/i3 config/xcolors config/dunst config/feh config/sxiv"
 
