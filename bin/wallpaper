@@ -3,7 +3,7 @@
 
 MODE="--bg-fill"
 
-if [ -x "$(which realpath)" ]; then
+if [ ! -x "$(which realpath)" ]; then
 	echo "error: realpath is not installed"
 	exit 1;
 fi
