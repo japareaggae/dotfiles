@@ -155,20 +155,20 @@ context = ctrl+shift+period
 # Otherwise the '#' and following  would be interpreted as a comment.
 [frame]
 width = 1
-color = "#aaaaaa"
+color = "#888888"
 
 [urgency_low]
+background = "#222222"
+foreground = "#aaaaaa"
+timeout = 10
+
+[urgency_normal]
 background = "#222222"
 foreground = "#ffffff"
 timeout = 10
 
-[urgency_normal]
-background = "#225577"
-foreground = "#ffffff"
-timeout = 10
-
 [urgency_critical]
-background = "#900000"
+background = "#880000"
 foreground = "#ffffff"
 timeout = 0
 
