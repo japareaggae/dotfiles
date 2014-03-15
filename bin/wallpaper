@@ -1,14 +1,17 @@
 #!/bin/sh
+# TODO: Allow setting a mode instead of hardcoding one
+
 MODE="--bg-fill"
 
-_usage(){
-	echo "Usage: $(basename $0) [primary/secondary] [file]"
-}
+if [ -x "$(which realpath)" ]; then
+	echo "error: realpath is not installed"
+	exit 1;
+fi
 
 case $1 in
 	primary)   ln -sf "$(realpath "$2")" "$HOME/.wallpaper0" ;;
 	secondary) ln -sf "$(realpath "$2")" "$HOME/.wallpaper1" ;;
-	*)         _usage; exit 1 ;;
+	*)         echo "Usage: $(basename $0) [primary/secondary] [file]"; exit 1 ;;
 esac
 
 # Set wallpapers
