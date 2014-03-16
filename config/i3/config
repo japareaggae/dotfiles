@@ -172,9 +172,9 @@ bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+Return exec thunar
 
 # -- Screenshotting
-bindsym Print exec xfce4-screenshooter -f
-bindsym Shift+Print exec xfce4-screenshooter -w
-bindsym $mod+Print exec xfce4-screenshooter -r
+bindsym Print exec gnome-screenshot -f "$(date +%F_%H-%M-%S).png"
+bindsym Shift+Print exec gnome-screenshot -w -f "$(date +%F_%H-%M-%S).png"
+bindsym $mod+Print exec gnome-screenshot -a -f "$(date +%F_%H-%M-%S).png"
 
 # -- MPD
 bindsym XF86AudioPlay exec mpc toggle
