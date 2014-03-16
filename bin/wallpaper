@@ -1,19 +1,48 @@
 #!/bin/sh
-# TODO: Allow setting a mode instead of hardcoding one
 
-MODE="--bg-fill"
+_usage() {
+	echo "Usage: wallpaper <screen> (mode) <filename>"
+	echo "  Screens: primary, secondary"
+	echo "  Modes:   fill, center, tile, empty (defaults to fill)"
+	exit 1
+}
 
+# Check for realpath
 if [ ! -x "$(which realpath)" ]; then
 	echo "error: realpath is not installed"
 	exit 1;
 fi
 
+# $1 -- Primary or secondary screen?
 case $1 in
-	primary)   ln -sf "$(realpath "$2")" "$HOME/.wallpaper0" ;;
-	secondary) ln -sf "$(realpath "$2")" "$HOME/.wallpaper1" ;;
-	*)         echo "Usage: $(basename $0) [primary/secondary] [file]"; exit 1 ;;
+	primary)   DESTINATION="$HOME/.wallpaper0" ;;
+	secondary) DESTINATION="$HOME/.wallpaper1" ;;
+	*)         _usage ;;
 esac
 
-# Set wallpapers
+# $2 -- Set a background mode
+case $2 in
+	fill)   MODE="--bg-fill" ;;
+	center) MODE="--bg-center" ;;
+	tile)   MODE="--bg-tile" ;;
+
+	# $2 can be a file too
+	*) MODE="--bg-fill"
+		if [ -e "$2" ]; then
+			FILE="$2"
+		else
+			echo "error: $2 is not a valid file or mode"
+			exit 1;
+		fi
+esac
+
+# $3 -- If it exists, it is the file we want
+[ "$3" ] && FILE="$3"
+
+# Create a symbolic link
+ln -sf "$(realpath "$FILE")" "$DESTINATION"
+
+# Re-execute feh
+# Note that feh does not allow setting different modes for each wallpaper.
 feh $MODE "$HOME/.wallpaper0" "$HOME/.wallpaper1"
 
