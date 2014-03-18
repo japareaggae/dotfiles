@@ -14,7 +14,7 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 export PAGER=less
 
-[ -n $BROWSER ] && BROWSER=google-chrome-unstable
+[ -n $BROWSER ] && BROWSER=xdg-open
 
 # --- Arch Build System
 export ABSROOT=/home/japareaggae/Development/abs
