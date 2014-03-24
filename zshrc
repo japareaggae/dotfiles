@@ -13,6 +13,7 @@ setopt completeinword
 setopt auto_cd
 setopt longlistjobs
 setopt notify
+setopt correct
 setopt unset
 
 bindkey -e
@@ -80,6 +81,9 @@ PS1="%{$fg_bold[blue]%}%~%{$reset_color%} $ "
 RPS1=""
 
 # --- Aliases
+# grep
+alias grep='grep --color=auto'
+
 # ls
 alias l="ls -l --color=auto"
 alias la="ls -la --color=auto"
