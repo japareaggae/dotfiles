@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # link-files: links dotfiles from a repo into a folder
 # Originally written by Michael Smalley, kanged by Renan Guilherme
 
