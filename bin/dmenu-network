@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # dmenu-network: A dmenu wrapper for NetworkManager
 # Written by Renan Guilherme <japareaggae@gmail.com>
 
