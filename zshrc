@@ -92,6 +92,7 @@ RPS1=""
 alias grep='grep --color=auto'
 
 # ls
+alias ls="ls --color=auto"
 alias l="ls -l --color=auto"
 alias la="ls -la --color=auto"
 
