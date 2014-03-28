@@ -6,7 +6,7 @@
 DOTLOC="$HOME/.dotfiles"
 
 # --- Defitions
-HEADLESS_DOTS="zshenv zshrc vimrc tmux.conf
+HEADLESS_DOTS="zshenv zshrc vimrc tmux.conf makepkg.conf
 	bin vim ncmpcpp
 	config/git config/cower config/ranger config/htop"
 
