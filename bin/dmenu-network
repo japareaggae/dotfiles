@@ -16,7 +16,7 @@ _connectWiFi(){
 [ $status == "disabled" ] && exit 1
 
 # Get a list of networks around us
-network=$(nmcli -t -f SSID d wifi | dmenu -p SSID)
+network="$(nmcli -t -f SSID d wifi | dmenu -p SSID)"
 
 # Remove surrounding quotes added by nmcli
 network="$(echo $network | sed s/^\'//g | sed s/\'$//g)"
@@ -26,8 +26,9 @@ if [ "$network" ]; then
 		# Network is known, activate a connection
 		nmcli con up id "$network"
 	else
-		password=$( echo "" | dmenu -p "Password for $network" )
 		# Network is not known, create and activate a connection
+		# If a network does not have a password, press ESC at this dmenu
+		password="$( echo "" | dmenu -p "Password for $network" )"
 		if [ -z "$password" ] ; then
 			nmcli d wifi connect "$network"
 		else
