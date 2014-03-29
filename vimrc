@@ -55,6 +55,9 @@ let g:mapleader=","
 " -- Quick Save
 nmap <Leader>w :w<CR>
 
+" -- Toggle Highlight Search
+nmap <Leader>u :set hlsearch!<CR>
+
 " -- Copy-Paste
 vmap <Leader>y "+y
 vmap <Leader>p "+p
