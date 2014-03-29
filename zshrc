@@ -87,6 +87,14 @@ autoload -U colors && colors
 PS1="%{$fg_bold[blue]%}%~%{$reset_color%} $ "
 RPS1=""
 
+# --- VTE current directory function (for termite)
+if [[ $TERM == xterm-termite ]]; then
+	if [[ -e /etc/profile.d/vte.sh ]]; then
+		. /etc/profile.d/vte.sh
+		__vte_osc7
+	fi
+fi
+
 # --- Aliases
 # grep
 alias grep='grep --color=auto'
