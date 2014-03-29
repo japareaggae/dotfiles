@@ -1,27 +1,51 @@
 #!/bin/bash
 # link-files: links dotfiles from a repo into a folder
-# Originally written by Michael Smalley, kanged by Renan Guilherme
+# Originally written by Michael Smalley
+# Severely modified by Renan Guilherme
 
 # --- Location
 DOTLOC="$HOME/.dotfiles"
 
 # --- Defitions
-HEADLESS_DOTS="zshenv zshrc vimrc tmux.conf makepkg.conf
-	bin vim ncmpcpp
-	config/git config/cower config/ranger config/htop"
+TERMDOTS=('zshenv'
+          'zshrc'
+          'vimrc'
+          'tmux.conf'
+          'makepkg.conf'
+          'bin'
+          'vim'
+          'ncmpcpp'
+          'config/git'
+          'config/cower'
+          'config/ranger'
+          'config/htop')
 
-GRAPHICAL_DOTS="conkyrc pentadactylrc Xresources xprofile xinitrc
-	config/compton.conf config/weston.ini
-	config/i3 config/xcolors config/dunst config/feh config/sxiv"
+XDOTS=('conkyrc'
+       'pentadactyl'
+       'pentadactylrc'
+       'Xresources'
+       'xprofile'
+       'xinitrc'
+       'config/compton.conf'
+       'config/weston.ini'
+       'config/i3'
+       'config/xcolors'
+       'config/dunst'
+       'config/feh'
+       'config/sxiv')
 
-OPENBOX_DOTS="neaprc
-	config/skippy-xd config/tint2 config/openbox"
+OBDOTS=('neaprc'
+        'config/skippy-xd'
+        'config/tint2'
+        'config/openbox')
 
+# --- Functions
 _usage(){
-	echo "Usage: $(basename "$0") [-h | -x]"
+	echo "Usage: $(basename "$0") -{ h | x | a | o }"
 	echo "    -h: Install headless configuration files"
-	echo "    -x: Install headless + graphical configuration files"
-	echo "    -o: Install Openbox configuration files (only)"
+	echo "    -x: Install graphical configuration files"
+	echo "    -a: Install headless + graphical configuration files"
+	echo "    -o: Install Openbox configuration files"
 }
 
 _checkconfig(){
@@ -34,10 +58,13 @@ _checkconfig(){
 }
 
 _linkfiles(){
+
+_checkconfig
+
 case "$1" in
-	"headless") QUEUE=$HEADLESS_DOTS;;
-	"graphical") QUEUE=$GRAPHICAL_DOTS;;
-	"openbox") QUEUE=$OPENBOX_DOTS;;
+	"headless") QUEUE=${TERMDOTS[@]};;
+	"graphical") QUEUE=${XDOTS[@]};;
+	"openbox") QUEUE=${OBDOTS[@]};;
 esac
 
 echo "==> Installing $1 configuration files"
@@ -51,9 +78,11 @@ done
 }
 
 case "$1" in
-	"-h") _checkconfig ; _linkfiles headless ;;
-	"-x") _checkconfig ; _linkfiles headless ; _linkfiles graphical ;;
-	"-o") _checkconfig ; _linkfiles openbox ;;
+	"-h") _linkfiles headless ;;
+	"-x") _linkfiles graphical ;;
+	"-a") _linkfiles headless
+	      _linkfiles graphical ;;
+	"-o") _linkfiles openbox ;;
 	   *) _usage ;;
 esac
 
