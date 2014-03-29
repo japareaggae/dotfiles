@@ -18,9 +18,8 @@ _connectWiFi(){
 # Get a list of networks around us
 network=$(nmcli -t -f SSID d wifi | dmenu -p SSID)
 
-# This will break networks with ' on their SSIDs, but most SSIDs
-# should be always alphanumeric anyway
-network=$(echo $network | sed s/\'//g)
+# Remove surrounding quotes added by nmcli
+network="$(echo $network | sed s/^\'//g | sed s/\'$//g)"
 
 if [ "$network" ]; then
 	if ( nmcli -t -f NAME c list | grep "$network" > /dev/null ); then
