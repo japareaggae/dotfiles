@@ -40,14 +40,19 @@ else exit 2
 fi
 }
 
-options="connect\nedit\ntoggle (c. $status)"
+_disconnectWiFi(){
+nmcli c down id "$(nmcli -t -f NAME c status)"
+}
+
+options="connect\ndisconnect\nedit\ntoggle (c. $status)"
 option=$(echo -e $options | dmenu -p Wi-Fi)
 
 # The edit option requires nm-applet to be installed.
 # TODO: When nmtui percolates to stable NM, use it instead
 case $option in
-	"connect") _connectWiFi;;
-	"edit") nm-connection-editor;;
-	"toggle"*) _toggleWiFi;;
+	"connect")    _connectWiFi;;
+	"disconnect") _disconnectWiFi;;
+	"edit")       nm-connection-editor;;
+	"toggle"*)    _toggleWiFi;;
 esac
 
