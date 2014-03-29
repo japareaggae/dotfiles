@@ -1,0 +1,10 @@
+" -- Appearance
+colorscheme kanged
+set guioptions=CTs
+
+" -- Keybinds
+nmap     <C-t> :tabopen<Space>
+nmap -ex J     :tabprev
+nmap -ex K     :tabnext
+
+" vim: set ft=vim:
