@@ -49,10 +49,12 @@ zstyle ':completion:*:messages'        format '%d'
 zstyle ':completion:*:options'         auto-description '%d'
 zstyle ':completion:*:options'         description 'yes'
 zstyle ':completion:*:processes'       command 'ps -au$USER'
+zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
 zstyle ':completion:*:warnings'        format $'%{\e[0;31m%}No matches for:%{\e[0m%} %d'
 zstyle ':completion:*:manuals'         separate-sections true
 zstyle ':completion:*:manuals.*'       insert-sections   true
 zstyle ':completion:*:man:*'           menu yes select
+zstyle ":completion:*:commands"        rehash 1
 
 # --- Keyboard
 typeset -A key
