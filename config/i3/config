@@ -43,9 +43,9 @@ bindsym $mod+Shift+n floating toggle
 bindsym $mod+n focus mode_toggle
 
 # -- dmenu (launches programs)
-bindsym $mod+d exec --no-startup-id dmenu_run
-#bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+Shift+d exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d $execb dmenu_run
+#bindsym $mod+Shift+d $execb i3-dmenu-desktop
+bindsym $mod+Shift+d $execb j4-dmenu-desktop
 
 # -- Focus
 bindsym $mod+h focus left
@@ -128,7 +128,7 @@ bindsym $mod+Shift+q kill
 # -- General Keybinds
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e $execb "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # -- Resize Mode keybinds
 mode "resize" {
@@ -160,13 +160,13 @@ bindsym $mod+Shift+m move scratchpad
 bindsym $mod+m scratchpad show
 
 # -- Session Menu
-bindsym $mod+Shift+Delete exec --no-startup-id ~/.bin/dmenu-session
+bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
 
 # -- Network Menu
-bindsym $mod+Shift+F12 exec --no-startup-id ~/.bin/dmenu-network
+bindsym $mod+Shift+F12 $execb ~/.bin/dmenu-network
 
 # --- xrandr-adjust
-bindsym $mod+F4 exec --no-startup-id ~/.bin/xrandr-adjust
+bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 
 # -- Terminal/Thunar
 bindsym $mod+Return exec urxvtc
@@ -178,13 +178,13 @@ bindsym Shift+Print exec gnome-screenshot -w -f "$(date +%F_%H-%M-%S).png"
 bindsym $mod+Print exec gnome-screenshot -a -f "$(date +%F_%H-%M-%S).png"
 
 # -- MPD
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioPrev exec mpc prev
-bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPlay $execb mpc toggle
+bindsym XF86AudioPrev $execb mpc prev
+bindsym XF86AudioNext $execb mpc next
 
 # -- Brightness
-bindsym XF86MonBrightnessDown exec light -s 5
-bindsym XF86MonBrightnessUp   exec light -a 5
+bindsym XF86MonBrightnessDown $execb light -s 5
+bindsym XF86MonBrightnessUp   $execb light -a 5
 
 # ----- WINDOW RULES
 for_window [class="Steam"] floating enable
