@@ -13,9 +13,6 @@ fi
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-# --- LXPolkit
-/usr/lib/lxpolkit/lxpolkit &
-
 # --- Xresources
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
