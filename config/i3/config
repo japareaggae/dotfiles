@@ -8,6 +8,7 @@ $execb $HOME/.bin/pulseaudio-oneshot
 $execb mpd
 $execb mpdscribble
 
+$execb /usr/lib/lxpolkit/lxpolkit
 $execb (sleep 2s; nm-applet)
 $execb dropboxd
 
