@@ -89,8 +89,8 @@ song_status_format = "{{$3%a$9 // }{$3%t$9}{ // {$3#%n$9 from }{$3%b$9}}{ (%y)}}
 #
 # Add a slash after the dollar sign to end the decoration: $b%a$/b
 
-now_playing_prefix = "$r▶ "
-now_playing_suffix = "$/r"
+now_playing_prefix = "$b▶ "
+now_playing_suffix = "$/b"
 #browser_playlist_prefix = "$2playlist$9 "
 #selected_item_prefix = "$6"
 #selected_item_suffix = "$9"
