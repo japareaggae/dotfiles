@@ -7,7 +7,7 @@ _getOut(){
 }
 
 case $option in
-	lock) i3lock -c 000000 -p win;;
+	lock) $HOME/.bin/i3lock-blur ;;
 	logout) _getOut;;
 	shutdown) systemctl poweroff;;
 	reboot) systemctl reboot;;
