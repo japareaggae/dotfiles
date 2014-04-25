@@ -19,7 +19,7 @@ set confirm
 " ----- Appearance
 syntax on
 
-if $TERM == "linux"
+if $TERM == "linux" || $TERM == "screen"
 	colorscheme default
 else
 	set t_Co=256
