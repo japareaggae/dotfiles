@@ -2,9 +2,6 @@
 # ~/.zshrc.local - zsh config while using grml-zsh-config
 #
 
-# --- ???
-[ -e $HOME/.zshenv ] && source $HOME/.zshenv
-
 # --- Prompt
 prompt off
 PS1="%{$fg_bold[blue]%}%~%{$reset_color%} $ "
