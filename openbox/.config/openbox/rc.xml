@@ -99,7 +99,7 @@
 	     by other applications, or saved in your session.
 		 Use obconf if you want to change these without having to log out
 		 and back in -->
-		<number>4</number>
+		<number>10</number>
 		<firstdesk>1</firstdesk>
 		<names>
 		<!-- set names up here if you want to, like this:
@@ -181,6 +181,19 @@
 			</action>
 		</keybind>
 
+		<keybind key="W-bracketleft">
+			<action name="GoToDesktop">
+			<to>left</to>
+			<wrap>yes</wrap>
+			</action>
+		</keybind>
+		<keybind key="W-bracketright">
+			<action name="GoToDesktop">
+			<to>right</to>
+			<wrap>yes</wrap>
+			</action>
+		</keybind>
+
 		<!-- SendToDesktop keybinds -->
 		<keybind key="S-A-Left">
 			<action name="SendToDesktop">
@@ -207,6 +220,19 @@
 			</action>
 		</keybind>
 
+		<keybind key="W-S-bracketleft">
+			<action name="SendToDesktop">
+			<to>left</to>
+			<wrap>yes</wrap>
+			</action>
+		</keybind>
+		<keybind key="W-S-bracketright">
+			<action name="SendToDesktop">
+			<to>right</to>
+			<wrap>yes</wrap>
+			</action>
+		</keybind>
+
 		<!-- Direct GoToDesktop keybinds -->
 		<keybind key="W-1">
 			<action name="GoToDesktop">
@@ -226,6 +252,36 @@
 		<keybind key="W-4">
 			<action name="GoToDesktop">
 			<to>4</to>
+			</action>
+		</keybind>
+		<keybind key="W-5">
+			<action name="GoToDesktop">
+			<to>5</to>
+			</action>
+		</keybind>
+		<keybind key="W-6">
+			<action name="GoToDesktop">
+			<to>6</to>
+			</action>
+		</keybind>
+		<keybind key="W-7">
+			<action name="GoToDesktop">
+			<to>7</to>
+			</action>
+		</keybind>
+		<keybind key="W-8">
+			<action name="GoToDesktop">
+			<to>8</to>
+			</action>
+		</keybind>
+		<keybind key="W-9">
+			<action name="GoToDesktop">
+			<to>9</to>
+			</action>
+		</keybind>
+		<keybind key="W-0">
+			<action name="GoToDesktop">
+			<to>10</to>
 			</action>
 		</keybind>
 
@@ -287,9 +343,9 @@
 		</keybind>
 
 		<!-- Keybindings for running applications -->
-		<keybind key="C-A-T">
+		<keybind key="W-Return">
 			<action name="Execute">
-				<command>xfce4-terminal</command>
+				<command>urxvtc</command>
 			</action>
 		</keybind>
 		<keybind key="W-d">
@@ -299,7 +355,7 @@
 		</keybind>
 		<keybind key="W-S-Delete">
 			<action name="Execute">
-				<command>dmenu-session</command>
+				<command>~/.bin/dmenu-session</command>
 			</action>
 		</keybind>
 		<keybind key="W-Tab">
@@ -307,6 +363,12 @@
 				<command>skippy-xd</command>
 			</action>
 		</keybind>
+
+		<!-- Openbox Keybindings -->
+		<keybind key="W-S-C">
+			<action name="Reconfigure" />
+		</keybind>
+
 	</keyboard>
 	<!-- === KEYBINDINGS END HERE === -->
 
