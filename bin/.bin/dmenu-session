@@ -4,6 +4,7 @@ option=$( echo -e "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate" |
 _getOut(){
 	(pgrep 'i3' > /dev/null) && i3 exit
 	(pgrep 'bspwm' > /dev/null ) && bspc quit
+	(pgrep 'openbox' > /dev/null ) && openbox --exit
 }
 
 case $option in
