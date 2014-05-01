@@ -9,7 +9,12 @@
 	helper = cache --timeout=3600
 
 [alias]
+	d = diff
+	dd = diff --cached
+	l = log --decorate=short --stat
 	l10 = log -10 --decorate=short --stat
+	s = status -sb
+
 	graph = log --graph --format=format:'%C(yellow)%h%Creset %C(bold blue)(%cr)%Creset - %C(bold green)%cn%Creset - %s'
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
 	gud = !$HOME/.bin/gitgud
