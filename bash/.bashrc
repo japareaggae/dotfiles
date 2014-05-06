@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# --- Environment
+[[ $HOME/.bash_env ]] && source $HOME/.bash_env
+
 # --- Options
 shopt -s cdspell dirspell extglob checkwinsize
 
