@@ -1,2 +1,5 @@
 set colored-stats on
 set visible-stats on
+
+"\e[A":history-search-backward
+"\e[B":history-search-forward
