@@ -10,6 +10,7 @@
 
 # --- Options
 shopt -s cdspell dirspell extglob checkwinsize
+export HISTCONTROL='ignoreboth'
 
 # --- ls colors
 eval $(dircolors)
