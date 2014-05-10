@@ -75,6 +75,10 @@ visualizer_look = "██"
 # Ex.: %20b only shows first 20 characters.
 #
 # To add color, enclose the text in color tags, such as: $3%l$9
+#
+# song_list - Used in classic playlist view
+# song_status - Shown in status bar
+# song_library - Shown in "songs" column in library
 
 song_list_format = "{[%l]} {$7%a$9 - }{$3%t$9}|{$3%f$9} $R{#%n - }{$4%b$9}"
 song_status_format = "{{$3%a$9 // }{$3%t$9}{ // {$3#%n$9 from }{$3%b$9}}{ (%y)}}|{%f}"
