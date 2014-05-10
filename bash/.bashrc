@@ -28,7 +28,11 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 eval $(keychain --eval -Q --quiet id_rsa)
 
 # --- Prompt
-PS1="$(tput bold)$(tput setaf 4)\w$(tput sgr0) \$ "
+c_bold=$(tput bold)
+c_blue=$(tput setaf 4)
+c_reset=$(tput sgr0)
+PS1="\[${c_bold}${c_blue}\]\w\[${c_reset}\] \$ "
+unset c_bold c_blue c_reset
 
 # --- Aliases
 alias ..='cd ..'
