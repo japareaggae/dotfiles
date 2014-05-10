@@ -12,6 +12,7 @@ entries = [
     "http://chipzelmusic.bandcamp.com/track/spectra",      # Chipzel - Spectra
     "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2",  # Blues Brothers - Theme from Rawhide
     "http://grooveshark.com/s/Danger+Zone/3hRRXq",         # Kenny Loggins - Danger Zone
+    "https://www.youtube.com/watch?v=TeXatquVqAc",         # Naughty by Nature - Here Comes The Money
 
     # Soundtracks
     "http://www.youtube.com/watch?v=Vjyhx49BIzc",          # Souleye - Potential for Anything
