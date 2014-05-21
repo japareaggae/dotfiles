@@ -1,5 +1,7 @@
 set colored-stats on
 set visible-stats on
+set show-all-if-ambiguous on
+set completion-ignore-case on
 
 "\e[A":history-search-backward
 "\e[B":history-search-forward
