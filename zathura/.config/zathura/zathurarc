@@ -1,0 +1,8 @@
+# Appearance
+set inputbar-fg "#000000"
+
+# Keybinds
+map <Space>     navigate next
+map <S-Space>   navigate previous
+map <BackSpace> navigate previous
+
