@@ -168,6 +168,9 @@ bindsym $mod+Shift+F12 $execb nmcli_dmenu
 # --- xrandr-adjust
 bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 
+# -- Sleep Toggle
+bindsym $mod+F3 $execb ~/.bin/toggle-sleep
+
 # -- Terminal/Thunar
 bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+Return exec thunar
