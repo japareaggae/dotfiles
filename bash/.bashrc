@@ -37,20 +37,18 @@ unset c_bold c_blue c_reset
 # --- Aliases
 alias ..='cd ..'
 
-# grep
 alias grep='grep --color=auto'
 
-# ls
 alias ls="ls --color=auto"
 alias l="ls -l --color=auto"
 alias la="ls -la --color=auto"
 
-# Git
 alias gita="git add"
 alias gitap="git add -p"
 alias gitb="git branch"
 alias gitcom="git commit"
 alias gitgoing="git push origin master"
 
-# mpv
 alias mpv-nv="mpv --no-video"
+
+alias cget="curl -OC-"
