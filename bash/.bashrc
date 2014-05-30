@@ -25,7 +25,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # --- Keychain
-eval $(keychain --eval -Q --quiet id_rsa)
+#eval $(keychain --eval -Q --quiet id_rsa)
 
 # --- Prompt
 c_bold=$(tput bold)
