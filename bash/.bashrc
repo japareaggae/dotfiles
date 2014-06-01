@@ -40,8 +40,10 @@ alias ..='cd ..'
 alias grep='grep --color=auto'
 
 alias ls="ls --color=auto"
-alias l="ls -l --color=auto"
-alias la="ls -la --color=auto"
+alias l="ls -lh --color=auto"
+alias la="ls -lha --color=auto"
+alias lsnew="ls -lhtr --color=auto"
+alias lsold="ls -lht --color=auto"
 
 alias gitb="git branch"
 alias gitcom="git commit"
