@@ -9,6 +9,8 @@
 	helper = cache --timeout=3600
 
 [alias]
+	a = add
+	ap = add -p
 	d = diff
 	dd = diff --cached
 	l = log --decorate=short --stat
