@@ -11,6 +11,7 @@
 [alias]
 	a = add
 	ap = add -p
+	co = checkout
 	d = diff
 	dd = diff --cached
 	l = log --decorate=short --stat
