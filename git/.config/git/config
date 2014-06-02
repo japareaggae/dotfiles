@@ -18,8 +18,8 @@
 	l10 = log -10 --decorate=short --stat
 	s = status -sb
 
-	graph = log --graph --format=format:'%C(yellow)%h%Creset %C(bold blue)(%cr)%Creset - %C(bold green)%cn%Creset - %s'
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
-	gud = !$HOME/.bin/gitgud
 	going = push origin master
+	graph = log --graph --format=format:'%C(yellow)%h%Creset %C(bold blue)(%cr)%Creset - %C(bold green)%cn%Creset - %s'
+	gud = !$HOME/.bin/gitgud
 
