@@ -2,8 +2,8 @@
 # git gud - BABBY'S FIRST PYTHON
 # Written by Renan Guilherme <japareaggae@gmail.com>
 
-import random
-import webbrowser
+from random import randrange
+from webbrowser import open as wbopen
 
 # --- gud definitions
 entries = [
@@ -27,6 +27,6 @@ entries = [
 ]
 
 # --- Spin the wheel
-spin = random.randrange(len(entries))
-webbrowser.open(entries[spin], new=0, autoraise=True)
+spin = randrange(len(entries))
+wbopen(entries[spin], new=0, autoraise=True)
 
