@@ -51,4 +51,4 @@ alias gitgoing="git push origin master"
 
 alias mpv-nv="mpv --no-video"
 
-alias cget="curl -OC-"
+alias cget="curl -OL -C -"
