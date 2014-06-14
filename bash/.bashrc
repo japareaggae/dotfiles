@@ -52,3 +52,5 @@ alias gitgoing="git push origin master"
 alias mpv-nv="mpv --no-video"
 
 alias cget="curl -OL -C -"
+
+alias search="find $PWD -iname"
