@@ -189,10 +189,11 @@ bindsym XF86AudioNext $execb mpc next
 bindsym XF86MonBrightnessDown $execb light -s 5
 bindsym XF86MonBrightnessUp   $execb light -a 5
 
-# -- Volume
+# -- Volume / PulseAudio Volume Control
 bindsym XF86AudioMute $execb ponymix toggle
 bindsym XF86AudioLowerVolume $execb ponymix decrease 5
 bindsym XF86AudioRaiseVolume $execb ponymix increase 5
+bindsym $mod+F6 exec pavucontrol
 
 # ----- WINDOW RULES
 for_window [class="Steam"] floating enable
