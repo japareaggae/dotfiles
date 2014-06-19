@@ -214,7 +214,7 @@ workspace 10 output HDMI-0
 bar {
 	status_command ~/.config/i3/conky-wrapper
 	position top
-	tray_output LVDS
+	tray_output none
 	font pango:Terminus 8
 	colors {
 		background #000000

@@ -43,8 +43,5 @@ TEXT
 {
 	"full_text": " ${time %F - %R} ",
 	"short_text": " ${time %R} "
-},
-{
-	"full_text": ""
 }
 ],
