@@ -186,8 +186,8 @@ bindsym XF86AudioPrev $execb mpc prev
 bindsym XF86AudioNext $execb mpc next
 
 # -- Brightness
-bindsym XF86MonBrightnessDown $execb light -s 5
-bindsym XF86MonBrightnessUp   $execb light -a 5
+bindsym XF86MonBrightnessDown $execb $HOME/.bin/brightness dec
+bindsym XF86MonBrightnessUp   $execb $HOME/.bin/brightness inc
 
 # -- Volume / PulseAudio Volume Control
 bindsym XF86AudioMute $execb ponymix toggle
