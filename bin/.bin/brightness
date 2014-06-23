@@ -1,0 +1,57 @@
+#!/bin/bash
+# brightness -- A rudimentary brightness control
+# Written by Renan Guilherme <japareaggae@gmail.com>
+#
+# NOTE: You need to have write permissions on the brightness
+# file in order to use this script.
+# This can be done with the following tmpfiles.d(5) rule:
+#   f /sys/class/backlight/$DEVICE/brightness 0664 root users - -
+
+DEVICE="radeon_bl0"
+STEPSIZE=16
+CFILE="/sys/class/backlight/${DEVICE}/brightness"
+MFILE="/sys/class/backlight/${DEVICE}/max_brightness"
+
+MAXIMUM="$(cat ${MFILE})"
+
+decrease(){
+	NEW=$(( $(cat $CFILE) - $STEPSIZE ))
+	if (( $NEW < $STEPSIZE )); then
+		NEW=$STEPSIZE
+	fi
+	echo $NEW > $CFILE
+}
+
+increase(){
+	NEW=$(( $(cat $CFILE) + $STEPSIZE ))
+	if (( $NEW > $MAXIMUM )); then
+		NEW=$MAXIMUM
+	fi
+	echo $NEW > $CFILE
+}
+
+define(){
+	echo $1 > $CFILE
+}
+
+case $1 in
+	dec)
+		decrease
+		cat $CFILE
+		;;
+	inc)
+		increase
+		cat $CFILE
+		;;
+	set)
+		if (( $2 <= $MAXIMUM )) && (( $2 >= 0 )); then
+			define $2
+			cat $CFILE
+		else
+			echo "error: set requires a numeric argument between 0 and $MAXIMUM"
+	fi
+	;;
+*)
+	echo "Usage: $(basename "$0") (inc | dec | set (0-${MAXIMUM}))"
+	;;
+esac
