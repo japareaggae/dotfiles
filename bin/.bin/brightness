@@ -8,13 +8,23 @@
 #   f /sys/class/backlight/$DEVICE/brightness 0664 root users - -
 
 DEVICE="radeon_bl0"
-STEPSIZE=16
+STEPSIZE=8
 CFILE="/sys/class/backlight/${DEVICE}/brightness"
 MFILE="/sys/class/backlight/${DEVICE}/max_brightness"
 
 MAXIMUM="$(cat ${MFILE})"
 
+check_permissions(){
+	if ( touch $CFILE 2> /dev/null ); then
+		return 0
+	else
+		echo "You don't have permission to write to $CFILE."
+		return 1
+	fi
+}
+
 decrease(){
+	if ! check_permissions; then exit 1; fi
 	NEW=$(( $(cat $CFILE) - $STEPSIZE ))
 	if (( $NEW < $STEPSIZE )); then
 		NEW=$STEPSIZE
@@ -23,6 +33,7 @@ decrease(){
 }
 
 increase(){
+	if ! check_permissions; then exit 1; fi
 	NEW=$(( $(cat $CFILE) + $STEPSIZE ))
 	if (( $NEW > $MAXIMUM )); then
 		NEW=$MAXIMUM
@@ -31,7 +42,28 @@ increase(){
 }
 
 define(){
-	echo $1 > $CFILE
+	if ! check_permissions; then exit 1; fi
+	if [[ $1 ]] && (( $1 <= $MAXIMUM )) && (( $1 >= 0 )); then
+		echo $1 > $CFILE
+		cat $CFILE
+	else
+		echo "error: set requires a numeric argument between 0 and $MAXIMUM"
+	fi
+}
+
+usage(){
+cat << EOF
+Usage: $(basename "$0") (cur | inc | dec | set (0-${MAXIMUM}))
+
+Manages the screen brightness using the /sys interface.
+
+The current device is $DEVICE with $MAXIMUM brightness steps.
+
+  cur    Prints current brightness
+  inc    Increase brightness by $STEPSIZE steps
+  dec    Decrease brightness by $STEPSIZE steps
+  set    Set brightness to any level between 0 and $MAXIMUM
+EOF
 }
 
 case $1 in
@@ -44,14 +76,13 @@ case $1 in
 		cat $CFILE
 		;;
 	set)
-		if (( $2 <= $MAXIMUM )) && (( $2 >= 0 )); then
-			define $2
-			cat $CFILE
-		else
-			echo "error: set requires a numeric argument between 0 and $MAXIMUM"
-	fi
-	;;
-*)
-	echo "Usage: $(basename "$0") (inc | dec | set (0-${MAXIMUM}))"
-	;;
+		define $2
+		;;
+	cur)
+		cat $CFILE
+		;;
+	*)
+		usage
+		exit 1
+		;;
 esac
