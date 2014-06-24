@@ -4,12 +4,11 @@
 # ----- AUTOSTARTS
 set $execb exec --no-startup-id
 
-$execb $HOME/.bin/pulseaudio-oneshot
+$execb start-pulseaudio-x11
 $execb mpd
 $execb mpdscribble
 
 $execb /usr/lib/lxpolkit/lxpolkit
-$execb (sleep 2s; nm-applet)
 $execb dropboxd
 
 $execb compton
