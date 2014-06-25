@@ -1,19 +1,30 @@
 #!/bin/sh
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the Unlicense (http://unlicense.org/UNLICENSE)
+
+# This is where you store your backups.
+REMOTE="$HOME/Dropbox/Vidya/Starbound/player"
+
 case $(uname -m) in
 	"x86_64") ARCH="linux64" ;;
 	"i686") ARCH="linux32" ;;
 esac
-
+# This is where Starbound stores it's player data.
 LOCAL="$HOME/.local/share/Steam/SteamApps/common/Starbound/$ARCH/player"
-REMOTE="$HOME/Dropbox/Vidya/Starbound/player"
 
 _usage(){
-	echo "Usage: $(basename $0) [import/export]"
-	echo "  - import: Copy from Dropbox into Starbound"
-	echo "  - export: Copy from Starbound into Dropbox"
-	echo " "
-	echo "Starbound: $LOCAL"
-	echo "  Dropbox: $REMOTE"
+cat << EOF
+Usage: $(basename $0) (import | export)
+
+Synchronizes Starbound player data between two folders using rsync.
+This script is not affiliated with Chucklefish.
+
+  import     Copies from REMOTE into LOCAL.
+  export     Copies from LOCAL into REMOTE.
+
+Remote: $REMOTE
+Local:  $LOCAL
+EOF
 }
 
 if [ ! $(which rsync) ]; then
