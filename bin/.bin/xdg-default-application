@@ -1,4 +1,7 @@
 #!/bin/sh
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
 if [ -e "$1" ]; then
 	FT=$(xdg-mime query filetype "$1")
 	echo "      MIME Filetype: $FT"

@@ -1,4 +1,7 @@
 #!/bin/bash
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Based on Pato Lankenau's script <http://plankenau.com/blog/post-10/gaussianlock>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
 
 scrot '/tmp/screen.png'
 xset dpms force standby

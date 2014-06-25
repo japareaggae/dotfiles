@@ -1,4 +1,8 @@
 #!/bin/sh
+# ponymix-conky - PulseAudio volume status for conky using ponymix
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
 DEVICE=$(ponymix | sed -n '2p' -)
 case $DEVICE in
 		*"Headset"*) DEFSINK="Headset";;

@@ -1,5 +1,9 @@
 #!/bin/bash
-# TODO: Things break horribly when filenames have spaces
+# gif2webm - convert several GIFs into WebMs at once
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
+# TODO: Things break when filenames have spaces
 
 if [[ ! $@ ]]; then
 	echo "usage: gif2webm [files]"

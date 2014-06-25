@@ -1,4 +1,8 @@
 #!/bin/sh
+# pkgchanges -- see the git repository for an Arch package
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
 _usage(){
 	echo "Usage: $(basename $0) package"
 }

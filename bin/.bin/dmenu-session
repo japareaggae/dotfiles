@@ -1,4 +1,8 @@
 #!/bin/bash
+# dmenu-session -- A session menu using systemd and dmenu
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
 option=$( echo -e "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate" | dmenu -p Session )
 
 _getOut(){
