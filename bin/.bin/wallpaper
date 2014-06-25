@@ -1,10 +1,20 @@
 #!/bin/sh
 
 _usage() {
-	echo "Usage: wallpaper <screen> (mode) <filename>"
-	echo "  Screens: primary, secondary"
-	echo "  Modes:   fill, center, tile, empty (defaults to fill)"
-	exit 1
+cat << EOF
+Usage: $(basename "$0") (screen) [mode] (filename)
+Links an image to a default location, and sets it as the wallpaper using feh.
+
+Screens:
+  primary
+  secondary
+
+Modes (optional):
+  fill (default)
+  center
+  tile
+EOF
+exit 1
 }
 
 # Check for realpath
