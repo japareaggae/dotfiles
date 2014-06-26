@@ -11,7 +11,7 @@ Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
 Xft.hintstyle: hintfull
-Xft.autohint: true
+Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
 ! --- Terminal Colors
