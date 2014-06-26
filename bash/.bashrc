@@ -33,23 +33,14 @@ unset c_bold c_blue c_reset
 
 # --- Aliases
 alias ..='cd ..'
-
+alias cget="curl -OL -C -"
 alias grep='grep --color=auto'
-
 alias ls="ls --color=auto"
 alias l="ls -l --color=auto"
 alias la="ls -la --color=auto"
 alias lsnew="ls -ltr --color=auto"
 alias lsold="ls -lt --color=auto"
-
-alias gitb="git branch"
-alias gitcom="git commit"
-alias gitgoing="git push origin master"
-
 alias mpv-nv="mpv --no-video"
-
-alias cget="curl -OL -C -"
-
 alias search="find $PWD -iname"
 
 # --- Functions
