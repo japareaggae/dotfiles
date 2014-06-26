@@ -24,9 +24,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# --- Keychain
-#eval $(keychain --eval -Q --quiet id_rsa)
-
 # --- Prompt
 c_bold=$(tput bold)
 c_blue=$(tput setaf 4)
@@ -54,3 +51,8 @@ alias mpv-nv="mpv --no-video"
 alias cget="curl -OL -C -"
 
 alias search="find $PWD -iname"
+
+# --- Functions
+keychain-run(){
+	eval $(keychain --eval -Q id_rsa)
+}
