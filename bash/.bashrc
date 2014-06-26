@@ -41,7 +41,7 @@ alias la="ls -la --color=auto"
 alias lsnew="ls -ltr --color=auto"
 alias lsold="ls -lt --color=auto"
 alias mpv-nv="mpv --no-video"
-alias search="find $PWD -iname"
+alias search="find $(pwd) -iname"
 
 # --- Functions
 keychain-run(){
