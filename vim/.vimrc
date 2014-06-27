@@ -48,6 +48,13 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 
+" ----- Filetypes
+" -- Markdown
+augroup filetype_markdown
+	autocmd!
+	autocmd BufRead *.md set filetype=markdown
+augroup END
+
 " ----- Keybinds
 let mapleader=","
 let g:mapleader=","
