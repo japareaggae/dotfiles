@@ -4,7 +4,7 @@
 
 # Preferred Applications
 export EDITOR=vim
-[[ -n $BROWSER ]] && export BROWSER=xdg-open
+[[ $DISPLAY ]] && export BROWSER=xdg-open
 
 # PATH
 export PATH=$HOME/.bin:$PATH
