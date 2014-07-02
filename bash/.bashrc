@@ -26,11 +26,10 @@ export LESS_TERMCAP_ue=$(tput sgr0)
 export LESS_TERMCAP_us=$(tput setaf 2)
 
 # --- Prompt
-c_bold=$(tput bold)
-c_blue=$(tput setaf 4)
-c_reset=$(tput sgr0)
-PS1="\[${c_bold}${c_blue}\]\w\[${c_reset}\] \$ "
-unset c_bold c_blue c_reset
+color=$(tput bold; tput setaf 4)
+creset=$(tput sgr0)
+PS1="\[${color}\][\h] \w\[${creset}\] \$ "
+unset color c_reset
 
 # --- Aliases
 alias ..='cd ..'
