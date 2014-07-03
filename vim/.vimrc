@@ -52,7 +52,7 @@ set shiftwidth=4
 " -- Markdown
 augroup filetype_markdown
 	autocmd!
-	autocmd BufRead *.md set filetype=markdown
+	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
 
 " ----- Keybinds
