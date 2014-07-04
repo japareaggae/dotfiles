@@ -40,6 +40,10 @@ set list
 
 set statusline=%f%(\ %r%m%)%=%y\ [%l,%c]\ [%p%%]
 
+if has('gui_running')
+	set guioptions-=tT
+endif
+
 " ----- Editing
 filetype plugin indent on
 set encoding=utf8
