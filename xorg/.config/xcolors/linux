@@ -1,0 +1,37 @@
+! These are the colors used on the Linux VT.
+!*background: #000000
+!*foreground: #AAAAAA
+
+! black / dark gray
+*color0: #000000
+*color8: #555555
+
+! red (light)
+*color1: #AA0000
+*color9: #FF5555
+
+! green (light)
+*color2:  #00AA00
+*color10: #55FF55
+
+! brown / yellow
+*color3:  #AA5500
+*color11: #FFFF55
+
+! blue (light)
+*color4:  #0000AA
+*color12: #5555FF
+
+! magenta / pink
+*color5:  #AA00AA
+*color13: #FF55FF
+
+! cyan (light)
+*color6:  #00AAAA
+*color14: #55FFFF
+
+! light gray / white
+*color7:  #AAAAAA
+*color15: #FFFFFF
+
+! vim: set ft=xdefaults:
