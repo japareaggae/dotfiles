@@ -4,6 +4,7 @@ set guioptions=CTs
 
 " -- Keybinds
 nmap     <C-t> :tabopen<Space>
+nmap     <C-l> :open<Space>
 nmap -ex J     :tabprev
 nmap -ex K     :tabnext
 
