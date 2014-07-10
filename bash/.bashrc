@@ -8,6 +8,9 @@
 # --- Environment
 [[ $HOME/.bash_env ]] && source $HOME/.bash_env
 
+# --- GPG_TTY
+export GPG_TTY=$(tty)
+
 # --- Options
 shopt -s cdspell dirspell extglob checkwinsize
 export HISTCONTROL='ignoreboth'
