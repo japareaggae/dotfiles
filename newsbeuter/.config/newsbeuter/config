@@ -1,0 +1,15 @@
+auto-reload yes
+keep-articles-days 30
+
+articlelist-format "%2i %f %D %16a :: %t"
+
+datetime-format %F
+
+notify-program notify-send
+browser xdg-open
+
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+
