@@ -1,19 +1,22 @@
+# Vim
 .netrwhist
-
-# --- Vundle (from with-vundle branch)
 **/vim/bundle
 
-# --- Logs
+# Logs
 *.log
 *history
 
-# --- Ranger
+# Ranger
 **/ranger/bookmarks
 **/ranger/tagged
 
-# --- tint2conf
+# tint2conf
 default.tint2rc
 snap.jpg
 tint2confrc
 
+# obmenu-generator
 **/obmenu-generator/icons.db
+
+# newsbeuter
+**/newsbeuter/urls
