@@ -45,6 +45,7 @@ alias lsnew="ls -ltr --color=auto"
 alias lsold="ls -lt --color=auto"
 alias mpv-nv="mpv --no-video"
 alias search="find $(pwd) -iname"
+alias xrefres="xrdb ~/.Xresources"
 
 # --- Functions
 keychain-run(){
