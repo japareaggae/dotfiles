@@ -10,9 +10,9 @@
 
 DEVICE="radeon_bl0"
 STEPSIZE=8
+
 CFILE="/sys/class/backlight/${DEVICE}/brightness"
 MFILE="/sys/class/backlight/${DEVICE}/max_brightness"
-
 MAXIMUM="$(cat ${MFILE})"
 
 check_permissions(){
@@ -25,7 +25,7 @@ check_permissions(){
 }
 
 decrease(){
-	if ! check_permissions; then exit 1; fi
+	check_permissions || exit 1
 	NEW=$(( $(cat $CFILE) - $STEPSIZE ))
 	if (( $NEW < $STEPSIZE )); then
 		NEW=$STEPSIZE
@@ -34,7 +34,7 @@ decrease(){
 }
 
 increase(){
-	if ! check_permissions; then exit 1; fi
+	check_permissions || exit 1
 	NEW=$(( $(cat $CFILE) + $STEPSIZE ))
 	if (( $NEW > $MAXIMUM )); then
 		NEW=$MAXIMUM
@@ -43,7 +43,7 @@ increase(){
 }
 
 define(){
-	if ! check_permissions; then exit 1; fi
+	check_permissions || exit 1
 	if [[ $1 ]] && (( $1 <= $MAXIMUM )) && (( $1 >= 0 )); then
 		echo $1 > $CFILE
 		cat $CFILE
