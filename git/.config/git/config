@@ -14,8 +14,8 @@
 	co = checkout
 	d = diff
 	dd = diff --cached
-	l = log --decorate=short --stat
-	l10 = log -10 --decorate=short --stat
+	l = log --graph --decorate --stat --all
+	l10 = log -10 --graph --decorate --stat --all
 	s = status -sb
 
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
