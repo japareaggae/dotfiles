@@ -2,8 +2,8 @@
 ! The colors look very washed out.
 ! See https://github.com/thestinger/termite.
 
-!*background: #3f3f3f
-!*foreground: #dcdccc
+*background: #3f3f3f
+*foreground: #dcdccc
 
 *color0:  #3f3f3f
 *color8:  #709080

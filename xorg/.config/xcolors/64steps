@@ -1,4 +1,8 @@
 ! Uncreative colors by Renan Guilherme <japareaggae@gmail.com>
+
+*background: #000000
+*foreground: #FFFFFF
+
 ! black, dark grey
 *color0: #000000
 *color8: #404040

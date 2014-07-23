@@ -1,6 +1,7 @@
 ! These are the colors used on the Linux VT.
-!*background: #000000
-!*foreground: #AAAAAA
+
+*background: #000000
+*foreground: #AAAAAA
 
 ! black / dark gray
 *color0: #000000
