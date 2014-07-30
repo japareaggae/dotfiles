@@ -11,6 +11,15 @@
 DEVICE="radeon_bl0"
 STEPSIZE=8
 
+if ! [[ -e "/sys/class/backlight/$DEVICE" ]]
+then
+	cat << EOF
+Error: The device $DEVICE is not present in the /sys interface.
+Make sure the DEVICE variable in the script is correct.
+EOF
+	exit 1
+fi
+
 CFILE="/sys/class/backlight/${DEVICE}/brightness"
 MFILE="/sys/class/backlight/${DEVICE}/max_brightness"
 MAXIMUM="$(cat ${MFILE})"
