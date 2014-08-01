@@ -19,7 +19,7 @@ Xft.lcdfilter: lcddefault
 
 ! --- XTerm
 xterm*termName: xterm-256color
-xterm*font: xft:Terminus:size=8
+!xterm*faceName: Terminus:size=8
 
 ! --- urxvt
 URxvt.termName: rxvt-unicode-256color
