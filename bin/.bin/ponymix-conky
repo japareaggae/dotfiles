@@ -3,6 +3,12 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Licensed under the public domain <http://unlicense.org/UNLICENSE>
 
+if ! ( which ponymix > /dev/null )
+then
+	echo "?"
+	exit 1
+fi
+
 DEVICE=$(ponymix | sed -n '2p' -)
 case $DEVICE in
 		*"Headset"*) DEFSINK="Headset";;
