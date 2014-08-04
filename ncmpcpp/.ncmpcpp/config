@@ -305,7 +305,7 @@ ignore_leading_the = "yes"
 # default (terminal fg), black, red, green, yellow, blue, magenta, cyan, white
 colors_enabled = "yes"
 
-main_window_color = "white"
+main_window_color = "default"
 
 # -- Highlights
 main_window_highlight_color = "default"
@@ -332,5 +332,5 @@ statusbar_color = "default"
 # -- Others
 empty_tag_color = "red"
 #state_flags_color = "default"
-visualizer_color = "white"
+visualizer_color = "default"
 
