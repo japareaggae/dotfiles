@@ -14,6 +14,7 @@ export GPG_TTY=$(tty)
 # --- Options
 shopt -s cdspell dirspell extglob checkwinsize
 export HISTCONTROL='ignoreboth'
+export HISTSIZE=8096
 
 # --- ls colors
 eval $(dircolors)
