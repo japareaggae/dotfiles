@@ -1,5 +1,6 @@
 #
 # ~/.ncmpcpp/config
+# Detailed explanations of each option can be found on ncmpcpp(1).
 #
 # ----- Directories
 ncmpcpp_directory = "~/.ncmpcpp"
@@ -18,7 +19,7 @@ mpd_music_dir = "~/Music"
 # Example:
 # audio_output {
 #        type            "fifo"
-#        name            "My FIFO"
+#        name            "FIFO Output"
 #        path            "/tmp/mpd.fifo"
 #        format          "44100:16:2"
 # }
