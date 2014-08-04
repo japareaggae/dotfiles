@@ -33,7 +33,7 @@ visualizer_look = "██"
 
 # ----- Delays
 #playlist_disable_highlight_delay = "5"
-#message_delay_time = "4"
+message_delay_time = "2"
 
 # ------ Formatting
 # Valid tags:
