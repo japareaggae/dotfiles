@@ -1,6 +1,6 @@
 # --- General Configuration
 [global]
-font = Terminus 8
+font = Sans 8
 
 # allow a small subset of html markup:
 # <b>bold</b>
