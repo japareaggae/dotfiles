@@ -215,7 +215,7 @@ bar {
 	status_command ~/.config/i3/conky-wrapper
 	position top
 	tray_output none
-	font pango:Terminus 8
+	font pango:Sans 8
 	colors {
 		background #000000
 		separator #202020
