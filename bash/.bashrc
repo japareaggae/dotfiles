@@ -48,7 +48,3 @@ alias mpv-nv="mpv --no-video"
 alias search="find $(pwd) -iname"
 alias xrefres="xrdb ~/.Xresources"
 
-# --- Functions
-keychain-run(){
-	eval $(keychain --eval -Q id_rsa)
-}
