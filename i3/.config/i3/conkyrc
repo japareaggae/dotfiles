@@ -12,7 +12,7 @@ if_up_strictness link
 TEXT
 [
 {
-	"full_text": " ${cpu cpu0}% ",
+	"full_text": " ${cpu cpu0}% (${hwmon 0 temp 1}°C)",
 	"color": "\#FF4040"
 },
 {
