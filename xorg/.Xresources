@@ -31,7 +31,7 @@ URxvt.savelines: 8192
 URxvt.depth: 32
 !URxvt.background: rgba:0000/0000/0000/E000
 URxvt.font: xft:DejaVu Sans Mono:size=9
-URxvt.letterSpace: -2
+!URxvt.letterSpace: -2
 
 ! Scrolling
 URxvt.scrollBar: false
