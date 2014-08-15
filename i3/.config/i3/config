@@ -184,6 +184,7 @@ bindsym $mod+Print exec gnome-screenshot -a -f "$(date +%F_%H-%M-%S).png"
 bindsym XF86AudioPlay $execb mpc toggle
 bindsym XF86AudioPrev $execb mpc prev
 bindsym XF86AudioNext $execb mpc next
+bindsym XF86AudioStop $execb mpc stop
 
 # -- Brightness
 bindsym XF86MonBrightnessDown $execb $HOME/.bin/brightness dec
