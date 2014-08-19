@@ -1,40 +1,32 @@
 #!/bin/sh
-# ~/.config/sxiv/exec/key-handler
-#
-# Called by sxiv(1) whenever the prefix keybind (default: C-x) is pressed,
-# followed by any other key combination.
-# The latter key combination will be the first argument and the path of
-# the current image will be the second argument.
-#
-# sxiv(1) blocks until this script terminates. It then checks if the image
-# has been modified and reloads it.
-#
+
+# Example for $XDG_CONFIG_HOME/sxiv/exec/key-handler
+# Called by sxiv(1) after the external prefix key (C-x by default) is pressed.
+# The next key combo is passed as its first argument, followed by the paths of
+# all marked images or the path of the current image, if no image is marked.
+# sxiv(1) blocks until this script terminates. It then checks which images
+# have been modified and reloads them.
+
 # The key combo argument has the following form: "[C-][M-][S-]KEY",
 # where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
 # keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
 
-case "$1" in
+rotate() {
+	case "$(file -b -i "$2")" in
+	image/jpeg*) jpegtran -rotate "$1" -copy all -outfile "$2" "$2" ;;
+	*)           mogrify  -rotate "$1" "$2" ;;
+	esac
+}
 
-"C-c") # Copy image to clipboard (uses xsel)
-	echo -n "$2" | xsel -i ;;
+key="$1"
+shift
 
-"C-e") # Shows image information (uses urxvtc, exiv2)
-	urxvtc -bg "#444" -fg "#eee" -sl 0 -title "$2" -e sh -c "exiv2 pr -q '$2' | less" & ;;
-
-"C-g") # Edits image with GIMP
-	gimp "$2" & ;;
-
-"C-less") # Rotates left
-	case "$2" in
-		*jp.g) exec jpegtran -rotate 270 -copy all -outfile "$2" "$2" ;;
-		*)     exec mogrify  -rotate -90 "$2" ;;
-	esac ;;
-
-"C-greater") # Rotates right
-	case "$2" in
-		*jp.g) exec jpegtran -rotate  90 -copy all -outfile "$2" "$2" ;;
-		*)     exec mogrify  -rotate +90 "$2" ;;
-	esac ;;
-
+case "$key" in
+"C-c")      echo -n "$@" | xsel -i ;;
+"C-e")      for file in "$@"; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
+"C-g")      gimp "$@" & ;;
+"C-comma")  for file in "$@"; do rotate 270 "$file"; done ;;
+"C-period") for file in "$@"; do rotate  90 "$file"; done ;;
+"C-slash")  for file in "$@"; do rotate 180 "$file"; done ;;
 esac
 
