@@ -21,7 +21,7 @@ TEXT
 	"color": "\#FF8040"
 },
 {
-	"full_text": " ${fs_used /} / ${fs_size /} ",
+	"full_text": " /: ${fs_used /} ",
 	"color": "\#FFFF40"
 },
 {
