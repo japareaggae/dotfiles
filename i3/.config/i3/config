@@ -5,14 +5,15 @@
 set $execb exec --no-startup-id
 
 $execb start-pulseaudio-x11
-$execb mpd
-$execb mpdscribble
-
 $execb /usr/lib/lxpolkit/lxpolkit
 $execb dropboxd
 
 $execb compton
 $execb $HOME/.bin/xrandr-adjust
+
+# Consider using systemd user sessions for autostarting these applications.
+#$execb mpd
+#$execb mpdscribble
 
 # ----- APPEARANCE
 # -- Font
