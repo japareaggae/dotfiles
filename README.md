@@ -8,4 +8,4 @@ You should have GNU stow installed to link these files to your $HOME.
 
 Important packages
 -----
-* [rxvt-unicode-patched][https://aur.archlinux.org/packages/rxvt-unicode-patched]
+* [rxvt-unicode-patched](https://aur.archlinux.org/packages/rxvt-unicode-patched)
