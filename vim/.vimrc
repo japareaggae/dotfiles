@@ -58,6 +58,7 @@ set backspace=indent,eol,start
 augroup filetype_markdown
 	autocmd!
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
+	autocmd BufNewFile,BufRead *.md set colorcolumn=80
 augroup END
 
 " ----- Keybinds
