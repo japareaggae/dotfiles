@@ -9,6 +9,7 @@ export EDITOR=vim
 # PATH
 export PATH=$HOME/.bin:$PATH
 
-# Arch Build System
+# Arch Build System / asp
 export ABSROOT="$HOME/Development/abs"
+export ASPROOT="$HOME/Development/asp"
 
