@@ -54,7 +54,7 @@ message_delay_time = "2"
 # %C - comment
 # $R - begin right alignment
 #
-# Valid colors (colors can be nested!):
+# Valid colors (colors can be nested):
 # $0 - default window color (discards all other colors)
 # $1 - black
 # $2 - red
@@ -67,9 +67,10 @@ message_delay_time = "2"
 # $9 - end of current color
 #
 # Placing a tag between {}'s will hide it if there is no information for it.
-# You can also set alternate values: {%a - %t}|{%f}
+# You can also set alternate values: {%a - %t}|{%f} shows "$ARTIST - $TITLE",
+# or if one of these is missing, it shows the filename.
 #
-# If you don't specify any {}'s, ncmpcpp will automatically create one
+# If you don't specify any {}'s, ncmpcpp will automatically create a pair
 # enclosing all tags on the string. If one tag is missing, you get nothing.
 #
 # Placing a number after the % will limit the tag to $number characters.
