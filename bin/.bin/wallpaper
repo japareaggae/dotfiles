@@ -1,60 +1,120 @@
 #!/bin/sh
+# wallpaper - change wallpapers using symlinks and feh
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Licensed under the public domain <http://unlicense.org/UNLICENSE>
 
 _usage() {
 cat << EOF
-Usage: $(basename "$0") (screen) [mode] (filename)
+Usage: $(basename "$0") [options] (filename)
 Links an image to a default location, and sets it as the wallpaper using feh.
 
-Screens:
-  primary
-  secondary
+Options:
+  primary     Image will be the wallpaper for the first monitor (default)
+  secondary   Image will be the wallpaper for the second monitor
 
-Modes (optional):
-  fill (default)
-  center
-  tile
+  fill        Fill the monitor with the image (default)
+  center      Center the image on the monitor
+  tile        Tile the image on the monitor
 EOF
 exit 1
 }
 
 # Check for realpath
-if [ ! -x "$(which realpath)" ]; then
+if ! (type realpath > /dev/null)
+then
 	echo "error: realpath is not installed"
 	exit 1;
 fi
 
-# $1 -- Primary or secondary screen?
-case $1 in
-	primary)   DESTINATION="$HOME/.wallpaper0" ;;
-	secondary) DESTINATION="$HOME/.wallpaper1" ;;
-	*)         _usage ;;
-esac
+# --- Set destination
+DESTINATION="$HOME/.wallpaper0"
+DEST_SET=0
+set_destination(){
+	if [[ $DEST_SET != 0 ]]
+	then
+		echo "Error: You can't set more than one destination"
+		exit 1
+	elif [[ $1 == "primary" ]]
+	then
+		DESTINATION="$HOME/.wallpaper0"
+		DEST_SET=1
+	elif [[ $1 == "secondary" ]]
+	then
+		DESTINATION="$HOME/.wallpaper1"
+		DEST_SET=1
+	fi
+}
 
-# $2 -- Set a background mode
-case $2 in
-	fill)   MODE="--bg-fill" ;;
-	center) MODE="--bg-center" ;;
-	tile)   MODE="--bg-tile" ;;
+# --- Set mode
+MODE="--bg-fill"
+MODE_SET=0
+set_mode(){
+	if [[ $MODE_SET != 0 ]]
+	then
+		echo "Error: You can't set more than one mode"
+		exit 1
+	elif [[ $1 == "fill" ]]
+	then
+		MODE="--bg-fill"
+		MODE_SET=1
+	elif [[ $1 == "center" ]]
+	then
+		MODE="--bg-center"
+		MODE_SET=1
+	elif [[ $1 == "tile" ]]
+	then
+		MODE="--bg-tile"
+		MODE_SET=1
+	fi
+}
 
-	# $2 can be a file too
-	*) MODE="--bg-fill"
-		if [ -e "$2" ]; then
-			FILE="$2"
-		else
-			echo "error: $2 is not a valid file or mode"
-			exit 1;
+# --- Attempt to parse a file
+FILE="null"
+FILE_SET=0
+set_file(){
+	if [[ $FILE_SET != 0 ]]
+	then
+		echo "Error: You can't set more than one file"
+		exit 1
+	else
+		FILE="$(realpath "$1")"
+		if ! [[ -f "$FILE" ]]
+		then
+			echo "Error: $1 is not a valid file or option"
+			echo "Run \"$(basename "$0") help\" for more information"
+			exit 1
 		fi
+		FILE_SET=1
+	fi
+}
+
+# --- Option parser loop
+while [[ $1 ]]
+do
+case $1 in
+	help)      _usage ;;
+
+	primary)   set_destination primary ;;
+	secondary) set_destination secondary ;;
+
+	fill)      set_mode fill ;;
+	center)    set_mode center ;;
+	tile)      set_mode tile ;;
+
+	*)         set_file "$1" ;;
 esac
+shift
+done
 
-# $3 -- If it exists, it is the file we want
-[ "$3" ] && FILE="$3"
+# --- Attempt to create symlink
+if [[ $FILE == "null" ]]
+then
+	echo "Error: You must specify a file to use as wallpaper"
+	echo "Run \"$(basename "$0") help\" for more information"
+	exit 1
+else
+	ln -sf "$FILE" "$DESTINATION"
+fi
 
-# Create a symbolic link
-ln -sf "$(realpath "$FILE")" "$DESTINATION"
-
-# Re-execute feh
-# Note that feh does not allow setting different modes for each wallpaper.
-feh $MODE "$HOME/.wallpaper0" "$HOME/.wallpaper1"
-
+# --- Re-execute feh
+feh "$MODE" "$HOME/.wallpaper0" "$HOME/.wallpaper1"
