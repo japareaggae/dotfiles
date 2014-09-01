@@ -19,7 +19,7 @@ $execb $HOME/.bin/xrandr-adjust
 # -- Font
 # You can either set a X font description here or use Pango.
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:Terminus 8
+font pango:Sans 8
 
 # -- Borders
 #new_window normal 1
