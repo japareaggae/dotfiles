@@ -38,6 +38,7 @@ unset color c_reset
 # --- Aliases
 alias ..='cd ..'
 alias cget="curl -OL -C -"
+alias cview='DISPLAY= cacaview'
 alias grep='grep --color=auto'
 alias ls="ls --color=auto"
 alias l="ls -l --color=auto"
