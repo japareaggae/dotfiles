@@ -163,8 +163,8 @@ bindsym $mod+m scratchpad show
 # -- Session Menu
 bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
 
-# -- Network Menu
-bindsym $mod+Shift+F12 $execb nmcli_dmenu
+# -- NetworkManager
+bindsym $mod+F12 $execb urxvtc -e nmtui
 
 # --- xrandr-adjust
 bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
