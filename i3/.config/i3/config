@@ -43,11 +43,6 @@ floating_modifier $mod
 bindsym $mod+Shift+n floating toggle
 bindsym $mod+n focus mode_toggle
 
-# -- dmenu (launches programs)
-bindsym $mod+d $execb dmenu_run
-#bindsym $mod+Shift+d $execb i3-dmenu-desktop
-bindsym $mod+Shift+d $execb j4-dmenu-desktop
-
 # -- Focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -161,6 +156,11 @@ bindsym $mod+Shift+m move scratchpad
 bindsym $mod+m scratchpad show
 
 # ----- APPLICATION KEYBINDS -----
+# -- dmenu (launches programs)
+bindsym $mod+space $execb dmenu_run
+#bindsym $mod+Shift+d $execb i3-dmenu-desktop
+bindsym $mod+Shift+space $execb j4-dmenu-desktop
+
 # -- Terminal/Thunar
 bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+Return exec thunar
