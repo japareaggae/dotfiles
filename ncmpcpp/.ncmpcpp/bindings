@@ -1,0 +1,5 @@
+def_key "p"
+  pause
+
+def_key "P"
+  toggle_display_mode
