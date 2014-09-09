@@ -24,11 +24,13 @@ mpd_music_dir = "~/Music"
 #        format          "44100:16:2"
 # }
 
+# TODO: Broken? (0.6b2)
+#visualizer_type = "spectrum"
+
 visualizer_in_stereo = "yes"
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "FIFO Output"
 #visualizer_sync_interval = "30"
-visualizer_type = "spectrum"
 visualizer_look = "██"
 
 # ----- Delays
@@ -219,27 +221,24 @@ fetch_lyrics_for_current_song_in_background = "no"
 
 # The following options are available for screen_switcher_mode.
 # - "previous" - switch between current and last used screen
-# - "sequence: 2 -> 9 -> 5" - switch between given sequence of screens.
+# - "screen1, screen2, ..., screenN" - switch between given sequence of screens.
 #
-# Screen numbers you can use after 'sequence' keyword are:
-# - 1 - help
-# - 2 - playlist
-# - 3 - browser
-# - 4 - search engine
-# - 5 - media library
-# - 6 - playlist editor
-# - 7 - tag editor
-# - 8 - outputs
-# - 9 - visualizer
-# - 10 - clock
+# The screens you can use for the second form are:
+# * help
+# * playlist
+# * browser
+# * search_engine
+# * media_library
+# * playlist_editor
+# * tag_editor
+# * outputs
+# * visualizer
+# * clock
 #
-# As you can see, above example will switch between
-# playlist, visualizer and media library screens.
+screen_switcher_mode = playlist, browser, media_library
 
-screen_switcher_mode = "sequence: 2 -> 3 -> 5"
-
-# The above numbers also work for this option.
-startup_screen = "5"
+# The above screens also work for this option.
+startup_screen = "media_library"
 
 # Default width of locked screen (in %).
 # Acceptable values are from 20 to 80.
