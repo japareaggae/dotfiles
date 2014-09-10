@@ -6,7 +6,8 @@
 # NOTE: You need to have write permissions on the brightness
 # file in order to use this script.
 # This can be done with the following tmpfiles.d(5) rule:
-#   f /sys/class/backlight/$DEVICE/brightness 0664 root users - -
+#   f /sys/class/backlight/$DEVICE/brightness 0664 root <GROUP> - -
+# where <GROUP> can be your user's main group or something else (like 'wheel')
 
 DEVICE="radeon_bl0"
 STEPSIZE=8
