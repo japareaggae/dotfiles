@@ -178,9 +178,9 @@ bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 bindsym $mod+F3 $execb ~/.bin/toggle-sleep
 
 # -- Screenshotting
-bindsym Print exec gnome-screenshot -f "$(date +%F_%H-%M-%S).png"
-bindsym Shift+Print exec gnome-screenshot -w -f "$(date +%F_%H-%M-%S).png"
-bindsym $mod+Print exec gnome-screenshot -a -f "$(date +%F_%H-%M-%S).png"
+bindsym Print exec gnome-screenshot -f "$HOME/.screenshots/$(date +%F_%H-%M-%S).png"
+bindsym Shift+Print exec gnome-screenshot -w -f "$HOME/.screenshots/$(date +%F_%H-%M-%S).png"
+bindsym $mod+Print exec gnome-screenshot -a -f "$HOME/.screenshots/$(date +%F_%H-%M-%S).png"
 
 # -- MPD
 bindsym XF86AudioPlay $execb mpc toggle
