@@ -64,7 +64,7 @@ define(){
 
 usage(){
 cat << EOF
-Usage: $(basename "$0") (cur | inc | dec | set (0-${MAXIMUM}))
+Usage: $(basename "$0") (cur | inc | dec | set (0-${MAXIMUM}) | max)
 
 Manages the screen brightness using the /sys filesystem.
 
@@ -74,6 +74,7 @@ The current device is $DEVICE with $MAXIMUM brightness steps.
   inc    Increase brightness by $STEPSIZE steps
   dec    Decrease brightness by $STEPSIZE steps
   set    Set brightness to any level between 0 and $MAXIMUM
+  max    Set brightness to $MAXIMUM
 EOF
 }
 
@@ -88,6 +89,9 @@ case $1 in
 		;;
 	set)
 		define $2
+		;;
+	max)
+		define $MAXIMUM
 		;;
 	cur)
 		cat $CFILE
