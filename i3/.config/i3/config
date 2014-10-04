@@ -161,7 +161,7 @@ bindsym $mod+space $execb dmenu_run
 #bindsym $mod+Shift+d $execb i3-dmenu-desktop
 bindsym $mod+Shift+space $execb j4-dmenu-desktop
 
-# -- Terminal/Thunar
+# -- Terminal/File Manager
 bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+Return exec thunar
 
