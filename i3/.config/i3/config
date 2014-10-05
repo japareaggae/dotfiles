@@ -162,14 +162,14 @@ bindsym $mod+space $execb dmenu_run
 bindsym $mod+Shift+space $execb j4-dmenu-desktop
 
 # -- Terminal/File Manager
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec termite
 bindsym $mod+Shift+Return exec thunar
 
 # -- Session Menu
 bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
 
 # -- NetworkManager
-bindsym $mod+F12 $execb urxvtc -e nmtui
+bindsym $mod+F12 $execb termite -e nmtui
 
 # --- xrandr-adjust
 bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
