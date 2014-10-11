@@ -69,6 +69,10 @@ case "$extension" in
     mp3)
         try id3v2 -l "$path" && { dump | trim | fmt -s -w $width; exit 0; } || exit 1;
         ;;
+
+    iso)
+        try isoinfo -f -i "$path" && { dump | trim; exit 0; } || exit 1;
+        ;;
 esac
 
 case "$mimetype" in
