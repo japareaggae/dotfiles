@@ -13,3 +13,4 @@ export PATH=$HOME/.bin:$PATH
 export ABSROOT="$HOME/Development/abs"
 export ASPROOT="$HOME/Development/asp"
 
+# vim: set ft=sh:
