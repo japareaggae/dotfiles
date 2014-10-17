@@ -1,335 +1,158 @@
+# ncmpcpp/config
 #
-# ~/.ncmpcpp/config
-# Detailed explanations of each option can be found on ncmpcpp(1).
+### Directories ###
+ncmpcpp_directory = ~/.ncmpcpp
+lyrics_directory  = ~/.lyrics
+
+### MPD Connection ###
+mpd_music_dir = ~/Music
+
+### Visualizer ###
+# You should have an FIFO audio output on your mpd config
+# in order to use the visualizer:
+#   audio_output {
+#     type   "fifo"
+#     name   "FIFO Output"
+#     path   "/tmp/mpd.fifo"
+#     format "44100:16:2"
+#   }
 #
-# ----- Directories
-ncmpcpp_directory = "~/.ncmpcpp"
-lyrics_directory = "~/.lyrics"
+visualizer_fifo_path     = /tmp/mpd.fifo
+visualizer_output_name   = FIFO Output
+visualizer_in_stereo     = yes
+visualizer_sync_interval = 30
+visualizer_type          = spectrum
+visualizer_look          = O|
 
-# ----- MPD Connection
-mpd_host = "localhost"
-mpd_port = "6600"
-mpd_music_dir = "~/Music"
-#mpd_connection_timeout = "5"
-#mpd_crossfade_time = "5"
-#mpd_communication_mode = "notifications" (polling/notifications)
+### Delays ###
+playlist_disable_highlight_delay = 2
+message_delay_time = 1
 
-# ----- Visualizer
-# You need to add an FIFO output to your mpd.conf to use visualizations.
-# Example:
-# audio_output {
-#        type            "fifo"
-#        name            "FIFO Output"
-#        path            "/tmp/mpd.fifo"
-#        format          "44100:16:2"
-# }
-
-
-visualizer_in_stereo = "yes"
-visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_output_name = "FIFO Output"
-#visualizer_sync_interval = "30"
-visualizer_type = "spectrum"
-visualizer_look = "O|"
-
-# ----- Delays
-#playlist_disable_highlight_delay = "5"
-message_delay_time = "2"
-
-# ------ Formatting
-# Valid tags:
-# %l - length
-# %f - filename
-# %D - directory
-# %a - artist
-# %A - album artist
-# %t - title
-# %b - album
-# %y - year
-# %n - track number (01/12 -> 01)
-# %N - full track info (01/12 -> 01/12)
-# %g - genre
-# %c - composer
-# %p - performer
-# %d - disc
-# %C - comment
-# $R - begin right alignment
+### Song Formats ###
+# Valid Formats:
+#   %l - length
+#   %f - filename
+#   %D - directory
+#   %a - artist
+#   %A - album artist
+#   %t - title
+#   %b - album
+#   %y - date
+#   %n - track number (01/12 -> 01)
+#   %N - full track info (01/12 -> 01/12)
+#   %g - genre
+#   %c - composer
+#   %p - performer
+#   %d - disc
+#   %C - comment
+#   %P - priority
+#   $R - begin right alignment
 #
-# Valid colors (colors can be nested):
-# $0 - default window color (discards all other colors)
-# $1 - black
-# $2 - red
-# $3 - green
-# $4 - yellow
-# $5 - blue
-# $6 - magenta
-# $7 - cyan
-# $8 - white
-# $9 - end of current color
+# Placing formats enclosed in {} will hide them if there's nothing
+# on that format. {%a - %t} won't show anything if the artist or the
+# title is missing.
 #
-# Placing a tag between {}'s will hide it if there is no information for it.
-# You can also set alternate values: {%a - %t}|{%f} shows "$ARTIST - $TITLE",
-# or if one of these is missing, it shows the filename.
+# You may also use | between pairs of {} to define alternative formats:
+# {%a - %t}|{%f} will show the filename if the artist or title are
+# missing.
 #
-# If you don't specify any {}'s, ncmpcpp will automatically create a pair
-# enclosing all tags on the string. If one tag is missing, you get nothing.
+# You can set the max length on a format by specifying it like '%20b'.
 #
-# Placing a number after the % will limit the tag to $number characters.
-# Ex.: %20b only shows first 20 characters.
+# Formats without braces get enclosed inside a pair automatically.
 #
-# To add color, enclose the text in color tags, such as: $3%l$9
+# Valid Colors:
+#   $0 - default window color (discards all other colors)
+#   $1 - black
+#   $2 - red
+#   $3 - green
+#   $4 - yellow
+#   $5 - blue
+#   $6 - magenta
+#   $7 - cyan
+#   $8 - white
+#   $9 - end of current color
 #
-# song_list - Used in classic playlist view
-# song_status - Shown in status bar
-# song_library - Shown in "songs" column in library
-
-song_list_format = "{[%l]} {$7%a$9 - }{$3%t$9}|{$3%f$9} $R{#%n - }{$4%b$9}"
-song_status_format = "{{$3%a$9 // }{$3%t$9}{ // {$3#%n$9 from }{$3%b$9}}{ (%y)}}|{%f}"
-#song_library_format = "{%n - }{%t}|{%f}"
-#tag_editor_album_format = "{(%y) }%b"
-
-# The following strings can also accept the following decoration:
-# $b - bold text
-# $u - underline text
-# $r - reverse colors
-# $a - use alternative character set
+# You can define colors by surrounding formats: '$2%b$9'
+# You can also nest colors.
 #
-# Add a slash after the dollar sign to end the decoration: $b%a$/b
-
-now_playing_prefix = "$b▶ "
-now_playing_suffix = "$/b"
-#browser_playlist_prefix = "$2playlist$9 "
-#selected_item_prefix = "$6"
-#selected_item_suffix = "$9"
-
-# The following two formats are used in the Alternative UI.
-#alternative_header_first_line_format = "$b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b"
-#alternative_header_second_line_format = "{{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}"
-
-# The following format does not allow colors to be used.
-#song_window_title_format = "{%a - }{%t}|{%f}"
-
-# ----- Columns (playlist view)
+# Valid Attributes:
+#   $b - bold text
+#   $u - underline text
+#   $r - reverse colors
+#   $a - use alternative character set
 #
-# Syntax of song columns list format is "column column column...".
+# To end an attribute, add a slash before the letter: '$b%t$/b'
 #
-# Syntax for each column is:
-# (width of column)[column's color]{displayed tag}
+song_list_format = {[%l] }{{$7%a$9 - }{$3%t$9}}|{%f}$R{#%n - }{$4%b$9}
+song_status_format = {$3%a$9 // }{$3%t$9}{ //{ #%n from} $3%b$9}
+
+### Columns ###
+# Syntax: (width)[color]{tag} (width)[color]{tag} (width)[color]{tag}...
 #
-# By default, width is a percentage. If you want a fixed value, add a 'f'
-# after the value. Example: (7) means 7%, (7f) means 7 characters.
+# Width is in %, but you can add a 'f' at the end to turn it into a fixed
+# amount in terminal columns.
 #
-# Color is optional. To use the default color, leave the brackets empty.
+# Color is optional, use [] to use the default terminal color.
 #
-# The tags are the same tags as before. (see Formatting)
+# After the tag, you can add these optional characters:
+#   r - column will be right aligned
+#   E - if tag is empty, do not display empty tag marker
 #
-# Adding the following characters after the tag (but still inside the brackets)
-# will change the column behavior:
-# - r - column will be right aligned
-# - E - if tag is empty, <empty> won't be displayed
+# You can add a custom name to your columns: '{l:Time}'
+# You can define alternate tags to use: '{a|c|p}' will attempt to display
+# artist first, then composer, then performer.
 #
-# Also:
-# - You can change a column's name adding ':TEXT' after the tag, inside the
-#   brackets. eg: {lr:Length} gives you a right aligned column of lengths
-#   named "Length".
-#
-# - You can define fallback tags using |. For instance, {a|c|p} would
-#   show the artist tag. If it's empty, show composer tag instead.
-#   If it's still empty, show performer tag instead.
+song_columns_list_format = (5)[]{l} (15)[cyan]{a} (50)[green]{t|f} (6f)[yellow]{NE} (20)[yellow]{b}
 
-song_columns_list_format = "(7f)[]{l} (25)[cyan]{a} (40)[green]{t|f} (30)[yellow]{b}"
+### Display Modes ###
+playlist_display_mode        = columns
+browser_display_mode         = columns
+search_engine_display_mode   = columns
+playlist_editor_display_mode = columns
 
-# ----- Other Settings
-# Execute a command every time the song changes.
-#execute_on_song_change = ""
+### Progress bar ###
+progressbar_look     = =>
+progressbar_boldness = yes
 
-#playlist_show_remaining_time = "yes"
+### Screens ###
+screen_switcher_mode = playlist, media_library
+startup_screen = media_library
 
-#playlist_shorten_total_times = "no"
+### Others ###
+autocenter_mode = yes
+centered_cursor = yes
 
-# Draw borders between different albums.
-#playlist_separate_albums = "no"
+header_visibility    = no
+statusbar_visibility = yes
+titles_visibility    = yes
 
-# Display modes can be either "classic" or "columns".
-playlist_display_mode = "columns"
-browser_display_mode = "columns"
-search_engine_display_mode = "columns"
-#playlist_editor_display_mode = "classic"
+external_editor = vim
+fetch_lyrics_for_current_song_in_background = yes
 
-#discard_colors_if_item_is_selected = "yes"
+### Colors ###
+# Default, black, red, green, yellow, blue, magenta, cyan, white
+colors_enabled = yes
 
-#incremental_seeking = "yes"
+main_window_color           = default
+main_window_highlight_color = white
+active_column_color         = green
+header_window_color         = default
+volume_color                = default
+state_line_color            = default
+state_flags_color           = default
 
-#seek_time = "1"
+progressbar_color         = black
+progressbar_elapsed_color = green
+statusbar_color           = default
 
-autocenter_mode = "yes"
+window_border_color  = green
+active_window_border = red
 
-centered_cursor = "yes"
+color1 = white
+color2 = green
 
-# You can add a third character for the "unreached" area of the progress bar.
-progressbar_look = "═O"
+visualizer_color = default
 
-#default_place_to_search_in = "database" (database/playlist)
+alternative_ui_separator_color = black
 
-#user_interface = "classic" (classic/alternative)
-
-#media_library_left_column = "a" (possible values: a,y,g,c,p, see Formatting)
-
-#default_find_mode = "wrapped" (wrapped/normal)
-
-#default_space_mode = "add" (add/select)
-
-#default_tag_editor_left_col = "albums" (albums/dirs)
-
-#default_tag_editor_pattern = "%n - %t"
-
-# Shows the current screen and the MPD volume.
-header_visibility = "no"
-
-# Shows song status (song_status_format) and time played/left.
-#statusbar_visibility = "yes"
-
-# Column titles.
-#titles_visibility = "no"
-
-#header_text_scrolling = "yes"
-
-#fancy_scrolling = "yes"
-
-#cyclic_scrolling = "no"
-
-#lines_scrolled = "2"
-
-follow_now_playing_lyrics = "yes"
-
-fetch_lyrics_for_current_song_in_background = "yes"
-
-#store_lyrics_in_song_dir = "no"
-
-# If the following option is set, we try loading artist information from last.fm
-# with this language. If no information is found, we fall back to English.
-# Language has to be expressed as an ISO 639 alpha-2 code.
-#lastfm_preferred_language = ""
-
-#ncmpc_like_songs_adding = "no" (enabled - add/remove, disabled - always add)
-
-#show_hidden_files_in_local_browser = "no"
-
-# Useless if header_visibility is "no".
-#display_screens_numbers_on_start = "yes"
-
-# The following options are available for screen_switcher_mode.
-# - "previous" - switch between current and last used screen
-# - "screen1, screen2, ..., screenN" - switch between given sequence of screens.
-#
-# The screens you can use for the second form are:
-# * help
-# * playlist
-# * browser
-# * search_engine
-# * media_library
-# * playlist_editor
-# * tag_editor
-# * outputs
-# * visualizer
-# * clock
-#
-screen_switcher_mode = playlist, browser, media_library
-
-# The above screens also work for this option.
-startup_screen = "media_library"
-
-# Default width of locked screen (in %).
-# Acceptable values are from 20 to 80.
-#locked_screen_width_part = "50"
-
-#ask_for_locked_screen_width_part = "yes"
-
-#jump_to_now_playing_song_at_start = "yes"
-
-#ask_before_clearing_main_playlist = "no"
-
-#clock_display_seconds = "no"
-
-#display_volume_level = "yes"
-
-#display_bitrate = "no"
-
-# If yes, the time display at the status bar counts down instead of up.
-#display_remaining_time = "yes"
-
-#regular_expressions = "basic" (basic/extended)
-
-# Ignores leading "The"s when sorting, like in "The All-American Rejects"
-ignore_leading_the = "yes"
-
-#block_search_constraints_change_if_items_found = "yes"
-
-#mouse_support = "yes"
-
-#mouse_list_scroll_whole_page = "yes"
-
-#empty_tag_marker = "<empty>"
-
-#tag_editor_extended_numeration = "no"
-
-#media_library_display_date = "yes"
-
-#media_library_display_empty_tag = "yes"
-
-#media_library_disable_two_column_mode = "no"
-
-# Changes the terminal title (or does it?)
-#enable_window_title = "yes"
-
-# Available modes for search engine:
-# - 1: use mpd built-in searching (no regexes, pattern matching)
-# - 2: use ncmpcpp searching (pattern matching with support for regexes)
-#       Not a good idea if using a remote MPD server, as we'll have
-#       to download the database in order to search it.
-# - 3: match only exact values (this mode uses mpd function for searching
-#       in database and local one for searching in current playlist)
-#
-#search_engine_default_search_mode = "1"
-
-# These options can cause data loss: use with care.
-#allow_physical_files_deletion = "no"
-#allow_physical_directories_deletion = "no"
-
-#external_editor = ""
-# If extenal_editor is a terminal application, set to yes.
-#use_console_editor = "no"
-
-# ----- Colors
-# default (terminal fg), black, red, green, yellow, blue, magenta, cyan, white
-colors_enabled = "yes"
-
-main_window_color = "default"
-
-# -- Highlights
-main_window_highlight_color = "default"
-active_column_color = "green"
-
-# -- Header
-header_window_color = "green"
-#volume_color = "default"
-state_line_color = "default"
-#alternative_ui_separator_color = "black"
-
-# -- Footer
-progressbar_color = "green"
-statusbar_color = "default"
-
-# -- Song info, tag editor and search engine
-#color1 = "white"
-#color2 = "green"
-
-# -- Multi-window mode
-#window_border_color = "green"
-#active_window_border = "red"
-
-# -- Others
-empty_tag_color = "red"
-#state_flags_color = "default"
-visualizer_color = "default"
-
+empty_tag_color = yellow
