@@ -1,9 +1,11 @@
+### Swap Pause/Display Mode
 def_key "p"
   pause
 
 def_key "P"
   toggle_display_mode
 
+### Disable Left/Right as Volume
 def_key "right"
   next_column
 
@@ -16,3 +18,12 @@ def_key "left"
 def_key "left"
   master_screen
 
+### Visualizer/Clock Keys
+def_key "8"
+  dummy
+
+def_key "9"
+  show_visualizer
+
+def_key "0"
+  show_clock
