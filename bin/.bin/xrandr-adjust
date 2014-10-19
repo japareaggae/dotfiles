@@ -1,4 +1,5 @@
 #!/bin/sh
+# xrandr-adjust (tidehunter): Enable/disable extended output
 PRI="LVDS"
 EXT="HDMI-0"
 EXTMODE="--mode 1360x768" # replaceable with --auto
