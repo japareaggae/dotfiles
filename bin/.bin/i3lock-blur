@@ -5,7 +5,8 @@
 
 scrot '/tmp/screen.png'
 xset dpms force standby
-convert '/tmp/screen.png' -blur 0x5 '/tmp/screen.png'
+#convert '/tmp/screen.png' -blur 0x2 '/tmp/screen.png'
+convert '/tmp/screen.png' -colorspace Gray '/tmp/screen.png'
 i3lock -i '/tmp/screen.png'
 rm '/tmp/screen.png'
 xset dpms force on
