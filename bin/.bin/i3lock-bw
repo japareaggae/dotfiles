@@ -3,7 +3,7 @@
 # Based on Pato Lankenau's script <http://plankenau.com/blog/post-10/gaussianlock>
 # Licensed under the public domain <http://unlicense.org/UNLICENSE>
 
-scrot '/tmp/screen.png'
+maim '/tmp/screen.png'
 xset dpms force standby
 #convert '/tmp/screen.png' -blur 0x2 '/tmp/screen.png'
 convert '/tmp/screen.png' -colorspace Gray '/tmp/screen.png'
