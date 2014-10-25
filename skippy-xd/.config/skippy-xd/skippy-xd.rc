@@ -47,6 +47,7 @@ pipePath = /tmp/skippy-xd-fifo
 movePointerOnStart = true
 movePointerOnSelect = true
 movePointerOnRaise = true
+switchDesktopOnActivate = false
 useNameWindowPixmap = false
 forceNameWindowPixmap = false
 includeFrame = true
@@ -55,12 +56,12 @@ showAllDesktops = false
 showUnmapped = true
 preferredIconSize = 48
 clientDisplayModes = thumbnail icon filled none
-iconFillSpec = orig mid mid #404040
+iconFillSpec = orig mid mid #00FFFF
 fillSpec = orig mid mid #FFFFFF
-background =
+background = orig mid mid /usr/share/backgrounds/gnome/adwaita-night.jpg
 
 [xinerama]
-showAll = false
+showAll = true
 
 [normal]
 tint = black
@@ -68,7 +69,7 @@ tintOpacity = 0
 opacity = 200
 
 [highlight]
-tint = #101010
+tint = #202020
 tintOpacity = 64
 opacity = 255
 
@@ -83,10 +84,11 @@ background = #404040
 opacity = 128
 text = #ffffff
 textShadow = black
-font = Roboto-9:weight=bold
+font = Cantarell-11:weight=bold
 
 [bindings]
 miwMouse1 = focus
-miwMouse2 = focus
-miwMouse3 = iconify
+miwMouse2 = close-ewmh
+miwMouse3 = focus
 
+# vim: set ft=dosini:
