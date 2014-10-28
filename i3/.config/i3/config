@@ -5,7 +5,7 @@
 set $execb exec --no-startup-id
 
 $execb start-pulseaudio-x11
-$execb /usr/lib/lxpolkit/lxpolkit
+$execb lxpolkit
 $execb dropboxd
 
 $execb compton
