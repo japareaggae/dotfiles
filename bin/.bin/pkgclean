@@ -1,0 +1,67 @@
+#!/bin/sh
+# pkgclean: Removes outdated packages from build directories
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
+# Where do you store your PKGBUILDs?
+DEVDIR="$HOME/Development/vcs-pkgbuilds"
+
+_usage(){
+cat << EOF
+Usage: pkgclean [-d DIRECTORY] (action)
+
+Removes outdated packages from your build directory.
+The default directory is $DEVDIR
+
+  -d DIRECTORY     Scan DIRECTORY instead of default directory.
+
+Actions:
+  viewold          Shows week-old packages.
+  viewall          Shows all packages.
+  clean            Removes week-old packages.
+  purge            Removes all packages.
+
+EOF
+}
+
+# Removes week-old packages or all packages
+_clean(){
+find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n" -delete
+}
+
+_purge(){
+find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n" -delete
+}
+
+_findall(){
+find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n"
+}
+
+_findold(){
+find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n"
+}
+
+if ! [[ $1 ]]; then
+	_usage
+fi
+
+while [[ $1 ]]; do
+	case $1 in
+		-d)
+			shift
+			DIR="$(realpath "$1")"
+			if [[ -d "$DIR" ]]; then
+				DEVDIR=$1
+			else
+				echo "Error: Directory $DIR does not exist"
+				exit 1
+			fi
+			;;
+		purge) _purge ;;
+		clean) _clean ;;
+		viewall)  _findall  ;;
+		viewold)  _findold  ;;
+		*)     _usage ;;
+	esac
+	shift
+done
