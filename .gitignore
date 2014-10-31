@@ -20,3 +20,7 @@ tint2confrc
 
 # newsbeuter
 **/newsbeuter/urls
+
+# pulseaudio
+**/pulse/**
+!**/pulse/default.pa
