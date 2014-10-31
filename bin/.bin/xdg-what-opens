@@ -1,0 +1,35 @@
+#!/bin/sh
+# xdg-what-opens: Check which applications can open a file
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
+if ! [ $# -eq 1 ]; then
+	echo "Usage: $0 file"
+	exit 1
+fi
+
+if ! [ -e "$1" ]; then
+	echo "Error: File does not exist"
+	exit 1
+fi
+
+FT=$(xdg-mime query filetype "$1")
+DEF=$(xdg-mime query default $FT)  # This may be empty
+
+if ! [ -z $DEF ]; then
+	echo "MIME Filetype:       $FT"
+	echo "Default Application: $DEF"
+else
+	echo "MIME Filetype: $FT"
+fi
+
+echo "Candidates:"
+grep -rl "$FT" /usr/share/applications/*.desktop > /dev/null
+if [ $? -eq 1 ]; then
+	# No candidates found
+	echo "* No candidates found"
+else
+	# Found something! Print it
+	grep -rl "$FT" /usr/share/applications/*.desktop | sed 's|/usr/share/applications/|* |'
+fi
+
