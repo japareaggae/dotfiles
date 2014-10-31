@@ -1,0 +1,7 @@
+.include /etc/pulse/default.pa
+
+# Disable muting applications during audio calls
+unload-module module-role-cork
+
+# Enable switching sinks/inputs when they are connected
+load-module module-switch-on-connect
