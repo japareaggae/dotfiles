@@ -13,23 +13,26 @@ if ! [ -e "$1" ]; then
 	exit 1
 fi
 
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
 FT=$(xdg-mime query filetype "$1")
 DEF=$(xdg-mime query default $FT)  # This may be empty
 
-if ! [ -z $DEF ]; then
-	echo "MIME Filetype:       $FT"
-	echo "Default Application: $DEF"
-else
-	echo "MIME Filetype: $FT"
-fi
+echo "Recommended applications for filetype $FT:"
+CANDIDATES=$(grep -rl "$FT" /usr/share/applications/*.desktop)
 
-echo "Candidates:"
-grep -rl "$FT" /usr/share/applications/*.desktop > /dev/null
 if [ $? -eq 1 ]; then
-	# No candidates found
 	echo "* No candidates found"
-else
-	# Found something! Print it
-	grep -rl "$FT" /usr/share/applications/*.desktop | sed 's|/usr/share/applications/|* |'
+	exit
 fi
 
+for CAND in $CANDIDATES; do
+SHORTCAND=$(printf $CAND | sed 's|/usr/share/applications/||')
+	if [ "/usr/share/applications/$DEF" = $CAND ]; then
+		#echo "* $SHORTCAND [default]"
+		printf "${BOLD}* ${SHORTCAND} [default]${RESET}\n"
+	else
+		echo "* $SHORTCAND"
+	fi
+done
