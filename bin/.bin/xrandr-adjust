@@ -1,15 +1,31 @@
 #!/bin/sh
-# xrandr-adjust (tidehunter): Enable/disable extended output
-PRI="LVDS"
-EXT="HDMI-0"
-EXTMODE="--mode 1360x768" # replaceable with --auto
+# xrandr-adjust: Automatically adjust video outputs
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Parts copied from ArchWiki <https://wiki.archlinux.org/index.php/xrandr>
 
-if (xrandr | grep "$EXT connected" > /dev/null); then
-	xrandr --output $PRI --primary --auto \
-		--output $EXT $EXTMODE --right-of $PRI
-else
-	xrandr --output $PRI --auto \
-		--output $EXT --off
+if [ "$HOSTNAME" == "tidehunter" ]; then
+	# tidehunter: Enable/disable extended output
+
+	PRI="LVDS"
+	EXT="HDMI-0"
+	EXTMODE="--mode 1360x768" # replaceable with --auto
+
+	if (xrandr | grep "$EXT connected" > /dev/null); then
+		xrandr --output $PRI --primary --auto \
+			--output $EXT $EXTMODE --right-of $PRI
+	else
+		xrandr --output $PRI --auto \
+			--output $EXT --off
+	fi
+fi
+
+if [ "$HOSTNAME" == "earthshaker" ]; then
+	# earthshaker: Set correct mode on login
+
+	PRI="HDMI3"
+	PRIMODE="1360x768"
+
+	xrandr --output $PRI --mode $PRIMODE
 fi
 
 [ -x $HOME/.fehbg  ] && (sleep 2s; $HOME/.fehbg)
