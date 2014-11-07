@@ -4,7 +4,7 @@
 # Licensed under the public domain <http://unlicense.org/UNLICENSE>
 
 if ! [ $# -eq 1 ]; then
-	echo "Usage: $0 file"
+	echo "Usage: ${0##*/} file"
 	exit 1
 fi
 
