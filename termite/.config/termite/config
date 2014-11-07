@@ -1,5 +1,4 @@
 [options]
-resize_grip = false
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
@@ -34,6 +33,9 @@ foreground = #AAAAAA
 foreground_bold = #FFFFFF
 background = #000000
 #cursor = #dcdccc
+
+# 20% background transparency (requires a compositor)
+#background = rgba(63, 63, 63, 0.8)
 
 # if unset, will reverse foreground and background
 #highlight = #2f2f2f
