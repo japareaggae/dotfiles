@@ -21,6 +21,7 @@
 	f = fetch
 	l = log --graph --decorate --stat --all
 	l10 = log -10 --graph --decorate --stat --all
+	reb = rebase
 	s = status -sb
 
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
