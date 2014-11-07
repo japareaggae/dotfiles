@@ -18,6 +18,7 @@
 	co = checkout
 	d = diff
 	dd = diff --cached
+	f = fetch
 	l = log --graph --decorate --stat --all
 	l10 = log -10 --graph --decorate --stat --all
 	s = status -sb
