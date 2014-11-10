@@ -1,7 +1,7 @@
 #!/bin/sh
 # ponymix-conky - PulseAudio volume status for conky using ponymix
 # Written by Renan Guilherme <japareaggae@gmail.com>
-# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
 
 if ! ( which ponymix > /dev/null )
 then

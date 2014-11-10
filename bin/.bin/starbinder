@@ -1,6 +1,6 @@
 #!/bin/sh
 # Written by Renan Guilherme <japareaggae@gmail.com>
-# Licensed under the Unlicense (http://unlicense.org/UNLICENSE)
+# Released under the public domain <http://unlicense.org/UNLICENSE>
 
 # This is where you store your backups.
 REMOTE="$HOME/Dropbox/Vidya/Starbound/player"

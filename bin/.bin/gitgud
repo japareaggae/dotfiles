@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # git gud - BABBY'S FIRST PYTHON
 # Written by Renan Guilherme <japareaggae@gmail.com>
-# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
 
 from random import randrange
 from webbrowser import open as wbopen

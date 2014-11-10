@@ -1,6 +1,6 @@
 #!/bin/bash
 # Written by Renan Guilherme <japareaggae@gmail.com>
-# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
 
 if [[ ! -e /tmp/sleep-status ]]; then
 	echo "on" > /tmp/sleep-status
