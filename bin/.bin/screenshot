@@ -1,7 +1,10 @@
 #!/bin/bash
 # screenshot - A wrapper for maim
 # Written by Renan Guilherme <japareaggae@gmail.com>
-# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+# Using pure maim commands on i3/config does not work for some reason,
+# so I wrote this.
 
 FOLDER="$HOME/.screenshots"
 FILENAME="$(date +%F_%H-%M-%S).png"
