@@ -1,0 +1,17 @@
+#!/bin/bash
+# screenshot - A wrapper for maim
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Licensed under the public domain <http://unlicense.org/UNLICENSE>
+
+FOLDER="$HOME/.screenshots"
+FILENAME="$(date +%F_%H-%M-%S).png"
+
+CHOICE="$(printf "full\nwindow\narea\n" | dmenu -p 'Screenshot')"
+
+case $CHOICE in
+	full)   maim --hidecursor "$FOLDER/$FILENAME" ;;
+	window) maim -s --hidecursor "$FOLDER/$FILENAME" ;;
+	area)   maim -s -t 0 --hidecursor "$FOLDER/$FILENAME" ;;
+esac
+
+
