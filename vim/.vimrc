@@ -81,10 +81,10 @@ nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
 " -- Tab/Buffer Movement
-nmap <Leader>[ :tabp<CR>
-nmap <Leader>] :tabn<CR>
-nmap <Leader>( :bprevious<CR>
-nmap <Leader>) :bnext<CR>
+nmap <Leader>( :tabp<CR>
+nmap <Leader>) :tabn<CR>
+nmap <Leader>[ :bprevious<CR>
+nmap <Leader>] :bnext<CR>
 
 " -- Hard Mode
 inoremap  <Up>     <NOP>
