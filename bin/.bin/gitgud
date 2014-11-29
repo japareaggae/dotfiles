@@ -9,14 +9,15 @@ from webbrowser import open as wbopen
 # --- gud definitions
 entries = [
     # Songs
-    "http://grooveshark.com/s/Lose+Yourself/1MDPAM",       # Eminem - Lose Yourself
-    "http://chipzel.co.uk/track/spectra",                  # Chipzel - Spectra
-    "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2",  # Blues Brothers - Theme from Rawhide
-    "http://grooveshark.com/s/Danger+Zone/3hRRXq",         # Kenny Loggins - Danger Zone
-    "https://www.youtube.com/watch?v=TeXatquVqAc",         # Naughty by Nature - Here Comes The Money
-    "http://grooveshark.com/s/The+Night/5ehuk8",           # Kromestatik - The Night
-    "http://grooveshark.com/s/The+Game/3o85wE",            # Motörhead - The Game
-    "https://www.youtube.com/watch?v=-cZ7ndjhhps",         # John Cena - The Time Is Now
+    "http://grooveshark.com/s/Lose+Yourself/1MDPAM",        # Eminem - Lose Yourself
+    "http://chipzel.co.uk/track/spectra",                   # Chipzel - Spectra
+    "http://grooveshark.com/s/Theme+From+Rawhide/1V6yJ2",   # Blues Brothers - Theme from Rawhide
+    "http://grooveshark.com/s/Danger+Zone/3hRRXq",          # Kenny Loggins - Danger Zone
+    "https://play.spotify.com/track/2NeHnSFnwNp1Z5WYgcjJ8L" # DMX - X Gonna Give It To Ya
+    "https://www.youtube.com/watch?v=TeXatquVqAc",          # Naughty by Nature - Here Comes The Money
+    "http://grooveshark.com/s/The+Night/5ehuk8",            # Kromestatik - The Night
+    "http://grooveshark.com/s/The+Game/3o85wE",             # Motörhead - The Game
+    "https://www.youtube.com/watch?v=-cZ7ndjhhps",          # John Cena - The Time Is Now
 
     # Soundtracks
     "http://www.youtube.com/watch?v=Vjyhx49BIzc",          # Souleye - Potential for Anything
