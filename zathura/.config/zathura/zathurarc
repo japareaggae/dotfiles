@@ -1,5 +1,6 @@
 # Appearance
-set inputbar-fg "#000000"
+set inputbar-fg "#FFFFFF"
+set inputbar-bg "#000000"
 
 # Keybinds
 map <Space>     navigate next
