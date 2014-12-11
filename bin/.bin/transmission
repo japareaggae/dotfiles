@@ -1,0 +1,15 @@
+#!/bin/sh
+# transmission: wrapper for transmission-remote-cli
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+# You must be running transmission as an user service to use
+# this script.
+
+systemctl --user --quiet is-active transmission
+if [ $? -eq 0 ]; then
+	transmission-remote-cli
+else
+	systemctl --user start transmission
+	transmission-remote-cli
+fi
