@@ -3,18 +3,20 @@
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 # This is where you store your backups.
-REMOTE="$HOME/Dropbox/Vidya/Starbound/player"
+REMOTE_STABLE="$HOME/Dropbox/Vidya/Starbound/player-stable"
+REMOTE_UNSTABLE="$HOME/Dropbox/Vidya/Starbound/player-unstable"
 
 case $(uname -m) in
 	"x86_64") ARCH="linux64" ;;
 	"i686") ARCH="linux32" ;;
 esac
 # This is where Starbound stores it's player data.
-LOCAL="$HOME/.local/share/Steam/SteamApps/common/Starbound/$ARCH/player"
+LOCAL_STABLE="$HOME/.local/share/Steam/steamapps/common/Starbound/$ARCH/player"
+LOCAL_UNSTABLE="$HOME/.local/share/Steam/steamapps/common/Starbound/storage_unstable/player"
 
 _usage(){
 cat << EOF
-Usage: $(basename $0) (import | export)
+Usage: $(basename $0) (stable | unstable) (import | export)
 
 Synchronizes Starbound player data between two folders using rsync.
 This script is not affiliated with Chucklefish.
@@ -22,8 +24,13 @@ This script is not affiliated with Chucklefish.
   import     Copies from REMOTE into LOCAL.
   export     Copies from LOCAL into REMOTE.
 
-Remote: $REMOTE
-Local:  $LOCAL
+Stable
+Remote: $REMOTE_STABLE
+Local:  $LOCAL_STABLE
+
+Unstable
+Remote: $REMOTE_UNSTABLE
+Local:  $LOCAL_UNSTABLE
 EOF
 }
 
@@ -33,8 +40,17 @@ if [ ! $(which rsync) ]; then
 fi
 
 case $1 in
+	stable)
+		LOCAL=$LOCAL_STABLE
+		REMOTE=$REMOTE_STABLE ;;
+	unstable)
+		LOCAL=$LOCAL_UNSTABLE
+		REMOTE=$REMOTE_UNSTABLE ;;
+	*) _usage; exit ;;
+esac
+
+case $2 in
 	export) rsync -avzu $LOCAL/ $REMOTE;;
 	import) rsync -avzu $REMOTE/ $LOCAL;;
-	*) _usage;;
 esac
 
