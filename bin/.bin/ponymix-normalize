@@ -1,0 +1,9 @@
+#!/bin/bash
+# ponymix-normalize: Reset applications' PulseAudio volumes
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+VOLUME="$(ponymix get-volume)"
+for APP in $(ponymix --short -t sink-input list | awk '{print $2}'); do
+	ponymix -t sink-input -d $APP set-volume $VOLUME
+done
