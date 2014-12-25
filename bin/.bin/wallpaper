@@ -1,20 +1,20 @@
 #!/bin/sh
-# wallpaper - change wallpapers using symlinks and feh
+# wallpaper - change wallpapers using symlinks and setroot
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 _usage() {
 cat << EOF
 Usage: $(basename "$0") [options] (filename)
-Links an image to a default location, and sets it as the wallpaper using feh.
+Links an image to a default location, and sets it as the wallpaper using setroot.
 
 Options:
   primary     Image will be the wallpaper for the first monitor (default)
   secondary   Image will be the wallpaper for the second monitor
 
-  fill        Fill the monitor with the image (default)
+  zoom        Fill the monitor with the image (default)
   center      Center the image on the monitor
-  tile        Tile the image on the monitor
+  tiled       Tile the image on the monitor
 EOF
 exit 1
 }
@@ -46,24 +46,24 @@ set_destination(){
 }
 
 # --- Set mode
-MODE="--bg-fill"
+MODE="--zoom"
 MODE_SET=0
 set_mode(){
 	if [[ $MODE_SET != 0 ]]
 	then
 		echo "Error: You can't set more than one mode"
 		exit 1
-	elif [[ $1 == "fill" ]]
+	elif [[ $1 == "zoom" ]]
 	then
-		MODE="--bg-fill"
+		MODE="--zoom"
 		MODE_SET=1
 	elif [[ $1 == "center" ]]
 	then
-		MODE="--bg-center"
+		MODE="--center"
 		MODE_SET=1
-	elif [[ $1 == "tile" ]]
+	elif [[ $1 == "tiled" ]]
 	then
-		MODE="--bg-tile"
+		MODE="--tiled"
 		MODE_SET=1
 	fi
 }
@@ -97,9 +97,9 @@ case $1 in
 	primary)   set_destination primary ;;
 	secondary) set_destination secondary ;;
 
-	fill)      set_mode fill ;;
+	zoom)      set_mode zoom ;;
 	center)    set_mode center ;;
-	tile)      set_mode tile ;;
+	tiled)     set_mode tiled ;;
 
 	*)         set_file "$1" ;;
 esac
@@ -116,5 +116,9 @@ else
 	ln -sf "$FILE" "$DESTINATION"
 fi
 
-# --- Re-execute feh
-feh "$MODE" "$HOME/.wallpaper0" "$HOME/.wallpaper1"
+# --- Re-execute setroot
+if [ -f "$HOME/.wallpaper1" ]; then
+	setroot --store "$MODE" "$HOME/.wallpaper0" "$MODE" "$HOME/.wallpaper1"
+else
+	setroot --store "$MODE" "$HOME/.wallpaper0"
+fi
