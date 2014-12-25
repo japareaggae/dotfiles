@@ -52,5 +52,11 @@ esac
 case $2 in
 	export) rsync -avzu $LOCAL/ $REMOTE;;
 	import) rsync -avzu $REMOTE/ $LOCAL;;
+	check)
+		echo "=== LOCAL ==="
+		ls -l $LOCAL
+		echo "=== REMOTE ==="
+		ls -l $REMOTE
+		;;
 esac
 
