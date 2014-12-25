@@ -28,5 +28,5 @@ if [ "$HOSTNAME" == "earthshaker" ]; then
 	xrandr --output $PRI --mode $PRIMODE
 fi
 
-[ -x $HOME/.fehbg  ] && (sleep 2s; $HOME/.fehbg)
+setroot --restore
 
