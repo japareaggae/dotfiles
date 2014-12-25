@@ -1,0 +1,16 @@
+#!/bin/sh
+
+notify-send -u low \
+	-i dialog-information \
+	"Low Priority" \
+	"This is a low priority notification."
+
+notify-send -u normal \
+	-i dialog-warning \
+	"Normal Priority" \
+	"This is a normal priority notification."
+
+notify-send -u critical \
+	-i dialog-error \
+	"Critical Priority" \
+	"This is an critical priority notification."
