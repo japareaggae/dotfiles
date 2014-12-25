@@ -9,12 +9,18 @@
 FOLDER="$HOME/.screenshots"
 FILENAME="$(date +%F_%H-%M-%S).png"
 
+if (pidof compton > /dev/null); then
+	SLOPOPTS="-l -c 0.5,0.5,0.5,0.5"
+else
+	SLOPOPTS="-b 2"
+fi
+
 CHOICE="$(printf "full\nwindow\narea\n" | dmenu -p 'Screenshot')"
 
 case $CHOICE in
 	full)   maim --hidecursor "$FOLDER/$FILENAME" ;;
-	window) maim -s --hidecursor "$FOLDER/$FILENAME" ;;
-	area)   maim -s -t 0 --hidecursor "$FOLDER/$FILENAME" ;;
+	window) maim -s $SLOPOPTS --hidecursor "$FOLDER/$FILENAME" ;;
+	area)   maim -s $SLOPOPTS -t 0 --hidecursor "$FOLDER/$FILENAME" ;;
 esac
 
 
