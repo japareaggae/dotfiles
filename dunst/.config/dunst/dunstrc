@@ -159,14 +159,14 @@ icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16
 close = ctrl+space
 
 # close all notifications
-close_all = ctrl+shift+space
+close_all = ctrl+mod1+space
 
 # redisplay last message(s)
 # On the US keyboard layout 'grave' is normally above TAB and left of '1'.
-history = ctrl+apostrophe
+history = ctrl+shift+period
 
 # context menu
-context = ctrl+shift+period
+context = ctrl+shift+space
 
 # --- Appearance
 # IMPORTANT: colors have to be defined in quotation marks.
