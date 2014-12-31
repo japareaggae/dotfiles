@@ -75,7 +75,7 @@ bindsym $mod+q layout tabbed
 bindsym $mod+w layout stacking
 bindsym $mod+e layout default
 bindsym $mod+p layout toggle
-#bindsym $mod+f fullscreen
+bindsym $mod+F11 fullscreen
 
 # -- Parent/Child Container
 bindsym $mod+a focus parent
