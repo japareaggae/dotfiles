@@ -198,6 +198,7 @@ bindsym $mod+F6 exec pavucontrol
 # ----- WINDOW RULES
 for_window [class="Steam"] floating enable
 for_window [title="^Steam$"] floating enable
+for_window [class="hl2_linux"] fullscreen
 
 for_window [class="Gcolor3"] floating enable
 for_window [class="Lxpolkit"] floating enable
