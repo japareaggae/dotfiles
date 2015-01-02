@@ -25,8 +25,18 @@ TEXT
 	"color": "\#FFFF40"
 },
 {
-	"full_text": " ${if_up enp3s0}E: ${downspeed enp3s0}/s${else}${if_up wlp0s20u4}W: ${wireless_link_qual_perc wlp0s20u4}% / ${downspeed wlp0s20u4}/s${else}No networks${endif}${endif} ",
-	"color": "${if_up enp3s0}\#40FF40${else}${if_up wlp0s20u4}\#40FF40${else}\#808080${endif}${endif}"
+${if_up enp3s0}
+	"full_text": " E: ${downspeed enp3s0}/s ",
+	"color": "\#40FF40"
+${else}
+${if_up wlp0s20u4}
+	"full_text": " W: ${wireless_link_qual_perc wlp0s20u4}% / ${downspeed wlp0s20u4}/s ",
+	"color": "\#40FF40"
+${else}
+	"full_text": " No networks",
+	"color": "\#808080"
+${endif}
+${endif}
 },
 {
 	"full_text": " ${execi 3 ~/.bin/ponymix-conky} ",
