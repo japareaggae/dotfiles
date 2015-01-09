@@ -13,7 +13,7 @@ DEVICE=$(ponymix | sed -n '2p' -)
 case $DEVICE in
 		*"Headset"*) DEFSINK="Headset";;
 		*"HDMI"*) DEFSINK="HDMI";;
-		*"Analog"*) DEFSINK="Speakers";;
+		*"Analog"*) DEFSINK="Analog";;
 		*) DEFSINK="Unknown";;
 esac
 
