@@ -1,0 +1,16 @@
+#!/bin/bash
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+if [ ! "$1" ]; then
+	echo "Usage: ${0##*/} (file) [file] [file]..."
+fi
+
+while [ "$1" ]; do
+	if [ -f "$1" ]; then
+		convert "$1" "${1%%.*}.webp"
+	else
+		echo "Error: file $1 was not found."
+	fi
+shift
+done
