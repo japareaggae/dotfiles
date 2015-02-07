@@ -133,6 +133,7 @@ titles_visibility    = yes
 
 external_editor = vim
 fetch_lyrics_for_current_song_in_background = yes
+ignore_leading_the = yes
 
 ### Colors ###
 # Default, black, red, green, yellow, blue, magenta, cyan, white
