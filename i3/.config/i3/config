@@ -195,6 +195,9 @@ bindsym XF86AudioLowerVolume $execb ponymix -N decrease 5
 bindsym XF86AudioRaiseVolume $execb ponymix -N increase 5
 bindsym $mod+F6 exec pavucontrol
 
+# -- Skippy-XD
+bindsym $mod+Tab exec skippy-xd
+
 # ----- WINDOW RULES
 for_window [class="Steam"] floating enable
 for_window [title="^Steam$"] floating enable
