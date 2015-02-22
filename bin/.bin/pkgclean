@@ -13,15 +13,17 @@ Usage: pkgclean [-d DIRECTORY] (action)
 Removes outdated packages from your build directory.
 The default directory is $DEVDIR
 
+Options:
   -d DIRECTORY     Scan DIRECTORY instead of default directory.
 
 Actions:
   viewold          Shows week-old packages.
   viewall          Shows all packages.
-  clean            Removes week-old packages.
+  clean            Removes week-old packages. (Default action)
   purge            Removes all packages.
-
+  help             Show this message.
 EOF
+exit
 }
 
 # Removes week-old packages or all packages
@@ -41,10 +43,6 @@ _findold(){
 find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n"
 }
 
-if ! [[ $1 ]]; then
-	_usage
-fi
-
 while [[ $1 ]]; do
 	case $1 in
 		-d)
@@ -61,7 +59,9 @@ while [[ $1 ]]; do
 		clean) _clean ;;
 		viewall)  _findall  ;;
 		viewold)  _findold  ;;
-		*)     _usage ;;
+		help | -h | --help) _usage ;;
+		*) _clean ;;
 	esac
 	shift
 done
+
