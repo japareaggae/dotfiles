@@ -24,3 +24,6 @@ tint2confrc
 # pulseaudio
 **/pulse/**
 !**/pulse/default.pa
+
+# qutebrowser
+**/qutebrowser/quickmarks
