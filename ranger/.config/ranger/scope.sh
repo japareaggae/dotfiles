@@ -71,6 +71,7 @@ case "$extension" in
         ;;
 
     iso)
+        try iso-info --no-header -f "$path" && { dump | trim; exit 0; } || exit 1;
         try isoinfo -f -i "$path" && { dump | trim; exit 0; } || exit 1;
         ;;
 esac
