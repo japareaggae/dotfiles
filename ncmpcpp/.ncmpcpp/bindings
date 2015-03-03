@@ -27,3 +27,10 @@ def_key "9"
 
 def_key "0"
   show_clock
+
+### Lock/Unlock Screen
+def_key "|"
+  toggle_screen_lock
+
+def_key "ctrl_l"
+  dummy
