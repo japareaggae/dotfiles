@@ -18,6 +18,7 @@ RESET=$(tput sgr0)
 
 FT=$(xdg-mime query filetype "$1")
 DEF=$(xdg-mime query default $FT)  # This may be empty
+DEF=${DEF%;}
 
 echo "Recommended applications for filetype $FT:"
 CANDIDATES=$(grep -rl "$FT" /usr/share/applications/*.desktop)
