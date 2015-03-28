@@ -214,8 +214,8 @@ assign [class="Steam"] 9
 assign [class="^Telegram$"] 8
 
 # ----- WORKSPACE RULES
-workspace 9 output HDMI-0
-workspace 10 output HDMI-0
+#workspace 9 output HDMI-0
+#workspace 10 output HDMI-0
 
 # ----- INFORMATION BAR
 bar {
