@@ -22,7 +22,7 @@ fi
 if [ "$HOSTNAME" == "earthshaker" ]; then
 	# earthshaker: Set correct mode on login
 
-	PRI="HDMI3"
+	PRI="HDMI-0"
 	PRIMODE="1360x768"
 
 	xrandr --output $PRI --mode $PRIMODE
