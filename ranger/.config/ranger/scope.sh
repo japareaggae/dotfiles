@@ -69,8 +69,9 @@ case "$extension" in
         ;; # fall back to highlight/cat if the text browsers fail
 
     mp3)
-        try id3v2 -l "$path" && { dump | trim | fmt -s -w $width; exit 0; } || exit 1;
-        ;;
+        try id3v2 -l "$path" && { dump | trim | fmt -s -w $width; exit 0; }
+        try id3info "$path" && { dump | trim | fmt -s -w $width; exit 0; }
+        ;; # fall back to mediainfo
 
     iso)
         try iso-info --no-header -f "$path" && { dump | trim; exit 0; } || exit 1;
