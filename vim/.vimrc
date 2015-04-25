@@ -19,13 +19,6 @@ set confirm
 " ----- Appearance
 syntax on
 
-if $TERM == "linux" || $TERM == "screen"
-	colorscheme default
-else
-	set t_Co=256
-	colorscheme molokai
-endif
-
 set wildmenu
 set wildmode=longest,full
 set number
