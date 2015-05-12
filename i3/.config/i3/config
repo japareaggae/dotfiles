@@ -211,7 +211,7 @@ for_window [instance="crx_gmjdflobmjpeohnoefalpjeocgpdeffo"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
 assign [class="Steam"] 9
-assign [class="^Telegram$"] 8
+assign [class="^telegram$"] 8
 
 # ----- WORKSPACE RULES
 #workspace 9 output HDMI-0
