@@ -34,3 +34,11 @@ def_key "|"
 
 def_key "ctrl_l"
   dummy
+
+## Change Library Primary Tag
+def_key "m"
+  toggle_library_tag_type
+
+def_key "`"
+  dummy
+
