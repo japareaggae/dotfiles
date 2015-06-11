@@ -15,9 +15,7 @@ else
 	SLOPOPTS="-b 2"
 fi
 
-CHOICE="$(printf "full\nwindow\narea\n" | dmenu -p 'Screenshot')"
-
-case $CHOICE in
+case $1 in
 	full)   maim --hidecursor "$FOLDER/$FILENAME" ;;
 	window) maim -s $SLOPOPTS --hidecursor "$FOLDER/$FILENAME" ;;
 	area)   maim -s $SLOPOPTS -t 0 --hidecursor "$FOLDER/$FILENAME" ;;
