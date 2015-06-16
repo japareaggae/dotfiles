@@ -12,7 +12,7 @@ if_up_strictness link
 TEXT
 [
 {
-	"full_text": " ${cpu cpu0}% (${hwmon 1 temp 1}°C / ${execi 3 nvidia-settings -q gpucoretemp -t | head -n1}°C) ",
+	"full_text": " ${cpu cpu0}% (${hwmon 2 temp 1}°C / ${execi 3 nvidia-settings -q gpucoretemp -t | head -n1}°C) ",
 	"color": "\#FF4040"
 },
 {
