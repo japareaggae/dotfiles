@@ -16,7 +16,7 @@ fi
 urxvtd -q -f -o
 
 # --- NVIDIA Settings
-if [ nvidia-settings -v > /dev/null ]; then
+if ( nvidia-settings -v > /dev/null ); then
 	nvidia-settings -l
 fi
 
