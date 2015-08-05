@@ -32,13 +32,11 @@ command=df -hPl / | awk '/\/.*/ {print $3}'
 label=/:
 color=#FFFF40
 
-[iface]
+[wireless]
+command=~/.config/i3blocks/network
+label=W:
 instance=wlp0s20u4
 color=#40FF40
-
-#[bandwidth]
-#instance=wlp0s20u4
-#color=#40FF40
 
 [volume]
 command=~/.config/i3blocks/ponymix-block

@@ -1,0 +1,105 @@
+#!/bin/bash
+# Credits for bandwidth:
+# Copyright (C) 2012 Stefan Breunig <stefan+measure-net-speed@mathphys.fsk.uni-heidelberg.de>
+# Copyright (C) 2014 kaueraal
+# Copyright (C) 2015 Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
+# Credits for iface:
+# Copyright (C) 2014 Julien Bonjean <julien@bonjean.info>
+# Copyright (C) 2014 Alexander Keller <github@nycroth.com>
+# Joined together by:
+# Copyright (C) 2015 Renan Guilherme <japareaggae at gmail dot com>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Use the provided interface, otherwise the device used for the default route.
+if [[ -n $BLOCK_INSTANCE ]]; then
+  INTERFACE=$BLOCK_INSTANCE
+else
+  INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
+fi
+
+# Issue #36 compliant.
+if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ]
+then
+    echo "$INTERFACE down"
+    echo "$INTERFACE down"
+    echo "#808080"
+    exit 0
+fi
+
+### IP Address
+case $1 in
+  -4)
+    AF=inet ;;
+  -6)
+    AF=inet6 ;;
+  *)
+    AF=inet6? ;;
+esac
+
+# if no interface is found, use the first device with a global scope
+IPADDR=$(ip addr show $INTERFACE | perl -n -e "/$AF ([^\/]+).* scope global/ && print \$1 and exit")
+###
+
+### Bandwidth (Download)
+# path to store the old results in
+path="/dev/shm/$(basename $0)-${INTERFACE}"
+
+# grabbing data for each adapter.
+read rx < "/sys/class/net/${INTERFACE}/statistics/rx_bytes"
+
+# get time
+time=$(date +%s)
+
+# write current data if file does not exist. Do not exit, this will cause
+# problems if this file is sourced instead of executed as another process.
+if ! [[ -f "${path}" ]]; then
+  echo "${time} ${rx}" > "${path}"
+  chmod 0666 "${path}"
+fi
+
+# read previous state and update data storage
+read old < "${path}"
+echo "${time} ${rx}" > "${path}"
+
+# parse old data and calc time passed
+old=(${old//;/ })
+time_diff=$(( $time - ${old[0]} ))
+
+# sanity check: has a positive amount of time passed
+[[ "${time_diff}" -gt 0 ]] || exit
+
+# calc bytes transferred, and their rate in byte/s
+rx_diff=$(( $rx - ${old[1]} ))
+rx_rate=$(( $rx_diff / $time_diff ))
+
+# shift by 10 bytes to get KiB/s. If the value is larger than
+# 1024^2 = 1048576, then display MiB/s instead
+
+### Clicking Behavior
+case $BLOCK_BUTTON in
+  3) echo -n "$IPADDR" | xclip -q -se c ;;
+esac
+
+### Output
+echo -n "$IPADDR / "
+rx_kib=$(( $rx_rate >> 10 ))
+if [[ "$rx_rate" -gt 1048576 ]]; then
+  printf '%sMB/s' "`echo "scale=1; $rx_kib / 1024" | bc`"
+else
+  echo -n "${rx_kib}KB/s"
+fi
+
+echo -n " "
+
