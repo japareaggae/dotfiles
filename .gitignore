@@ -28,3 +28,10 @@ tint2confrc
 # qutebrowser
 **/qutebrowser/quickmarks
 **/qutebrowser/qsettings
+
+# mpd
+**/mpd/database
+**/mpd/log
+**/mpd/pid
+**/mpd/state
+**/mpd/sticker.sql
