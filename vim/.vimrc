@@ -53,6 +53,11 @@ augroup filetype_markdown
 	autocmd BufNewFile,BufRead *.md set filetype=markdown colorcolumn=72
 augroup END
 
+augroup filetype_gitcommit
+	autocmd!
+	autocmd FileType gitcommit set colorcolumn=72
+augroup END
+
 " ----- Keybinds
 let mapleader=","
 let g:mapleader=","
