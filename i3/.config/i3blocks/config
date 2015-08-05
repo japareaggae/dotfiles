@@ -40,6 +40,7 @@ color=#40FF40
 
 [volume]
 command=~/.config/i3blocks/ponymix-block
+signal=1
 
 [time]
 command=date '+%Y-%m-%d %H:%M'
