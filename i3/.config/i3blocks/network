@@ -101,5 +101,3 @@ else
   echo -n "${rx_kib}KB/s"
 fi
 
-echo -n " "
-
