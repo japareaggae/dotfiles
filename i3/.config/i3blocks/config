@@ -1,0 +1,50 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+
+### Global properties
+command=/usr/libexec/i3blocks/$BLOCK_NAME
+separator_block_width=16
+interval=3
+
+### Blocks
+[cpu_usage]
+color=#FF4040
+separator=false
+separator_block_width=4
+
+[temperature]
+label=/
+command=/usr/libexec/i3blocks/temperature --chip coretemp-isa-0000
+color=#FF4040
+
+#[nv_temperature]
+#command=~/.config/i3blocks/nvtemp
+#color=#40FF40
+
+[memory]
+command=~/.config/i3blocks/usedmem
+color=#FF8040
+
+[disk]
+command=df -hPl / | awk '/\/.*/ {print $3}'
+label=/:
+color=#FFFF40
+
+[iface]
+instance=wlp0s20u4
+color=#40FF40
+
+#[bandwidth]
+#instance=wlp0s20u4
+#color=#40FF40
+
+[volume]
+command=~/.config/i3blocks/ponymix-block
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+
+# vim: ft=dosini:

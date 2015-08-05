@@ -1,0 +1,6 @@
+#!/bin/sh
+
+FREQ=$(nvidia-settings -q GPUCurrentClockFreqs -t | head -n1 | cut -d, -f1)
+TEMP=$(nvidia-settings -q GPUCoreTemp -t | head -n1)
+
+printf "${FREQ} MHz / ${TEMP}°C"

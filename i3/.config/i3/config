@@ -221,7 +221,7 @@ assign [class="^telegram$"] 8
 
 # ----- INFORMATION BAR
 bar {
-	status_command ~/.config/i3/conky-wrapper
+	status_command i3blocks
 	position top
 	tray_output none
 	font pango:Sans 8
