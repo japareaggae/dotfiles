@@ -42,6 +42,10 @@ color=#40FF40
 command=~/.config/i3blocks/ponymix-block
 signal=1
 
+[mpd]
+command=mpc current
+color=#4040FF
+
 [time]
 command=date '+%Y-%m-%d %H:%M'
 
