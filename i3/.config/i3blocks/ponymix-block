@@ -31,3 +31,6 @@ else
 	echo "#40FFFF"
 fi
 
+if [[ $BLOCK_BUTTON == 1 ]]; then
+	ponymix toggle
+fi
