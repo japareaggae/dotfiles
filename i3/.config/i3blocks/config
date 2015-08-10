@@ -32,6 +32,11 @@ command=df -hPl / | awk '/\/.*/ {print $3}'
 label=/:
 color=#FFFF40
 
+[disk_home]
+command=df -hPl /home | awk '/\/.*/ {print $3}'
+label=/home:
+color=#FFFF40
+
 [wireless]
 command=~/.config/i3blocks/network
 label=W:
