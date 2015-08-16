@@ -13,6 +13,7 @@ fi
 _build(){
 for package in $DEVDIR/*/; do
 	cd "$package"
+	git pull
 	makepkg -sic
 	cd ..
 done
