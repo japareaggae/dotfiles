@@ -50,7 +50,8 @@ set backspace=indent,eol,start
 " -- Markdown
 augroup filetype_markdown
 	autocmd!
-	autocmd BufNewFile,BufRead *.md set filetype=markdown colorcolumn=72
+	autocmd BufNewFile,BufRead *.md set filetype=markdown
+	autocmd FileType markdown set colorcolumn=72
 augroup END
 
 augroup filetype_gitcommit
