@@ -4,26 +4,21 @@
 # Parts copied from ArchWiki <https://wiki.archlinux.org/index.php/xrandr>
 
 if [ "$HOSTNAME" == "tidehunter" ]; then
-	# tidehunter: Enable/disable extended output
-
 	PRI="LVDS"
 	EXT="HDMI-0"
 	EXTMODE="--mode 1360x768" # replaceable with --auto
-
-	if (xrandr | grep "$EXT connected" > /dev/null); then
-		xrandr --output $PRI --primary --auto \
-			--output $EXT $EXTMODE --right-of $PRI
-	else
-		xrandr --output $PRI --auto \
-			--output $EXT --off
-	fi
+else if [ "$HOSTNAME" == "earthshaker" ]; then
+	PRI="DVI-I-1"
+	EXT="HDMI-0"
+	EXTMODE="--mode 1920x1080"
 fi
 
-if [ "$HOSTNAME" == "earthshaker" ]; then
-	# earthshaker: Set correct mode on login
-
-	PRI="HDMI-0"
-	xrandr --output $PRI --auto --primary
+if (xrandr | grep "$EXT connected" > /dev/null); then
+	xrandr --output $PRI --primary --auto \
+		--output $EXT $EXTMODE --right-of $PRI
+else
+	xrandr --output $PRI --auto \
+		--output $EXT --off
 fi
 
 setroot --restore
