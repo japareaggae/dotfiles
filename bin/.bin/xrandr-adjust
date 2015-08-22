@@ -7,7 +7,7 @@ if [ "$HOSTNAME" == "tidehunter" ]; then
 	PRI="LVDS"
 	EXT="HDMI-0"
 	EXTMODE="--mode 1360x768" # replaceable with --auto
-else if [ "$HOSTNAME" == "earthshaker" ]; then
+elif [ "$HOSTNAME" == "earthshaker" ]; then
 	PRI="DVI-I-1"
 	EXT="HDMI-0"
 	EXTMODE="--mode 1920x1080"
