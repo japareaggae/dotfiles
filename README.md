@@ -11,6 +11,12 @@ Important packages
 -----
 * [rxvt-unicode-patched][urxvt-patch]
 
+Minor configurations
+-----
+For Firefox and derivatives: open about:config and set 
+`browser.download.lastDir.savePerSite` as false (create the key
+if necessary)
+
 License
 -----
 Unless otherwise noted, you are free to use, modify, and redistribute
