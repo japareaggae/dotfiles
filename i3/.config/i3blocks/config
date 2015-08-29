@@ -16,7 +16,7 @@ separator_block_width=4
 
 [temperature]
 label=/
-command=/usr/libexec/i3blocks/temperature --chip coretemp-isa-0000
+command=~/.config/i3blocks/temperature --chip coretemp-isa-0000
 color=#FF4040
 
 #[nv_temperature]
