@@ -4,7 +4,7 @@
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 # Where do you store your PKGBUILDs?
-DEVDIR="$HOME/Development/vcs-pkgbuilds"
+DEVDIR="$HOME/Development/pkgbuilds"
 
 _usage(){
 cat << EOF
