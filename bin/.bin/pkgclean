@@ -26,21 +26,30 @@ EOF
 exit
 }
 
-# Removes week-old packages or all packages
+# Cleaning functions
 _clean(){
 find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n" -delete
+}
+
+_cleansources(){
+find $DEVDIR -regextype posix-extended -regex '.*[^pkg][.]tar[.](gz|xz|bz2)' -printf "%f\n" -delete
 }
 
 _purge(){
 find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n" -delete
 }
 
+# Finding functions
 _findall(){
 find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n"
 }
 
 _findold(){
 find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n"
+}
+
+_findsources(){
+find $DEVDIR -regextype posix-extended -regex '.*[^pkg][.]tar[.](gz|xz|bz2)' -printf "%f\n"
 }
 
 [[ ! $1 ]] && _usage
@@ -59,8 +68,10 @@ while [[ $1 ]]; do
 			;;
 		purge) _purge ;;
 		clean) _clean ;;
+		cleansources) _cleansources ;;
 		viewall)  _findall  ;;
 		view)  _findold  ;;
+		viewsources) _findsources ;;
 		help | -h | --help) _usage ;;
 	esac
 	shift
