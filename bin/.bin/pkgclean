@@ -1,6 +1,7 @@
 #!/bin/sh
 # pkgclean: Removes outdated packages from build directories
 # Written by Renan Guilherme <japareaggae@gmail.com>
+# Regex magic by Victor Diniz (https://github.com/blekwave)
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 # Where do you store your PKGBUILDs?
@@ -17,39 +18,32 @@ Options:
   -d DIRECTORY     Scan DIRECTORY instead of default directory.
 
 Actions:
-  view             Shows week-old packages.
-  viewall          Shows all packages.
-  clean            Removes week-old packages.
-  purge            Removes all packages.
-  help             Show this message.
+  view | viewpkgs     View all pacman packages.
+  viewsources         View all source tarballs.
+  viewall             View both pacman packages and source tarballs.
+  clean | cleanpkgs   Clean all pacman packages.
+  cleansources        Clean all source tarballs.
+  cleanall            Clean both pacman packages and source tarballs.
 EOF
 exit
 }
 
 # Cleaning functions
-_clean(){
-find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n" -delete
+_cleanpkgs(){
+find $DEVDIR -iname '*.pkg.tar*' -delete
 }
 
 _cleansources(){
-find $DEVDIR -regextype posix-extended -regex '.*[^pkg][.]tar[.](gz|xz|bz2)' -printf "%f\n" -delete
-}
-
-_purge(){
-find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n" -delete
+find $DEVDIR | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | xargs /bin/rm
 }
 
 # Finding functions
-_findall(){
-find $DEVDIR -iname "*.pkg.tar*" -printf "%f\n"
-}
-
-_findold(){
-find $DEVDIR -iname "*.pkg.tar*" -mtime +7 -printf "%f\n"
+_findpkgs(){
+find $DEVDIR -iname '*.pkg.tar*' | sed "s|$DEVDIR/||g"
 }
 
 _findsources(){
-find $DEVDIR -regextype posix-extended -regex '.*[^pkg][.]tar[.](gz|xz|bz2)' -printf "%f\n"
+find $DEVDIR | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | sed "s|$DEVDIR/||g"
 }
 
 [[ ! $1 ]] && _usage
@@ -66,13 +60,17 @@ while [[ $1 ]]; do
 				exit 1
 			fi
 			;;
-		purge) _purge ;;
-		clean) _clean ;;
-		cleansources) _cleansources ;;
-		viewall)  _findall  ;;
-		view)  _findold  ;;
-		viewsources) _findsources ;;
+
+		cleanall)          _cleanpkgs; _cleansources ;;
+		cleanpkgs | clean) _cleanpkgs ;;
+		cleansources)      _cleansources ;;
+
+		viewall)         _findpkgs; _findsources ;;
+		viewpkgs | view) _findpkgs ;;
+		viewsources)     _findsources ;;
+
 		help | -h | --help) _usage ;;
+		*) _usage ;;
 	esac
 	shift
 done
