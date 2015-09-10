@@ -9,6 +9,7 @@ _getOut(){
 	(pgrep 'i3' > /dev/null) && i3 exit
 	(pgrep 'bspwm' > /dev/null ) && bspc quit
 	(pgrep 'openbox' > /dev/null ) && openbox --exit
+	(pgrep 'sway' > /dev/null ) && pkill sway
 }
 
 case $option in
