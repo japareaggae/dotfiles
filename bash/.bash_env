@@ -13,4 +13,9 @@ export PATH=$HOME/.bin:$PATH
 export ABSROOT="$HOME/Development/abs"
 export ASPROOT="$HOME/Development/asp"
 
+# Qt5 Configuration
+if [ -x /usr/bin/qt5ct ]; then
+	export QT_QPA_PLATFORMTHEME="qt5ct"
+fi
+
 # vim: set ft=sh:
