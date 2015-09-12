@@ -5,3 +5,11 @@ unload-module module-role-cork
 
 # Enable switching sinks/inputs when they are connected
 load-module module-switch-on-connect
+
+# earthshaker: Use the correct HDMI profile for audio
+# Only works if the output is already plugged in when pulse starts
+# TODO: Look for a way to force this?
+# Requires .nofail for tidehunter
+.nofail
+set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo-extra1
+.fail
