@@ -216,7 +216,6 @@ assign [class="Steam"] 9
 assign [class="^[tT]elegram$"] 8
 
 # ----- WORKSPACE RULES
-workspace 8 output HDMI-0
 workspace 9 output HDMI-0
 workspace 10 output HDMI-0
 
