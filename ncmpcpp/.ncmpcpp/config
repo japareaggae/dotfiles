@@ -124,6 +124,8 @@ startup_screen = media_library
 ### Others ###
 user_interface = alternative
 
+media_library_primary_tag = album_artist
+
 autocenter_mode = yes
 centered_cursor = yes
 
