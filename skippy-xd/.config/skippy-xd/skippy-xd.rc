@@ -65,16 +65,16 @@ showAll = true
 
 [normal]
 tint = black
-tintOpacity = 0
+tintOpacity = 96
 opacity = 255
 
 [highlight]
 tint = #202020
-tintOpacity = 64
+tintOpacity = 0
 opacity = 255
 
 [tooltip]
-show = true
+show = false
 followsMouse = true
 offsetX = 20
 offsetY = 20
