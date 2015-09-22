@@ -35,3 +35,5 @@ tint2confrc
 **/mpd/pid
 **/mpd/state
 **/mpd/sticker.sql
+
+**/sxiv/tags
