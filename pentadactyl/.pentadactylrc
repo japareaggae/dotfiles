@@ -1,0 +1,15 @@
+" -- Appearance
+colorscheme kanged
+set guioptions=bCs
+
+" -- Behavior
+set hintkeys=asdfghjkl
+
+" -- Keybinds
+nmap -ex J     :tabnext
+nmap -ex K     :tabprev
+
+nmap -builtin j 5j
+nmap -builtin k 5k
+
+" vim: set ft=vim:
