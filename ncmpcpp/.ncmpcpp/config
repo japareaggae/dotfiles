@@ -114,7 +114,7 @@ search_engine_display_mode   = columns
 playlist_editor_display_mode = columns
 
 ### Progress bar ###
-progressbar_look     = ═>
+progressbar_look     = ═▷
 progressbar_boldness = yes
 
 ### Screens ###
