@@ -60,18 +60,15 @@ augroup filetype_gitcommit
 augroup END
 
 " ----- Keybinds
-let mapleader=","
-let g:mapleader=","
-
 " -- Quick Save
-nmap <Leader>w :w<CR>
+nmap ,w :w<CR>
 
 " -- Toggle Highlight Search
-nmap <Leader>u :set hlsearch!<CR>
+nmap ,u :set hlsearch!<CR>
 
 " -- Copy-Paste
-vmap <Leader>y "+y
-vmap <Leader>p "+p
+vmap ,y "+y
+vmap ,p "+p
 
 " -- Window Movement
 nmap <C-j> <C-W>j
@@ -80,10 +77,10 @@ nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
 " -- Tab/Buffer Movement
-nmap <Leader>( :tabp<CR>
-nmap <Leader>) :tabn<CR>
-nmap <Leader>[ :bprevious<CR>
-nmap <Leader>] :bnext<CR>
+nmap ,( :tabp<CR>
+nmap ,) :tabn<CR>
+nmap ,[ :bprevious<CR>
+nmap ,] :bnext<CR>
 
 " -- Hard Mode
 inoremap  <Up>     <NOP>
