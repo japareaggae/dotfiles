@@ -23,7 +23,7 @@ font pango:Sans 8
 
 # -- Borders
 #new_window normal 1
-new_window pixel 1
+new_window pixel 2
 
 # -- Colors
 # Background is not used if border type is not normal
