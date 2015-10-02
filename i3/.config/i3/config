@@ -204,6 +204,7 @@ bindsym $mod+Tab $execb skippy-xd
 for_window [class="Steam"] floating enable
 for_window [title="^Steam$"] floating enable
 for_window [class="hl2_linux"] fullscreen
+for_window [class="^LethalLeague$"] floating enable
 
 for_window [class="Gcolor3"] floating enable
 for_window [class="Lxpolkit"] floating enable
