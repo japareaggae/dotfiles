@@ -201,8 +201,6 @@ bindsym $mod+F6 exec pavucontrol
 bindsym $mod+Tab $execb skippy-xd
 
 # ----- WINDOW RULES
-for_window [class="Steam"] floating enable
-for_window [title="^Steam$"] floating enable
 for_window [class="hl2_linux"] fullscreen
 for_window [class="^LethalLeague$"] floating enable
 
@@ -213,7 +211,7 @@ for_window [title="File Operation Progress"] floating enable
 for_window [instance="crx_gmjdflobmjpeohnoefalpjeocgpdeffo"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
-assign [class="Steam"] 9
+assign [class="^Steam$"] 9
 assign [class="^[tT]elegram$"] 8
 
 # ----- WORKSPACE RULES
