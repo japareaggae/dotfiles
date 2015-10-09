@@ -3,9 +3,9 @@
 # Based on Pato Lankenau's script <http://plankenau.com/blog/post-10/gaussianlock>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-maim '/tmp/screen.png'
 xset dpms force standby
+maim '/tmp/screen.png'
 convert '/tmp/screen.png' -blur 0x4 '/tmp/screen.png'
-i3lock -i '/tmp/screen.png'
+i3lock -i '/tmp/screen.png' -n
 rm '/tmp/screen.png'
-xset dpms force on
+
