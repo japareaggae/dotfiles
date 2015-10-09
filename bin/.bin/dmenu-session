@@ -7,9 +7,9 @@ option=$( printf "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate\nhy
 
 _getOut(){
 	(pgrep 'i3' > /dev/null) && i3 exit
-	(pgrep 'bspwm' > /dev/null ) && bspc quit
-	(pgrep 'openbox' > /dev/null ) && openbox --exit
-	(pgrep 'sway' > /dev/null ) && pkill sway
+	(pgrep 'bspwm' > /dev/null) && bspc quit
+	(pgrep 'openbox' > /dev/null) && openbox --exit
+	(pgrep 'sway' > /dev/null) && pkill sway
 }
 
 case $option in
