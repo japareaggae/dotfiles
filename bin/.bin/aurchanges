@@ -1,0 +1,16 @@
+#!/bin/sh
+# pkgchanges -- see the git repository for an AUR package
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+_usage(){
+	echo "Usage: $(basename $0) package"
+}
+
+if [ $# -ne 1 ]; then
+	_usage
+	exit 1
+fi
+
+xdg-open "https://aur.archlinux.org/cgit/aur.git/log/?h=$1"
+
