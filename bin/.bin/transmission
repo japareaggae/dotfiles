@@ -6,8 +6,7 @@
 # You must be running transmission as an user service to use
 # this script.
 
-systemctl --user --quiet is-active transmission
-if [ $? -eq 0 ]; then
+if (systemctl --user --quiet is-active transmission); then
 	transmission-remote-cli
 else
 	systemctl --user start transmission
