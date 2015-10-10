@@ -38,6 +38,13 @@ then
     exit 0
 fi
 
+### Type
+case $INTERFACE in
+  en*) TYPE="E" ;;
+  wl*) TYPE="W" ;;
+  *)   TYPE="N" ;;
+esac
+
 ### IP Address
 case $1 in
   -4)
@@ -96,7 +103,7 @@ case $BLOCK_BUTTON in
 esac
 
 ### Output
-echo -n "$IPADDR / "
+echo -n "$TYPE: $IPADDR / "
 # Download
 echo -n "↓"
 rx_kib=$(( $rx_rate >> 10 ))
