@@ -29,6 +29,13 @@ else
   INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
 fi
 
+if [[ -z $INTERFACE ]]
+then
+  echo "No networks"
+  echo "No networks"
+  echo "#808080"
+fi
+
 # Issue #36 compliant.
 if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ]
 then
