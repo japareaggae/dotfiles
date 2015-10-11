@@ -3,7 +3,13 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-VOLUME="$(ponymix get-volume)"
-for APP in $(ponymix --short -t sink-input list | awk '{print $2}'); do
-	ponymix -t sink-input -d $APP set-volume $VOLUME
-done
+if (grep -Eq '^flat-volumes.*?no' /etc/pulse/daemon.conf $HOME/.config/pulse/daemon.conf); then
+	for APP in $(ponymix --short -t sink-input list | awk '{print $2}'); do
+		ponymix -t sink-input -d $APP set-volume 100
+	done
+else
+	VOLUME="$(ponymix get-volume)"
+	for APP in $(ponymix --short -t sink-input list | awk '{print $2}'); do
+		ponymix -t sink-input -d $APP set-volume $VOLUME
+	done
+fi
