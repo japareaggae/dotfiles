@@ -55,10 +55,6 @@ function search(){
 	find "$(pwd)" -iname "*$1*"
 }
 
-function aur(){
-	git clone https://aur.archlinux.org/$1.git ~/Development/pkgbuilds/$1
-}
-
 function updpkgbuild(){
 	git checkout HEAD .
 	git pull
