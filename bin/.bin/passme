@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# based on: https://github.com/cdown/passmenu
+# and: http://jasonwryan.com/blog/2014/08/02/password/
+
+shopt -s nullglob globstar
+dmenucmd=( dmenu -i -p pass )
+
+prefix=${PASSWORD_STORE_DIR:-~/.password-store}
+files=( "$prefix"/**/*.gpg )
+files=( "${files[@]#"$prefix"/}" )
+files=( "${files[@]%.gpg}" )
+fbase=( "${files[@]##*/}" )
+
+word=$(printf '%s\n' "${fbase[@]}" | "${dmenucmd[@]}" "$@")
+
+if [[ -n $word ]]; then
+	for match in "${files[@]}"; do
+		if [[ $word == ${match#*/} ]]; then
+			/usr/bin/pass show -c "$match" 2>/dev/null && \
+				notify-send -i dialog-password \
+				"Copied $match password to clipboard" \
+				"Clearing in ${PASSWORD_STORE_CLIP_TIME:-45} seconds"
+		fi
+	done
+fi
+
