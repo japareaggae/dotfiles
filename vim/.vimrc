@@ -6,12 +6,10 @@ set nocompatible
 
 " ----- General
 set history=100
-set mouse=a
 set autowrite
 set autoread
 set noswapfile
 set nobackup
-set magic
 set ignorecase
 set smartcase
 set confirm
@@ -22,7 +20,6 @@ syntax on
 set wildmenu
 set wildmode=longest,full
 set number
-set ruler
 set cursorline
 set laststatus=2
 set hlsearch
@@ -39,7 +36,7 @@ endif
 
 " ----- Editing
 filetype plugin indent on
-set encoding=utf8
+set encoding=utf-8
 set autoindent
 set smarttab
 set tabstop=4
