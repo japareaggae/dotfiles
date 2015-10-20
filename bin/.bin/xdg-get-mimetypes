@@ -1,0 +1,21 @@
+#!/bin/bash
+# xdg-get-mimetypes: Exports the list of mimetypes an application has
+# registered on their desktop entry. You can then grab the results and
+# paste them to a mimeapps.list file.
+# Read the specification for more details:
+# <http://standards.freedesktop.org/mime-apps-spec/mime-apps-spec-latest.html>
+
+if ! [[ $1 ]]
+then
+	echo "Usage: ${0##*/} <application>"
+	exit 1
+fi
+
+if ! [[ -f "/usr/share/applications/$1.desktop" ]]
+then
+	echo "Desktop entry $1.desktop does not exist on /usr/share/applications"
+	exit 1
+fi
+
+grep MimeType "/usr/share/applications/$1.desktop" | sed "s/^MimeType=//;s/;/=$1.desktop\n/g"
+
