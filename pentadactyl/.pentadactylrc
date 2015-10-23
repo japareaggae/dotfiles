@@ -5,6 +5,9 @@ set guioptions=bCs
 " -- Behavior
 set hintkeys=asdfghjkl
 
+" -- Bypasses
+set passkeys+=feedly.com:jk
+
 " -- Keybinds
 nmap -ex J     :tabnext
 nmap -ex K     :tabprev
