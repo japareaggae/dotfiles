@@ -8,6 +8,6 @@ hi -a StatusLineNormal background: #bbb; color: black;
 " -- Hints
 hi -a Hint       font: bold 12px monospace;
 hi    HintElem   /* do nothing */;
-hi    HintActive /* do nothing */;
+hi    HintActive background-color: rgba(0,255,0,0.3) !important;
 
 " vim: set ft=vim:
