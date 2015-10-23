@@ -6,6 +6,8 @@ hi -a StatusLine       font-weight: normal; padding-right: 6px; padding-left: 6p
 hi -a StatusLineNormal background: #bbb; color: black;
 
 " -- Hints
-hi -a Hint             font: bold 12px monospace;
+hi -a Hint       font: bold 12px monospace;
+hi    HintElem   /* do nothing */;
+hi    HintActive /* do nothing */;
 
 " vim: set ft=vim:
