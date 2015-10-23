@@ -30,11 +30,8 @@ tint2confrc
 **/qutebrowser/qsettings
 
 # mpd
-**/mpd/database
-**/mpd/log
-**/mpd/pid
-**/mpd/state
-**/mpd/sticker.sql
+**/mpd/**
+!**/mpd/mpd.conf
 
 **/sxiv/tags
 
