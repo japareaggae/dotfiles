@@ -12,16 +12,8 @@ _getOut(){
 	(pgrep 'sway' > /dev/null) && pkill sway
 }
 
-_checkLocker(){
-	if (pgrep xss-lock); then
-		xset s activate
-	else
-		$HOME/.bin/i3locker
-	fi
-}
-
 case $option in
-	lock) _checkLocker;;
+	lock) $HOME/.bin/i3locker ;;
 	logout) _getOut;;
 	shutdown) systemctl poweroff;;
 	reboot) systemctl reboot;;
