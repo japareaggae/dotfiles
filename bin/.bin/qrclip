@@ -1,0 +1,4 @@
+#!/bin/bash
+qrencode -s 6 -m 2 "$(xclip -o -sel clip)" -o /tmp/qr.png
+sxiv -b -N "qrencode result" /tmp/qr.png
+rm /tmp/qr.png
