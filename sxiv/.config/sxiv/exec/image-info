@@ -5,6 +5,13 @@
 # with the name of the image file as its first argument.
 # The output is displayed in sxiv's status bar.
 
+### Show the contents of clipboard if the file is from qrclip
+if [[ "$1" == "/tmp/qr.png" ]]; then
+	echo "$(xclip -o -sel clip)"
+	exit
+fi
+
+### Default status bar generator
 s=" | " # field separator
 
 filename=$(basename "$1")
