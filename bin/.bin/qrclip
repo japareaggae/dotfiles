@@ -1,4 +1,6 @@
 #!/bin/bash
 qrencode -s 6 -m 2 "$(xclip -o -sel clip)" -o /tmp/qr.png
-sxiv -N "qrencode result" /tmp/qr.png
+WIDTH=$(( $(identify -format %w /tmp/qr.png) ))
+HEIGHT=$(( $WIDTH + 16 ))
+sxiv -g ${WIDTH}x${HEIGHT} -N "qrencode result" /tmp/qr.png
 rm /tmp/qr.png
