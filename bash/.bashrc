@@ -30,9 +30,17 @@ export LESS_TERMCAP_ue=$(tput sgr0)
 export LESS_TERMCAP_us=$(tput setaf 2)
 
 # --- Prompt
-color=$(tput bold; tput setaf 4)
 creset=$(tput sgr0)
-PS1="\[${color}\][\h] \w\[${creset}\] \$ "
+if [[ $EUID == 0 ]]; then
+	color=$(tput bold; tput setaf 1)
+	PS1="\[${color}\][\u@\h] \w\[${creset}\] \$ "
+elif [[ "$SSH_TTY" ]]; then
+	color=$(tput bold; tput setaf 2)
+	PS1="\[${color}\][\h] \w\[${creset}\] \$ "
+else
+	color=$(tput bold; tput setaf 4)
+	PS1="\[${color}\][\h] \w\[${creset}\] \$ "
+fi
 unset color c_reset
 
 # --- Aliases
