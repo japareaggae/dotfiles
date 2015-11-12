@@ -41,7 +41,7 @@ else
 	color=$(tput bold; tput setaf 4)
 	PS1="\[${color}\][\h] \w\[${creset}\] \$ "
 fi
-unset color c_reset
+unset color creset
 
 # --- Aliases
 alias ..='cd ..'
