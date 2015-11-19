@@ -212,6 +212,7 @@ for_window [instance="qrencode result"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
 assign [class="^Steam$"] 9
+assign [title="^Steam$"] 9
 assign [class="^[tT]elegram$"] 8
 
 # ----- WORKSPACE RULES
