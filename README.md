@@ -9,8 +9,8 @@ these files to your $HOME.
 
 Important patched packages
 -----
-* [rxvt-unicode-patched][urxvt-patch]
-* [gtk3-typeahead][gtk3-ta]
+* [rxvt-unicode-patched][urxvt-patch]: Fixes Xft font spacing
+* [gtk3-typeahead][gtk3-ta]: Adds back type-ahead behavior on file choosers
 
 Minor configurations
 -----
