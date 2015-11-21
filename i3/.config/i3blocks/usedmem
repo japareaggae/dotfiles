@@ -3,4 +3,8 @@
 USEDRAM=$(free -h | awk '/Mem:/ { print $3 }')
 USEDSWAP=$(free -h | awk '/Swap:/ { print $3 }')
 
-printf "$USEDRAM + $USEDSWAP"
+if [[ $USEDSWAP = "0B" ]]; then
+	printf "$USEDRAM\n"
+else
+	printf "$USEDRAM + $USEDSWAP\n"
+fi
