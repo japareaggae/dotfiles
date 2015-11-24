@@ -56,4 +56,5 @@ URxvt.url-select.underline: true
 ! --- rofi
 rofi.font: Monospace 9
 rofi.separator-style: solid
+rofi.padding: 2
 
