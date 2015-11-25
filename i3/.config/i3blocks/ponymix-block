@@ -6,9 +6,8 @@
 if ! ( which ponymix > /dev/null )
 then
 	echo "ponymix not installed?"
-	echo
-	echo "#40FFFF"
-	exit 1
+	echo "?"
+	echo "#808080"
 fi
 
 # Save the cycles!
