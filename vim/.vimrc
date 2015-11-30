@@ -56,6 +56,9 @@ augroup filetype_gitcommit
 	autocmd FileType gitcommit set colorcolumn=72
 augroup END
 
+" ----- Commands
+command Mdconv :! markdown % > /tmp/mdout.html
+
 " ----- Keybinds
 " -- Quick Save
 nmap ,w :w<CR>
