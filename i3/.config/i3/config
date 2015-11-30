@@ -213,9 +213,10 @@ for_window [instance="qrencode result"] floating enable
 assign [class="^TeamSpeak 3$"] 10
 assign [class="^Steam$"] 9
 assign [title="^Steam$"] 9
-assign [class="^[tT]elegram$"] 8
+assign [class="^[tT]elegram$"] 7
 
 # ----- WORKSPACE RULES
+workspace 8 output HDMI-0
 workspace 9 output HDMI-0
 workspace 10 output HDMI-0
 
