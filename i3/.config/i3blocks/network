@@ -106,26 +106,27 @@ tx_rate=$(( $tx_diff / $time_diff ))
 
 ### Clicking Behavior
 case $BLOCK_BUTTON in
-  3) echo -n "$IPADDR" | xclip -q -se c ;;
+  3) printf "$IPADDR" | xclip -q -se c ;;
 esac
 
 ### Output
-echo -n "$TYPE: $IPADDR / "
+printf "$TYPE: $IPADDR / "
 # Download
-echo -n "↓"
+printf "↓"
 rx_kib=$(( $rx_rate >> 10 ))
 if [[ "$rx_rate" -gt 1048576 ]]; then
   printf '%sMB/s' "`echo "scale=1; $rx_kib / 1024" | bc`"
 else
-  echo -n "${rx_kib}KB/s"
+  printf "${rx_kib}KB/s"
 fi
+# Separator
+printf " / "
 # Upload
-echo -n " / "
-echo -n "↑"
+printf "↑"
 tx_kib=$(( $tx_rate >> 10 ))
 if [[ "$tx_rate" -gt 1048576 ]]; then
   printf '%sMB/s' "`echo "scale=1; $tx_kib / 1024" | bc`"
 else
-  echo -n "${tx_kib}KB/s"
+  printf "${tx_kib}KB/s"
 fi
 
