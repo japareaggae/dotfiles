@@ -32,7 +32,7 @@ def_key "0"
 def_key "|"
   toggle_screen_lock
 
-def_key "ctrl_l"
+def_key "ctrl-l"
   dummy
 
 ## Change Library Primary Tag
