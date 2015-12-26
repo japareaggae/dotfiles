@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Example for ~/.sxiv/exec/image-info
+# Example for $XDG_CONFIG_HOME/sxiv/exec/image-info
 # Called by sxiv(1) whenever an image gets loaded,
 # with the name of the image file as its first argument.
 # The output is displayed in sxiv's status bar.
@@ -14,10 +14,10 @@ fi
 ### Default status bar generator
 s=" | " # field separator
 
-filename=$(basename "$1")
-filesize=$(du -Hh "$1" | cut -f 1)
+filename=$(basename -- "$1")
+filesize=$(du -Hh -- "$1" | cut -f 1)
 
-geometry=$(identify -format '%wx%h' "$1[0]")
+geometry=$(identify -format '%wx%h' ":$1[0]")
 
 echo "${filesize}${s}${geometry}${s}${filename}"
 
