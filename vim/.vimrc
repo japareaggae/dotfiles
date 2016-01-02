@@ -57,7 +57,7 @@ augroup filetype_gitcommit
 augroup END
 
 " ----- Commands
-command Mdconv :! markdown % > /tmp/mdout.html
+command Mdconv :! cmark % > /tmp/mdout.html
 
 " ----- Keybinds
 " -- Quick Save
