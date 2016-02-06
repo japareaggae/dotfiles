@@ -56,6 +56,11 @@ augroup filetype_gitcommit
 	autocmd FileType gitcommit set colorcolumn=72
 augroup END
 
+augroup filetype_python
+	autocmd!
+	autocmd FileType python set colorcolumn=80
+augroup END
+
 " ----- Commands
 command Mdconv :! cmark % > /tmp/mdout.html
 
