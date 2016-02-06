@@ -15,6 +15,13 @@ set smartcase
 set confirm
 
 " ----- Appearance
+set background=dark
+let base16colorspace=256
+if $TERM == "xterm-termite"
+	colorscheme base16-atelierforest
+else
+	colorscheme default
+endif
 syntax on
 
 set wildmenu
