@@ -8,6 +8,9 @@ datetime-format %F
 notify-program notify-send
 browser xdg-open
 
+color info white blue bold
+color listfocus white blue bold
+
 bind-key h quit
 bind-key j down
 bind-key k up
