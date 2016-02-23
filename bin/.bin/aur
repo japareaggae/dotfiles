@@ -1,6 +1,7 @@
 #!/bin/bash
 # aur - A basic AUR helper
 # Written by Renan Guilherme <japareaggae@gmail.com>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
 # Inspired by faho's fish script:
 # https://github.com/faho/config/blob/master/fish/.config/fish/functions/aur.fish
 
