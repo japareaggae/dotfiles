@@ -11,6 +11,12 @@ then
 	exit 1
 fi
 
+BOLD="$(tput bold)"
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+CYAN="$(tput setaf 6)"
+RESET="$(tput sgr0)"
+
 _usage(){
 cat << EOF
 Usage: aur (action) (package)
@@ -23,7 +29,7 @@ EOF
 }
 
 _search(){
-	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=4&type=search&arg=$1")"
+	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=search&arg=$1")"
 	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
 	if [[ $RESULTS -eq 0 ]]
 	then
@@ -33,16 +39,23 @@ _search(){
 	NAME=($(printf "$JSON" | jshon -e results -a -e Name -u))
 	readarray -t DESCRIPTION < <(printf "$JSON" | jshon -e results -a -e Description -u)
 	VERSION=($(printf "$JSON" | jshon -e results -a -e Version -u))
+	OOD=($(printf "$JSON" | jshon -e results -a -e OutOfDate -u))
 
 	for PKG in $(seq 0 $(($RESULTS-1)))
 	do
-		printf "${NAME[$PKG]} ${VERSION[$PKG]}\n"
+		if [[ ${OOD[$PKG]} == "null" ]]; then
+			PKG_VERSION="$GREEN${VERSION[$PKG]}"
+		else
+			PKG_VERSION="$RED${VERSION[$PKG]}"
+		fi
+
+		printf "$BOLD${NAME[$PKG]} $PKG_VERSION$RESET\n"
 		printf "    ${DESCRIPTION[$PKG]}\n"
 	done
 }
 
 _info(){
-	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=4&type=info&arg=$1")"
+	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$1")"
 	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
 	if [[ $RESULTS -eq 0 ]]
 	then
@@ -52,18 +65,33 @@ _info(){
 
 	NAME=$(printf "$JSON" | jshon -e results -a -e Name -u)
 	PKGBASE=$(printf "$JSON" | jshon -e results -a -e PackageBase -u)
-	DESCRIPTION="$(printf "$JSON" | jshon -e results -a -e Description -u)"
 	VERSION=$(printf "$JSON" | jshon -e results -a -e Version -u)
+	DESCRIPTION="$(printf "$JSON" | jshon -e results -a -e Description -u)"
+	MAINTAINER="$(printf "$JSON" | jshon -e results -a -e Maintainer -u)"
 	URL=$(printf "$JSON" | jshon -e results -a -e URL -u)
+	VOTES="$(printf "$JSON" | jshon -e results -a -e NumVotes -u)"
+	UPDATED="$(printf "$JSON" | jshon -e results -a -e LastModified -u)"
+
+	OOD="$(printf "$JSON" | jshon -e results -a -e OutOfDate -u)"
+	if [[ "$OOD" == "null" ]]; then
+		VERSION="$BOLD$GREEN$VERSION$RESET"
+	else
+		WHEN="$(date -d @$OOD)"
+		VERSION="$BOLD$RED$VERSION (out of date since $WHEN)$RESET"
+	fi
 
 	cat << EOF
-Name         : $NAME
-Package Base : $PKGBASE
-Version      : $VERSION
-Description  : $DESCRIPTION
-URL          : $URL
-AUR URL      : https://aur.archlinux.org/packages/$NAME
-Clone URL    : https://aur.archlinux.org/$PKGBASE.git
+Name          : $BOLD$NAME$RESET
+Package Base  : $BOLD$PKGBASE$RESET
+Version       : $VERSION
+Description   : $DESCRIPTION
+URL           : ${CYAN}$URL${RESET}
+Maintainer:   : $MAINTAINER
+Votes:        : $VOTES
+Last update   : $(date -d @$UPDATED)
+AUR URL       : ${CYAN}https://aur.archlinux.org/packages/$NAME${RESET}
+AUR Changelog : ${CYAN}https://aur.archlinux.org/cgit/aur.git/log/?h=$PKGBASE${RESET}
+Clone URL     : ${CYAN}https://aur.archlinux.org/$PKGBASE.git${RESET}
 EOF
 }
 
