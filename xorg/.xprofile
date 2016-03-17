@@ -13,10 +13,12 @@ fi
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
 # --- urxvt daemon
-urxvtd -q -f -o
+if ( command -v urxvtd >/dev/null 2>&1 ); then
+	urxvtd -q -f -o
+fi
 
 # --- NVIDIA Settings
-if ( nvidia-settings -v > /dev/null ); then
+if ( command -v nvidia-settings >/dev/null 2>&1 ); then
 	nvidia-settings -l
 fi
 
