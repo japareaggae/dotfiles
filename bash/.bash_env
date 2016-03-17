@@ -8,6 +8,9 @@ export EDITOR=vim
 
 # PATH
 export PATH=$HOME/.bin:$PATH
+if ( type gem > /dev/null 2>&1 ); then
+	export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+fi
 
 # Arch Build System / asp
 export ABSROOT="$HOME/Development/abs"
