@@ -217,7 +217,7 @@ format = "Volume: %p"
 [dota]
 summary = "Matchmaking Status"
 urgency = critical
-script = ~/.config/dunst/dota.sh
+script = /home/japareaggae/.config/dunst/dota.sh
 
 #[espeak]
 #    summary = "*"
