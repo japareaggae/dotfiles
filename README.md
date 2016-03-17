@@ -12,6 +12,10 @@ and paste them into your own configuration. (Be aware that some packages
 are not fully self-contained, for example, the i3 configuration has binds
 for scripts in the bin package.)
 
+Also, you may run into some quirks running these configuration files on
+non-Arch Linux distributions (It must be a pain to get termite running
+on Debian, for example).
+
 Important patched packages
 -----
 
