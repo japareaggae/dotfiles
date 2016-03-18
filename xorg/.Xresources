@@ -28,8 +28,8 @@ URxvt.iso14755_52: false
 URxvt.savelines: 8192
 
 ! Appearance
-URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0000/F800
+!URxvt.depth: 32
+!URxvt.background: rgba:0000/0000/0000/F800
 URxvt.font: xft:DejaVu Sans Mono:size=9
 !URxvt.letterSpace: -2
 
