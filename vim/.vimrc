@@ -68,6 +68,11 @@ augroup filetype_python
 	autocmd FileType python set colorcolumn=80
 augroup END
 
+augroup filetype_latex
+	autocmd!
+	autocmd FileType tex set colorcolumn=80
+augroup END
+
 " ----- Commands
 command Mdconv :! cmark % > /tmp/mdout.html
 
