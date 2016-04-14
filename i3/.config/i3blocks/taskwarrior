@@ -1,0 +1,13 @@
+#!/bin/bash
+
+COUNT="$(task count)"
+
+if ( task priority:H ); then
+	COLOR="#FF8080"
+else
+	COLOR="#808080"
+fi
+
+echo "$COUNT"
+echo "$COUNT"
+echo "$COLOR"
