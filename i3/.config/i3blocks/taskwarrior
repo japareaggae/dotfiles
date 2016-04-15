@@ -1,9 +1,11 @@
 #!/bin/bash
 
-COUNT="$(task count)"
+COUNT="$(task status:pending count)"
 
-if ( task priority:H ); then
-	COLOR="#FF8080"
+if [[ "$(task status:active count)" -gt 0 ]]; then
+	COLOR="#40FF40"
+elif [[ "$(task priority:H status:pending count)" -gt 0 ]]; then
+	COLOR="#FF4040"
 else
 	COLOR="#808080"
 fi
