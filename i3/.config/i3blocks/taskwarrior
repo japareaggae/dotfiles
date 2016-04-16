@@ -1,15 +1,22 @@
 #!/bin/bash
 
+# Get number of pending tasks
 COUNT="$(task status:pending count)"
+SHORTCOUNT=$COUNT
+
+# Get number of due tasks
+DUETASKS="$(task due.before:7day status:pending count)"
 
 if [[ "$(task status:active count)" -gt 0 ]]; then
 	COLOR="#40FF40"
-elif [[ "$(task priority:H status:pending count)" -gt 0 ]]; then
+elif [[ "$(task priority:H status:pending count)" -gt 0 ]] || [[ "$DUETASKS" -gt 0 ]]; then
+	COUNT="$DUETASKS! ($COUNT)"
+	SHORTCOUNT="$DUETASKS"
 	COLOR="#FF4040"
 else
 	COLOR="#808080"
 fi
 
 echo "$COUNT"
-echo "$COUNT"
+echo "$SHORTCOUNT"
 echo "$COLOR"
