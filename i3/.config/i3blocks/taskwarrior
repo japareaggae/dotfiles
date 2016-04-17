@@ -17,6 +17,10 @@ else
 	COLOR="#808080"
 fi
 
-echo "$COUNT"
-echo "$SHORTCOUNT"
-echo "$COLOR"
+if [[ $COUNT -ne 0 ]]; then
+	echo "$COUNT"
+	echo "$SHORTCOUNT"
+	echo "$COLOR"
+else
+	printf "\n\n\n"
+fi
