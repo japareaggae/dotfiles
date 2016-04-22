@@ -16,12 +16,6 @@ Also, you may run into some quirks running these configuration files on
 non-Arch Linux distributions (It must be a pain to get termite running
 on Debian, for example).
 
-Important patched packages
------
-
-* [gtk3-typeahead][gtk3-ta]: Adds back type-ahead behavior on file choosers
-* [rxvt-unicode-patched][urxvt-patch]: Fixes Xft font spacing
-
 Other configurations
 -----
 
@@ -41,5 +35,3 @@ use in any way you want to, including copying, modifying, redistributing
 and publishing.
 
 [gnu-stow]: http://www.gnu.org/software/stow/
-[urxvt-patch]: https://aur.archlinux.org/packages/rxvt-unicode-patched
-[gtk3-ta]: https://aur.archlinux.org/packages/gtk3-typeahead
