@@ -214,11 +214,6 @@ appname = "ponymix"
 urgency = low
 format = "Volume: %p"
 
-[dota]
-summary = "Matchmaking Status"
-urgency = critical
-script = /home/japareaggae/.config/dunst/dota.sh
-
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
