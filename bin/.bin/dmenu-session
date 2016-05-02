@@ -12,8 +12,18 @@ _getOut(){
 	(pgrep 'sway' > /dev/null) && swaymsg exit
 }
 
+_lock(){
+	if [[ $SWAYSOCK ]]; then
+		# sway has it's own locker
+		$HOME/.bin/swaylocker
+	else
+		# i3lock is WM-agnostic enough to use as a catchall
+		$HOME/.bin/i3locker
+	fi
+}
+
 case $option in
-	lock) $HOME/.bin/i3locker ;;
+	lock) _lock ;;
 	logout) _getOut;;
 	shutdown) systemctl poweroff;;
 	reboot) systemctl reboot;;
