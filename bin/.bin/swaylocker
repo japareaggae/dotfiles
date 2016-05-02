@@ -1,0 +1,8 @@
+#!/bin/bash
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Based on Pato Lankenau's script <http://plankenau.com/blog/post-10/gaussianlock>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+swaygrab '/tmp/screen.png'
+convert '/tmp/screen.png' -blur 0x4 '/tmp/screen.png'
+swaylock -i '/tmp/screen.png'
