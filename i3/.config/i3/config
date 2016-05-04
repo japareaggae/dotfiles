@@ -28,10 +28,10 @@ new_window pixel 2
 # -- Colors
 # Background is not used if border type is not normal
 # Class                 Border  Backgr. Text    Indicator
-client.focused          #204060 #204060 #FFFFFF #00AAAA
-client.focused_inactive #202040 #202040 #888888 #006060
-client.unfocused        #333333 #222222 #888888 #292d2e
-client.urgent           #400000 #400000 #FFFFFF #800000
+#client.focused          #204060 #204060 #FFFFFF #00AAAA
+#client.focused_inactive #202040 #202040 #888888 #006060
+#client.unfocused        #333333 #222222 #888888 #292d2e
+#client.urgent           #400000 #400000 #FFFFFF #800000
 
 # ----- KEYBINDINGS
 # -- Modkey
