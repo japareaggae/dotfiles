@@ -17,7 +17,7 @@ else
 	COLOR="#808080"
 fi
 
-if [[ $COUNT -ne 0 ]]; then
+if [[ "$SHORTCOUNT" -ne 0 ]]; then
 	echo "$COUNT"
 	echo "$SHORTCOUNT"
 	echo "$COLOR"
