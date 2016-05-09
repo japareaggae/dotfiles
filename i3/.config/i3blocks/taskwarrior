@@ -2,22 +2,28 @@
 
 # Get number of pending tasks
 COUNT="$(task status:pending count)"
-SHORTCOUNT=$COUNT
 
-# Get number of due tasks
-DUETASKS="$(task due.before:7day status:pending count)"
+if [[ "$COUNT" -ne 0 ]]; then
+	# Save number of tasks for short_text content
+	SHORTCOUNT=$COUNT
+	# Get number of due tasks
+	DUETASKS="$(task +DUE status:pending count)"
 
-if [[ "$(task status:active count)" -gt 0 ]]; then
-	COLOR="#40FF40"
-elif [[ "$(task priority:H status:pending count)" -gt 0 ]] || [[ "$DUETASKS" -gt 0 ]]; then
-	COUNT="$DUETASKS! ($COUNT)"
-	SHORTCOUNT="$DUETASKS"
-	COLOR="#FF4040"
-else
-	COLOR="#808080"
-fi
+	# If a task has high priority or is due, mark as red
+	# FIXME: $DUETASKS may be empty, but we are printing it anyway
+	if [[ "$(task priority:H status:pending count)" -gt 0 ]] || [[ "$DUETASKS" -gt 0 ]]; then
+		COUNT="$DUETASKS! ($COUNT)"
+		SHORTCOUNT="$DUETASKS"
+		COLOR="#FF4040"
+	else
+		COLOR="#808080"
+	fi
 
-if [[ "$SHORTCOUNT" -ne 0 ]]; then
+	# If a task is currently active, change color to green
+	if [[ "$(task +ACTIVE count)" -gt 0 ]]; then
+		COLOR="#40FF40"
+	fi
+
 	echo "$COUNT"
 	echo "$SHORTCOUNT"
 	echo "$COLOR"
