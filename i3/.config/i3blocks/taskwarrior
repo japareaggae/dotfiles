@@ -9,17 +9,19 @@ if [[ "$COUNT" -ne 0 ]]; then
 	# Get number of due tasks
 	DUETASKS="$(task +DUE status:pending count)"
 
-	# If a task has high priority or is due, mark as red
-	# FIXME: $DUETASKS may be empty, but we are printing it anyway
-	if [[ "$(task priority:H status:pending count)" -gt 0 ]] || [[ "$DUETASKS" -gt 0 ]]; then
+	# Change color and text according to due and high priority tasks
+	if [[ "$DUETASKS" -gt 0 ]]; then
 		COUNT="$DUETASKS! ($COUNT)"
 		SHORTCOUNT="$DUETASKS"
 		COLOR="#FF4040"
+	elif [[ "$(task priority:H status:pending count)" -gt 0 ]]; then
+		COUNT="$COUNT!"
+		COLOR="#FFFFFF"
 	else
 		COLOR="#808080"
 	fi
 
-	# If a task is currently active, change color to green
+	# Finally, if a task is currently active, change color to green
 	if [[ "$(task +ACTIVE count)" -gt 0 ]]; then
 		COLOR="#40FF40"
 	fi
