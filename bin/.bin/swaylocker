@@ -6,3 +6,4 @@
 swaygrab '/tmp/screen.png'
 convert '/tmp/screen.png' -blur 0x4 '/tmp/screen.png'
 swaylock -i '/tmp/screen.png'
+rm '/tmp/screen.png'
