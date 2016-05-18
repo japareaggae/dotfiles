@@ -1,0 +1,204 @@
+# sway config file
+# Please read sway(5) for a complete reference!
+
+# ----- AUTOSTARTS
+exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec dropbox
+
+# ----- APPEARANCE
+# -- Font
+font pango:Sans 8
+
+# -- Borders
+new_window pixel 2
+
+# ----- KEYBINDINGS
+# -- Modkey
+# Mod1 = Alt; Mod4 = Super
+set $mod Mod4
+
+# -- Floating Keybinds
+floating_modifier $mod
+bindsym $mod+Shift+n floating toggle
+bindsym $mod+n focus mode_toggle
+
+# -- Focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# -- Moving Windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# -- Splitting Containers
+bindsym $mod+c split h
+bindsym $mod+v split v
+bindsym $mod+o layout toggle split
+
+# -- Changing Container Layout
+bindsym $mod+q layout tabbed
+bindsym $mod+w layout stacking
+bindsym $mod+e layout default
+bindsym $mod+p layout toggle
+bindsym $mod+F11 fullscreen
+
+# -- Parent/Child Container
+bindsym $mod+a focus parent
+bindsym $mod+z focus child
+
+# -- Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
+
+# -- Move container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+9 move container to workspace 10
+
+bindsym $mod+Shift+bracketleft move container to workspace prev_on_output
+bindsym $mod+Shift+bracketright move container to workspace next_on_output
+
+# -- Move containers or workspaces between outputs
+bindsym $mod+period move container to output right
+bindsym $mod+comma move container to output left
+
+bindsym $mod+Shift+period move workspace to output right
+bindsym $mod+Shift+comma move workspace to output left
+
+# -- Kill focused window
+bindsym $mod+Shift+q kill
+
+# -- General Keybinds
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# -- Resize Mode keybinds
+mode "resize" {
+	# These bindings trigger as soon as you enter the resize mode
+	# Left/Right: Shrink/Grow Width
+	# Up/Down: Shrink/Grow Height
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# -- Border
+#bindsym $mod+b border toggle
+
+# -- Scratchpad
+bindsym $mod+Shift+m move scratchpad
+bindsym $mod+m scratchpad show
+
+# ----- APPLICATION KEYBINDS -----
+# -- dmenu (launches programs)
+bindsym $mod+space exec dmenu_run
+bindsym $mod+Shift+space exec i3-dmenu-desktop
+
+# -- Terminal/File Manager
+bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec thunar
+
+# -- Session Menu
+bindsym $mod+Shift+Delete exec ~/.bin/dmenu-session
+
+# -- NetworkManager
+bindsym $mod+F12 exec termite -t "NetworkManager TUI" -e nmtui
+
+# -- Screenshotting
+bindsym Print exec swaygrab "$HOME/.screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
+
+# -- MPD
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioStop exec mpc stop
+
+# -- Brightness
+bindsym XF86MonBrightnessDown exec $HOME/.bin/brightness dec
+bindsym XF86MonBrightnessUp   exec $HOME/.bin/brightness inc
+
+# -- Volume / PulseAudio Volume Control
+bindsym XF86AudioMute exec ponymix toggle
+bindsym XF86AudioLowerVolume exec ponymix -N decrease 5
+bindsym XF86AudioRaiseVolume exec ponymix -N increase 5
+bindsym $mod+F6 exec pavucontrol
+
+# ----- WINDOW RULES
+#for_window [class="Steam"] floating enable
+#for_window [title="^Steam$"] floating enable
+#for_window [class="hl2_linux"] fullscreen
+#
+#for_window [class="Gcolor3"] floating enable
+#for_window [class="Lxpolkit"] floating enable
+#for_window [title="File Operation Progress"] floating enable
+#
+#for_window [instance="crx_gmjdflobmjpeohnoefalpjeocgpdeffo"] floating enable
+#
+#assign [class="Steam"] 9
+assign [class="^TeamSpeak 3$"] 10
+assign [class="^[tT]elegram$"] 7
+
+# ----- INFORMATION BAR
+bar {
+	status_command i3blocks
+	position top
+	tray_output none
+	font pango:Sans 8
+	colors {
+		background #000000
+		separator #202020
+		statusline #ffffff
+		# Class            Border  Backgr. Text
+		focused_workspace  #444444 #444444 #ffffff
+		active_workspace   #444444 #444444 #888888
+		inactive_workspace #000000 #000000 #888888
+		urgent_workspace   #880000 #880000 #ffffff
+	}
+}
+
+# ----- INCLUDES
+include $(hostname).conf
