@@ -9,7 +9,7 @@ if [ "$HOSTNAME" == "tidehunter" ]; then
 	EXTMODE="--mode 1360x768" # replaceable with --auto
 elif [ "$HOSTNAME" == "earthshaker" ]; then
 	PRI="DVI-I-1"
-	EXT="HDMI-0"
+	EXT="HDMI-1"
 	EXTMODE="--mode 1920x1080"
 fi
 
