@@ -214,9 +214,9 @@ assign [class="^TeamSpeak 3$"] 10
 assign [class="^[tT]elegram-desktop$"] 7
 
 # ----- WORKSPACE RULES
-workspace 8 output HDMI-0
-workspace 9 output HDMI-0
-workspace 10 output HDMI-0
+workspace 8 output HDMI-1
+workspace 9 output HDMI-1
+workspace 10 output HDMI-1
 
 # ----- INFORMATION BAR
 bar {
