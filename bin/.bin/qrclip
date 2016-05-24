@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if ! ( xclip -o -sel clip > /dev/null 2>&1 ); then
+	echo "Error: Nothing on clipboard to encode"
+	exit 1
+fi
+
 qrencode -s 6 -m 2 "$(xclip -o -sel clip)" -o /tmp/qr.png
 WIDTH=$(( $(identify -format %w /tmp/qr.png) ))
 HEIGHT=$(( $WIDTH + 16 ))
