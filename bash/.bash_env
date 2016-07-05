@@ -16,6 +16,11 @@ fi
 export ABSROOT="$HOME/Development/abs"
 export ASPROOT="$HOME/Development/asp"
 
+# Qt5 Configuration
+if [ -x /usr/bin/qt5ct ]; then
+	export QT_QPA_PLATFORMTHEME="qt5ct"
+fi
+
 # pass
 export PASSWORD_STORE_CLIP_TIME=15
 
