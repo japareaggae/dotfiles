@@ -185,7 +185,7 @@ workspace 10 output HDMI-A-1
 #
 #assign [class="Steam"] 9
 assign [class="^TeamSpeak 3$"] 10
-assign [class="^[tT]elegram$"] 7
+assign [class="^telegram-desktop$"] 7
 
 # ----- INFORMATION BAR
 bar {
