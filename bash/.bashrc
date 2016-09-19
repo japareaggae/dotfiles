@@ -49,8 +49,9 @@ alias cget="curl -OL -C -"
 alias cview='DISPLAY= cacaview'
 alias grep='grep --color=auto'
 alias ls="ls --color=auto"
-alias l="ls -l --color=auto"
+alias l="ls --color=auto"
 alias la="ls -la --color=auto"
+alias ll="ls -l --color=auto"
 alias lsnew="ls -ltr --color=auto"
 alias lsold="ls -lt --color=auto"
 alias mimecp="cp ~/.config/mimeapps.list ~/.local/share/applications/mimeapps.list"
