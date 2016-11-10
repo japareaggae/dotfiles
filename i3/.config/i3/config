@@ -212,7 +212,7 @@ for_window [title="File Operation Progress"] floating enable
 for_window [instance="qrencode result"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
-assign [class="^[tT]elegram-desktop$"] 7
+assign [class="^TelegramDesktop$"] 7
 
 # ----- WORKSPACE RULES
 workspace 8 output HDMI-1
