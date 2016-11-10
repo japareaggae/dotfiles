@@ -9,4 +9,6 @@
 [[ -x /usr/bin/keychain ]] && eval $(keychain --eval --agents gpg,ssh --quiet --noask)
 
 # -- xorg
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+if [[ -z $DISPLAY ]] && [[ -n $XDG_VTNR ]] && [[ $XDG_VTNR -eq 1 ]]; then
+	exec startx
+fi
