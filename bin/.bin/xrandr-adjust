@@ -1,21 +1,19 @@
 #!/bin/sh
-# xrandr-adjust: Automatically adjust video outputs
+# xrandr-adjust: Automatically extend or disconnect video outputs
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Parts copied from ArchWiki <https://wiki.archlinux.org/index.php/xrandr>
 
 if [ "$HOSTNAME" == "tidehunter" ]; then
 	PRI="LVDS"
 	EXT="HDMI-0"
-	EXTMODE="--mode 1360x768" # replaceable with --auto
 elif [ "$HOSTNAME" == "earthshaker" ]; then
 	PRI="DVI-I-1"
 	EXT="HDMI-1"
-	EXTMODE="--mode 1920x1080"
 fi
 
 if (xrandr | grep "$EXT connected" > /dev/null); then
 	xrandr --output $PRI --primary --auto \
-		--output $EXT $EXTMODE --right-of $PRI
+		--output $EXT --auto --right-of $PRI
 else
 	xrandr --output $PRI --auto \
 		--output $EXT --off
