@@ -17,7 +17,7 @@ export HISTCONTROL='ignoreboth'
 export HISTSIZE=8096
 
 # --- ls colors
-eval $(dircolors ~/.dircolors)
+eval $(dircolors -b ~/.dircolors)
 
 # --- Less colors
 export LESS="-R"
