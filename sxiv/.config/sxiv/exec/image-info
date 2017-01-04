@@ -14,6 +14,12 @@ if [[ "$1" == "/tmp/qr.png" ]]; then
 	exit
 fi
 
+### Show saving reminder for screenshots (see ~/.bin/screenshot)
+if [[ -e "/tmp/screenshot.flag" ]]; then
+	echo "Press <C-x s> to save"
+	exit
+fi
+
 ### Default status bar generator
 s=" | " # field separator
 

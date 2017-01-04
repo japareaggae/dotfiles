@@ -1,0 +1,41 @@
+#!/bin/bash
+# screenshot - automates taking a screenshot and copying it to the clipboard
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+usage(){
+	cat << EOF
+Usage: screenshot (option)
+
+A script for automating taking a screenshot and copying it to the clipboard.
+
+Options:
+  full     Take a screenshot of the entire desktop
+  window   Take a screenshot of a selected window
+  region   Take a screenshot of a selected region
+EOF
+}
+
+FILENAME="/tmp/$(date +%F_%H-%M-%S).png"
+FLAG="/tmp/screenshot.flag"
+
+case "$1" in
+	"full")   COMMAND="maim $FILENAME" ;;
+	"window") COMMAND="maim -s -l -c 0.5,0.5,0.5,0.5 $FILENAME" ;;
+	"region") COMMAND="maim -s -l -c 0.5,0.5,0.5,0.5 -t 0 $FILENAME" ;;
+	"help")   usage; exit 0 ;;
+	*)        echo "Invalid option. Please run \"${0##/} help\"."; exit 1 ;;
+esac
+
+if [[ $COMMAND ]]; then
+	$COMMAND
+	# screenshot.flag can be used by sxiv's image-info and key-handler for
+	# showing special information on the status bar, or for permanently saving
+	# the screenshot outside of /tmp.
+	touch $FLAG
+	xclip -selection clipboard -target image/png -i "$FILENAME"
+	sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
+	rm "$FILENAME"
+	rm "$FLAG"
+fi
+

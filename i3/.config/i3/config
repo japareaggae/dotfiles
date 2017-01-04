@@ -178,9 +178,9 @@ bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 bindsym $mod+F3 $execb ~/.bin/toggle-sleep
 
 # -- Screenshotting
-bindsym --release Print       $execb "maim $HOME/.screenshots/$(date +%F_%H-%M-%S).png"
-bindsym --release Shift+Print $execb "maim -s -l -c 0.5,0.5,0.5,0.5 $HOME/.screenshots/$(date +%F_%H-%M-%S).png"
-bindsym --release $mod+Print  $execb "maim -s -l -c 0.5,0.5,0.5,0.5 -t 0 $HOME/.screenshots/$(date +%F_%H-%M-%S).png"
+bindsym --release Print       $execb ~/.bin/screenshot full
+bindsym --release Shift+Print $execb ~/.bin/screenshot window
+bindsym --release $mod+Print  $execb ~/.bin/screenshot region
 
 # -- MPD
 bindsym XF86AudioPlay $execb mpc toggle
@@ -210,6 +210,7 @@ for_window [class="Lxpolkit"] floating enable
 for_window [title="File Operation Progress"] floating enable
 
 for_window [instance="qrencode result"] floating enable
+for_window [instance="screenshot preview"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
 assign [class="^TelegramDesktop$"] 7
