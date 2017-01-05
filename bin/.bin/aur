@@ -5,7 +5,7 @@
 # Inspired by faho's fish script:
 # https://github.com/faho/config/blob/master/fish/.config/fish/functions/aur.fish
 
-if ! [[ -x /usr/bin/jshon ]]
+if ! ( hash jshon 2> /dev/null )
 then
 	echo "Error: jshon is required to run this script"
 	exit 1
