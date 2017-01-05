@@ -6,6 +6,11 @@ if ! ( xclip -o -sel clip > /dev/null 2>&1 ); then
 fi
 
 qrencode -s 6 -m 2 "$(xclip -o -sel clip)" -o /tmp/qr.png
+
+if [[ "$?" -gt 0 ]]; then
+	exit 1
+fi
+
 WIDTH=$(( $(identify -format %w /tmp/qr.png) ))
 HEIGHT=$(( $WIDTH + 16 ))
 sxiv -g ${WIDTH}x${HEIGHT} -N "qrencode result" /tmp/qr.png
