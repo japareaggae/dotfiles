@@ -3,11 +3,20 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
+# This script uses maim and slop for taking the screenshots:
+# https://github.com/naelstrof/maim
+# https://github.com/naelstrof/slop
+
+# Thanks to derobert @ stackexchange:
+# https://unix.stackexchange.com/a/145134
+
 usage(){
 	cat << EOF
 Usage: screenshot (option)
 
 A script for automating taking a screenshot and copying it to the clipboard.
+This script uses maim (and slop) for taking the screenshots, and xclip for
+copying it to the clipboard.
 
 Options:
   full     Take a screenshot of the entire desktop
@@ -17,6 +26,9 @@ EOF
 }
 
 FILENAME="/tmp/$(date +%F_%H-%M-%S).png"
+# This flag is used so we can tell sxiv's scripts that they are dealing with
+# a screenshot, and show different information on the status bar or provide
+# special keybinds for copying the screenshot to somewhere outside /tmp.
 FLAG="/tmp/screenshot.flag"
 
 case "$1" in
@@ -24,14 +36,11 @@ case "$1" in
 	"window") COMMAND="maim -s -l -c 0.5,0.5,0.5,0.5 $FILENAME" ;;
 	"region") COMMAND="maim -s -l -c 0.5,0.5,0.5,0.5 -t 0 $FILENAME" ;;
 	"help")   usage; exit 0 ;;
-	*)        echo "Invalid option. Please run \"${0##/} help\"."; exit 1 ;;
+	*)        echo "Invalid option. Please run \"${0##*/} help\" for more information."; exit 1 ;;
 esac
 
 if [[ $COMMAND ]]; then
 	$COMMAND
-	# screenshot.flag can be used by sxiv's image-info and key-handler for
-	# showing special information on the status bar, or for permanently saving
-	# the screenshot outside of /tmp.
 	touch $FLAG
 	xclip -selection clipboard -target image/png -i "$FILENAME"
 	sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
