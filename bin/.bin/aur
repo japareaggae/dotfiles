@@ -74,24 +74,24 @@ _info(){
 
 	OOD="$(printf "$JSON" | jshon -e results -a -e OutOfDate -u)"
 	if [[ "$OOD" == "null" ]]; then
-		VERSION="$BOLD$GREEN$VERSION$RESET"
+		VERSION="${BOLD}${GREEN}${VERSION}${RESET}"
 	else
 		WHEN="$(date -d @$OOD)"
-		VERSION="$BOLD$RED$VERSION (out of date since $WHEN)$RESET"
+		VERSION="${BOLD}${RED}${VERSION} (out of date since ${WHEN})${RESET}"
 	fi
 
 	cat << EOF
-Name          : $BOLD$NAME$RESET
-Package Base  : $BOLD$PKGBASE$RESET
-Version       : $VERSION
-Description   : $DESCRIPTION
-URL           : ${CYAN}$URL${RESET}
-Maintainer:   : $MAINTAINER
-Votes:        : $VOTES
-Last update   : $(date -d @$UPDATED)
-AUR URL       : ${CYAN}https://aur.archlinux.org/packages/$NAME${RESET}
-AUR Changelog : ${CYAN}https://aur.archlinux.org/cgit/aur.git/log/?h=$PKGBASE${RESET}
-Clone URL     : ${CYAN}https://aur.archlinux.org/$PKGBASE.git${RESET}
+Name          : ${BOLD}${NAME}${RESET}
+Package Base  : ${BOLD}${PKGBASE}${RESET}
+Version       : ${VERSION}
+Description   : ${DESCRIPTION}
+URL           : ${CYAN}${URL}${RESET}
+Maintainer:   : ${MAINTAINER}
+Votes:        : ${VOTES}
+Last update   : $(date -d @${UPDATED})
+AUR URL       : ${CYAN}https://aur.archlinux.org/packages/${NAME}${RESET}
+AUR Changelog : ${CYAN}https://aur.archlinux.org/cgit/aur.git/log/?h=${PKGBASE}${RESET}
+Clone URL     : ${CYAN}https://aur.archlinux.org/${PKGBASE}.git${RESET}
 EOF
 }
 
