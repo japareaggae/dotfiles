@@ -3,9 +3,14 @@
 # Based on Pato Lankenau's script <http://plankenau.com/blog/post-10/gaussianlock>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-maim '/tmp/screen.png'
+hash maim 2>/dev/null    || { echo "Error: maim is not installed."; exit 1; }
+hash convert 2>/dev/null || { echo "Warning: imagemagick is not installed. Will continue without blur."; }
+
+FILE="/tmp/screen.png"
+
+maim $FILE
 xset dpms force standby
-convert '/tmp/screen.png' -blur 0x4 '/tmp/screen.png'
-i3lock -i '/tmp/screen.png'
-rm '/tmp/screen.png'
+convert $FILE -blur 0x4 $FILE
+i3lock -i $FILE
+rm $FILE
 xset dpms force on
