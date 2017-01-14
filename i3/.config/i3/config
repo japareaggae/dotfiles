@@ -213,6 +213,7 @@ for_window [instance="qrencode result"] floating enable
 for_window [instance="screenshot preview"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
+assign [class="^Steam$"] 9
 assign [class="^TelegramDesktop$"] 7
 
 # ----- WORKSPACE RULES
