@@ -17,6 +17,8 @@ GREEN="$(tput setaf 2)"
 CYAN="$(tput setaf 6)"
 RESET="$(tput sgr0)"
 
+WHERE=${PKGBUILD_DIR:-$HOME/Development/pkgbuilds}
+
 _usage(){
 cat << EOF
 Usage: aur (action) (package)
@@ -96,7 +98,7 @@ EOF
 }
 
 _clone(){
-	git clone https://aur.archlinux.org/$1.git ~/Development/pkgbuilds/$1
+	git clone https://aur.archlinux.org/$1.git $WHERE/$1
 }
 
 case $1 in
