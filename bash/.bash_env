@@ -1,27 +1,32 @@
+#!/bin/bash
 #
-# ~/.bash_env
+# ~/.bash_env -- Bash environment variables
 #
 
 # Preferred Applications
 export EDITOR=vim
-[[ $DISPLAY ]] && export BROWSER=xdg-open
 
-# PATH
-export PATH=$HOME/.bin:$PATH
-if ( type gem > /dev/null 2>&1 ); then
-	export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-fi
-
-# Arch Build System / asp
+# Arch Linux directories
 export ABSROOT="$HOME/Development/abs"
 export ASPROOT="$HOME/Development/asp"
-
-# Qt5 Configuration
-if [ -x /usr/bin/qt5ct ]; then
-	export QT_QPA_PLATFORMTHEME="qt5ct"
-fi
+export PKGBUILD_DIR="$HOME/Development/pkgbuilds"
 
 # pass
 export PASSWORD_STORE_CLIP_TIME=15
 
-# vim: set ft=sh:
+# PATH
+export PATH=$HOME/.bin:$PATH
+if ( hash gem 2>/dev/null ); then
+	export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+fi
+
+# Qt5 Configuration
+if ( hash qt5ct 2> /dev/null ); then
+	export QT_QPA_PLATFORMTHEME="qt5ct"
+fi
+
+# keychain
+if ( hash keychain 2>/dev/null ); then
+	eval $(keychain --eval --agents gpg,ssh --quiet --noask)
+fi
+
