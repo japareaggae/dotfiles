@@ -34,8 +34,8 @@ label=/:
 color=#FFFF40
 
 [disk_home]
-command=df -hPl /home | awk '/\/.*/ {print $3}'
-label=/home:
+command=df -hPl /mnt/hoard | awk '/\/.*/ {print $3}'
+label=/hoard:
 color=#FFFF40
 
 [network]
