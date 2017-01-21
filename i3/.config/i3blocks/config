@@ -51,9 +51,6 @@ signal=1
 command=mpc current
 color=#4080FF
 
-[battery]
-color=#FF80FF
-
 [tasks]
 command=~/.config/i3blocks/taskwarrior
 label=✓
