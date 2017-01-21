@@ -15,9 +15,6 @@ default.tint2rc
 snap.jpg
 tint2confrc
 
-# obmenu-generator
-**/obmenu-generator/icons.db
-
 # newsbeuter
 **/newsbeuter/urls
 
@@ -25,14 +22,12 @@ tint2confrc
 **/pulse/**
 !**/pulse/default.pa
 
-# qutebrowser
-**/qutebrowser/quickmarks
-**/qutebrowser/qsettings
-
 # mpd
 **/mpd/**
 !**/mpd/mpd.conf
 
+# sxiv
 **/sxiv/tags
 
-**/.pentadactyl/info
+# git
+**/git/gitk
