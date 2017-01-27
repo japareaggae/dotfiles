@@ -8,7 +8,7 @@ if [ "$HOSTNAME" == "tidehunter" ]; then
 	EXT="HDMI-0"
 elif [ "$HOSTNAME" == "earthshaker" ]; then
 	PRI="DVI-I-1"
-	EXT="HDMI-1"
+	EXT="HDMI-0"
 fi
 
 if (xrandr | grep "$EXT connected" > /dev/null); then

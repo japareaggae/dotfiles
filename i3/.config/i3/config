@@ -218,9 +218,9 @@ assign [class="^Steam$"] 9
 assign [class="^TelegramDesktop$"] 7
 
 # ----- WORKSPACE RULES
-workspace 8 output HDMI-1
-workspace 9 output HDMI-1
-workspace 10 output HDMI-1
+workspace 8  output HDMI-0
+workspace 9  output HDMI-0
+workspace 10 output HDMI-0
 
 # ----- INFORMATION BAR
 bar {
