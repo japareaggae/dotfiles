@@ -7,7 +7,17 @@
 
 if ! [[ $1 ]]
 then
-	echo "Usage: ${0##*/} <application>"
+	cat << EOF
+Usage: ${0##*/} <application>
+
+${0##*/} exports the list of MIME types a given application is able to
+open, as registered on their desktop file. You can then add the results
+to a mimeapps.list file to set the application as the default for
+opening those MIME types.
+
+The application parameter must match an existing desktop file on
+/usr/share/applications, minus the .desktop extension.
+EOF
 	exit 1
 fi
 
