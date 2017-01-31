@@ -1,14 +1,26 @@
-#!/bin/sh
+#!/bin/bash
 # xdg-what-opens: Check which applications can open a file
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-if ! [ $# -eq 1 ]; then
-	echo "Usage: ${0##*/} file"
+if ! [[ $# -eq 1 ]]; then
+	cat << EOF
+Usage: ${0##*/} (file)
+
+${0##*/} is a script that shows which applications you have installed
+that can open a given file. It will also show which application is the
+default for opening files of the same MIME type. This script requires
+xdg-utils to be installed.
+EOF
 	exit 1
 fi
 
-if ! [ -e "$1" ]; then
+if ! ( hash xdg-utils 2>/dev/null ); then
+	echo "Error: This script requires xdg-utils."
+	exit 1
+fi
+
+if ! [[ -e "$1" ]]; then
 	echo "Error: File does not exist"
 	exit 1
 fi
@@ -23,15 +35,14 @@ DEF=${DEF%;}
 echo "Recommended applications for filetype $FT:"
 CANDIDATES=$(grep -rl "$FT" /usr/share/applications/*.desktop)
 
-if [ $? -eq 1 ]; then
+if [[ $? -eq 1 ]]; then
 	echo "* No candidates found"
 	exit
 fi
 
 for CAND in $CANDIDATES; do
-SHORTCAND=$(printf $CAND | sed 's|/usr/share/applications/||')
-	if [ "/usr/share/applications/$DEF" = $CAND ]; then
-		#echo "* $SHORTCAND [default]"
+	SHORTCAND=$(printf $CAND | sed 's|/usr/share/applications/||')
+	if [[ "/usr/share/applications/$DEF" = $CAND ]]; then
 		printf "${BOLD}* ${SHORTCAND} [default]${RESET}\n"
 	else
 		echo "* $SHORTCAND"
