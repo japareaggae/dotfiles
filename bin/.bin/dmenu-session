@@ -9,6 +9,8 @@ _getOut(){
 	(pgrep 'i3' > /dev/null) && i3 exit
 	(pgrep 'bspwm' > /dev/null) && bspc quit
 	(pgrep 'openbox' > /dev/null) && openbox --exit
+	# For this to work, you need to edit /etc/sway/security and
+	# add the "ipc" context to the "exit" command.
 	(pgrep 'sway' > /dev/null) && swaymsg exit
 }
 
