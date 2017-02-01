@@ -24,9 +24,10 @@ cat << EOF
 Usage: aur (action) (package)
 
 Actions:
-    search - Search for the specified keyword
-    info   - Shows information for specified package
-    clone  - Clones the repository for a package
+    search   - Search for the specified keyword
+    info     - Shows information for specified package
+    clone    - Clones the repository for a package
+    download - Download a snapshot of the package's repository
 EOF
 }
 
@@ -101,10 +102,20 @@ _clone(){
 	git clone https://aur.archlinux.org/$1.git $WHERE/$1
 }
 
+_download(){
+	curl -o $WHERE/$1.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
+	(
+		cd $WHERE
+		tar xvf $1.tar.gz
+		rm $1.tar.gz
+	)
+}
+
 case $1 in
 	"search") shift; _search $1 ;;
 	"info")   shift; _info $1 ;;
 	"clone")  shift; _clone $1 ;;
+	"download") shift; _download $1 ;;
 	*)        _usage ;;
 esac
 
