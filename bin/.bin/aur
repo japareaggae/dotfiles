@@ -76,6 +76,7 @@ _info(){
 	MAINTAINER="$(printf "$JSON" | jshon -e results -a -e Maintainer -u)"
 	URL=$(printf "$JSON" | jshon -e results -a -e URL -u)
 	VOTES="$(printf "$JSON" | jshon -e results -a -e NumVotes -u)"
+	POPULARITY="$(printf "$JSON" | jshon -e results -a -e Popularity -u)"
 	UPDATED="$(printf "$JSON" | jshon -e results -a -e LastModified -u)"
 
 	DEPCOUNT="$(printf "$JSON" | jshon -e results -a -e Depends -l)"
@@ -103,7 +104,7 @@ ${BOLD}Description     ${RESET}: ${DESCRIPTION}
 ${BOLD}URL             ${RESET}: ${CYAN}${URL}${RESET}
 ${BOLD}Dependencies    ${RESET}: ${DEPENDENCIES}
 ${BOLD}Maintainer:     ${RESET}: ${MAINTAINER}
-${BOLD}Votes           ${RESET}: ${VOTES}
+${BOLD}Popularity      ${RESET}: ${POPULARITY} (${VOTES} votes)
 ${BOLD}Last update     ${RESET}: $(date -d @${UPDATED})
 ${BOLD}AUR URL         ${RESET}: ${CYAN}https://aur.archlinux.org/packages/${NAME}${RESET}
 ${BOLD}AUR Changelog   ${RESET}: ${CYAN}https://aur.archlinux.org/cgit/aur.git/log/?h=${PKGBASE}${RESET}
