@@ -5,6 +5,9 @@
 # Inspired by faho's fish script:
 # https://github.com/faho/config/blob/master/fish/.config/fish/functions/aur.fish
 
+# This is probably the world's most disgusting shell script, but it works
+# (sometimes), so it's probably not gonna get cleaned anytime soon.
+
 if ! ( hash jshon 2> /dev/null )
 then
 	echo "Error: jshon is required to run this script"
@@ -75,6 +78,15 @@ _info(){
 	VOTES="$(printf "$JSON" | jshon -e results -a -e NumVotes -u)"
 	UPDATED="$(printf "$JSON" | jshon -e results -a -e LastModified -u)"
 
+	DEPCOUNT="$(printf "$JSON" | jshon -e results -a -e Depends -l)"
+	for i in $(seq $DEPCOUNT); do
+		if [[ $i == 1 ]]; then
+			DEPENDENCIES="$(printf "$JSON" | jshon -e results -a -e Depends -e $(($i - 1)) -u)"
+		else
+			DEPENDENCIES="$DEPENDENCIES $(printf "$JSON" | jshon -e results -a -e Depends -e $(($i - 1)) -u)"
+		fi
+	done
+
 	OOD="$(printf "$JSON" | jshon -e results -a -e OutOfDate -u)"
 	if [[ "$OOD" == "null" ]]; then
 		VERSION="${BOLD}${GREEN}${VERSION}${RESET}"
@@ -84,17 +96,18 @@ _info(){
 	fi
 
 	cat << EOF
-Name          : ${BOLD}${NAME}${RESET}
-Package Base  : ${BOLD}${PKGBASE}${RESET}
-Version       : ${VERSION}
-Description   : ${DESCRIPTION}
-URL           : ${CYAN}${URL}${RESET}
-Maintainer:   : ${MAINTAINER}
-Votes:        : ${VOTES}
-Last update   : $(date -d @${UPDATED})
-AUR URL       : ${CYAN}https://aur.archlinux.org/packages/${NAME}${RESET}
-AUR Changelog : ${CYAN}https://aur.archlinux.org/cgit/aur.git/log/?h=${PKGBASE}${RESET}
-Clone URL     : ${CYAN}https://aur.archlinux.org/${PKGBASE}.git${RESET}
+${BOLD}Name            ${RESET}: ${BOLD}${NAME}${RESET}
+${BOLD}Package Base    ${RESET}: ${BOLD}${PKGBASE}${RESET}
+${BOLD}Version         ${RESET}: ${VERSION}
+${BOLD}Description     ${RESET}: ${DESCRIPTION}
+${BOLD}URL             ${RESET}: ${CYAN}${URL}${RESET}
+${BOLD}Dependencies    ${RESET}: ${DEPENDENCIES}
+${BOLD}Maintainer:     ${RESET}: ${MAINTAINER}
+${BOLD}Votes           ${RESET}: ${VOTES}
+${BOLD}Last update     ${RESET}: $(date -d @${UPDATED})
+${BOLD}AUR URL         ${RESET}: ${CYAN}https://aur.archlinux.org/packages/${NAME}${RESET}
+${BOLD}AUR Changelog   ${RESET}: ${CYAN}https://aur.archlinux.org/cgit/aur.git/log/?h=${PKGBASE}${RESET}
+${BOLD}Clone URL       ${RESET}: ${CYAN}https://aur.archlinux.org/${PKGBASE}.git${RESET}
 EOF
 }
 
