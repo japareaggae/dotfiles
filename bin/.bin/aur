@@ -103,7 +103,7 @@ ${BOLD}Version         ${RESET}: ${VERSION}
 ${BOLD}Description     ${RESET}: ${DESCRIPTION}
 ${BOLD}URL             ${RESET}: ${CYAN}${URL}${RESET}
 ${BOLD}Dependencies    ${RESET}: ${DEPENDENCIES}
-${BOLD}Maintainer:     ${RESET}: ${MAINTAINER}
+${BOLD}Maintainer      ${RESET}: ${MAINTAINER}
 ${BOLD}Popularity      ${RESET}: ${POPULARITY} (${VOTES} votes)
 ${BOLD}Last update     ${RESET}: $(date -d @${UPDATED})
 ${BOLD}AUR URL         ${RESET}: ${CYAN}https://aur.archlinux.org/packages/${NAME}${RESET}
