@@ -1,21 +1,29 @@
-# --- General Configuration
 [global]
 font = Sans 8
 
-# Allow a small subset of html markup in notifications and formats:
-#   <b>bold</b>
-#   <i>italic</i>
-#   <s>strikethrough</s>
-#   <u>underline</u>
+# Possible values are:
+# full: Allow a small subset of html markup in notifications:
+#        <b>bold</b>
+#        <i>italic</i>
+#        <s>strikethrough</s>
+#        <u>underline</u>
 #
-# For a complete reference see
-# <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
-# If markup is not allowed, those tags will be stripped out of the
-# message.
-allow_markup = yes
-
-# Treat incoming notifications as plain text
-plain_text = no
+#        For a complete reference see
+#        <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
+#
+# strip: This setting is provided for compatibility with some broken
+#        clients that send markup even though it's not enabled on the
+#        server. Dunst will try to strip the markup but the parsing is
+#        simplistic so using this option outside of matching rules for
+#        specific applications *IS GREATLY DISCOURAGED*.
+#
+# no:    Disable markup parsing, incoming notifications will be treated as
+#        plain text. Dunst will not advertise that it has the body-markup
+#        capability if this is set as a global setting.
+#
+# It's important to note that markup inside the format option will be parsed
+# regardless of what this is set to.
+markup = full
 
 # The format of the message.  Possible variables are:
 #   %a  appname
@@ -68,7 +76,7 @@ ignore_newline = no
 # the top and down respectively.
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
-geometry = "256x5-6+24"
+geometry = "300x5-6+24"
 
 # Define the title of the windows spawned by dunst
 title = Dunst
@@ -134,13 +142,13 @@ notification_height = 0
 # Draw a line of "separator_height" pixel height between two
 # notifications.
 # Set to 0 to disable.
-separator_height = 1
+separator_height = 2
 
 # Padding between text and separator.
-padding = 8
+padding = 6
 
 # Horizontal padding.
-horizontal_padding = 10
+horizontal_padding = 6
 
 # Define a color for the separator.
 # possible values are:
@@ -168,13 +176,17 @@ icon_position = left
 max_icon_size = 32
 
 # Paths to default icons.
-icon_folders = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/
+icon_folders = /usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/devices/
 
 # Always run rule-defined scripts, even if the notification is suppressed
-always_run_stript = true
+always_run_script = true
 
-# --- Keybinds
+[frame]
+width = 2
+color = "#aaaaaa"
+
 [shortcuts]
+
 # Shortcuts are specified as [modifier+][modifier+]...key
 # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
 # "mod3" and "mod4" (windows-key).
@@ -184,47 +196,43 @@ always_run_stript = true
 close = ctrl+space
 
 # Close all notifications.
-close_all = ctrl+mod1+space
+close_all = ctrl+shift+space
 
 # Redisplay last message(s).
 # On the US keyboard layout "grave" is normally above TAB and left
 # of "1". Make sure this key actually exists on your keyboard layout,
 # e.g. check output of 'xmodmap -pke'
-history = ctrl+shift+period
+history = ctrl+shift+comma
 
-# context menu
-context = ctrl+shift+space
-
-# --- Appearance
-# IMPORTANT: colors have to be defined in quotation marks.
-# Otherwise the '#' and following  would be interpreted as a comment.
-[frame]
-width = 1
-color = "#888888"
+# Context menu.
+context = ctrl+shift+period
 
 [urgency_low]
+# IMPORTANT: colors have to be defined in quotation marks.
+# Otherwise the "#" and following would be interpreted as a comment.
 background = "#222222"
-foreground = "#aaaaaa"
+foreground = "#888888"
+frame_color = "#333333"
 timeout = 10
 # Icon for notifications with low urgency, uncomment to enable
 #icon = /path/to/icon
 
 [urgency_normal]
-background = "#222222"
+background = "#285577"
 foreground = "#ffffff"
+frame_color = "#4C7899"
 timeout = 10
 # Icon for notifications with normal urgency, uncomment to enable
 #icon = /path/to/icon
 
 [urgency_critical]
-background = "#880000"
+background = "#900000"
 foreground = "#ffffff"
-#frame_color = "#ff0000"
+frame_color = "#ff0000"
 timeout = 0
 # Icon for notifications with critical urgency, uncomment to enable
 #icon = /path/to/icon
 
-# --- Application Overrides
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
 # Messages can be matched by "appname", "summary", "body", "icon", "category",
@@ -236,7 +244,7 @@ timeout = 0
 # You can specify a script that gets run when the rule matches by
 # setting the "script" option.
 # The script will be called as follows:
-# script appname summary body icon urgency
+#   script appname summary body icon urgency
 # where urgency can be "LOW", "NORMAL" or "CRITICAL".
 #
 # NOTE: if you don't want a notification to be displayed, set the format
@@ -258,7 +266,7 @@ format = "Volume: %p"
 #    script = dunst_test.sh
 
 #[ignore]
-## This notification will not be displayed
+#    # This notification will not be displayed
 #    summary = "foobar"
 #    format = ""
 
@@ -282,4 +290,4 @@ format = "Volume: %p"
 #    summary = *twitter.com*
 #    urgency = normal
 #
-# vim: set ft=dosini :
+# vim: ft=cfg
