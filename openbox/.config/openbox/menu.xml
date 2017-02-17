@@ -3,7 +3,7 @@
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
 <menu id="root-menu" label="Openbox 3">
-	<item label="termite" icon="/usr/share/icons/gnome/16x16/apps/utilities-terminal.png">
+	<item label="termite" icon="/usr/share/icons/Adwaita/16x16/apps/utilities-terminal.png">
 		<action name="Execute">
 			<command>termite</command>
 		</action>
@@ -20,26 +20,29 @@
 	</item>
 
 	<separator/>
-	<menu id="xdg" label="All Applications" execute="xdg_menu --format openbox3-pipe" icon="/usr/share/icons/gnome/16x16/categories/applications-other.png"/>
+	<menu id="xdg" label="All Applications" execute="xdg_menu --format openbox3-pipe"
+		icon="/usr/share/icons/Adwaita/16x16/categories/applications-other.png"/>
 
 	<separator/>
-	<item label="Reconfigure" icon="/usr/share/icons/gnome/16x16/actions/gtk-refresh.png">
-		<action name="Reconfigure" />
+	<menu id="settings" label="Settings" icon="system-settings">
+		<item label="Reconfigure" icon="/usr/share/icons/Adwaita/16x16/actions/gtk-refresh.png">
+			<action name="Reconfigure" />
+	</menu>
 	</item>
-	<menu id="exit" label="Exit" icon="/usr/share/icons/gnome/16x16/actions/application-exit.png">
-		<item label="Log Out" icon="/usr/share/icons/gnome/16x16/actions/system-log-out.png">
+	<menu id="exit" label="Exit" icon="/usr/share/icons/Adwaita/16x16/actions/application-exit.png">
+		<item label="Log Out" icon="/usr/share/icons/Adwaita/16x16/actions/system-log-out.png">
 			<action name="Exit">
 				<prompt>yes</prompt>
 			</action>
 		</item>
 		<separator/>
-		<item label="Reboot" icon="/usr/share/icons/gnome/16x16/actions/view-refresh.png">
+		<item label="Reboot" icon="/usr/share/icons/Adwaita/16x16/actions/view-refresh.png">
 			<action name="Execute">
 				<prompt>Are you sure you want to reboot the system?</prompt>
 				<command>systemctl reboot</command>
 			</action>
 		</item>
-		<item label="Shutdown" icon="/usr/share/icons/gnome/16x16/actions/system-shutdown.png">
+		<item label="Shutdown" icon="/usr/share/icons/Adwaita/16x16/actions/system-shutdown.png">
 			<action name="Execute">
 				<prompt>Are you sure you want to power off the system?</prompt>
 				<command>systemctl poweroff</command>
