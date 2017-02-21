@@ -1,6 +1,2 @@
-#!/bin/sh
-pacman -Sqg base base-devel | sort > /tmp/base
-pacman -Qqe | sort                 > /tmp/installed
-comm -23 installed base            > /tmp/explicit
-less /tmp/explicit
-rm /tmp/base /tmp/installed /tmp/explicit
+#!/bin/bash
+comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)
