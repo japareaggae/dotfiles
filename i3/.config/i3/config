@@ -204,6 +204,7 @@ bindsym $mod+Tab $execb skippy-xd
 # ----- WINDOW RULES
 for_window [class="hl2_linux"] fullscreen
 for_window [class="^LethalLeague$"] floating enable
+for_window [instance="^LR2body.exe$"] floating enable
 
 for_window [class="Gcolor3"] floating enable
 for_window [class="Lxpolkit"] floating enable
