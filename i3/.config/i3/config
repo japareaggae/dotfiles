@@ -210,6 +210,7 @@ for_window [class="Gcolor3"] floating enable
 for_window [class="Lxpolkit"] floating enable
 for_window [title="File Operation Progress"] floating enable
 for_window [class="Galculator"] floating enable
+for_window [instance="xfce4-appfinder"] floating enable
 
 for_window [instance="qrencode result"] floating enable
 for_window [instance="screenshot preview"] floating enable
