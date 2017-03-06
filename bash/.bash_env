@@ -9,7 +9,7 @@ export EDITOR=vim
 # Arch Linux directories
 export ABSROOT="$HOME/Development/abs"
 export ASPROOT="$HOME/Development/asp"
-export PKGBUILD_DIR="$HOME/Development/pkgbuilds"
+export AURDEST="$HOME/Development/pkgbuilds"
 
 # pass
 export PASSWORD_STORE_CLIP_TIME=15
