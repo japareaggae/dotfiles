@@ -117,8 +117,8 @@ follow = mouse
 # Merge multiple notifications with the same content
 stack_duplicates = true
 
-# Hide count of the merged notifications with the same content
-hide_duplicates_count = false
+# Hide the count of merged notifications with the same content
+hide_duplicate_count = false
 
 # Should a notification popped up from history be sticky or timeout
 # as if it would normally do.
@@ -269,6 +269,11 @@ format = "Volume: %p"
 #    # This notification will not be displayed
 #    summary = "foobar"
 #    format = ""
+
+#[history-ignore]
+#    # This notification will not be saved in history
+#    summary = "foobar"
+#    history_ignore = yes
 
 #[signed_on]
 #    appname = Pidgin
