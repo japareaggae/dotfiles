@@ -158,7 +158,7 @@ bindsym $mod+m scratchpad show
 # ----- APPLICATION KEYBINDS -----
 # -- dmenu (launches programs)
 bindsym $mod+space $execb dmenu_run
-bindsym $mod+Shift+space $execb xfce4-appfinder
+bindsym $mod+Shift+space $execb j4-dmenu-desktop --no-generic
 
 # -- Terminal/File Manager
 bindsym $mod+Return exec termite
