@@ -83,11 +83,11 @@ message_delay_time = 1
 #
 # To end an attribute, add a slash before the letter: '$b%t$/b'
 #
-song_list_format = {[%l] }{{$7%a$9 - }{$3%t$9}}|{%f}$R{#%n - }{$4%b$9}
-song_status_format = {$3%a$9 // }{$3%t$9}{ //{ #%n from} $3%b$9}
+song_list_format = {[%l] }{{$7%a$9 - }{$3%t$9}}|{%f}$R{#{%d-}%n - }{$4%b$9}
+song_status_format = {$3%a$9 // }{$3%t$9}{ //{ #{%d-}%n from} $3%b$9}
 
 alternative_header_first_line_format = $b{%t}|{%f}$/b
-alternative_header_second_line_format = {$3$b%a$/b$9}{ ::{ $4$b#%N$/b$9 from} $7$b%b$/b$9}
+alternative_header_second_line_format = {$3$b%a$/b$9}{ ::{ $4$b#{%d-}%N$/b$9 from} $7$b%b$/b$9}
 
 ### Columns ###
 # Syntax: (width)[color]{tag} (width)[color]{tag} (width)[color]{tag}...
