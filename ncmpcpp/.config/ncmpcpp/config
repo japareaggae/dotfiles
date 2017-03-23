@@ -105,7 +105,7 @@ alternative_header_second_line_format = {$3$b%a$/b$9}{ ::{ $4$b#{%d-}%N$/b$9 fro
 # You can define alternate tags to use: '{a|c|p}' will attempt to display
 # artist first, then composer, then performer.
 #
-song_columns_list_format = (6f)[]{l} (25)[cyan]{a} (40)[green]{t|f} (25)[yellow]{b} (6f)[yellow]{NE}
+song_columns_list_format = (6f)[]{l} (25)[cyan]{a} (40)[green]{t|f} (25)[yellow]{b} (6f)[yellow]{n}
 
 ### Display Modes ###
 playlist_display_mode        = columns
