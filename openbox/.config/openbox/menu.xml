@@ -25,10 +25,13 @@
 
 	<separator/>
 	<menu id="settings" label="Settings" icon="system-settings">
-		<item label="Reconfigure" icon="/usr/share/icons/Adwaita/16x16/actions/gtk-refresh.png">
+		<item label="Reconfigure" icon="/usr/share/icons/Adwaita/16x16/actions/view-refresh.png">
 			<action name="Reconfigure" />
+		</item>
+		<item label="Restart" icon="/usr/share/icons/Adwaita/16x16/actions/view-refresh.png">
+			<action name="Restart" />
+		</item>
 	</menu>
-	</item>
 	<menu id="exit" label="Exit" icon="/usr/share/icons/Adwaita/16x16/actions/application-exit.png">
 		<item label="Log Out" icon="/usr/share/icons/Adwaita/16x16/actions/system-log-out.png">
 			<action name="Exit">
