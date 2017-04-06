@@ -30,3 +30,8 @@ if ( hash keychain 2>/dev/null ); then
 	eval $(keychain --eval --agents gpg,ssh --quiet --noask)
 fi
 
+# VTE
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+	source /etc/profile.d/vte.sh
+fi
+
