@@ -7,8 +7,8 @@ set $execb exec --no-startup-id
 $execb /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 $execb dropbox
 
-$execb compton
 $execb $HOME/.bin/xrandr-adjust
+$execb compton
 
 # Consider using systemd user sessions for autostarting these applications.
 #$execb start-pulseaudio-x11
