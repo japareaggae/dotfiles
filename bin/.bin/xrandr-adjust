@@ -17,7 +17,7 @@ if (xrandr | grep "$EXT connected" > /dev/null); then
 	xrandr --output $PRI --primary --auto \
 		--output $EXT $EXTMODE --right-of $PRI
 else
-	xrandr --output $PRI --auto \
+	xrandr --output $PRI --primary --auto \
 		--output $EXT --off
 fi
 
