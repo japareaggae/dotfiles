@@ -4,7 +4,7 @@
 # Parts copied from ArchWiki <https://wiki.archlinux.org/index.php/xrandr>
 
 if [ "$HOSTNAME" == "tidehunter" ]; then
-	PRI="LVDS"
+	PRI="LVDS-1"
 	EXT="HDMI-0"
 	EXTMODE="--auto"
 elif [ "$HOSTNAME" == "earthshaker" ]; then
