@@ -16,9 +16,6 @@ shopt -s cdspell dirspell extglob checkwinsize
 export HISTCONTROL='ignoreboth'
 export HISTSIZE=8096
 
-# --- ls colors
-eval $(dircolors -b ~/.dircolors)
-
 # --- Less colors
 export LESS="-R"
 export LESS_TERMCAP_mb=$(tput setaf 1)
