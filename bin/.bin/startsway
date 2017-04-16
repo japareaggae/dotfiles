@@ -7,12 +7,10 @@ export XKB_DEFAULT_LAYOUT=br
 export SWAY_CURSOR_THEME=Adwaita
 
 # Force QT and GTK to use Wayland backends
-if [ "$1" = "--force-wayland" ]; then
-	export GDK_BACKEND=wayland
-	export QT_QPA_PLATFORM=wayland-egl
-	export CLUTTER_BACKEND=wayland
-	export SDL_VIDEODRIVER=wayland
-fi
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland-egl
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
 
 # Run sway
 exec sway
