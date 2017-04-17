@@ -15,8 +15,8 @@ EOF
 	exit 1
 fi
 
-if ! ( hash xdg-utils 2>/dev/null ); then
-	echo "Error: This script requires xdg-utils."
+if ! ( hash xdg-mime 2>/dev/null ); then
+	echo "Error: This script requires xdg-mime from xdg-utils."
 	exit 1
 fi
 
