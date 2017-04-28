@@ -8,7 +8,6 @@ export EDITOR=vim
 
 # Arch Linux directories
 export ABSROOT="$HOME/Development/abs"
-export ASPROOT="$HOME/Development/asp"
 export AURDEST="$HOME/Development/pkgbuilds"
 
 # pass
