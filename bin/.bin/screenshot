@@ -41,10 +41,12 @@ esac
 
 if [[ $COMMAND ]]; then
 	$COMMAND
-	touch $FLAG
-	xclip -selection clipboard -target image/png -i "$FILENAME"
-	sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
-	rm "$FILENAME"
-	rm "$FLAG"
+	if [[ $? -eq 0 ]]; then
+		touch $FLAG
+		xclip -selection clipboard -target image/png -i "$FILENAME"
+		sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
+		rm "$FILENAME"
+		rm "$FLAG"
+	fi
 fi
 
