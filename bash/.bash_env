@@ -19,7 +19,8 @@ if ( hash gem 2>/dev/null ); then
 	export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 fi
 if (hash npm 2>/dev/null); then
-	# Don't forget to set "prefix=~/.node_modules" on your .npmrc
+	# Don't forget to set "prefix=~/.node_modules" on your .npmrc, and
+	# use the --global flag when installing things with npm
 	export PATH="$HOME/.node_modules/bin:$PATH"
 fi
 
