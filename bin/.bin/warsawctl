@@ -12,7 +12,7 @@ RESET=$(tput sgr0)
 
 usage(){
 cat << EOF
-Usage: ${0##*/} (start|stop)
+Usage: ${0##*/} (start|stop|status)
 
 ${0##*/} is a script to automate starting and stopping the Warsaw
 banking security system. It can start both the required Warsaw
@@ -22,6 +22,20 @@ helps close both instances after you're finished.
 Warsaw only works with the Firefox browser.
 
 EOF
+}
+
+warsaw_status(){
+	if systemctl --quiet is-active warsaw; then
+		echo "${BOLD}${COLOR_GREEN}==>${RESET} Warsaw system instance is running."
+	else
+		echo "${BOLD}${COLOR_RED}==>${RESET} Warsaw system instance is not running."
+	fi
+
+	if pgrep -u $USER core > /dev/null; then
+		echo "${BOLD}${COLOR_GREEN}==>${RESET} Warsaw user instance is running."
+	else
+		echo "${BOLD}${COLOR_RED}==>${RESET} Warsaw user instance is not running."
+	fi
 }
 
 warsaw_start(){
@@ -75,6 +89,7 @@ fi
 case "$1" in
 	"start") is_firefox_running; warsaw_start ;;
 	"stop")  warsaw_stop ;;
+	"status") warsaw_status ;;
 	*)       usage ;;
 esac
 
