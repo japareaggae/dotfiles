@@ -25,9 +25,7 @@ if (hash npm 2>/dev/null); then
 fi
 
 # Qt5 Configuration
-if [[ -f '/usr/lib/qt/plugins/platformthemes/libqgnomeplatform.so' ]]; then
-	export QT_QPA_PLATFORMTHEME="gnome"
-elif ( hash qt5ct 2> /dev/null ); then
+if ( hash qt5ct 2> /dev/null ); then
 	export QT_QPA_PLATFORMTHEME="qt5ct"
 fi
 
