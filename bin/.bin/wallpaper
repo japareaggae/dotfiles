@@ -1,18 +1,18 @@
 #!/bin/sh
-# wallpaper - change wallpapers using symlinks and setroot
+# wallpaper - change wallpapers using symlinks and feh
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 _usage() {
 cat << EOF
 Usage: $(basename "$0") [options] (filename)
-Links an image to a default location, and sets it as the wallpaper using setroot.
+Links an image to a default location, and sets it as the wallpaper using feh.
 
 Options:
   primary     Image will be the wallpaper for the first monitor (default)
   secondary   Image will be the wallpaper for the second monitor
 
-  zoom        Fill the monitor with the image (default)
+  fill        Fill the monitor with the image (default)
   center      Center the image on the monitor
   tiled       Tile the image on the monitor
 EOF
@@ -46,24 +46,24 @@ set_destination(){
 }
 
 # --- Set mode
-MODE="--zoom"
+MODE="--bg-fill"
 MODE_SET=0
 set_mode(){
 	if [[ $MODE_SET != 0 ]]
 	then
 		echo "Error: You can't set more than one mode"
 		exit 1
-	elif [[ $1 == "zoom" ]]
+	elif [[ $1 == "fill" ]]
 	then
-		MODE="--zoom"
+		MODE="--bg-fill"
 		MODE_SET=1
 	elif [[ $1 == "center" ]]
 	then
-		MODE="--center"
+		MODE="--bg-center"
 		MODE_SET=1
-	elif [[ $1 == "tiled" ]]
+	elif [[ $1 == "tile" ]]
 	then
-		MODE="--tiled"
+		MODE="--bg-tile"
 		MODE_SET=1
 	fi
 }
@@ -97,9 +97,9 @@ case $1 in
 	primary)   set_destination primary ;;
 	secondary) set_destination secondary ;;
 
-	zoom)      set_mode zoom ;;
+	fill)      set_mode fill ;;
 	center)    set_mode center ;;
-	tiled)     set_mode tiled ;;
+	tiled)     set_mode tile ;;
 
 	*)         set_file "$1" ;;
 esac
@@ -116,9 +116,9 @@ else
 	ln -sf "$FILE" "$DESTINATION"
 fi
 
-# --- Re-execute setroot
+# --- Execute feh
 if [ -f "$HOME/.wallpaper1" ]; then
-	setroot --store "$MODE" "$HOME/.wallpaper0" "$MODE" "$HOME/.wallpaper1"
+	feh "$MODE" "$HOME/.wallpaper0" "$MODE" "$HOME/.wallpaper1"
 else
-	setroot --store "$MODE" "$HOME/.wallpaper0"
+	feh "$MODE" "$HOME/.wallpaper0"
 fi
