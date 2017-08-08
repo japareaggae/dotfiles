@@ -242,6 +242,11 @@
 	</keybind>
 	<keybind key="W-space">
 		<action name="Execute">
+			<command>j4-dmenu-desktop</command>
+		</action>
+	</keybind>
+	<keybind key="W-S-space">
+		<action name="Execute">
 			<command>dmenu_run</command>
 		</action>
 	</keybind>
