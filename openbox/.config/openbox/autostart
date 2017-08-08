@@ -1,5 +1,6 @@
 # autostart: Programs to run when starting Openbox
 
-tint2 &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 compton &
+xfce4-panel &
 xrandr-adjust &
