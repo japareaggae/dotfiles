@@ -255,6 +255,27 @@
 			<command>dmenu-session</command>
 		</action>
 	</keybind>
+	<keybind key="W-Tab">
+		<action name="Execute">
+			<command>skippy-xd</command>
+		</action>
+	</keybind>
+
+	<keybind key="Print">
+		<action name="Execute">
+			<command>screenshot</command>
+		</action>
+	</keybind>
+	<keybind key="S-Print">
+		<action name="Execute">
+			<command>screenshot window</command>
+		</action>
+	</keybind>
+	<keybind key="W-Print">
+		<action name="Execute">
+			<command>screenshot region</command>
+		</action>
+	</keybind>
 </keyboard>
 
 <mouse>
