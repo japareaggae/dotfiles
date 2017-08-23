@@ -4,6 +4,7 @@
 # ----- AUTOSTARTS
 set $execb exec --no-startup-id
 
+$execb light-locker
 $execb /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 $execb dropbox
 
