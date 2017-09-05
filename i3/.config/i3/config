@@ -10,6 +10,7 @@ $execb dropbox
 
 $execb $HOME/.bin/xrandr-adjust
 $execb compton
+$execb xfce4-clipman
 
 # Consider using systemd user sessions for autostarting these applications.
 #$execb start-pulseaudio-x11
