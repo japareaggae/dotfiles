@@ -2,5 +2,6 @@
 
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 compton &
-xfce4-panel &
+tint2 &
+volumeicon &
 xrandr-adjust &

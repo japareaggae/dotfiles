@@ -31,3 +31,6 @@ tint2confrc
 
 # git
 **/git/gitk
+
+**/obmenu-generator/icons
+**/obmenu-generator/cache.db
