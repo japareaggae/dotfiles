@@ -53,34 +53,31 @@ our $SCHEMA = [
     {cat => ['settings',    'Settings',    'applications-accessories']},
     {cat => ['system',      'System',      'applications-system']},
 
-    ## Custom advanced settings
+    ## Settings
     {sep       => 'Settings'},
-    {beg => ['Advanced Settings', 'applications-engineering']},
-
-      # Configuration files
-      {item => ["$editor ~/.config/tint2/tint2rc", 'Tint2 Panel', 'text-x-generic']},
-
-      # obmenu-generator category
-      {beg => ['Obmenu-Generator', 'accessories-text-editor']},
-        {item      => ["$editor ~/.config/obmenu-generator/schema.pl", 'Menu Schema', 'text-x-generic']},
-        {item      => ["$editor ~/.config/obmenu-generator/config.pl", 'Menu Config', 'text-x-generic']},
-      {end => undef},
-
-      # Openbox category
+    {beg => ['Openbox Settings', 'applications-engineering']},
       {beg => ['Openbox', 'openbox']},
         {item      => ["$editor ~/.config/openbox/autostart", 'Openbox Autostart',   'text-x-generic']},
         {item      => ["$editor ~/.config/openbox/rc.xml",    'Openbox RC',          'text-x-generic']},
         {item      => ["$editor ~/.config/openbox/menu.xml",  'Openbox Menu',        'text-x-generic']},
-        {item      => ['openbox --reconfigure',               'Reconfigure Openbox', 'openbox']},
+        {sep => undef},
+        {item      => ['openbox --reconfigure',               'Reconfigure Openbox', 'view-refresh']},
+        {item      => ['openbox --restart',                   'Restart Openbox',     'view-refresh']},
+      {end => undef},
+      {beg => ['tint2', 'tint2']},
+        {item => ["$editor ~/.config/tint2/tint2rc", 'tint2rc', 'text-x-generic']},
+      {end => undef},
+      {beg => ['Obmenu-Generator', 'accessories-text-editor']},
+        {item      => ["$editor ~/.config/obmenu-generator/schema.pl", 'Menu Schema', 'text-x-generic']},
+        {item      => ["$editor ~/.config/obmenu-generator/config.pl", 'Menu Config', 'text-x-generic']},
       {end => undef},
     {end => undef},
-
     {sep => undef},
-
     {item => ['light-locker-command -l', 'Lock', 'system-lock-screen']},
     {beg => ['Leave', 'application-exit']},
       {exit => ['Logout', 'system-log-out']},
-      {item => ['systemctl reboot', 'Reboot', 'view-refresh']},
+      {item => ['systemctl suspend',  'Suspend',  'weather-few-clouds-night']},
+      {item => ['systemctl reboot',   'Reboot',   'view-refresh']},
       {item => ['systemctl poweroff', 'Shutdown', 'system-shutdown']},
     {end => undef},
 ]
