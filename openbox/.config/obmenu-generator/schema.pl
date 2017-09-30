@@ -74,12 +74,7 @@ our $SCHEMA = [
     {end => undef},
     {sep => undef},
     {item => ['light-locker-command -l', 'Lock', 'system-lock-screen']},
-    {beg => ['Leave', 'application-exit']},
-      {exit => ['Logout', 'system-log-out']},
-      {item => ['systemctl suspend',  'Suspend',  'weather-few-clouds-night']},
-      {item => ['systemctl reboot',   'Reboot',   'view-refresh']},
-      {item => ['systemctl poweroff', 'Shutdown', 'system-shutdown']},
-    {end => undef},
+    {item => ['obsession-logout', 'Leave', 'application-exit']},
 ]
 
 # vim: set ts=2 sw=2 et:
