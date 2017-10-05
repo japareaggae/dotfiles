@@ -23,7 +23,9 @@ if ( command -v nvidia-settings >/dev/null 2>&1 ); then
 fi
 
 # --- Bash environment
-[ -f ~/.bash_env ] && source ~/.bash_env
+if [ $PATH_EXPORTED != 1 ] && [ -f ~/.bash_env ]; then
+	source ~/.bash_env
+fi
 
 # WM/DEs are not called on .xprofile. Use .xinitrc instead
 
