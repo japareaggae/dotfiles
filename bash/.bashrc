@@ -6,7 +6,8 @@
 [[ $- != *i* ]] && return
 
 # --- Environment
-[[ $HOME/.bash_env ]] && source $HOME/.bash_env
+# Disabled: sourced on .bash_profile (for ttys) and .xprofile (for X)
+#[[ $HOME/.bash_env ]] && source $HOME/.bash_env
 
 # --- GPG_TTY
 export GPG_TTY=$(tty)
