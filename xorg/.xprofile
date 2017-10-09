@@ -23,7 +23,7 @@ if ( command -v nvidia-settings >/dev/null 2>&1 ); then
 fi
 
 # --- Bash environment
-if [ $PATH_EXPORTED != 1 ] && [ -f ~/.bash_env ]; then
+if [ ! $PATH_EXPORTED ] && [ -f ~/.bash_env ]; then
 	source ~/.bash_env
 fi
 
