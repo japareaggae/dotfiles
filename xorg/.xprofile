@@ -18,7 +18,7 @@ if ( command -v nvidia-settings >/dev/null 2>&1 ); then
 fi
 
 # Qt5 Configuration
-if ( command -v qt5ct >/dev/null 2>&1 ); then
+if [ $XDG_CURRENT_DESKTOP != "KDE" ] && ( command -v qt5ct >/dev/null 2>&1 ); then
 	export QT_QPA_PLATFORMTHEME="qt5ct"
 fi
 
