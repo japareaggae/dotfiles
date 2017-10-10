@@ -17,6 +17,11 @@ if ( command -v nvidia-settings >/dev/null 2>&1 ); then
 	nvidia-settings -l
 fi
 
+# Qt5 Configuration
+if ( command -v qt5ct >/dev/null 2>&1 ); then
+	export QT_QPA_PLATFORMTHEME="qt5ct"
+fi
+
 # --- Bash environment
 if [ ! $PATH_EXPORTED ] && [ -f ~/.bash_env ]; then
 	source ~/.bash_env
