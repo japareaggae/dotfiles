@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ ! "$1" ]]; then
+	echo "Usage: quicr <text to encode>"
+fi
+
 qrencode -s 6 -m 2 -o /tmp/quicr.png "$1"
 sxiv -b -g $(identify -format %wx%h /tmp/quicr.png) -N "qrencode result" /tmp/quicr.png
 rm /tmp/quicr.png
