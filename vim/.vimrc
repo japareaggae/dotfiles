@@ -38,6 +38,7 @@ set list
 set statusline=%f%(\ %r%m%)%=%y\ [%l,%c]\ [%p%%]
 
 if has('gui_running')
+	set background=dark
 	set guioptions-=tT
 	set guiheadroom=0
 	colorscheme base16-atelierforest
