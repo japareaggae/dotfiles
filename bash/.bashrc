@@ -9,6 +9,11 @@
 # Disabled: sourced on .bash_profile (for ttys) and .xprofile (for X)
 #[[ $HOME/.bash_env ]] && source $HOME/.bash_env
 
+# --- VTE
+if [ -f '/etc/profile/vte.sh' ] && [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+	source /etc/profile.d/vte.sh
+fi
+
 # --- GPG_TTY
 export GPG_TTY=$(tty)
 

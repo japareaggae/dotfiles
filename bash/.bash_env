@@ -31,7 +31,7 @@ if ( hash keychain 2>/dev/null ); then
 fi
 
 # VTE
-if [ -f '/etc/profile/vte.sh' ] && [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-	source /etc/profile.d/vte.sh
-fi
+#if [ -f '/etc/profile/vte.sh' ] && [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#	source /etc/profile.d/vte.sh
+#fi
 
