@@ -8,8 +8,8 @@ if [ "$HOSTNAME" == "tidehunter" ]; then
 	EXT="HDMI-0"
 	EXTMODE="--auto"
 elif [ "$HOSTNAME" == "earthshaker" ]; then
-	PRI="DVI-I-1"
-	EXT="HDMI-0"
+	PRI="HDMI-A-0"
+	EXT="HDMI-A-1"
 	EXTMODE="--mode 1360x768"
 fi
 

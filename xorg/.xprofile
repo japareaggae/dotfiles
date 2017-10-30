@@ -12,11 +12,6 @@ fi
 # --- Xresources
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
-# --- NVIDIA Settings
-if ( command -v nvidia-settings >/dev/null 2>&1 ); then
-	nvidia-settings -l
-fi
-
 # Qt5 Configuration
 if [ ! $XDG_CURRENT_DESKTOP ] || [ $XDG_CURRENT_DESKTOP != "KDE" ] && ( command -v qt5ct >/dev/null 2>&1 ); then
 	export QT_QPA_PLATFORMTHEME="qt5ct"
