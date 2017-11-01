@@ -135,8 +135,8 @@ bindsym $mod+m scratchpad show
 
 # ----- APPLICATION KEYBINDS -----
 # -- dmenu (launches programs)
-bindsym $mod+space exec dmenu_run
-bindsym $mod+Shift+space exec i3-dmenu-desktop
+bindsym $mod+Shift+space exec dmenu_run
+bindsym $mod+space       exec j4-dmenu-desktop --no-generic
 
 # -- Terminal/File Manager
 bindsym $mod+Return exec termite
@@ -191,7 +191,7 @@ workspace 10 output HDMI-A-1
 bar {
 	status_command i3blocks
 	position top
-	tray_output none
+	tray_output all
 	font pango:Sans 8
 	colors {
 		background #000000
