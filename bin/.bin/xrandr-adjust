@@ -10,7 +10,7 @@ if [ "$HOSTNAME" == "tidehunter" ]; then
 elif [ "$HOSTNAME" == "earthshaker" ]; then
 	PRI="HDMI-A-0"
 	EXT="HDMI-A-1"
-	EXTMODE="--mode 1360x768"
+	EXTMODE="--auto"
 fi
 
 if (xrandr | grep "$EXT connected" > /dev/null); then
