@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Checks
+hash xclip    2>/dev/null || { echo "This script requires xclip."; exit 1; }
+hash qrencode 2>/dev/null || { echo "This script requires qrencode."; exit 1; }
+hash identify 2>/dev/null || { echo "This script requires ImageMagick."; exit 1; }
+hash sxiv     2>/dev/null || { echo "This script requires sxiv."; exit 1; }
+
 if ! ( xclip -o -sel clip > /dev/null 2>&1 ); then
 	echo "Error: Nothing on clipboard to encode"
 	exit 1
