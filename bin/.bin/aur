@@ -24,13 +24,17 @@ WHERE=${AURDEST:-$HOME/Development/pkgbuilds}
 
 _usage(){
 cat << EOF
-Usage: aur (action) (package)
+Usage: aur (action) [options] (package)
 
 Actions:
     search   - Search for the specified keyword
     info     - Shows information for specified package
     clone    - Clones the repository for a package
+               Add -d to clone the package and it's dependencies
+               (Requires the aurutils package)
     download - Download a snapshot of the package's repository
+               Add -d to download the package and it's dependencies
+               (Requires the aurutils package)
     check    - Check installed packages for AUR updates
 
 EOF
@@ -115,16 +119,35 @@ EOF
 }
 
 _clone(){
+	if [[ $1 == "-d" ]]; then
+		shift
+		for PACKAGE in $(aurchain $1); do
+			git clone https://aur.archlinux.org/$PACKAGE.git $WHERE/$PACKAGE
+		done
+	else
 	git clone https://aur.archlinux.org/$1.git $WHERE/$1
+	fi
 }
 
 _download(){
-	curl -o $WHERE/$1.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
-	(
+	if [[ $1 == "-d" ]]; then
+		shift
+		for PACKAGE in $(aurchain $1); do
+			curl -o $WHERE/$PACKAGE.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$PACKAGE.tar.gz
+			(
+			cd $WHERE
+			tar xvf $PACKAGE.tar.gz
+			rm $PACKAGE.tar.gz
+			)
+		done
+	else
+		curl -o $WHERE/$1.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
+		(
 		cd $WHERE
 		tar xvf $1.tar.gz
 		rm $1.tar.gz
-	)
+		)
+	fi
 }
 
 _check(){
@@ -145,8 +168,8 @@ _check(){
 case $1 in
 	"search") shift; _search $1 ;;
 	"info")   shift; _info $1 ;;
-	"clone")  shift; _clone $1 ;;
-	"download") shift; _download $1 ;;
+	"clone")  shift; _clone $1 $2 ;;
+	"download") shift; _download $1 $2 ;;
 	"check")  shift; _check ;;
 	*)        _usage ;;
 esac
