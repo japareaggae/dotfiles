@@ -31,6 +31,8 @@ Actions:
     info     - Shows information for specified package
     clone    - Clones the repository for a package
     download - Download a snapshot of the package's repository
+    check    - Check installed packages for AUR updates
+
 EOF
 }
 
@@ -125,11 +127,27 @@ _download(){
 	)
 }
 
+_check(){
+	for PACKAGE in $(pacman -Qqm); do
+		LOCAL_VERSION=$(pacman -Qi $PACKAGE | grep Version | awk '{print $3}')
+		JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$PACKAGE")"
+		AUR_VERSION=$(printf "$JSON" | jshon -e results -a -e Version -u)
+
+		case "$(vercmp $AUR_VERSION $LOCAL_VERSION)" in
+			1) printf "$PACKAGE: $LOCAL_VERSION -> $AUR_VERSION\n" ;;
+			0) ;;
+			-1) printf "$PACKAGE: $LOCAL_VERSION (local) is higher than $AUR_VERSION (aur)\n" ;;
+		esac
+
+	done
+}
+
 case $1 in
 	"search") shift; _search $1 ;;
 	"info")   shift; _info $1 ;;
 	"clone")  shift; _clone $1 ;;
 	"download") shift; _download $1 ;;
+	"check")  shift; _check ;;
 	*)        _usage ;;
 esac
 
