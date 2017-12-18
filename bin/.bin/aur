@@ -30,10 +30,10 @@ Actions:
     search   - Search for the specified keyword
     info     - Shows information for specified package
     clone    - Clones the repository for a package
-               Add -d to clone the package and it's dependencies
+               Add -d to clone the package and its dependencies
                (Requires the aurutils package)
     download - Download a snapshot of the package's repository
-               Add -d to download the package and it's dependencies
+               Add -d to download the package and its dependencies
                (Requires the aurutils package)
     check    - Check installed packages for AUR updates
                Add -v to show packages which have lower versions on AUR
