@@ -43,6 +43,7 @@ EOF
 }
 
 _search(){
+	[[ $1 ]] || { echo "Usage: aur search (keyword)"; exit 1; }
 	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=search&arg=$1")"
 	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
 	if [[ $RESULTS -eq 0 ]]
@@ -69,6 +70,7 @@ _search(){
 }
 
 _info(){
+	[[ $1 ]] || { echo "Usage: aur info (package)"; exit 1; }
 	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$1")"
 	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
 	if [[ $RESULTS -eq 0 ]]
@@ -123,17 +125,20 @@ EOF
 _clone(){
 	if [[ $1 == "-d" ]]; then
 		shift
+		[[ $1 ]] || { echo "Usage: aur clone (package)"; exit 1; }
 		for PACKAGE in $(aurchain $1); do
 			git clone https://aur.archlinux.org/$PACKAGE.git $WHERE/$PACKAGE
 		done
 	else
-	git clone https://aur.archlinux.org/$1.git $WHERE/$1
+		[[ $1 ]] || { echo "Usage: aur clone (package)"; exit 1; }
+		git clone https://aur.archlinux.org/$1.git $WHERE/$1
 	fi
 }
 
 _download(){
 	if [[ $1 == "-d" ]]; then
 		shift
+		[[ $1 ]] || { echo "Usage: aur download (package)"; exit 1; }
 		for PACKAGE in $(aurchain $1); do
 			curl -o $WHERE/$PACKAGE.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$PACKAGE.tar.gz
 			(
@@ -143,6 +148,7 @@ _download(){
 			)
 		done
 	else
+		[[ $1 ]] || { echo "Usage: aur download (package)"; exit 1; }
 		curl -o $WHERE/$1.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
 		(
 		cd $WHERE
