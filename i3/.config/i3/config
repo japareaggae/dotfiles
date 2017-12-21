@@ -10,7 +10,7 @@ $execb dropbox
 
 $execb $HOME/.bin/xrandr-adjust
 $execb compton
-$execb xfce4-clipman
+$execb gpaste-client start
 
 # Consider using systemd user sessions for autostarting these applications.
 #$execb start-pulseaudio-x11
@@ -202,6 +202,9 @@ bindsym $mod+F6 exec pavucontrol
 
 # -- Skippy-XD
 bindsym $mod+Tab $execb skippy-xd
+
+# -- GPaste
+bindsym $mod+Shift+V exec gpaste-client ui
 
 # ----- WINDOW RULES
 for_window [class="hl2_linux"] fullscreen
