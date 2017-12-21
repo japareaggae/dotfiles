@@ -4,8 +4,9 @@
 # ----- AUTOSTARTS
 set $execb exec --no-startup-id
 
+$execb blueman-applet
 $execb light-locker
-$execb /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+$execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb dropbox
 
 $execb $HOME/.bin/xrandr-adjust
