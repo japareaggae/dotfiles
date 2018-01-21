@@ -10,6 +10,7 @@ c.downloads.position = "bottom"
 
 # Tabs
 c.tabs.background = True
+c.tabs.indicator.width = 0
 c.tabs.last_close = "close"
 c.tabs.padding = {
     "bottom": 1,
@@ -19,7 +20,6 @@ c.tabs.padding = {
 }
 c.tabs.show = "multiple"
 c.tabs.title.format = "{perc}{index}: {title}"
-c.tabs.width.indicator = 0
 
 # URL
 c.url.default_page = "about:blank"
