@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# based on: https://github.com/cdown/passmenu
+# based on: https://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu
 # and: http://jasonwryan.com/blog/2014/08/02/password/
 
 shopt -s nullglob globstar
