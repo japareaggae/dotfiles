@@ -240,6 +240,11 @@
 			<command>thunar</command>
 		</action>
 	</keybind>
+	<keybind key="W-F1">
+		<action name="Execute">
+			<command>xfce4-appfinder</command>
+		</action>
+	</keybind>
 	<keybind key="W-space">
 		<action name="Execute">
 			<command>j4-dmenu-desktop</command>
