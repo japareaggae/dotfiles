@@ -236,7 +236,7 @@ workspace 10 output HDMI-A-1
 bar {
 	status_command i3blocks
 	position top
-	tray_output HDMI-A-0
+	tray_output primary
 	font pango:Sans 8
 	colors {
 		background #000000
