@@ -35,7 +35,6 @@ our $SCHEMA = [
     {item => ['termite',          'Terminal',     'utilities-terminal']},
     {sep => undef},
     {item => ['~/.nightly/firefox', 'Nightly',  'nightly']},
-    {item => ['steam',              'Steam',    'steam']},
     {item => ['telegram-desktop',   'Telegram', 'telegram']},
     {item => ['teamspeak3',         'TeamSpeak 3', 'teamspeak3']},
 
@@ -66,6 +65,8 @@ our $SCHEMA = [
       {end => undef},
       {beg => ['tint2', 'tint2']},
         {item => ["$editor ~/.config/tint2/tint2rc", 'tint2rc', 'text-x-generic']},
+        {sep => undef},
+        {item => ["killall -SIGUSR1 tint2", 'Reload tint2', 'view-refresh']},
       {end => undef},
       {beg => ['Obmenu-Generator', 'accessories-text-editor']},
         {item      => ["$editor ~/.config/obmenu-generator/schema.pl", 'Menu Schema', 'text-x-generic']},
@@ -74,7 +75,7 @@ our $SCHEMA = [
     {end => undef},
     {sep => undef},
     {item => ['light-locker-command -l', 'Lock', 'system-lock-screen']},
-    {item => ['obsession-logout', 'Leave', 'application-exit']},
+    {item => ['oblogout', 'Leave', 'application-exit']},
 ]
 
 # vim: set ts=2 sw=2 et:
