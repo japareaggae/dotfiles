@@ -1,0 +1,40 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1509506274560546-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set Primary Wallpaper</name>
+	<unique-id>1510699648485118-1</unique-id>
+	<command>$HOME/.bin/wallpaper primary %f</command>
+	<description>With wallpaper script</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set Secondary Wallpaper</name>
+	<unique-id>1510699677622097-3</unique-id>
+	<command>$HOME/.bin/wallpaper secondary %f</command>
+	<description>With wallpaper script</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>system-search</icon>
+	<name>Search with Catfish</name>
+	<unique-id>1510699748027264-5</unique-id>
+	<command>catfish %d</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>
