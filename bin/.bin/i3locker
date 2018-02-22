@@ -13,4 +13,3 @@ xset dpms force standby
 convert $FILE -blur 0x4 $FILE
 i3lock -i $FILE
 rm $FILE
-xset dpms force on
