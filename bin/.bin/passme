@@ -5,6 +5,12 @@
 shopt -s nullglob globstar
 dmenucmd=( dmenu -i -p pass )
 
+typeit=0
+if [[ $1 == "--type" ]]; then
+	typeit=1
+	shift
+fi
+
 prefix=${PASSWORD_STORE_DIR:-~/.password-store}
 files=( "$prefix"/**/*.gpg )
 files=( "${files[@]#"$prefix"/}" )
@@ -16,10 +22,15 @@ word=$(printf '%s\n' "${fbase[@]}" | "${dmenucmd[@]}" "$@")
 if [[ -n $word ]]; then
 	for match in "${files[@]}"; do
 		if [[ $word == ${match#*/} ]]; then
-			/usr/bin/pass show -c "$match" 2>/dev/null && \
-				notify-send -i dialog-password \
-				"Copied $match password to clipboard" \
-				"Clearing in ${PASSWORD_STORE_CLIP_TIME:-45} seconds"
+			if [[ $typeit -eq 0 ]]; then
+				pass show -c "$match" 2>/dev/null && \
+					notify-send -i dialog-password \
+					"Copied $match password to clipboard" \
+					"Clearing in ${PASSWORD_STORE_CLIP_TIME:-45} seconds"
+			else
+				pass show "$match" | { IFS= read -r pass; printf %s "$pass"; } |
+					xdotool type --clearmodifiers --file -
+			fi
 		fi
 	done
 fi
