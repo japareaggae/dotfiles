@@ -8,12 +8,6 @@
 # This is probably the world's most disgusting shell script, but it works
 # (sometimes), so it's probably not gonna get cleaned anytime soon.
 
-if ! ( hash jshon 2> /dev/null )
-then
-	echo "Error: jshon is required to run this script"
-	exit 1
-fi
-
 BOLD="$(tput bold)"
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
@@ -21,6 +15,14 @@ CYAN="$(tput setaf 6)"
 RESET="$(tput sgr0)"
 
 WHERE=${AURDEST:-$HOME/Development/pkgbuilds}
+
+_check_jshon(){
+	if ! ( hash jshon 2> /dev/null )
+	then
+		echo "Error: jshon is required to run this script"
+		exit 1
+	fi
+}
 
 _usage(){
 cat << EOF
@@ -43,6 +45,7 @@ EOF
 }
 
 _search(){
+	_check_jshon || exit 1
 	[[ $1 ]] || { echo "Usage: aur search (keyword)"; exit 1; }
 	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=search&arg=$1")"
 	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
@@ -70,6 +73,7 @@ _search(){
 }
 
 _info(){
+	_check_jshon || exit 1
 	[[ $1 ]] || { echo "Usage: aur info (package)"; exit 1; }
 	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$1")"
 	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
@@ -159,6 +163,7 @@ _download(){
 }
 
 _check(){
+	_check_jshon || exit 1
 	for PACKAGE in $(pacman -Qqm); do
 		LOCAL_VERSION=$(pacman -Qi $PACKAGE | grep Version | awk '{print $3}')
 		JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$PACKAGE")"
