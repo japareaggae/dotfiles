@@ -28,7 +28,9 @@ c.url.searchengines = {
     "arch":    "https://www.archlinux.org/packages/?q={}",
     "aur":     "https://aur.archlinux.org/packages/?O=0&K={}",
     "aw":      "https://wiki.archlinux.org/index.php?search={}&title=Special:Search&go=Go",
+    "bemani":  "https://remywiki.com/index.php?search={}&title=Special:Search&go=Go",
     "mdn":     "https://developer.mozilla.org/en-US/search?q={}",
+    "yt":      "https://www.youtube.com/results?search_query={}",
     "w":       "https://en.wikipedia.org/w/index.php?search={}&title=Special:Search&go=Go"
 }
 
