@@ -174,8 +174,8 @@ bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
 bindsym $mod+F12 $execb termite -e nmtui
 
 # --- Monitors
-bindsym XF86Display exec lxrandr
-bindsym $mod+Shift+F4 exec lxrandr
+bindsym XF86Display exec arandr
+bindsym $mod+Shift+F4 exec arandr
 bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 
 # -- Sleep Toggle
