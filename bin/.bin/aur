@@ -5,9 +5,6 @@
 # Inspired by faho's fish script:
 # https://github.com/faho/config/blob/master/fish/.config/fish/functions/aur.fish
 
-# This is probably the world's most disgusting shell script, but it works
-# (sometimes), so it's probably not gonna get cleaned anytime soon.
-
 BOLD="$(tput bold)"
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
@@ -33,45 +30,25 @@ Actions:
     info     - Shows information for specified package
     clone    - Clones the repository for a package
                Add -d to clone the package and its dependencies
-               (Requires the aurutils package)
     download - Download a snapshot of the package's repository
                Add -d to download the package and its dependencies
-               (Requires the aurutils package)
     check    - Check installed packages for AUR updates
                Add -v to show packages which have lower versions on AUR
     changes  - View the latest commits for this package on the AUR
+
+The search, check, clone (with -d) and download (with -d) actions require aurutils.
+The info action requires jshon.
 
 EOF
 }
 
 _search(){
-	_check_jshon || exit 1
+	( hash aursearch 2> /dev/null ) || { echo "Error: aursearch (from aurutils) is required for this action"; exit 1; }
 	[[ $1 ]] || { echo "Usage: aur search (keyword)"; exit 1; }
-	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=search&arg=$1")"
-	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
-	if [[ $RESULTS -eq 0 ]]
-	then
-		echo "No results found."
-		exit 1
-	fi
-	NAME=($(printf "$JSON" | jshon -e results -a -e Name -u))
-	readarray -t DESCRIPTION < <(printf "$JSON" | jshon -e results -a -e Description -u)
-	VERSION=($(printf "$JSON" | jshon -e results -a -e Version -u))
-	OOD=($(printf "$JSON" | jshon -e results -a -e OutOfDate -u))
-
-	for PKG in $(seq 0 $(($RESULTS-1)))
-	do
-		if [[ ${OOD[$PKG]} == "null" ]]; then
-			PKG_VERSION="$GREEN${VERSION[$PKG]}"
-		else
-			PKG_VERSION="$RED${VERSION[$PKG]}"
-		fi
-
-		printf "$BOLD${NAME[$PKG]} $PKG_VERSION$RESET\n"
-		printf "    ${DESCRIPTION[$PKG]}\n"
-	done
+	aursearch "$1"
 }
 
+# A bit ugly, but it works (most of the time)
 _info(){
 	_check_jshon || exit 1
 	[[ $1 ]] || { echo "Usage: aur info (package)"; exit 1; }
@@ -128,6 +105,7 @@ EOF
 
 _clone(){
 	if [[ $1 == "-d" ]]; then
+		( hash aurchain 2> /dev/null ) || { echo "Error: aurchain (from aurutils) is required for this action"; exit 1; }
 		shift
 		[[ $1 ]] || { echo "Usage: aur clone (package)"; exit 1; }
 		for PACKAGE in $(aurchain $1); do
@@ -141,6 +119,7 @@ _clone(){
 
 _download(){
 	if [[ $1 == "-d" ]]; then
+		( hash aurchain 2> /dev/null ) || { echo "Error: aurchain (from aurutils) is required for this action"; exit 1; }
 		shift
 		[[ $1 ]] || { echo "Usage: aur download (package)"; exit 1; }
 		for PACKAGE in $(aurchain $1); do
@@ -163,28 +142,8 @@ _download(){
 }
 
 _check(){
-	if ( hash aurcheck 2> /dev/null ); then
-		pacman -Qqm | aurcheck
-	else
-		# TODO: Make this function less stressful for AUR servers by changing our query
-		# From <https://wiki.archlinux.org/index.php/AurJson>:
-		#   Package information can be performed by issuing requests of the form:
-		#   /rpc/?v=5&type=info&arg[]=pkg1&arg[]=pkg2&…
-		#   where pkg1, pkg2, … are the exact matches of names of packages to retrieve package details for. 
-
-		_check_jshon || exit 1
-		for PACKAGE in $(pacman -Qqm); do
-			LOCAL_VERSION=$(pacman -Qi $PACKAGE | grep Version | awk '{print $3}')
-			JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$PACKAGE")"
-			AUR_VERSION=$(printf "$JSON" | jshon -e results -a -e Version -u)
-
-			case "$(vercmp $AUR_VERSION $LOCAL_VERSION)" in
-				1) printf "$PACKAGE: $LOCAL_VERSION -> $AUR_VERSION\n" ;;
-				0) ;;
-				-1) [[ $1 == "-v" ]] && printf "$PACKAGE: $LOCAL_VERSION (local) is higher than $AUR_VERSION (aur)\n" ;;
-			esac
-		done
-fi
+	( hash aurcheck 2> /dev/null ) || { echo "Error: aurcheck (from aurutils) is required for this action"; exit 1; }
+	pacman -Qqm | aurcheck
 }
 
 _changes(){
