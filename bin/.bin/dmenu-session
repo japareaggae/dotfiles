@@ -17,7 +17,9 @@ _getOut(){
 }
 
 _lock(){
-	if [[ $SWAYSOCK ]]; then
+	if (pgrep 'light-locker' > /dev/null); then
+		light-locker-command -l
+	elif [[ $SWAYSOCK ]]; then
 		# sway has it's own locker
 		$HOME/.bin/swaylocker
 	else
