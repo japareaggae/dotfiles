@@ -143,7 +143,7 @@ _download(){
 
 _check(){
 	( hash aurcheck 2> /dev/null ) || { echo "Error: aurcheck (from aurutils) is required for this action"; exit 1; }
-	pacman -Qqm | aurcheck
+	pacman -Qm | aurcheck
 }
 
 _changes(){
