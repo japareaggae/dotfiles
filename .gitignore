@@ -1,36 +1,40 @@
-# Vim
-.netrwhist
-**/vim/bundle
-
 # Logs
 *.log
 *history
 
+# git
+**/git/gitk
+
 # Ranger
 **/ranger/bookmarks
 **/ranger/tagged
+
+# mpd
+**/mpd/**
+!**/mpd/mpd.conf
+
+# newsbeuter
+**/newsbeuter/urls
+
+# openbox/obmenu
+**/obmenu-generator/icons
+**/obmenu-generator/cache.db
+
+# pulseaudio
+**/pulse/**
+!**/pulse/default.pa
+
+# sxiv
+**/sxiv/tags
 
 # tint2conf
 default.tint2rc
 snap.jpg
 tint2confrc
 
-# newsbeuter
-**/newsbeuter/urls
+# thunar
+**/Thunar/accels.scm
 
-# pulseaudio
-**/pulse/**
-!**/pulse/default.pa
-
-# mpd
-**/mpd/**
-!**/mpd/mpd.conf
-
-# sxiv
-**/sxiv/tags
-
-# git
-**/git/gitk
-
-**/obmenu-generator/icons
-**/obmenu-generator/cache.db
+# Vim
+.netrwhist
+**/vim/bundle
