@@ -16,7 +16,7 @@ WHERE=${AURDEST:-$HOME/Development/pkgbuilds}
 _check_jshon(){
 	if ! ( hash jshon 2> /dev/null )
 	then
-		echo "Error: jshon is required to run this script"
+		echo "Error: jshon is required for this action"
 		exit 1
 	fi
 }
