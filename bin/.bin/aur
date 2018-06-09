@@ -34,9 +34,11 @@ Actions:
                Add -d to download the package and its dependencies
     check    - Check installed packages for AUR updates
                Add -v to show packages which have lower versions on AUR
+    update   - Update PKGBUILDs for installed AUR packages
     changes  - View the latest commits for this package on the AUR
 
-The search, check, clone (with -d) and download (with -d) actions require aurutils.
+The search, check, update, clone (with -d) and download (with -d) actions
+require aurutils.
 The info action requires jshon.
 
 EOF
@@ -146,6 +148,17 @@ _check(){
 	pacman -Qm | aurcheck
 }
 
+_update(){
+	for PACKAGE in $(_check | awk '{print $1}')
+	do
+		echo "==> Updating PKGBUILD for $PACKAGE"
+		cd $WHERE/$PACKAGE
+		git checkout master # switch to upstream branch
+		git checkout HEAD . # remove all modifications (you are using a branch for that, right?)
+		git pull            # get pkgbuild changes from AUR
+	done
+}
+
 _changes(){
 	[[ $1 ]] && xdg-open "https://aur.archlinux.org/cgit/aur.git/log/?h=$1"
 }
@@ -156,6 +169,7 @@ case $1 in
 	"clone")  shift; _clone $1 $2 ;;
 	"download") shift; _download $1 $2 ;;
 	"check")  shift; _check $1 ;;
+	"update") shift; _update ;;
 	"changes") shift; _changes $1 ;;
 	*)        _usage ;;
 esac
