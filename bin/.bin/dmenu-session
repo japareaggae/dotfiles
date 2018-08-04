@@ -33,8 +33,8 @@ case $option in
 	logout) _getOut;;
 	shutdown) systemctl poweroff;;
 	reboot) systemctl reboot;;
-	suspend) systemctl suspend;;
-	hibernate) systemctl hibernate;;
-	hybrid-sleep) systemctl hybrid-sleep;;
+	suspend) sleep 0.5s; systemctl suspend;;
+	hibernate) sleep 0.5s; systemctl hibernate;;
+	hybrid-sleep) sleep 0.5s; systemctl hybrid-sleep;;
 	*) ;;
 esac
