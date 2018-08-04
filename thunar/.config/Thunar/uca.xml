@@ -32,7 +32,7 @@
 	<icon>system-search</icon>
 	<name>Search with Catfish</name>
 	<unique-id>1510699748027264-5</unique-id>
-	<command>catfish %d</command>
+	<command>catfish %f</command>
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
