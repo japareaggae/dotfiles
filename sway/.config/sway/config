@@ -2,7 +2,7 @@
 # Please read sway(5) for a complete reference!
 
 # ----- AUTOSTARTS
-exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec dropbox
 
 # ----- APPEARANCE
@@ -168,17 +168,10 @@ bindsym XF86AudioRaiseVolume exec ponymix increase 5 && pkill -RTMIN+1 i3blocks
 bindsym $mod+F6 exec pavucontrol
 
 # ----- WINDOW RULES
-#for_window [class="Steam"] floating enable
-#for_window [title="^Steam$"] floating enable
-#for_window [class="hl2_linux"] fullscreen
-#
 #for_window [class="Gcolor3"] floating enable
 #for_window [class="Lxpolkit"] floating enable
 #for_window [title="File Operation Progress"] floating enable
-#
-#for_window [instance="crx_gmjdflobmjpeohnoefalpjeocgpdeffo"] floating enable
-#
-#assign [class="Steam"] 9
+
 assign [class="^TeamSpeak 3$"] 10
 assign [class="^telegram-desktop$"] 7
 
