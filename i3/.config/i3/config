@@ -11,6 +11,7 @@ $execb dropbox
 
 $execb $HOME/.bin/xrandr-adjust
 $execb compton
+$execb skippy-xd --start-daemon
 
 # Consider using systemd user sessions for autostarting these applications.
 #$execb start-pulseaudio-x11
@@ -203,7 +204,7 @@ bindsym XF86AudioRaiseVolume $execb ponymix increase 5 && pkill -RTMIN+1 i3block
 bindsym $mod+F6 exec pavucontrol
 
 # -- Skippy-XD
-bindsym $mod+Tab $execb skippy-xd
+bindsym $mod+Tab $execb skippy-xd-toggle
 
 # ----- WINDOW RULES
 for_window [class="hl2_linux"] fullscreen
