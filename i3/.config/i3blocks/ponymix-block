@@ -10,6 +10,14 @@ then
 	echo "#808080"
 fi
 
+# Perform actions when clicked
+case $BLOCK_BUTTON in
+	"1") ponymix toggle > /dev/null ;;
+	"3") pavucontrol ;;
+	"4") ponymix increase 5 > /dev/null ;;
+	"5") ponymix decrease 5 > /dev/null ;;
+esac
+
 # Save the cycles!
 VOLUME=$(ponymix get-volume)
 DEVICE=$(ponymix | sed -n '2p' -)
