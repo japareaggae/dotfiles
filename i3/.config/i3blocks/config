@@ -43,7 +43,7 @@ command=~/.config/i3blocks/network
 color=#40FF40
 
 [volume]
-command=~/.config/i3blocks/ponymix-block
+command=~/.config/i3blocks/volume-ponymix
 signal=1
 
 [mpd]
