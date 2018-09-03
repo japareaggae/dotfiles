@@ -16,6 +16,7 @@ fi
 
 # --- GPG_TTY
 export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # --- Options
 shopt -s cdspell dirspell extglob checkwinsize
