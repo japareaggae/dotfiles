@@ -11,6 +11,13 @@ setopt sharehistory
 setopt extended_history
 setopt hist_ignore_space
 
+### Environment variables (for interactive use)
+export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput setaf 2)
+export LESS_TERMCAP_ue=$(tput sgr0)
+eval $(dircolors -b)
+
 ### Keybinds
 bindkey -e
 # This makes sure terminfo entries are valid
@@ -35,13 +42,7 @@ bindkey -- "${terminfo[knp]}"   down-line-or-history
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
-
-### Environment variables (for interactive use)
-export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_us=$(tput smul; tput setaf 2)
-export LESS_TERMCAP_ue=$(tput sgr0)
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 ### Prompt
 PS1="%B%F{blue}[%m] %~ %b%f%% "
