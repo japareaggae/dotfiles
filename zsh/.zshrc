@@ -45,7 +45,15 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 ### Prompt
-PS1="%B%F{blue}[%m] %~ %b%f%% "
+if [[ $EUID -eq 0 ]]; then
+	color="red"
+elif [[ $SSH_TTY ]]; then
+	color="green"
+else
+	color="blue"
+fi
+PS1="%B%F{$color}[%m] %~ %b%f%# "
+unset color
 
 ### Aliases
 alias l="exa"
