@@ -18,6 +18,10 @@ export LESS_TERMCAP_us=$(tput smul; tput setaf 2)
 export LESS_TERMCAP_ue=$(tput sgr0)
 eval $(dircolors -b)
 
+### GPG agent
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null
+
 ### Keybinds
 bindkey -e
 # This makes sure terminfo entries are valid
