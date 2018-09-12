@@ -18,7 +18,7 @@ if [ ! $XDG_CURRENT_DESKTOP ] || [ $XDG_CURRENT_DESKTOP != "KDE" ] && ( command 
 fi
 
 # --- Bash environment
-if [ ! $PATH_EXPORTED ] && [ -f ~/.bash_env ]; then
+if [ ! $PATH_EXPORTED ] && [ $SHELL = "/bin/bash" ] && [ -f ~/.bash_env ]; then
 	source ~/.bash_env
 fi
 
