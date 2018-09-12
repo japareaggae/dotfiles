@@ -53,6 +53,10 @@ set tabstop=4
 set shiftwidth=4
 set backspace=indent,eol,start
 
+" ----- netrw
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+
 " ----- Filetypes
 " -- Markdown
 augroup filetype_markdown
