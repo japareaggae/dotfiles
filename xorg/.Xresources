@@ -3,14 +3,14 @@
 !
 
 ! --- Pointer
-Xcursor.theme: Vanilla-DMZ
+Xcursor.theme: Adwaita
 
 ! --- Font Rendering
 Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
-Xft.hintstyle: hintfull
+Xft.hintstyle: hintslight
 Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
