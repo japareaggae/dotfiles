@@ -17,10 +17,8 @@ if [ ! $XDG_CURRENT_DESKTOP ] || [ $XDG_CURRENT_DESKTOP != "KDE" ] && ( command 
 	export QT_QPA_PLATFORMTHEME="qt5ct"
 fi
 
-# --- Bash environment
-if [ ! $PATH_EXPORTED ] && [ $SHELL = "/bin/bash" ] && [ -f ~/.bash_env ]; then
-	source ~/.bash_env
-fi
+### Path
+export PATH="$HOME/.bin:${PATH}"
 
 # WM/DEs are not called on .xprofile. Use .xinitrc instead
 
