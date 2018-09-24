@@ -28,14 +28,14 @@ color=#FF4040
 command=~/.config/i3blocks/usedmem
 color=#FF8040
 
-[disk]
+[disk_root]
 command=df -hPl / | awk '/\/.*/ {print $3}'
 label=/:
 color=#FFFF40
 
-[disk_home]
-command=df -hPl /mnt/hoard | awk '/\/.*/ {print $3}'
-label=/hoard:
+[disk_storage]
+command=df -hPl /mnt/stash | awk '/\/.*/ {print $3}'
+label=stash:
 color=#FFFF40
 
 [network]
