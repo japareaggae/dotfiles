@@ -5,7 +5,7 @@
 set $execb exec --no-startup-id
 
 $execb blueman-applet
-$execb xss-lock -- i3lock -n -i /etc/lightdm/background.png
+$execb xss-lock -- $HOME/.bin/i3locker -n
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb dropbox
 
