@@ -10,5 +10,9 @@ FILE="/tmp/screen.png"
 import -window root -silent $FILE
 xset dpms force standby
 convert $FILE -blur 0x4 $FILE
-i3lock -i $FILE
+if [[ $1 == "-n" ]]; then
+	i3lock -n -i $FILE
+else
+	i3lock -i $FILE
+fi
 rm $FILE
