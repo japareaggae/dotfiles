@@ -3,6 +3,8 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
+LOCKSCREEN_OPTS="-blur 0x4 -brightness-contrast -15% -monitor"
+
 _usage() {
 cat << EOF
 Usage: $(basename "$0") [options] (filename)
@@ -11,6 +13,9 @@ Links an image to a default location, and sets it as the wallpaper using feh.
 Options:
   primary     Image will be the wallpaper for the first monitor (default)
   secondary   Image will be the wallpaper for the second monitor
+
+  lockscreen  Image will be copied to .lockscreen and blurred
+              (requires ImageMagick)
 
   fill        Fill the monitor with the image (default)
   center      Center the image on the monitor
@@ -34,13 +39,15 @@ set_destination(){
 	then
 		echo "Error: You can't set more than one destination"
 		exit 1
-	elif [[ $1 == "primary" ]]
-	then
-		DESTINATION="$HOME/.wallpaper0"
-		DEST_SET=1
-	elif [[ $1 == "secondary" ]]
-	then
-		DESTINATION="$HOME/.wallpaper1"
+	else
+		case $1 in
+			"primary")   DESTINATION="$HOME/.wallpaper0" ;;
+			"secondary") DESTINATION="$HOME/.wallpaper1" ;;
+			"lockscreen")
+				DESTINATION="$HOME/.lockscreen"
+				LOCKSCREEN=1
+				;;
+		esac
 		DEST_SET=1
 	fi
 }
@@ -53,17 +60,12 @@ set_mode(){
 	then
 		echo "Error: You can't set more than one mode"
 		exit 1
-	elif [[ $1 == "fill" ]]
-	then
-		MODE="--bg-fill"
-		MODE_SET=1
-	elif [[ $1 == "center" ]]
-	then
-		MODE="--bg-center"
-		MODE_SET=1
-	elif [[ $1 == "tile" ]]
-	then
-		MODE="--bg-tile"
+	else
+		case $1 in
+			"fill")   MODE="--bg-fill"   ;;
+			"center") MODE="--bg-center" ;;
+			"tile")   MODE="--bg-tile"   ;;
+		esac
 		MODE_SET=1
 	fi
 }
@@ -92,16 +94,17 @@ set_file(){
 while [[ $1 ]]
 do
 case $1 in
-	help)      _usage ;;
+	help)       _usage ;;
 
-	primary)   set_destination primary ;;
-	secondary) set_destination secondary ;;
+	primary)    set_destination primary ;;
+	secondary)  set_destination secondary ;;
+	lockscreen) set_destination lockscreen ;;
 
-	fill)      set_mode fill ;;
-	center)    set_mode center ;;
-	tiled)     set_mode tile ;;
+	fill)       set_mode fill ;;
+	center)     set_mode center ;;
+	tiled)      set_mode tile ;;
 
-	*)         set_file "$1" ;;
+	*)          set_file "$1" ;;
 esac
 shift
 done
@@ -113,7 +116,14 @@ then
 	echo "Run \"$(basename "$0") help\" for more information"
 	exit 1
 else
-	ln -sf "$FILE" "$DESTINATION"
+
+	# --- Lockscreen
+	if [ $LOCKSCREEN -eq 1 ]; then
+		(hash convert 2> /dev/null) || { echo "Error: ImageMagick is not installed."; exit 1; }
+		convert "$FILE" $LOCKSCREEN_OPTS "$DESTINATION"
+	else
+		ln -sf "$FILE" "$DESTINATION"
+	fi
 fi
 
 # --- Execute feh
