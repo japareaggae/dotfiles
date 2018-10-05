@@ -127,7 +127,7 @@ else
 fi
 
 # --- Execute feh
-if [ -f "$HOME/.wallpaper1" ]; then
+if [[ -f "$HOME/.wallpaper1" ]]; then
 	feh "$MODE" "$HOME/.wallpaper0" "$MODE" "$HOME/.wallpaper1"
 else
 	feh "$MODE" "$HOME/.wallpaper0"
