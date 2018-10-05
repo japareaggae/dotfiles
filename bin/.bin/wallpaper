@@ -118,7 +118,7 @@ then
 else
 
 	# --- Lockscreen
-	if [ $LOCKSCREEN -eq 1 ]; then
+	if [[ $LOCKSCREEN ]]; then
 		(hash convert 2> /dev/null) || { echo "Error: ImageMagick is not installed."; exit 1; }
 		convert "$FILE" $LOCKSCREEN_OPTS "$DESTINATION"
 	else
