@@ -41,6 +41,8 @@ bindkey -- "${terminfo[khome]}" beginning-of-line
 bindkey -- "${terminfo[kend]}"  end-of-line
 bindkey -- "${terminfo[kpp]}"   up-line-or-history
 bindkey -- "${terminfo[knp]}"   down-line-or-history
+# Numpad Enter <https://github.com/robbyrussell/oh-my-zsh/issues/6159#issuecomment-382140433>
+bindkey -s "^[OM" "^M"
 
 ### Completions
 autoload -Uz compinit
