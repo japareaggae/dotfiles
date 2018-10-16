@@ -67,3 +67,4 @@ unset color
 alias l="exa"
 alias ls="ls --color=auto"
 alias mpv-nv="mpv --no-video"
+alias pacexplicit='pacman -Qqe | grep -v "$(pacman -Qqeg base base-devel)"'
