@@ -68,3 +68,27 @@ alias l="exa"
 alias ls="ls --color=auto"
 alias mpv-nv="mpv --no-video"
 alias pacexplicit='pacman -Qqe | grep -v "$(pacman -Qqeg base base-devel)"'
+
+### Functions
+# simple notes
+# <https://bbs.archlinux.org/viewtopic.php?pid=1812351#p1812351>
+n() {
+	local files
+	files=(${@/#/$HOME/Notes/})
+	${EDITOR:-vi} $files
+}
+
+# TAB completion for notes
+_notes() {
+	_files -g "*" -W $HOME/Notes
+}
+compdef _notes n
+
+# list notes
+nls() {
+	tree -CR --dirsfirst --noreport $HOME/Notes | awk '{
+	if (NF==1) print $1;
+	else if (NF==2) print $2;
+	else if (NF==3) printf "  %s\n", $3
+	}'
+}
