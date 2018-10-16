@@ -236,7 +236,7 @@
     history = ctrl+apostrophe
 
     # Context menu.
-    context = ctrl+enter
+    context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
