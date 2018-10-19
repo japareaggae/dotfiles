@@ -67,9 +67,10 @@ unset color
 alias l="exa"
 alias ls="ls --color=auto"
 alias mpv-nv="mpv --no-video"
-alias pacexplicit='pacman -Qqe | grep -v "$(pacman -Qqeg base base-devel)"'
 
 ### Functions
+pacexplicit() { pacman -Qqe | grep -v "$(pacman -Qqeg base base-devel)" ; }
+
 # simple notes
 # <https://bbs.archlinux.org/viewtopic.php?pid=1812351#p1812351>
 n() {
