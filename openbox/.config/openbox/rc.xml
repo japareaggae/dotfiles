@@ -268,17 +268,7 @@
 
 	<keybind key="Print">
 		<action name="Execute">
-			<command>screenshot</command>
-		</action>
-	</keybind>
-	<keybind key="S-Print">
-		<action name="Execute">
-			<command>screenshot window</command>
-		</action>
-	</keybind>
-	<keybind key="W-Print">
-		<action name="Execute">
-			<command>screenshot region</command>
+			<command>flameshot gui</command>
 		</action>
 	</keybind>
 </keyboard>
