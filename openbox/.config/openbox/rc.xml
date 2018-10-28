@@ -262,7 +262,7 @@
 	</keybind>
 	<keybind key="W-Tab">
 		<action name="Execute">
-			<command>skippy-xd</command>
+			<command>skippy-xd --toggle-window-picker</command>
 		</action>
 	</keybind>
 
