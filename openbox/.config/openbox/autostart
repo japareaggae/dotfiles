@@ -9,4 +9,5 @@ compton &
 skippy-xd --start-daemon &
 tint2 &
 volctl &
+cbatticon &
 xrandr-adjust &
