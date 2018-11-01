@@ -192,8 +192,8 @@ bindsym XF86AudioNext $execb mpc next
 bindsym XF86AudioStop $execb mpc stop
 
 # -- Brightness
-#bindsym XF86MonBrightnessDown $execb $HOME/.bin/brightness dec
-#bindsym XF86MonBrightnessUp   $execb $HOME/.bin/brightness inc
+bindsym XF86MonBrightnessDown $execb brightnessctl -q --min-value=150 set 5%-
+bindsym XF86MonBrightnessUp   $execb brightnessctl -q set +5%
 
 # -- Volume / PulseAudio Volume Control
 bindsym XF86AudioMute $execb ponymix toggle && pkill -RTMIN+1 i3blocks
