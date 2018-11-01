@@ -183,7 +183,7 @@ bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 bindsym $mod+F3 $execb ~/.bin/toggle-sleep
 
 # -- Screenshotting
-bindsym --release Print exec flameshot gui
+bindsym --release Print $execb flameshot gui
 
 # -- MPD
 bindsym XF86AudioPlay $execb mpc toggle
