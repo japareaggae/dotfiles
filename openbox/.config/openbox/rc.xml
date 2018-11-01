@@ -265,10 +265,19 @@
 			<command>skippy-xd --toggle-window-picker</command>
 		</action>
 	</keybind>
-
 	<keybind key="Print">
 		<action name="Execute">
 			<command>flameshot gui</command>
+		</action>
+	</keybind>
+	<keybind key="XF86MonBrightnessDown">
+		<action name="Execute">
+			<command>brightnessctl -q --min-value=150 set 5%-</command>
+		</action>
+	</keybind>
+	<keybind key="XF86MonBrightnessUp">
+		<action name="Execute">
+			<command>brightnessctl -q set +5%</command>
 		</action>
 	</keybind>
 </keyboard>
