@@ -9,5 +9,5 @@ compton &
 skippy-xd --start-daemon &
 tint2 &
 volctl &
-cbatticon &
+cbatticon -x gnome-power-statistics &
 xrandr-adjust &
