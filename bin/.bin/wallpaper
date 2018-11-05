@@ -44,7 +44,7 @@ set_destination(){
 			"primary")   DESTINATION="$HOME/.wallpaper0" ;;
 			"secondary") DESTINATION="$HOME/.wallpaper1" ;;
 			"lockscreen")
-				DESTINATION="$HOME/.lockscreen"
+				DESTINATION="$HOME/.lockscreen.png"
 				LOCKSCREEN=1
 				;;
 		esac
