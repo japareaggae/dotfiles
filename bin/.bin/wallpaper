@@ -60,6 +60,9 @@ set_mode(){
 	then
 		echo "Error: You can't set more than one mode"
 		exit 1
+	elif [[ $LOCKSCREEN ]]; then
+		echo "Setting modes on lockscreen is not supported"
+		exit 1
 	else
 		case $1 in
 			"fill")   MODE="--bg-fill"   ;;
