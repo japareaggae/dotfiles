@@ -120,7 +120,8 @@ else
 	# --- Lockscreen
 	if [[ $LOCKSCREEN ]]; then
 		(hash convert 2> /dev/null) || { echo "Error: ImageMagick is not installed."; exit 1; }
-		convert "$FILE" $LOCKSCREEN_OPTS "$DESTINATION"
+		RESOLUTION=$(xrandr | grep -w connected | awk -F'[ +]' '{print $4}' | head -n 1)
+		convert "$FILE" $LOCKSCREEN_OPTS -resize $RESOLUTION^ -gravity center -extent $RESOLUTION "$DESTINATION"
 	else
 		ln -sf "$FILE" "$DESTINATION"
 	fi
