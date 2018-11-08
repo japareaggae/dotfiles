@@ -10,16 +10,18 @@ cat << EOF
 Usage: $(basename "$0") [options] (filename)
 Links an image to a default location, and sets it as the wallpaper using feh.
 
-Options:
+Position:
   primary     Image will be the wallpaper for the first monitor (default)
   secondary   Image will be the wallpaper for the second monitor
+  lockscreen  Image will be copied to .lockscreen and processed/resized with
+              ImageMagick
+              Current convert options: $LOCKSCREEN_OPTS
 
-  lockscreen  Image will be copied to .lockscreen and blurred
-              (requires ImageMagick)
-
+Modes (only for primary/secondary positions):
   fill        Fill the monitor with the image (default)
   center      Center the image on the monitor
   tiled       Tile the image on the monitor
+
 EOF
 exit 1
 }
