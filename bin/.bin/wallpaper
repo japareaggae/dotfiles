@@ -3,7 +3,7 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-LOCKSCREEN_OPTS="-blur 0x4 -brightness-contrast -15% -monitor"
+LOCKSCREEN_OPTS=${LOCKSCREEN_OPTS:--blur 0x4 -colorspace Gray}
 
 _usage() {
 cat << EOF
