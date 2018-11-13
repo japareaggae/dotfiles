@@ -7,7 +7,7 @@
 [ -e $HOME/.xprofile ] && source $HOME/.xprofile
 
 # --- xrandr-adjust
-(hash xrandr-adjust 2> /dev/null) && xrandr-adjust
+(command -v xrandr-adjust > /dev/null) && xrandr-adjust
 
 # --- WM/DE
 # You can use exec $1 to specify a WM at runtime, or hardcode something
