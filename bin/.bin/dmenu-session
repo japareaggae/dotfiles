@@ -3,7 +3,9 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-option=$( printf "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\nhibernate\nhybrid-sleep\n" | dmenu -p Session )
+grep 'resume=' /proc/cmdline && HIBERNATE_OPTIONS="hibernate\nhybrid-sleep\n"
+
+option=$( printf "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\n$HIBERNATE_OPTIONS" | dmenu -p Session )
 
 _getOut(){
 	(pgrep 'i3' > /dev/null) && i3 exit
