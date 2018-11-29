@@ -18,16 +18,6 @@ def_key "left"
 def_key "left"
   master_screen
 
-### Visualizer/Clock Keys
-def_key "8"
-  dummy
-
-def_key "9"
-  show_visualizer
-
-def_key "0"
-  show_clock
-
 ### Lock/Unlock Screen
 def_key "|"
   toggle_screen_lock
@@ -35,10 +25,22 @@ def_key "|"
 def_key "ctrl-l"
   dummy
 
-## Change Library Primary Tag
+### Change Library Primary Tag
 def_key "m"
   toggle_library_tag_type
 
 def_key "`"
   dummy
 
+### Use same volume keys as mpv
+def_key "9"
+  volume_down
+
+def_key "0"
+  volume_up
+
+def_key "-"
+  dummy
+
+def_key "+"
+  dummy
