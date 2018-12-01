@@ -20,5 +20,8 @@ fi
 ### Path
 export PATH="$HOME/.bin:${PATH}"
 
+### Xmodmap
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+
 # WM/DEs are not called on .xprofile. Use .xinitrc instead
 
