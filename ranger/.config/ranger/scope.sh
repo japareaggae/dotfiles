@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# vim: set ts=4 sw=4 et:
 
 set -o noclobber -o noglob -o nounset -o pipefail
 IFS=$'\n'
