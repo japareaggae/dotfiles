@@ -84,6 +84,11 @@ handle_extension() {
             lynx -dump -- "${FILE_PATH}" && exit 5
             elinks -dump "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
+
+        # ISO
+        iso)
+            iso-info --no-header -f "${FILE_PATH}"
+            ;;
     esac
 }
 
