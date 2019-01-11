@@ -1,9 +1,11 @@
 #!/bin/bash
-# aur - A basic AUR helper
+# aaa - A basic AUR helper
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 # Inspired by faho's fish script:
 # https://github.com/faho/config/blob/master/fish/.config/fish/functions/aur.fish
+
+MYNAME=${0##*/}
 
 BOLD="$(tput bold)"
 RED="$(tput setaf 1)"
@@ -21,9 +23,17 @@ _check_jshon(){
 	fi
 }
 
+_check_aurutils(){
+	if ! ( hash aur 2> /dev/null )
+	then
+		echo "Error: aurutils is required for this action"
+		exit 1
+	fi
+}
+
 _usage(){
 cat << EOF
-Usage: aur (action) [options] (package)
+Usage: $MYNAME (action) [options] (package)
 
 Actions:
     search   - Search for the specified keyword
@@ -45,15 +55,15 @@ EOF
 }
 
 _search(){
-	( hash aursearch 2> /dev/null ) || { echo "Error: aursearch (from aurutils) is required for this action"; exit 1; }
-	[[ $1 ]] || { echo "Usage: aur search (keyword)"; exit 1; }
-	aursearch "$1"
+	_check_aurutils || exit 1
+	[[ $1 ]] || { echo "Usage: $MYNAME search (keyword)"; exit 1; }
+	aur search "$1"
 }
 
 # A bit ugly, but it works (most of the time)
 _info(){
 	_check_jshon || exit 1
-	[[ $1 ]] || { echo "Usage: aur info (package)"; exit 1; }
+	[[ $1 ]] || { echo "Usage: $MYNAME info (package)"; exit 1; }
 	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$1")"
 	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
 	if [[ $RESULTS -eq 0 ]]
@@ -107,24 +117,24 @@ EOF
 
 _clone(){
 	if [[ $1 == "-d" ]]; then
-		( hash aurchain 2> /dev/null ) || { echo "Error: aurchain (from aurutils) is required for this action"; exit 1; }
+		_check_aurutils || exit 1
 		shift
-		[[ $1 ]] || { echo "Usage: aur clone (package)"; exit 1; }
-		for PACKAGE in $(aurchain $1); do
+		[[ $1 ]] || { echo "Usage: $MYNAME clone (package)"; exit 1; }
+		for PACKAGE in $(echo $1 | aur depends | cut -f1 | uniq | tac); do
 			git clone https://aur.archlinux.org/$PACKAGE.git $WHERE/$PACKAGE
 		done
 	else
-		[[ $1 ]] || { echo "Usage: aur clone (package)"; exit 1; }
+		[[ $1 ]] || { echo "Usage: $MYNAME clone (package)"; exit 1; }
 		git clone https://aur.archlinux.org/$1.git $WHERE/$1
 	fi
 }
 
 _download(){
 	if [[ $1 == "-d" ]]; then
-		( hash aurchain 2> /dev/null ) || { echo "Error: aurchain (from aurutils) is required for this action"; exit 1; }
+		_check_aurutils || exit 1
 		shift
-		[[ $1 ]] || { echo "Usage: aur download (package)"; exit 1; }
-		for PACKAGE in $(aurchain $1); do
+		[[ $1 ]] || { echo "Usage: $MYNAME download (package)"; exit 1; }
+		for PACKAGE in $(echo $1 | aur depends | cut -f1 | uniq | tac); do
 			curl -o $WHERE/$PACKAGE.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$PACKAGE.tar.gz
 			(
 			cd $WHERE
@@ -133,7 +143,7 @@ _download(){
 			)
 		done
 	else
-		[[ $1 ]] || { echo "Usage: aur download (package)"; exit 1; }
+		[[ $1 ]] || { echo "Usage: $MYNAME download (package)"; exit 1; }
 		curl -o $WHERE/$1.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
 		(
 		cd $WHERE
@@ -144,8 +154,8 @@ _download(){
 }
 
 _check(){
-	( hash aurcheck 2> /dev/null ) || { echo "Error: aurcheck (from aurutils) is required for this action"; exit 1; }
-	pacman -Qm | aurcheck
+	_check_aurutils || exit 1
+	pacman -Qm | aur vercmp
 }
 
 _update(){
