@@ -159,7 +159,7 @@ _check(){
 }
 
 _update(){
-	for PACKAGE in $(_check | awk '{print $1}')
+	for PACKAGE in $(_check | cut -d: -f1 )
 	do
 		echo "==> Updating PKGBUILD for $PACKAGE"
 		cd $WHERE/$PACKAGE
