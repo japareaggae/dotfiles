@@ -65,6 +65,7 @@ unset color
 
 ### Aliases
 alias l="exa"
+alias ll="exa -l"
 alias ls="ls --color=auto"
 alias mpv-nv="mpv --no-video"
 
