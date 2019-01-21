@@ -33,6 +33,7 @@ c.url.searchengines = {
     "gh":      "https://github.com/search?q={}",
     "man":     "https://jlk.fjfi.cvut.cz/arch/manpages/search?q={}",
     "mdn":     "https://developer.mozilla.org/en-US/search?q={}",
+    "pkg":     "https://repology.org/metapackages/?search={}",
     "yt":      "https://www.youtube.com/results?search_query={}",
     "w":       "https://en.wikipedia.org/w/index.php?search={}&title=Special:Search&go=Go"
 }
