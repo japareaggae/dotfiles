@@ -161,7 +161,7 @@ _check(){
 _update(){
 	for PACKAGE in $(_check | cut -d: -f1 )
 	do
-		echo "==> Updating PKGBUILD for $PACKAGE"
+		echo "${BOLD}==> Updating PKGBUILD for $PACKAGE${RESET}"
 		cd $WHERE/$PACKAGE
 		git checkout master # switch to upstream branch
 		git checkout HEAD . # remove all modifications (you are using a branch for that, right?)
