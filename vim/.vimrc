@@ -16,11 +16,9 @@ set confirm
 
 " ----- Appearance
 set background=dark
-let base16colorspace=256
-if $TERM == "xterm-termite"
-	colorscheme base16-atelierforest
-else
-	colorscheme default
+if (has("termguicolors"))
+	set termguicolors
+	colorscheme jellybeans
 endif
 syntax on
 
@@ -41,7 +39,7 @@ if has('gui_running')
 	set background=dark
 	set guioptions-=tT
 	set guiheadroom=0
-	colorscheme base16-atelierforest
+	colorscheme jellybeans
 endif
 
 " ----- Editing
