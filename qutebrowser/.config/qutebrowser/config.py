@@ -39,6 +39,8 @@ c.url.searchengines = {
 }
 
 # Colors
+c.colors.statusbar.private.bg = "#400040"
+c.colors.statusbar.command.private.bg = c.colors.statusbar.private.bg
 c.colors.tabs.odd.bg = "black"
 c.colors.tabs.odd.fg = "white"
 c.colors.tabs.selected.odd.bg = "white"
