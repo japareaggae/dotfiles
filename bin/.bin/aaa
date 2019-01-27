@@ -120,7 +120,7 @@ _clone(){
 		_check_aurutils || exit 1
 		shift
 		[[ $1 ]] || { echo "Usage: $MYNAME clone (package)"; exit 1; }
-		for PACKAGE in $(echo $1 | aur depends | cut -f1 | uniq | tac); do
+		for PACKAGE in $(aur depends $1); do
 			git clone https://aur.archlinux.org/$PACKAGE.git $WHERE/$PACKAGE
 		done
 	else
@@ -134,7 +134,7 @@ _download(){
 		_check_aurutils || exit 1
 		shift
 		[[ $1 ]] || { echo "Usage: $MYNAME download (package)"; exit 1; }
-		for PACKAGE in $(echo $1 | aur depends | cut -f1 | uniq | tac); do
+		for PACKAGE in $(aur depends $1); do
 			curl -o $WHERE/$PACKAGE.tar.gz https://aur.archlinux.org/cgit/aur.git/snapshot/$PACKAGE.tar.gz
 			(
 			cd $WHERE
