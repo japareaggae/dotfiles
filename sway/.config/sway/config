@@ -139,14 +139,14 @@ bindsym $mod+Shift+space exec dmenu_run
 bindsym $mod+space       exec j4-dmenu-desktop --no-generic
 
 # -- Terminal/File Manager
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec thunar
 
 # -- Session Menu
 bindsym $mod+Shift+Delete exec ~/.bin/dmenu-session
 
 # -- NetworkManager
-bindsym $mod+F12 exec termite -t "NetworkManager TUI" -e nmtui
+bindsym $mod+F12 exec alacritty -t "NetworkManager TUI" -e nmtui
 
 # -- Screenshotting
 bindsym Print exec swaygrab "$HOME/.screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
