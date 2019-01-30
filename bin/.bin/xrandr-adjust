@@ -3,21 +3,26 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Parts copied from ArchWiki <https://wiki.archlinux.org/index.php/xrandr>
 
-if [ "$HOSTNAME" == "tidehunter" ]; then
-	PRI="LVDS"
-	EXT="HDMI-0"
-	EXTMODE="--auto"
-elif [ "$HOSTNAME" == "earthshaker" ]; then
-	PRI="HDMI-A-0"
-	EXT="HDMI-A-1"
-	EXTMODE="--auto"
-fi
+case $HOSTNAME in
+	"gondar")
+		PRI="LVDS"
+		PRIMODE="--auto"
+		EXT="HDMI-1"
+		EXTMODE="--auto"
+		;;
+	"earthshaker")
+		PRI="DisplayPort-0"
+		PRIMODE="--auto"
+		EXT="HDMI-A-0"
+		EXTMODE="--auto"
+		;;
+esac
 
 if (xrandr | grep "$EXT connected" > /dev/null); then
-	xrandr --output $PRI --primary --auto \
+	xrandr --output $PRI --primary $PRIMODE \
 		--output $EXT $EXTMODE --right-of $PRI
 else
-	xrandr --output $PRI --primary --auto \
+	xrandr --output $PRI --primary $PRIMODE \
 		--output $EXT --off
 fi
 
