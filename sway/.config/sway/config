@@ -149,7 +149,7 @@ bindsym $mod+Shift+Delete exec ~/.bin/dmenu-session
 bindsym $mod+F12 exec alacritty -t "NetworkManager TUI" -e nmtui
 
 # -- Screenshotting
-bindsym Print exec swaygrab "$HOME/.screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym Print exec $HOME/.bin/wscreenshot region
 
 # -- MPD
 bindsym XF86AudioPlay exec mpc toggle
@@ -171,6 +171,7 @@ bindsym $mod+F6 exec pavucontrol
 #for_window [class="Gcolor3"] floating enable
 #for_window [class="Lxpolkit"] floating enable
 #for_window [title="File Operation Progress"] floating enable
+for_window [instance="screenshot preview"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
 assign [class="^telegram-desktop$"] 7
