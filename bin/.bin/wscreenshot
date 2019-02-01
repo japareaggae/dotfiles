@@ -1,0 +1,52 @@
+#!/bin/bash
+# wscreenshot - automates taking a screenshot and copying it to the clipboard
+# Written by Renan Guilherme <japareaggae@gmail.com>
+# Released under the public domain <http://unlicense.org/UNLICENSE>
+
+# This script uses grim and slurp for taking the screenshots:
+# https://github.com/emersion/grim
+# https://github.com/emersion/slurp
+
+# This script also uses wl-clipboard to copy the screenshots to the
+# clipboard:
+# https://github.com/bugaevc/wl-clipboard
+
+usage(){
+	cat << EOF
+Usage: wscreenshot (option)
+
+A script for automating taking a screenshot and copying it to the clipboard.
+This script uses grim (and slurp) for taking the screenshots, xclip for
+copying it to the clipboard, and sxiv for displaying the screenshot.
+
+Options:
+  full     Take a screenshot of the entire desktop
+  region   Take a screenshot of a selected region
+EOF
+}
+
+FILENAME="/tmp/$(date +%F_%H-%M-%S).png"
+# This flag is used so we can tell sxiv's scripts that they are dealing with
+# a screenshot, and show different information on the status bar or provide
+# special keybinds for copying the screenshot to somewhere outside /tmp.
+FLAG="/tmp/screenshot.flag"
+
+process_screenshot(){
+	touch $FLAG
+	wl-copy < "$FILENAME"
+	sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
+	rm "$FILENAME"
+	rm "$FLAG"
+}
+
+case $1 in
+	"full")   grim "$FILENAME" ;;
+	"region") grim -g "$(slurp)" "$FILENAME" ;;
+	"*")      usage; exit 1;;
+esac
+
+if [[ -f "$FILENAME" ]]; then
+	process_screenshot
+fi
+
+
