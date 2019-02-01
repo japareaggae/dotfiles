@@ -140,7 +140,7 @@ bindsym $mod+space       exec j4-dmenu-desktop --no-generic
 
 # -- Terminal/File Manager
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec thunar
+bindsym $mod+Shift+Return exec GDK_BACKEND=x11 thunar
 
 # -- Session Menu
 bindsym $mod+Shift+Delete exec ~/.bin/dmenu-session
