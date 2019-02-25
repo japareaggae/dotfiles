@@ -10,5 +10,5 @@ load-module module-switch-on-connect
 # Only works if the output is already plugged in when pulse starts
 # Requires .nofail for tidehunter
 .nofail
-set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo-extra5
+set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo-extra2
 .fail
