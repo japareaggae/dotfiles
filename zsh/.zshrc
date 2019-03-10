@@ -94,3 +94,8 @@ nls() {
 	else if (NF==3) printf "  %s\n", $3
 	}'
 }
+
+green() {
+	# Lane Cover (0) = 1000 - Desired Green Number (310) * Hi-Speed Value (x) * BPM ($1) / 174
+	python -c "print(-174000/(-310*$1))"
+}
