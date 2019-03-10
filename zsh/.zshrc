@@ -64,6 +64,7 @@ PS1="%B%F{$color}[%m] %~ %b%f%# "
 unset color
 
 ### Aliases
+alias fd="fdfind"
 alias l="exa"
 alias ll="exa -l"
 alias ls="ls --color=auto"
