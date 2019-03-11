@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # wallpaper - change wallpapers using symlinks and feh
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
