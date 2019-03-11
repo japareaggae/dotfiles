@@ -54,3 +54,10 @@ c.colors.messages.warning.fg = "black"
 # Fonts
 c.fonts.tabs = "8pt sans"
 
+# Nouveau hack
+with open('/proc/modules', 'r') as file:
+    for line in file:
+        if "nouveau" in line:
+            print("Found nouveau module, using software rendering")
+            c.qt.force_software_rendering = "chromium"
+            break
