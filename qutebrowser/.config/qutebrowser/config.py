@@ -4,6 +4,7 @@ c.confirm_quit = ["downloads"]
 
 # Completion
 c.completion.height = "40%"
+c.completion.open_categories = ["quickmarks", "bookmarks", "history"]
 
 # Downloads
 c.downloads.position = "bottom"
