@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # xrandr-adjust: Automatically extend or disconnect video outputs
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Parts copied from ArchWiki <https://wiki.archlinux.org/index.php/xrandr>
