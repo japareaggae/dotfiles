@@ -46,6 +46,9 @@ while (<SENSORS>) {
     if (/^\s+temp1_input:\s+[\+]*([\-]*\d+\.\d)/) {
         $temperature = $1;
         last;
+    } elsif (/^\s+temp2_input:\s+[\+]*([\-]*\d+\.\d)/) {
+        $temperature = $1;
+        last;
     }
 }
 close(SENSORS);
