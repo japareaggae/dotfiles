@@ -5,12 +5,12 @@
 f="$1"
 type=$( file "$f" | grep -oP '\w+(?= image data)' )
 case $type in
-	PNG)  newext=png ;;
+	PNG)   newext=png ;;
 	JPEG*) newext=jpg ;;
-	*)    echo "??? what is this: $f (type was $type)"; continue ;;
+	*)     echo "??? what is this: $f (type was $type)" ;;
 esac
 ext=${f##*.}   # remove everything up to and including the last dot
-if [[ $ext != $newext ]]; then
+if [[ $ext != $newext && -n $newext ]]; then
 	echo mv "\"$f\"" "\"${f%.*}.$newext\""
 	mv "$f" "${f%.*}.$newext"
 fi
