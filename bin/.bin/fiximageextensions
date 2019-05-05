@@ -1,0 +1,17 @@
+#!/bin/bash
+# <https://superuser.com/a/812466>
+# Usage: fd -x fiximageextensions {}
+
+f="$1"
+type=$( file "$f" | grep -oP '\w+(?= image data)' )
+case $type in
+	PNG)  newext=png ;;
+	JPEG*) newext=jpg ;;
+	*)    echo "??? what is this: $f (type was $type)"; continue ;;
+esac
+ext=${f##*.}   # remove everything up to and including the last dot
+if [[ $ext != $newext ]]; then
+	echo mv "\"$f\"" "\"${f%.*}.$newext\""
+	mv "$f" "${f%.*}.$newext"
+fi
+
