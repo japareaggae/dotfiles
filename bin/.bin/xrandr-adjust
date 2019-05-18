@@ -5,7 +5,7 @@
 
 case $HOSTNAME in
 	"gondar")
-		PRI="LVDS"
+		PRI="LVDS-1"
 		PRIMODE="--auto"
 		EXT="HDMI-1"
 		EXTMODE="--auto"
