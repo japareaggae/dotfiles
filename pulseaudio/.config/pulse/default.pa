@@ -4,7 +4,7 @@
 unload-module module-role-cork
 
 # Enable switching sinks/inputs when they are connected
-load-module module-switch-on-connect
+#load-module module-switch-on-connect
 
 # earthshaker: Use the correct HDMI profile for audio
 # Only works if the output is already plugged in when pulse starts
