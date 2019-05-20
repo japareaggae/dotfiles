@@ -180,6 +180,7 @@ bindsym $mod+Shift+F4 exec arandr
 bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 
 # -- Sleep Toggle
+bindsym XF86Battery $execb ~/.bin/toggle-sleep
 bindsym $mod+F3 $execb ~/.bin/toggle-sleep
 
 # -- Screenshotting
