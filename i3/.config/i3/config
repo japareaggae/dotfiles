@@ -165,7 +165,7 @@ bindsym $mod+space $execb j4-dmenu-desktop --no-generic
 bindsym $mod+F1 exec xfce4-appfinder
 
 # -- Terminal/File Manager
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return $execb alacritty
 bindsym $mod+Shift+Return exec thunar
 
 # -- Session Menu
