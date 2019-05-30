@@ -34,3 +34,13 @@ hispeed() {
 	python -c "print(-174000/(-310*$1))"
 }
 
+### Magnet URL information extractor
+# <https://unix.stackexchange.com/a/134286>
+demagnetize() {
+	hash=$(echo "$1" | grep -oP "(?<=btih:).*?(?=&)")
+	echo "Magnet hash: $hash"
+	aria2c --bt-metadata-only=true --bt-save-metadata=true -q "$1"
+	aria2c "$hash.torrent" -S
+	rm "$hash.torrent"
+}
+
