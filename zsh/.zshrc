@@ -70,6 +70,8 @@ alias l="exa"
 alias ll="exa -l"
 alias ls="ls --color=auto"
 alias mpv-nv="mpv --no-video"
+alias udmount="udisksctl mount -b"
+alias udumount="udisksctl unmount -b"
 
 if [[ -r /etc/debian_version ]] ; then
 	alias fd="fdfind"
