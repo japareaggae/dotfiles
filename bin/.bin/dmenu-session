@@ -3,10 +3,6 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-grep 'resume=' /proc/cmdline && HIBERNATE_OPTIONS="hibernate\nhybrid-sleep\n"
-
-option=$( printf "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\n$HIBERNATE_OPTIONS" | dmenu -p Session )
-
 _getOut(){
 	(pgrep 'i3' > /dev/null) && i3 exit
 	(pgrep 'bspwm' > /dev/null) && bspc quit
@@ -32,6 +28,16 @@ _lock(){
 		$HOME/.bin/i3locker
 	fi
 }
+
+
+# Enable hibernation options on list only if there's a resume partition
+grep 'resume=' /proc/cmdline && HIBERNATE_OPTIONS="hibernate\nhybrid-sleep\n"
+
+if [[ "$1" ]]; then
+	option=$1
+else
+	option=$( printf "cancel\nlock\nlogout\nshutdown\nreboot\nsuspend\n$HIBERNATE_OPTIONS" | dmenu -p Session )
+fi
 
 case $option in
 	lock) _lock ;;
