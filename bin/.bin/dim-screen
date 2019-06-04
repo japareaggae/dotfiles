@@ -1,0 +1,33 @@
+#!/bin/bash
+# Lowers screen brightness, then waits to be killed and restores previous
+# brightness on exit. Modified to use brightnessctl and remove fading.
+# Original: <https://bitbucket.org/raymonad/xss-lock/src/master/doc/dim-screen.sh>
+
+### Configuration
+min_brightness="20%"
+# You will need write permissions on the sysfs device for this fallback
+#sysfs_path=/sys/class/backlight/intel_backlight/brightness
+
+###############################################################################
+
+get_brightness() {
+	if [[ -z $sysfs_path ]]; then
+		brightnessctl get
+	else
+		cat $sysfs_path
+	fi
+}
+
+set_brightness() {
+	if [[ -z $sysfs_path ]]; then
+		brightnessctl -q set $1
+	else
+		echo $1 > $sysfs_path
+	fi
+}
+
+trap 'exit 0' TERM INT
+trap "set_brightness $(get_brightness); kill %%" EXIT
+set_brightness $min_brightness
+sleep 2147483647 &
+wait
