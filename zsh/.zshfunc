@@ -44,3 +44,9 @@ demagnetize() {
 	rm "$hash.torrent"
 }
 
+### Convert GIFs to MP4 files
+# <http://rigor.com/blog/2015/12/optimizing-animated-gifs-with-html5-video>
+gif2mp4() {
+	ffmpeg -i "$1" -pix_fmt yuv420p -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" "${1/.gif/.mp4}"
+}
+
