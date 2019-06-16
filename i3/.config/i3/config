@@ -170,6 +170,7 @@ bindsym $mod+Shift+Return exec thunar
 
 # -- Session Menu
 bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
+bindsym XF86ScreenSaver   $execb ~/.bin/dmenu-session lock
 
 # -- NetworkManager
 bindsym $mod+F12 $execb alacritty -e nmtui
