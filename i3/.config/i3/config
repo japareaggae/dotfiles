@@ -202,7 +202,7 @@ bindsym XF86AudioMute $execb ponymix toggle && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume $execb ponymix decrease 5 && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioRaiseVolume $execb ponymix increase 5 && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMicMute $execb ponymix --source toggle
-bindsym $mod+F6 exec pavucontrol
+bindsym $mod+XF86AudioMute exec pavucontrol
 
 # -- Skippy-XD
 bindsym $mod+Tab $execb skippy-xd-toggle
