@@ -10,6 +10,9 @@ min_brightness="20%"
 
 ###############################################################################
 
+# Exit quietly if brightnessctl is missing (for desktops)
+( ! hash brightnessctl 2> /dev/null ) && exit
+
 get_brightness() {
 	if [[ -z $sysfs_path ]]; then
 		brightnessctl get
