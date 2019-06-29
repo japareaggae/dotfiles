@@ -205,6 +205,9 @@ bindsym $mod+XF86AudioMute exec pavucontrol
 # -- Skippy-XD
 bindsym $mod+Tab $execb skippy-xd-toggle
 
+# -- ThinkVantage button
+bindsym XF86Launch1 $execb xdg-open "https://wiki.archlinux.org"
+
 # ----- WINDOW RULES
 # -- Custom utilities (see ~/.bin)
 for_window [instance="qrencode result"] floating enable
