@@ -5,8 +5,6 @@
 
 ### Configuration
 min_brightness="20%"
-# You will need write permissions on the sysfs device for this fallback
-#sysfs_path=/sys/class/backlight/intel_backlight/brightness
 
 ###############################################################################
 
@@ -14,19 +12,11 @@ min_brightness="20%"
 ( ! hash brightnessctl 2> /dev/null ) && exit
 
 get_brightness() {
-	if [[ -z $sysfs_path ]]; then
-		brightnessctl get
-	else
-		cat $sysfs_path
-	fi
+	brightnessctl get
 }
 
 set_brightness() {
-	if [[ -z $sysfs_path ]]; then
-		brightnessctl -q set $1
-	else
-		echo $1 > $sysfs_path
-	fi
+	brightnessctl -q set $1
 }
 
 trap 'exit 0' TERM INT
