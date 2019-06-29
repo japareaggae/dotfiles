@@ -23,5 +23,8 @@ fi
 ### Xmodmap
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
+### xset
+[ -f ~/.bin/dim-screen ] && xset s 60 540
+
 # WM/DEs are not called on .xprofile. Use .xinitrc instead
 
