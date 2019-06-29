@@ -4,14 +4,12 @@
 # ----- AUTOSTARTS
 set $execb exec --no-startup-id
 
-$execb blueman-applet
-$execb xss-lock -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
-$execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-$execb dropbox
-
 $execb $HOME/.bin/xrandr-adjust
 $execb compton
+$execb blueman-applet
 $execb skippy-xd --start-daemon
+$execb xss-lock -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
+$execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Consider using systemd user sessions for autostarting these applications.
 #$execb start-pulseaudio-x11
