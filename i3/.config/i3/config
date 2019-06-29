@@ -236,7 +236,7 @@ workspace 10 output HDMI-A-0
 
 # ----- INFORMATION BAR
 bar {
-	status_command i3blocks
+	status_command i3status
 	position top
 	tray_output primary
 	font pango:Sans 8
