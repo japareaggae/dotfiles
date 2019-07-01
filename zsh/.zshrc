@@ -1,6 +1,8 @@
 # ~/.zshrc
 ### General
 setopt autocd
+setopt correct
+setopt completeinword
 
 ### History
 HISTFILE=~/.zsh_history
@@ -10,8 +12,6 @@ setopt appendhistory
 setopt sharehistory
 setopt extended_history
 setopt hist_ignore_space
-setopt correct
-setopt completeinword
 
 ### Environment variables (for interactive use)
 export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
