@@ -163,7 +163,7 @@ bindsym $mod+space $execb j4-dmenu-desktop --no-generic
 bindsym $mod+F1 exec xfce4-appfinder
 
 # -- Terminal/File Manager
-bindsym $mod+Return $execb alacritty
+bindsym $mod+Return $execb kitty
 bindsym $mod+Shift+Return exec thunar
 
 # -- Session Menu
@@ -171,7 +171,7 @@ bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
 bindsym XF86ScreenSaver   $execb ~/.bin/dmenu-session lock
 
 # -- NetworkManager
-bindsym $mod+F12 $execb alacritty -e nmtui
+bindsym $mod+F12 $execb kitty -e nmtui
 
 # --- Monitors
 bindsym XF86Display exec arandr
