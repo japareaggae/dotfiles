@@ -21,7 +21,7 @@ c.tabs.padding = {
     "right":  4
 }
 c.tabs.show = "multiple"
-c.tabs.title.format = "{perc}{index}: {title}"
+c.tabs.title.format = "{perc}{audio}{index}: {current_title}"
 
 # URL
 c.url.default_page = "about:blank"
@@ -52,6 +52,10 @@ c.colors.tabs.even.bg = c.colors.tabs.odd.bg
 c.colors.tabs.even.fg = c.colors.tabs.odd.fg
 c.colors.tabs.selected.even.bg = c.colors.tabs.selected.odd.bg
 c.colors.tabs.selected.even.fg = c.colors.tabs.selected.odd.fg
+c.colors.tabs.pinned.selected.odd.bg = "white"
+c.colors.tabs.pinned.selected.odd.fg = "black"
+c.colors.tabs.pinned.selected.even.bg = c.colors.tabs.pinned.selected.odd.bg
+c.colors.tabs.pinned.selected.even.fg = c.colors.tabs.pinned.selected.odd.fg
 c.colors.messages.warning.fg = "black"
 
 # Fonts
