@@ -55,6 +55,8 @@ volume master {
 battery all {
 	format = "%status %percentage %remaining"
 	format_down = ""
+	low_threshold = 15
+	threshold_type = percentage
 }
 
 time {
