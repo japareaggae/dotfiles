@@ -16,6 +16,7 @@ general {
 
 order += "cpu_usage"
 order += "cpu_temperature 0"
+order += "memory"
 order += "disk /"
 order += "wireless _first_"
 order += "ethernet _first_"
@@ -31,6 +32,11 @@ cpu_usage {
 cpu_temperature 0 {
 	format = "%degrees°C"
 	max_threshold = 80
+}
+
+memory {
+	format = "%used"
+	memory_used_method = memavailable
 }
 
 disk "/" {
