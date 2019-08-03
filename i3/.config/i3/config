@@ -8,7 +8,7 @@ $execb $HOME/.bin/xrandr-adjust
 $execb compton
 $execb blueman-applet
 $execb skippy-xd --start-daemon
-$execb xss-lock -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
+$execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Consider using systemd user sessions for autostarting these applications.
