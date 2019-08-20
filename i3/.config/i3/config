@@ -7,7 +7,6 @@ set $execb exec --no-startup-id
 $execb $HOME/.bin/xrandr-adjust
 $execb compton
 $execb blueman-applet
-$execb skippy-xd --start-daemon
 $execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb syncthingtray
@@ -203,9 +202,6 @@ bindsym XF86AudioLowerVolume $execb pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume $execb pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMicMute     $execb pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym $mod+XF86AudioMute   exec pavucontrol
-
-# -- Skippy-XD
-bindsym $mod+Tab $execb skippy-xd-toggle
 
 # -- ThinkVantage button
 bindsym XF86Launch1 $execb xdg-open "https://wiki.archlinux.org"
