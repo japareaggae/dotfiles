@@ -197,6 +197,7 @@ handle_mime() {
         image/*)
             # Preview as text conversion
             # img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
+            chafa -c 16 -s "${PV_WIDTH}x${PV_HEIGHT}" "${FILE_PATH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
             exit 1;;
 
