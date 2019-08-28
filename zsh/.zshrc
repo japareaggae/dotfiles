@@ -53,6 +53,13 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' rehash true
+zstyle ':completion:*:descriptions' format $'%F{green}completing %B%d%b%f'
+zstyle ':completion:*:matches'      group 'yes'
+zstyle ':completion:*'              group-name ''
+zstyle ':completion:*:messages'     format '%d'
+zstyle ':completion:*:options'      auto-description '%d'
+zstyle ':completion:*:manuals'      separate-sections true
+zstyle ':completion:*:manuals.*'    insert-sections   true
 
 ### Prompt
 if [[ $EUID -eq 0 ]]; then
