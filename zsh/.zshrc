@@ -74,7 +74,10 @@ unset color
 
 ### Aliases
 alias l="exa"
+alias la="exa -a"
 alias ll="exa -l"
+alias lsbig="exa -l -s size"
+alias lssmall="exa -l -r -s size"
 alias ls="ls --color=auto"
 alias mpv-nv="mpv --no-video"
 alias udmount="udisksctl mount -b"
