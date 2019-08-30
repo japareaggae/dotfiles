@@ -9,7 +9,6 @@ $execb compton
 $execb blueman-applet
 $execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-$execb syncthingtray
 $execb udiskie -A -t
 
 # Consider using systemd user sessions for autostarting these applications.
