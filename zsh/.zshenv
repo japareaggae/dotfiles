@@ -16,4 +16,4 @@ export PASSWORD_STORE_CLIP_TIME=15
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 
 ### GPG agent as SSH agent
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+( hash gpgconf > /dev/null) && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"

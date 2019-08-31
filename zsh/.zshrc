@@ -21,8 +21,10 @@ export LESS_TERMCAP_ue=$(tput sgr0)
 eval $(dircolors -b)
 
 ### GPG agent
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null
+if ( hash gpg-connect-agent > /dev/null ); then
+	export GPG_TTY=$(tty)
+	gpg-connect-agent updatestartuptty /bye > /dev/null
+fi
 
 ### Keybinds
 bindkey -e
