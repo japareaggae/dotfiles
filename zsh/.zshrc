@@ -21,7 +21,7 @@ export LESS_TERMCAP_ue=$(tput sgr0)
 eval $(dircolors -b)
 
 ### GPG agent
-if ( hash gpg-connect-agent > /dev/null ); then
+if ( hash gpg-connect-agent 2> /dev/null ); then
 	export GPG_TTY=$(tty)
 	gpg-connect-agent updatestartuptty /bye > /dev/null
 fi
