@@ -127,6 +127,8 @@ else
 		(hash convert 2> /dev/null) || { echo "Error: ImageMagick is not installed."; exit 1; }
 		RESOLUTION=$(xrandr | grep -w connected | awk -F'[ +]' '{print $4}' | head -n 1)
 		convert "$FILE" $LOCKSCREEN_OPTS -resize $RESOLUTION^ -gravity center -extent $RESOLUTION "$DESTINATION"
+		exit # So we don't execute feh
+		# TODO: Better flow control
 	else
 		ln -sf "$FILE" "$DESTINATION"
 	fi
