@@ -76,12 +76,25 @@ PS1="%B%F{$color}[%m] %~ %b%f%# "
 unset color
 
 ### Aliases
-alias l="exa"
-alias la="exa -a"
-alias ll="exa -l"
-alias lsbig="exa -l -s size"
-alias lssmall="exa -l -r -s size"
-alias ls="ls --color=auto"
+if ( hash exa 2> /dev/null); then
+	alias ls="exa"
+	alias l="exa"
+	alias la="exa -a"
+	alias ll="exa -l"
+	alias lsbig="exa -l -s size"
+	alias lssmall="exa -l -r -s size"
+	alias lsnew="exa -l -s modified"
+	alias lsold="exa -l -r -s modified"
+else
+	alias ls="ls --color=auto"
+	alias l="ls --color=auto"
+	alias la="ls -a"
+	alias ll="ls -l"
+	alias lsbig="ls -l -r -S"
+	alias lssmall="ls -l -S"
+	alias lsnew="ls -l -r -t"
+	alias lsold="ls -l -t"
+fi
 alias mpv-nv="mpv --no-video"
 alias udmount="udisksctl mount -b"
 alias udumount="udisksctl unmount -b"
