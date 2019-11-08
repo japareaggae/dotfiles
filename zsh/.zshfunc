@@ -40,11 +40,16 @@ hispeed() {
 ### Magnet URL information extractor
 # <https://unix.stackexchange.com/a/134286>
 demagnetize() {
-	hash=$(echo "$1" | grep -oP "(?<=btih:).*?(?=&)")
-	echo "Magnet hash: $hash"
-	aria2c --bt-metadata-only=true --bt-save-metadata=true -q "$1"
-	aria2c "$hash.torrent" -S
-	rm "$hash.torrent"
+	if [[ $1 ]]; then
+		hash=$(echo "$1" | grep -oP "(?<=btih:).*?(?=&)")
+		echo "Magnet hash: $hash"
+		aria2c --bt-metadata-only=true --bt-save-metadata=true -q "$1"
+		aria2c "$hash.torrent" -S
+		rm "$hash.torrent"
+	else
+		echo "Missing magnet URI"
+		return 1
+	fi
 }
 
 ### Convert GIFs to MP4 files
