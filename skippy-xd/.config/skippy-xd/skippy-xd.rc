@@ -1,0 +1,66 @@
+# vim: set ft=dosini:
+# See /etc/xdg/skippy-xd.rc for default settings
+
+[general]
+distance = 25
+useNetWMFullscreen = true
+ignoreSkipTaskbar = true
+updateFreq = 60.0
+lazyTrans = false
+pipePath = /tmp/skippy-xd-fifo
+movePointerOnStart = false
+movePointerOnSelect = false
+movePointerOnRaise = false
+switchDesktopOnActivate = false
+useNameWindowPixmap = false
+forceNameWindowPixmap = false
+includeFrame = true
+allowUpscale = true
+showAllDesktops = false
+showUnmapped = true
+preferredIconSize = 48
+clientDisplayModes = thumbnail icon filled none
+iconFillSpec = orig mid mid #00FFFF
+fillSpec = orig mid mid #FFFFFF
+background =
+
+[xinerama]
+showAll = true
+
+[normal]
+tint = black
+tintOpacity = 128
+opacity = 255
+
+[highlight]
+tint = none
+tintOpacity = 0
+opacity = 255
+
+[tooltip]
+show = true
+followsMouse = true
+offsetX = 0
+offsetY = 22
+align = left
+border = #404040
+background = #404040
+opacity = 128
+text = #ffffff
+textShadow = black
+font = Noto Sans-9:Bold
+
+[bindings]
+miwMouse1 = focus
+miwMouse2 = close-ewmh
+miwMouse3 = iconify
+keysUp = Up w k
+keysDown = Down s j
+keysLeft = Left b a h
+keysRight = Right Tab f d l
+keysExitCancelOnPress = Escape BackSpace x q
+keysExitCancelOnRelease =
+keysExitSelectOnPress = Return space
+keysExitSelectOnRelease =
+keysReverseDirection = Tab
+modifierKeyMasksReverseDirection = ShiftMask ControlMask
