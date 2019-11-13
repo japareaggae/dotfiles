@@ -3,6 +3,7 @@
 setopt autocd
 setopt correct
 setopt completeinword
+setopt autocontinue
 
 ### History
 HISTFILE=~/.zsh_history
