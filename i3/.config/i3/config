@@ -5,7 +5,7 @@
 set $execb exec --no-startup-id
 
 $execb $HOME/.bin/xrandr-adjust
-$execb compton
+$execb picom
 $execb blueman-applet
 $execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
