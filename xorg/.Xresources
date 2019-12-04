@@ -2,9 +2,6 @@
 ! .Xresources - configurations for basic X applications
 !
 
-! --- Pointer
-Xcursor.theme: Adwaita
-
 ! --- Font Rendering
 Xft.dpi: 96
 Xft.antialias: true
