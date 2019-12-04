@@ -6,6 +6,9 @@
 # --- xsession
 [ -e $HOME/.xprofile ] && source $HOME/.xprofile
 
+###  Xresources
+[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
+
 # --- xrandr-adjust
 (command -v xrandr-adjust > /dev/null) && xrandr-adjust
 

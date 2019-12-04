@@ -20,9 +20,6 @@ export PATH="$HOME/.bin:${PATH}"
 # Lazy hack because QT_QPA_PLATFORMTHEME was set before XDG_CURRENT_DESKTOP
 grep startplasma ~/.xinitrc || export QT_QPA_PLATFORMTHEME=qt5ct
 
-###  Xresources
-[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
-
 ### Xmodmap
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
