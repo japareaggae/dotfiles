@@ -19,7 +19,13 @@ export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
 export LESS_TERMCAP_me=$(tput sgr0)
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)
 export LESS_TERMCAP_ue=$(tput sgr0)
-eval $(dircolors -b)
+
+# Used for tab completion
+if [[ $(uname) == "Darwin" ]]; then
+	eval $(gdircolors -b)
+else
+	eval $(dircolors -b)
+fi
 
 ### GPG agent
 if ( hash gpg-connect-agent 2> /dev/null ); then
