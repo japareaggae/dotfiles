@@ -2,6 +2,7 @@
 c.auto_save.session = True
 c.confirm_quit = ["downloads"]
 c.content.autoplay = False
+c.content.notifications = False
 
 # Completion
 c.completion.height = "40%"
