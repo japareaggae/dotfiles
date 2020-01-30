@@ -63,6 +63,13 @@ c.colors.messages.warning.fg = "black"
 # Fonts
 c.fonts.tabs = "8pt sans"
 
+# Keybinds
+config.bind(';p', 'hint links spawn mpv {hint-url}')
+config.bind(',p', 'spawn passme')
+
+# Aliases
+c.aliases['mpv'] = "spawn --userscript view-in-mpv"
+
 # Nouveau hack
 with open('/proc/modules', 'r') as file:
     for line in file:
