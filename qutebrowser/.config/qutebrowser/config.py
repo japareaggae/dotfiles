@@ -65,7 +65,8 @@ c.fonts.tabs = "8pt sans"
 
 # Keybinds
 config.bind(';p', 'hint links spawn mpv {hint-url}')
-config.bind(',p', 'spawn passme')
+config.bind(',p', 'spawn --userscript qute-pass -U secret -u \'Username: (.*)\' ')
+config.bind(',P', 'spawn passme')
 
 # Aliases
 c.aliases['mpv'] = "spawn --userscript view-in-mpv"
