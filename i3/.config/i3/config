@@ -230,6 +230,7 @@ for_window [class="Peek"] floating enable
 
 # -- Workspace assignments
 assign [class="^TeamSpeak 3$"] 10
+assign [class="^discord$"] 9
 assign [class="^TelegramDesktop$"] 7
 
 # ----- WORKSPACE RULES
