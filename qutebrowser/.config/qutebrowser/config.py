@@ -3,6 +3,7 @@ c.auto_save.session = True
 c.confirm_quit = ["downloads"]
 c.content.autoplay = False
 c.content.notifications = False
+c.colors.webpage.prefers_color_scheme_dark = True
 
 # Completion
 c.completion.height = "40%"
