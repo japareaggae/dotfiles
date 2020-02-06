@@ -11,6 +11,7 @@ $execb syncthingtray
 $execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb udiskie -A -t
+$execb nm-applet
 
 # Consider using systemd user sessions for autostarting these applications.
 #$execb start-pulseaudio-x11
