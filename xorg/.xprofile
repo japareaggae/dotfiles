@@ -23,8 +23,5 @@ grep startplasma ~/.xinitrc || export QT_QPA_PLATFORMTHEME=qt5ct
 ### Xmodmap
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
-### xset
-[ -f ~/.bin/dim-screen ] && xset s 300 300 && xset dpms 605 605 605
-
 # WM/DEs are not called on .xprofile. Use .xinitrc instead
 
