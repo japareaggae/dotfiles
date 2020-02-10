@@ -13,12 +13,9 @@ fi
 export PATH="$HOME/.bin:${PATH}"
 
 ### Qt5 Configuration
-#if [ ! $XDG_CURRENT_DESKTOP ] || [ $XDG_CURRENT_DESKTOP != "KDE" ] && ( command -v qt5ct >/dev/null 2>&1 ); then
-#	export QT_QPA_PLATFORMTHEME="qt5ct"
-#fi
-
-# Lazy hack because QT_QPA_PLATFORMTHEME was set before XDG_CURRENT_DESKTOP
-grep startplasma ~/.xinitrc || export QT_QPA_PLATFORMTHEME=qt5ct
+if ( command -v qt5ct >/dev/null 2>&1 ) && ( ! command -v startplasma-x11 >/dev/null 2>&1 ); then
+	export QT_QPA_PLATFORMTHEME=qt5ct
+fi
 
 ### Xmodmap
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
