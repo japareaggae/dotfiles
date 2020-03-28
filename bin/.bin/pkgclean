@@ -4,46 +4,55 @@
 # Regex magic by Victor Diniz (https://github.com/blekwave)
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
-# Where do you store your PKGBUILDs?
+### Where do you store your PKGBUILDs?
 DEVDIR="$HOME/Development/pkgbuilds"
+
+### Internal options
+PRETEND=0
+CLEANPKGS=0
+CLEANSRCS=0
+
+C_BOLD="$(tput bold)"
+C_RED="$(tput setaf 1)"
+C_YELLOW="$(tput setaf 3)"
+C_RESET="$(tput sgr0)"
 
 _usage(){
 cat << EOF
-Usage: pkgclean [-d DIRECTORY] (action)
+Usage: pkgclean [-d DIRECTORY] [-p] (action)
 
 Removes outdated packages from your build directory.
 The default directory is $DEVDIR
 
 Options:
-  -d DIRECTORY     Scan DIRECTORY instead of default directory.
+  -d DIRECTORY    Scan DIRECTORY instead of default directory.
+  -p              Do not delete files, only list them.
 
 Actions:
-  view | viewpkgs     View all pacman packages.
-  viewsources         View all source tarballs.
-  viewall             View both pacman packages and source tarballs.
-  clean | cleanpkgs   Clean all pacman packages.
-  cleansources        Clean all source tarballs.
-  cleanall            Clean both pacman packages and source tarballs.
+  clean           Clean both pacman packages and source tarballs.
+  cleanpkgs       Clean all pacman packages.
+  cleansources    Clean all source tarballs.
 EOF
 exit
 }
 
 # Cleaning functions
 _cleanpkgs(){
-find $DEVDIR -iname '*.pkg.tar*' -delete
+	echo "${C_BOLD}${C_YELLOW}==>${C_RESET}${C_BOLD} Listing built packages${C_RESET}"
+	find $DEVDIR -iname '*.pkg.tar*' | sed "s|$DEVDIR/||g"
+if (( ! PRETEND )); then
+	echo "${C_BOLD}${C_RED}==>${C_RESET}${C_BOLD} Cleaning built packages${C_RESET}"
+	find $DEVDIR -iname '*.pkg.tar*' -delete
+fi
 }
 
 _cleansources(){
-find $DEVDIR | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | xargs /bin/rm
-}
-
-# Finding functions
-_findpkgs(){
-find $DEVDIR -iname '*.pkg.tar*' | sed "s|$DEVDIR/||g"
-}
-
-_findsources(){
-find $DEVDIR | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | sed "s|$DEVDIR/||g"
+	echo "${C_BOLD}${C_YELLOW}==>${C_RESET}${C_BOLD} Listing source packages${C_RESET}"
+	find $DEVDIR | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | sed "s|$DEVDIR/||g"
+if (( ! PRETEND )); then
+	echo "${C_BOLD}${C_RED}==>${C_RESET}${C_BOLD} Cleaning source packages${C_RESET}"
+	find $DEVDIR | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | xargs /bin/rm
+fi
 }
 
 [[ ! $1 ]] && _usage
@@ -54,20 +63,19 @@ while [[ $1 ]]; do
 			shift
 			DIR="$(realpath "$1")"
 			if [[ -d "$DIR" ]]; then
-				DEVDIR=$1
+				DEVDIR="$(realpath $1)"
 			else
 				echo "Error: Directory $DIR does not exist"
 				exit 1
 			fi
 			;;
+		-p)
+			PRETEND=1
+			;;
 
-		cleanall)          _cleanpkgs; _cleansources ;;
-		cleanpkgs | clean) _cleanpkgs ;;
-		cleansources)      _cleansources ;;
-
-		viewall)         _findpkgs; _findsources ;;
-		viewpkgs | view) _findpkgs ;;
-		viewsources)     _findsources ;;
+		clean | cleanall)  CLEANPKGS=1; CLEANSRCS=1 ;;
+		cleanpkgs)         CLEANPKGS=1 ;;
+		cleansources)      CLEANSRCS=1 ;;
 
 		help | -h | --help) _usage ;;
 		*) _usage ;;
@@ -75,3 +83,6 @@ while [[ $1 ]]; do
 	shift
 done
 
+(( ! CLEANPKGS )) && (( ! CLEANSRCS )) && _usage
+(( CLEANPKGS )) && _cleanpkgs
+(( CLEANSRCS )) && _cleansources
