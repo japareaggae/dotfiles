@@ -101,6 +101,7 @@ else
 	alias lsnew="ls -l -r -t"
 	alias lsold="ls -l -t"
 fi
+alias gdd="gnome-disks --restore-disk-image"
 alias mpv-nv="mpv --no-video"
 alias udmount="udisksctl mount -b"
 alias udumount="udisksctl unmount -b"
