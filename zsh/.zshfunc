@@ -58,3 +58,11 @@ gif2mp4() {
 	ffmpeg -i "$1" -pix_fmt yuv420p -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" "${1/.gif/.mp4}"
 }
 
+### Rename files to their MD5 hash
+md5rename() {
+	[[ $1 ]] || { echo "Missing input file"; return 1 }
+	local md5 ext
+	md5=$(md5sum "$1" | cut -d' ' -f1)
+	ext=${1##*.}
+	mv -iv "$1" "$md5.$ext"
+}
