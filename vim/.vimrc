@@ -13,6 +13,7 @@ set nobackup
 set ignorecase
 set smartcase
 set confirm
+set grepprg=grep\ -nH\ $*
 
 " ----- Appearance
 set background=dark
@@ -87,6 +88,7 @@ augroup filetype_latex
 	autocmd!
 	autocmd FileType tex set colorcolumn=80
 augroup END
+let g:tex_flavor='latex'
 
 " ----- Commands
 command Mdconv :! cmark % > /tmp/mdout.html
