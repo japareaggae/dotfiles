@@ -62,7 +62,12 @@ c.colors.tabs.pinned.selected.even.fg = c.colors.tabs.pinned.selected.odd.fg
 c.colors.messages.warning.fg = "black"
 
 # Fonts
-c.fonts.tabs = "8pt sans"
+c.fonts.default_size = "9pt"
+c.fonts.tabs = "8pt sans-serif"
+c.fonts.web.family.fixed = "Liberation Mono"
+c.fonts.web.family.sans_serif = "Liberation Sans"
+c.fonts.web.family.serif = "Liberation Serif"
+c.fonts.web.family.standard = "Liberation Serif"
 
 # Keybinds
 config.bind(';p', 'hint links spawn mpv {hint-url}')
