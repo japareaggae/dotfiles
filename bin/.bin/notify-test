@@ -14,3 +14,8 @@ notify-send -u critical \
 	-i dialog-error \
 	"Critical Priority" \
 	"This is an critical priority notification."
+
+notify-send -u normal \
+	-i face-smile \
+	"Emoji Test" \
+	"😀😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏"
