@@ -63,7 +63,7 @@ c.colors.messages.warning.fg = "black"
 
 # Fonts
 c.fonts.default_size = "9pt"
-c.fonts.tabs = "8pt sans-serif"
+c.fonts.tabs = "8pt DejaVu Sans"
 c.fonts.web.family.fixed = "Liberation Mono"
 c.fonts.web.family.sans_serif = "Liberation Sans"
 c.fonts.web.family.serif = "Liberation Serif"
