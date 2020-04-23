@@ -22,7 +22,7 @@ $execb nm-applet
 # -- Font
 # You can either set a X font description here or use Pango.
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:Sans 8
+font pango:DejaVu Sans 8
 
 # -- Borders
 #new_window normal 1
@@ -245,7 +245,7 @@ bar {
 	status_command i3status
 	position top
 	tray_output primary
-	font pango:Sans 8
+	font pango:DejaVu Sans 8
 	colors {
 		background #000000
 		separator #202020
