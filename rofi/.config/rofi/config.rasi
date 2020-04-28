@@ -3,4 +3,7 @@ configuration {
 	font:  "Hack 9";
 	theme: "Arc-Dark";
 	disable-history: true;
+	show-icons: true;
+	drun-match-fields: "name";
+	drun-display-format: "{name}";
 }
