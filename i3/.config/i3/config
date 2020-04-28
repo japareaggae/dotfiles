@@ -162,7 +162,7 @@ bindsym $mod+m scratchpad show
 # ----- APPLICATION KEYBINDS -----
 # -- dmenu (launches programs)
 bindsym $mod+Shift+space $execb rofi -show run
-bindsym $mod+space $execb j4-dmenu-desktop --no-generic
+bindsym $mod+space $execb rofi -show drun
 bindsym $mod+F1 exec xfce4-appfinder
 
 # -- Terminal/File Manager
