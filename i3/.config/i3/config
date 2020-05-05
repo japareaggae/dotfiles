@@ -72,13 +72,11 @@ bindsym $mod+Shift+Right move right
 # -- Splitting Containers
 bindsym $mod+c split h
 bindsym $mod+v split v
-bindsym $mod+o layout toggle split
 
 # -- Changing Container Layout
 bindsym $mod+q layout tabbed
 bindsym $mod+w layout stacking
-bindsym $mod+e layout default
-bindsym $mod+p layout toggle
+bindsym $mod+e layout toggle split
 bindsym $mod+F11 fullscreen
 
 # -- Parent/Child Container
