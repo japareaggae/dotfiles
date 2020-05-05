@@ -42,7 +42,7 @@ new_window pixel 2
 # Mod1 = Alt; Mod4 = Super
 set $mod Mod4
 
-# -- Floating Keybinds
+# -- Floating
 floating_modifier $mod
 bindsym $mod+Shift+n floating toggle
 bindsym $mod+n focus mode_toggle
@@ -58,7 +58,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# -- Moving Windows
+# -- Moving
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
@@ -69,17 +69,17 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# -- Splitting Containers
+# -- Splitting
 bindsym $mod+c split h
 bindsym $mod+v split v
 
-# -- Changing Container Layout
+# -- Changing container layout
 bindsym $mod+q layout tabbed
 bindsym $mod+w layout stacking
 bindsym $mod+e layout toggle split
 bindsym $mod+F11 fullscreen
 
-# -- Parent/Child Container
+# -- Parent/child container
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
@@ -123,12 +123,12 @@ bindsym $mod+Shift+comma move workspace to output left
 # -- Kill focused window
 bindsym $mod+Shift+q kill
 
-# -- General Keybinds
+# -- Reload and restart
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 #bindsym $mod+Shift+e $execb "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# -- Resize Mode keybinds
+# -- Resize mode
 mode "resize" {
 	# These bindings trigger as soon as you enter the resize mode
 	# Left/Right: Shrink/Grow Width
@@ -159,24 +159,21 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# -- Border
-#bindsym $mod+b border toggle
-
 # -- Scratchpad
 bindsym $mod+Shift+m move scratchpad
 bindsym $mod+m scratchpad show
 
 # ----- APPLICATION KEYBINDS -----
-# -- dmenu (launches programs)
+# -- Application launchers
 bindsym $mod+Shift+space $execb rofi -show run
 bindsym $mod+space $execb rofi -show drun
 bindsym $mod+F1 exec xfce4-appfinder
 
-# -- Terminal/File Manager
+# -- Terminal and file manager
 bindsym $mod+Return $execb kitty
 bindsym $mod+Shift+Return exec kitty -e ranger
 
-# -- Session Menu
+# -- Session menu
 bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
 bindsym XF86ScreenSaver   $execb ~/.bin/dmenu-session lock
 
@@ -188,7 +185,7 @@ bindsym XF86Display exec arandr
 bindsym $mod+Shift+F4 exec arandr
 bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
 
-# -- Sleep Toggle
+# -- Sleep toggle
 bindsym XF86Battery $execb ~/.bin/toggle-sleep
 bindsym $mod+F3 $execb ~/.bin/toggle-sleep
 
@@ -205,7 +202,7 @@ bindsym XF86AudioStop $execb mpc stop
 bindsym XF86MonBrightnessDown $execb brightnessctl -q -n set 5%-
 bindsym XF86MonBrightnessUp   $execb brightnessctl -q set +5%
 
-# -- Volume / PulseAudio Volume Control
+# -- PulseAudio volume control
 bindsym XF86AudioMute        $execb pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume $execb pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume $execb pactl set-sink-volume @DEFAULT_SINK@ +5%
