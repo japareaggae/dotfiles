@@ -1,32 +1,7 @@
 [options]
-scroll_on_output = false
-scroll_on_keystroke = true
-audible_bell = false
-mouse_autohide = false
-allow_bold = true
-dynamic_title = true
-urgent_on_bell = true
-clickable_url = true
 font = Hack 9
 scrollback_lines = 10000
-search_wrap = true
-#icon_name = terminal
-#geometry = 640x480
-
-# "system", "on" or "off"
 cursor_blink = off
-
-# "block", "underline" or "ibeam"
-cursor_shape = block
-
-# $BROWSER is used by default if set, with xdg-open as a fallback
-browser = xdg-open
-
-# set size hints for the window
-#size_hints = false
-
-# emit escape sequences for other keys modified by Control
-#modify_other_keys = false
 
 [colors]
 foreground      = #a8a19f
