@@ -27,14 +27,6 @@ color14 = #34e2e2
 color15 = #eeeeec
 
 [hints]
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+font = Hack Bold 9
 
 # vim: ft=dosini cms=#%s
