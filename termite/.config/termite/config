@@ -2,6 +2,7 @@
 font = Hack 9
 scrollback_lines = 10000
 cursor_blink = off
+icon_name = utilities-terminal
 
 [colors]
 foreground      = #babdb6
