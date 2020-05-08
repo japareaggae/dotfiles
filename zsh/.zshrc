@@ -14,7 +14,8 @@ setopt sharehistory
 setopt extended_history
 setopt hist_ignore_space
 
-### Environment variables (for interactive use)
+### Environment variables for interactive use
+# less colors
 export LESS_TERMCAP_md=$(tput bold; tput setaf 1)
 export LESS_TERMCAP_me=$(tput sgr0)
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)
