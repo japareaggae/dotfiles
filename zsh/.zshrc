@@ -20,7 +20,12 @@ export LESS_TERMCAP_me=$(tput sgr0)
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)
 export LESS_TERMCAP_ue=$(tput sgr0)
 
-# Used for tab completion
+# Termite "open terminal in current directory"
+if [[ $TERM == xterm-termite ]]; then
+	. /etc/profile.d/vte.sh
+fi
+
+# Tab completion colors
 if [[ $(uname) == "Darwin" ]]; then
 	eval $(gdircolors -b)
 else
