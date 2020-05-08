@@ -33,6 +33,14 @@ if ( hash gpg-connect-agent 2> /dev/null ); then
 	gpg-connect-agent updatestartuptty /bye > /dev/null
 fi
 
+### Window titles
+case $TERM in
+	termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
+		precmd ()  { print -Pn "\e]0;[%M] %~ %#\a" }
+		preexec () { print -Pn "\e]0;[%M] %~ %# $1\a" }
+		;;
+esac
+
 ### Keybinds
 bindkey -e
 # This makes sure terminfo entries are valid
