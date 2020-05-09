@@ -21,8 +21,8 @@ export LESS_TERMCAP_me=$(tput sgr0)
 export LESS_TERMCAP_us=$(tput smul; tput setaf 2)
 export LESS_TERMCAP_ue=$(tput sgr0)
 
-# Termite "open terminal in current directory"
-if [[ $TERM == xterm-termite ]]; then
+# Inform VTE of current directory (for termite/tilix)
+if [[ $TERM == xterm-termite ]] || [[ $VTE_VERSION ]]; then
 	. /etc/profile.d/vte.sh
 fi
 
