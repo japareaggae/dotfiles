@@ -7,6 +7,11 @@ pacexplicit() {
 	pacman -Qqe | grep -Fxv "$(pactree -u base)"
 }
 
+### Show all uninstalled optional dependencies
+pacoptdeps() {
+	grep -Gvf <(for i in $(pacman -Qq); do echo "^$i"; done) <(expac -Q -l'\n' %O | sort)
+}
+
 ### simple notes
 # <https://bbs.archlinux.org/viewtopic.php?pid=1812351#p1812351>
 n() {
