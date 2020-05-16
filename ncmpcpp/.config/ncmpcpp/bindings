@@ -29,6 +29,12 @@ def_key "ctrl-l"
 def_key "m"
   toggle_library_tag_type
 
+def_key "m"
+  move_sort_order_up
+
+def_key "m"
+  move_selected_items_up
+
 def_key "`"
   dummy
 
