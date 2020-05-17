@@ -10,6 +10,7 @@ MYNAME=${0##*/}
 BOLD="$(tput bold)"
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
+YELLOW="$(tput setaf 3)"
 CYAN="$(tput setaf 6)"
 RESET="$(tput sgr0)"
 
@@ -177,16 +178,16 @@ _changes(){
 
 _clean(){
 	[[ $1 == "-p" ]] && PRETEND=1
-	echo "${C_BOLD}${C_YELLOW}==>${C_RESET}${C_BOLD} Listing built packages${C_RESET}"
+	echo "${BOLD}${YELLOW}==>${RESET}${BOLD} Listing built packages${RESET}"
 	find $WHERE -iname '*.pkg.tar*' | sed "s|$WHERE/||g"
 	if (( ! PRETEND )); then
-		echo "${C_BOLD}${C_RED}==>${C_RESET}${C_BOLD} Cleaning built packages${C_RESET}"
+		echo "${BOLD}${RED}==>${RESET}${BOLD} Cleaning built packages${RESET}"
 		find $WHERE -iname '*.pkg.tar*' -delete
 	fi
-	echo "${C_BOLD}${C_YELLOW}==>${C_RESET}${C_BOLD} Listing source packages${C_RESET}"
+	echo "${BOLD}${YELLOW}==>${RESET}${BOLD} Listing source packages${RESET}"
 	find $WHERE | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | sed "s|$WHERE/||g"
 	if (( ! PRETEND )); then
-		echo "${C_BOLD}${C_RED}==>${C_RESET}${C_BOLD} Cleaning source packages${C_RESET}"
+		echo "${BOLD}${RED}==>${RESET}${BOLD} Cleaning source packages${RESET}"
 		find $WHERE | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | xargs /bin/rm
 	fi
 }
