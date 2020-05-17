@@ -46,6 +46,8 @@ Actions:
                Add -v to show packages which have lower versions on AUR
     update   - Update PKGBUILDs for installed AUR packages
     changes  - View the latest commits for this package on the AUR
+    clean    - Remove built packages and source tarballs
+               Add -p to only print files that would be deleted
 
 The search, check, update, clone (with -d) and download (with -d) actions
 require aurutils.
@@ -173,6 +175,22 @@ _changes(){
 	[[ $1 ]] && xdg-open "https://aur.archlinux.org/cgit/aur.git/log/?h=$1"
 }
 
+_clean(){
+	[[ $1 == "-p" ]] && PRETEND=1
+	echo "${C_BOLD}${C_YELLOW}==>${C_RESET}${C_BOLD} Listing built packages${C_RESET}"
+	find $WHERE -iname '*.pkg.tar*' | sed "s|$WHERE/||g"
+	if (( ! PRETEND )); then
+		echo "${C_BOLD}${C_RED}==>${C_RESET}${C_BOLD} Cleaning built packages${C_RESET}"
+		find $WHERE -iname '*.pkg.tar*' -delete
+	fi
+	echo "${C_BOLD}${C_YELLOW}==>${C_RESET}${C_BOLD} Listing source packages${C_RESET}"
+	find $WHERE | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | sed "s|$WHERE/||g"
+	if (( ! PRETEND )); then
+		echo "${C_BOLD}${C_RED}==>${C_RESET}${C_BOLD} Cleaning source packages${C_RESET}"
+		find $WHERE | grep -P '(?!^.+(?:\.pkg)(?:\..+)?$)(^.+\.tar(?:\..+)?$)' | xargs /bin/rm
+	fi
+}
+
 case $1 in
 	"search") shift; _search $1 ;;
 	"info")   shift; _info $1 ;;
@@ -181,6 +199,7 @@ case $1 in
 	"check")  shift; _check $1 ;;
 	"update") shift; _update ;;
 	"changes") shift; _changes $1 ;;
+	"clean")  shift; _clean $1 ;;
 	*)        _usage ;;
 esac
 
