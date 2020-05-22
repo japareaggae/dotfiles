@@ -41,6 +41,8 @@ memory {
 
 disk "/" {
 	format = "%avail free"
+	threshold_type = percentage_avail
+	low_threshold = 10
 }
 
 wireless _first_ {
