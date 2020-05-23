@@ -71,3 +71,11 @@ md5rename() {
 	ext=${1##*.}
 	mv -iv "$1" "$md5.$ext"
 }
+
+### Show Arch Linux package popularity stats
+pkgpop() {
+	for package in "$@"; do
+		popularity="$(curl -s "https://pkgstats.archlinux.de/api/packages/${package}" | jq .popularity)"
+		echo "${package}: ${popularity}%"
+	done
+}
