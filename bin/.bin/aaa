@@ -16,10 +16,10 @@ RESET="$(tput sgr0)"
 
 WHERE=${AURDEST:-$HOME/Development/pkgbuilds}
 
-_check_jshon(){
-	if ! ( hash jshon 2> /dev/null )
+_check_jq(){
+	if ! ( hash jq 2> /dev/null )
 	then
-		echo "Error: jshon is required for this action"
+		echo "Error: jq is required for this action"
 		exit 1
 	fi
 }
@@ -52,7 +52,7 @@ Actions:
 
 The search, check, update, clone (with -d) and download (with -d) actions
 require aurutils.
-The info action requires jshon.
+The info action requires jq.
 
 EOF
 }
@@ -65,36 +65,27 @@ _search(){
 
 # A bit ugly, but it works (most of the time)
 _info(){
-	_check_jshon || exit 1
+	_check_jq || exit 1
 	[[ $1 ]] || { echo "Usage: $MYNAME info (package)"; exit 1; }
-	JSON="$(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$1")"
-	RESULTS=$(printf "$JSON" | jshon -e resultcount -u )
-	if [[ $RESULTS -eq 0 ]]
-	then
+	read -r JSON < <(curl -s "https://aur.archlinux.org/rpc.php?v=5&type=info&arg=$1")
+
+	if [[ $(printf "$JSON" | jq .resultcount) -eq 0 ]]; then
 		echo "No results found."
 		exit 1
 	fi
 
-	NAME=$(printf "$JSON" | jshon -e results -a -e Name -u)
-	PKGBASE=$(printf "$JSON" | jshon -e results -a -e PackageBase -u)
-	VERSION=$(printf "$JSON" | jshon -e results -a -e Version -u)
-	DESCRIPTION="$(printf "$JSON" | jshon -e results -a -e Description -u)"
-	MAINTAINER="$(printf "$JSON" | jshon -e results -a -e Maintainer -u)"
-	URL=$(printf "$JSON" | jshon -e results -a -e URL -u)
-	VOTES="$(printf "$JSON" | jshon -e results -a -e NumVotes -u)"
-	POPULARITY="$(printf "$JSON" | jshon -e results -a -e Popularity -u)"
-	UPDATED="$(printf "$JSON" | jshon -e results -a -e LastModified -u)"
+	NAME=$(printf "$JSON" | jq -r '.results|.[0]|.Name')
+	PKGBASE=$(printf "$JSON" | jq -r '.results|.[0]|.PackageBase')
+	VERSION=$(printf "$JSON" | jq -r '.results|.[0]|.Version')
+	DESCRIPTION="$(printf "$JSON" | jq -r '.results|.[0]|.Description')"
+	URL=$(printf "$JSON" | jq -r '.results|.[0]|.URL')
+	DEPENDENCIES="$(printf "$JSON" | jq -r '.results|.[0]|.Depends|.[]' | tr '\n' ' ')"
+	MAINTAINER="$(printf "$JSON" | jq -r '.results|.[0]|.Maintainer')"
+	POPULARITY="$(printf "$JSON" | jq -r '.results|.[0]|.Popularity')"
+	VOTES="$(printf "$JSON" | jq -r '.results|.[0]|.NumVotes')"
+	UPDATED="$(printf "$JSON" | jq -r '.results|.[0]|.LastModified')"
 
-	DEPCOUNT="$(printf "$JSON" | jshon -e results -a -e Depends -l)"
-	for i in $(seq $DEPCOUNT); do
-		if [[ $i == 1 ]]; then
-			DEPENDENCIES="$(printf "$JSON" | jshon -e results -a -e Depends -e $(($i - 1)) -u)"
-		else
-			DEPENDENCIES="$DEPENDENCIES $(printf "$JSON" | jshon -e results -a -e Depends -e $(($i - 1)) -u)"
-		fi
-	done
-
-	OOD="$(printf "$JSON" | jshon -e results -a -e OutOfDate -u)"
+	OOD="$(printf "$JSON" | jq -r '.results|.[0]|.OutOfDate')"
 	if [[ "$OOD" == "null" ]]; then
 		VERSION="${BOLD}${GREEN}${VERSION}${RESET}"
 	else
