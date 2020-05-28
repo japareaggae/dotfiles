@@ -170,15 +170,15 @@ bindsym $mod+space $execb rofi -show drun
 bindsym $mod+F1 exec xfce4-appfinder
 
 # -- Terminal and file manager
-bindsym $mod+Return $execb termite
-bindsym $mod+Shift+Return exec termite -e ranger
+bindsym $mod+Return $execb alacritty
+bindsym $mod+Shift+Return exec alacritty -e ranger
 
 # -- Session menu
 bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
 bindsym XF86ScreenSaver   $execb ~/.bin/dmenu-session lock
 
 # -- NetworkManager
-bindsym $mod+F12 $execb termite -e nmtui
+bindsym $mod+F12 $execb alacritty -e nmtui
 
 # --- Monitors
 bindsym XF86Display exec arandr
