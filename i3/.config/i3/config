@@ -8,7 +8,7 @@ $execb dunst
 $execb $HOME/.bin/xrandr-adjust
 $execb picom
 $execb blueman-applet
-$execb syncthingtray
+$execb syncthing-gtk -m
 $execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb udiskie -A -t
