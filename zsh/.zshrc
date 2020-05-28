@@ -64,8 +64,6 @@ bindkey -- "${terminfo[kich1]}" overwrite-mode
 bindkey -- "${terminfo[kdch1]}" delete-char
 bindkey -- "${terminfo[khome]}" beginning-of-line
 bindkey -- "${terminfo[kend]}"  end-of-line
-bindkey -- "${terminfo[kpp]}"   history-beginning-search-backward-end
-bindkey -- "${terminfo[knp]}"   history-beginning-search-forward-end
 
 # <https://www.arp242.net/zshrc.html#filter-history-completion-with-what-you-typed>
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
@@ -73,6 +71,13 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -- "${terminfo[kcuu1]}"   up-line-or-beginning-search
 bindkey -- "${terminfo[kcud1]}"   down-line-or-beginning-search
+
+# from grml
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey -- "${terminfo[kpp]}"   history-beginning-search-backward-end
+bindkey -- "${terminfo[knp]}"   history-beginning-search-forward-end
 
 # Numpad Enter <https://github.com/robbyrussell/oh-my-zsh/issues/6159#issuecomment-382140433>
 bindkey -s "^[OM" "^M"
