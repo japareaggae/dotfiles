@@ -30,7 +30,7 @@ fi
 if [[ $(uname) == "Darwin" ]]; then
 	eval $(gdircolors -b)
 else
-	eval $(dircolors -b)
+	eval $(printf "TERM alacritty\n$(dircolors -p)" | dircolors -)
 fi
 
 ### GPG agent
