@@ -13,6 +13,7 @@ $execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.loc
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb udiskie -A -t
 $execb nm-applet
+$execb skippy-xd --start-daemon
 
 # Consider using systemd user sessions for autostarting these applications.
 #$execb start-pulseaudio-x11
