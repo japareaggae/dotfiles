@@ -30,7 +30,7 @@ showAll = true
 [normal]
 tint = black
 tintOpacity = 128
-opacity = 255
+opacity = 192
 
 [highlight]
 tint = none
@@ -48,7 +48,7 @@ background = #404040
 opacity = 128
 text = #ffffff
 textShadow = black
-font = Noto Sans-9:Bold
+font = Noto Sans-9
 
 [bindings]
 miwMouse1 = focus
