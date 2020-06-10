@@ -51,5 +51,6 @@ URxvt.url-select.launcher: xdg-open
 URxvt.url-select.underline: true
 
 ! --- sxiv
-Sxiv.background: black
-Sxiv.foreground: white
+Sxiv.background: #31363b
+Sxiv.foreground: #fcfcfc
+Sxiv.font: Hack:size=9
