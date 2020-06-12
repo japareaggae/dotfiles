@@ -200,8 +200,8 @@ bindsym XF86AudioNext $execb mpc next
 bindsym XF86AudioStop $execb mpc stop
 
 # -- Brightness
-bindsym XF86MonBrightnessDown $execb brightnessctl -q -n set 5%-
-bindsym XF86MonBrightnessUp   $execb brightnessctl -q set +5%
+bindsym XF86MonBrightnessDown $execb brightnessctl -e -q -n set 5%-
+bindsym XF86MonBrightnessUp   $execb brightnessctl -e -q set +5%
 
 # -- PulseAudio volume control
 bindsym XF86AudioMute        $execb pactl set-sink-mute @DEFAULT_SINK@ toggle
