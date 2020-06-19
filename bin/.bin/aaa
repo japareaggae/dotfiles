@@ -159,7 +159,7 @@ _update(){
 		cd $WHERE/$PACKAGE
 		git checkout master # switch to upstream branch
 		git checkout HEAD . # remove all modifications (you are using a branch for that, right?)
-		git pull            # get pkgbuild changes from AUR
+		git pull --ff-only  # get pkgbuild changes from AUR
 	done
 }
 
