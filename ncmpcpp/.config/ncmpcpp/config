@@ -139,7 +139,7 @@ statusbar_visibility = yes
 titles_visibility    = yes
 
 external_editor = vim
-fetch_lyrics_for_current_song_in_background = yes
+fetch_lyrics_for_current_song_in_background = no
 ignore_leading_the = yes
 
 ### Colors ###
