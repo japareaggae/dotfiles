@@ -1,7 +1,7 @@
 # ncmpcpp/config
 #
 ### Directories ###
-ncmpcpp_directory = ~/.ncmpcpp
+ncmpcpp_directory = ~/.local/share/ncmpcpp
 lyrics_directory  = ~/.lyrics
 
 ### MPD Connection ###
