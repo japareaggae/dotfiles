@@ -68,7 +68,7 @@ c.fonts.tabs.unselected = c.fonts.tabs.selected
 c.fonts.web.family.fixed = "Liberation Mono"
 c.fonts.web.family.sans_serif = "Liberation Sans"
 c.fonts.web.family.serif = "Liberation Serif"
-c.fonts.web.family.standard = "Liberation Serif"
+c.fonts.web.family.standard = c.fonts.web.family.serif
 
 # Keybinds
 config.bind(';p', 'hint links spawn mpv {hint-url}')
