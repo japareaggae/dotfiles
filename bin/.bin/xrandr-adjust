@@ -3,6 +3,7 @@
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Parts copied from ArchWiki <https://wiki.archlinux.org/index.php/xrandr>
 
+### Screen configuration
 case $HOSTNAME in
 	"gondar")
 		PRI="LVDS-1"
@@ -10,21 +11,27 @@ case $HOSTNAME in
 		EXT="HDMI-1"
 		EXTMODE="--auto"
 		;;
-	"earthshaker")
-		PRI="DisplayPort-0"
-		PRIMODE="--auto"
+	"incineroar")
+		PRI="DisplayPort-2"
+		PRIMODE="--mode 1920x1080 --rate 144"
 		EXT="HDMI-A-0"
 		EXTMODE="--auto"
 		;;
 esac
 
+### Setup screens
 if (xrandr | grep "$EXT connected" > /dev/null); then
 	xrandr --output $PRI --primary $PRIMODE \
-		--output $EXT $EXTMODE --right-of $PRI
+		--output $EXT $EXTMODE --left-of $PRI
 else
 	xrandr --output $PRI --primary $PRIMODE \
 		--output $EXT --off
 fi
 
-[[ -f "$HOME/.fehbg" ]] && $HOME/.fehbg
+### Set wallpapers (see bin/wallpaper)
+if [[ -e $HOME/.wallpaper1 ]]; then
+	xwallpaper --output $PRI --zoom $HOME/.wallpaper0 --output $EXT --zoom $HOME/.wallpaper1
+else
+	xwallpaper --zoom "$HOME/.wallpaper0"
+fi
 

@@ -1,142 +1,73 @@
 #!/bin/bash
-# wallpaper - change wallpapers using symlinks and feh
+# wallpaper - change wallpapers using symlinks and xwallpaper
 # Written by Renan Guilherme <japareaggae@gmail.com>
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 LOCKSCREEN_OPTS=${LOCKSCREEN_OPTS:--blur 0x4 -colorspace Gray}
+POSITION="$HOME/.wallpaper0"
 
 _usage() {
 cat << EOF
-Usage: $(basename "$0") [options] (filename)
-Links an image to a default location, and sets it as the wallpaper using feh.
+Usage: $(basename "$0") [position] (filename)
+Links an image to a default location and sets it as the wallpaper using xwallpaper.
 
 Position:
   primary     Image will be the wallpaper for the first monitor (default)
   secondary   Image will be the wallpaper for the second monitor
   lockscreen  Image will be copied to .lockscreen and processed/resized with
-              ImageMagick
+              ImageMagick. Options can be changed via the LOCKSCREEN_OPTS
+              environment variable
               Current convert options: $LOCKSCREEN_OPTS
 
-Modes (only for primary/secondary positions):
-  fill        Fill the monitor with the image (default)
-  center      Center the image on the monitor
-  tiled       Tile the image on the monitor
-
 EOF
-exit 1
 }
 
-# Check for realpath
-if ! (type realpath > /dev/null)
-then
-	echo "error: realpath is not installed"
-	exit 1;
-fi
-
-# --- Set destination
-DESTINATION="$HOME/.wallpaper0"
-DEST_SET=0
-set_destination(){
-	if [[ $DEST_SET != 0 ]]
-	then
-		echo "Error: You can't set more than one destination"
-		exit 1
-	else
-		case $1 in
-			"primary")   DESTINATION="$HOME/.wallpaper0" ;;
-			"secondary") DESTINATION="$HOME/.wallpaper1" ;;
-			"lockscreen")
-				DESTINATION="$HOME/.lockscreen.png"
-				LOCKSCREEN=1
-				;;
-		esac
-		DEST_SET=1
-	fi
+die() {
+	printf "Error: $1\n" >&2
+	exit 1
 }
 
-# --- Set mode
-MODE="--bg-fill"
-MODE_SET=0
-set_mode(){
-	if [[ $MODE_SET != 0 ]]
-	then
-		echo "Error: You can't set more than one mode"
-		exit 1
-	elif [[ $LOCKSCREEN ]]; then
-		echo "Setting modes on lockscreen is not supported"
-		exit 1
-	else
-		case $1 in
-			"fill")   MODE="--bg-fill"   ;;
-			"center") MODE="--bg-center" ;;
-			"tile")   MODE="--bg-tile"   ;;
-		esac
-		MODE_SET=1
-	fi
-}
-
-# --- Attempt to parse a file
-FILE="null"
-FILE_SET=0
-set_file(){
-	if [[ $FILE_SET != 0 ]]
-	then
-		echo "Error: You can't set more than one file"
-		exit 1
-	else
-		FILE="$(realpath "$1")"
-		if ! [[ -f "$FILE" ]]
-		then
-			echo "Error: $1 is not a valid file or option"
-			echo "Run \"$(basename "$0") help\" for more information"
-			exit 1
-		fi
-		FILE_SET=1
-	fi
-}
-
-# --- Option parser loop
-while [[ $1 ]]
-do
-case $1 in
-	help)       _usage ;;
-
-	primary)    set_destination primary ;;
-	secondary)  set_destination secondary ;;
-	lockscreen) set_destination lockscreen ;;
-
-	fill)       set_mode fill ;;
-	center)     set_mode center ;;
-	tiled)      set_mode tile ;;
-
-	*)          set_file "$1" ;;
-esac
-shift
+### Option parsing
+while :; do
+	case $1 in
+		"primary")     POSITION="$HOME/.wallpaper0"; ;;
+		"secondary")   POSITION="$HOME/.wallpaper1"; ;;
+		"lockscreen")  POSITION="$HOME/.lockscreen"; ;;
+		"--help"|"-h") _usage; exit ;;
+		--)            shift; break ;;
+		*)             break ;;
+	esac
+	shift
 done
 
-# --- Attempt to create symlink
-if [[ $FILE == "null" ]]
-then
-	echo "Error: You must specify a file to use as wallpaper"
-	echo "Run \"$(basename "$0") help\" for more information"
+### Check if file exists
+if [[ ! $1 ]]; then
+	_usage
 	exit 1
-else
-
-	# --- Lockscreen
-	if [[ $LOCKSCREEN ]]; then
-		(hash convert 2> /dev/null) || { echo "Error: ImageMagick is not installed."; exit 1; }
-		RESOLUTION=$(xrandr | grep -w connected | awk -F'[ +]' '{print $4}' | head -n 1)
-		convert "$FILE" $LOCKSCREEN_OPTS -resize $RESOLUTION^ -gravity center -extent $RESOLUTION "$DESTINATION"
-		exit # So we don't execute feh
-		# TODO: Better flow control
-	else
-		ln -sf "$FILE" "$DESTINATION"
-	fi
+elif [[ ! -e $1 ]]; then
+	die "$1 is not a valid file"
 fi
 
-# --- Execute feh
-if [[ -f "$HOME/.wallpaper1" ]]; then
-	feh "$MODE" "$HOME/.wallpaper0" "$MODE" "$HOME/.wallpaper1"
-else
-	feh "$MODE" "$HOME/.wallpaper0"
+### Check for realpath
+if ! hash realpath 2> /dev/null
+then
+	die "realpath is not installed"
 fi
+FILE="$(realpath $1)"
+
+### Set the image
+if [[ $POSITION == "$HOME/.lockscreen" ]]; then
+	# We can't just give i3lock a giant image, it needs to be resized
+	# to fit the screen. Use xrandr to figure out our resolution, then
+	# use ImageMagick to resize to it and apply our desired effects.
+	( hash xrandr 2> /dev/null )  || die "xrandr is not installed"
+	( hash convert 2> /dev/null ) || die "ImageMagick is not installed"
+
+	RESOLUTION=$(xrandr | grep -w primary | awk -F'[ +]' '{print $4}' | head -n 1)
+	convert "$FILE" $LOCKSCREEN_OPTS -resize $RESOLUTION^ -gravity center -extent $RESOLUTION "$POSITION"
+else
+	# Link the file then run xrandr-adjust, which calls xwallpaper
+	ln -fs "$FILE" "$POSITION"
+	$HOME/.bin/xrandr-adjust
+fi
+
