@@ -1,0 +1,17 @@
+#!/bin/bash
+if [[ ! -e $1 ]]; then
+	echo "Missing file to share"
+	exit 1
+fi
+FILE=$(realpath "$1")
+
+DEVICE_COUNT=$(kdeconnect-cli --list-available --name-only | wc -l)
+if [[ $DEVICE_COUNT -eq 0 ]]; then
+	echo "No devices found"
+	exit 1
+elif [[ $DEVICE_COUNT -eq 1 ]]; then
+	kdeconnect-cli --share "$FILE" -n "$(kdeconnect-cli --list-available --name-only)"
+else
+	DEVICE=$(kdeconnect-cli --list-available --name-only | dmenu)
+	[[ "$DEVICE" ]] && kdeconnect-cli --share "$FILE" -n "$DEVICE"
+fi
