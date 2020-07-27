@@ -5,6 +5,9 @@
 [core]
 	abbrev = 12
 
+[init]
+	defaultBranch = main
+
 [push]
 	default = simple
 
