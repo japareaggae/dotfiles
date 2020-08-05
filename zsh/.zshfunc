@@ -74,8 +74,6 @@ md5rename() {
 
 ### Show Arch Linux package popularity stats
 pkgpop() {
-	for package in "$@"; do
-		popularity="$(curl -s "https://pkgstats.archlinux.de/api/packages/${package}" | jq .popularity)"
-		echo "${package}: ${popularity}%"
-	done
+	pkgs=( $@ )
+	curl -s "https://pkgstats.archlinux.de/api/packages/${(@)^pkgs}" | jq -rs 'sort_by(-.count)[] | "\(.name): \t\(.popularity)\t%"' | column -ts $'\t' -o '' -R1,2
 }
