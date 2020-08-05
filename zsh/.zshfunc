@@ -74,6 +74,16 @@ md5rename() {
 
 ### Show Arch Linux package popularity stats
 pkgpop() {
+	local graph
+	if [[ $1 == "-g" || $1 == "--graph" ]]; then
+		graph=1
+		shift
+	fi
+
 	pkgs=( $@ )
-	curl -s "https://pkgstats.archlinux.de/api/packages/${(@)^pkgs}" | jq -rs 'sort_by(-.count)[] | "\(.name): \t\(.popularity)\t%"' | column -ts $'\t' -o '' -R1,2
+	if [[ $graph == 1 ]]; then
+		IFS=, && xdg-open "https://pkgstats.archlinux.de/compare/packages#packages=${pkgs[*]}"
+	else
+		curl -s "https://pkgstats.archlinux.de/api/packages/${(@)^pkgs}" | jq -rs 'sort_by(-.count)[] | "\(.name): \t\(.popularity)\t%"' | column -ts $'\t' -o '' -R1,2
+	fi
 }
