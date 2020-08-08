@@ -111,15 +111,19 @@ EOF
 
 _clone(){
 	if [[ $1 == "-d" ]]; then
-		_check_aurutils || exit 1
 		shift
-		[[ $1 ]] || { echo "Usage: $MYNAME clone (package)"; exit 1; }
-		for PACKAGE in $(aur depends $1); do
-			git clone https://aur.archlinux.org/$PACKAGE.git $WHERE/$PACKAGE
+		_check_aurutils || exit 1
+		while [[ $1 ]]; do
+			for PACKAGE in $(aur depends $1); do
+				git clone https://aur.archlinux.org/$PACKAGE.git $WHERE/$PACKAGE
+			done
+			shift
 		done
 	else
-		[[ $1 ]] || { echo "Usage: $MYNAME clone (package)"; exit 1; }
-		git clone https://aur.archlinux.org/$1.git $WHERE/$1
+		while [[ $1 ]]; do
+			git clone https://aur.archlinux.org/$1.git $WHERE/$1
+			shift
+		done
 	fi
 }
 
@@ -186,7 +190,7 @@ _clean(){
 case $1 in
 	"search") shift; _search $1 ;;
 	"info")   shift; _info $1 ;;
-	"clone")  shift; _clone $1 $2 ;;
+	"clone")  shift; _clone $@ ;;
 	"download") shift; _download $1 $2 ;;
 	"check")  shift; _check $1 ;;
 	"update") shift; _update ;;
