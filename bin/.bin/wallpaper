@@ -53,7 +53,7 @@ if ! hash realpath 2> /dev/null
 then
 	die "realpath is not installed"
 fi
-FILE="$(realpath $1)"
+FILE="$(realpath "$1")"
 
 ### Set the image
 if [[ $POSITION == "$HOME/.lockscreen.png" ]]; then
