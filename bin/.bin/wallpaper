@@ -4,7 +4,10 @@
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 LOCKSCREEN_OPTS=${LOCKSCREEN_OPTS:--blur 0x4 -colorspace Gray}
-POSITION="$HOME/.wallpaper0"
+
+DIRECTORY="${XDG_DATA_HOME:-$HOME/.local/share}/wallpapers"
+mkdir -p "${DIRECTORY}"
+POSITION="${DIRECTORY}/wallpaper0"
 
 _usage() {
 cat << EOF
@@ -13,11 +16,11 @@ Links an image to a default location and sets it as the wallpaper using xwallpap
 
 Position:
   primary     Image will be the wallpaper for the first monitor (default)
+              This will also process the image to be used as a lockscreen
+              background.
   secondary   Image will be the wallpaper for the second monitor
-  lockscreen  Image will be copied to .lockscreen and processed/resized with
-              ImageMagick. Options can be changed via the LOCKSCREEN_OPTS
-              environment variable
-              Current convert options: $LOCKSCREEN_OPTS
+
+              Current lockscreen processing options: $LOCKSCREEN_OPTS
 
 EOF
 }
@@ -30,9 +33,8 @@ die() {
 ### Option parsing
 while :; do
 	case $1 in
-		"primary")     POSITION="$HOME/.wallpaper0"; ;;
-		"secondary")   POSITION="$HOME/.wallpaper1"; ;;
-		"lockscreen")  POSITION="$HOME/.lockscreen.png"; ;;
+		"primary")     POSITION="${DIRECTORY}/wallpaper0"; ;;
+		"secondary")   POSITION="${DIRECTORY}/wallpaper1"; ;;
 		"--help"|"-h") _usage; exit ;;
 		--)            shift; break ;;
 		*)             break ;;
@@ -49,25 +51,17 @@ elif [[ ! -e $1 ]]; then
 fi
 
 ### Check for realpath
-if ! hash realpath 2> /dev/null
-then
-	die "realpath is not installed"
-fi
+( hash realpath 2> /dev/null ) || die "realpath is not installed"
 FILE="$(realpath "$1")"
 
-### Set the image
-if [[ $POSITION == "$HOME/.lockscreen.png" ]]; then
-	# We can't just give i3lock a giant image, it needs to be resized
-	# to fit the screen. Use xrandr to figure out our resolution, then
-	# use ImageMagick to resize to it and apply our desired effects.
-	( hash xrandr 2> /dev/null )  || die "xrandr is not installed"
-	( hash convert 2> /dev/null ) || die "ImageMagick is not installed"
-
+### Create a lockscreen image if setting a primary wallpaper
+if [[ ${POSITION} == "${DIRECTORY}/wallpaper0" ]] && ( hash xrandr 2> /dev/null ) && ( hash convert 2> /dev/null ) ; then
 	RESOLUTION=$(xrandr | grep -w primary | awk -F'[ +]' '{print $4}' | head -n 1)
-	convert "$FILE" $LOCKSCREEN_OPTS -resize $RESOLUTION^ -gravity center -extent $RESOLUTION "$POSITION"
-else
-	# Link the file then run xrandr-adjust, which calls xwallpaper
-	ln -fs "$FILE" "$POSITION"
-	$HOME/.bin/xrandr-adjust
+	convert "${FILE}" ${LOCKSCREEN_OPTS} -resize ${RESOLUTION}^ -gravity center -extent ${RESOLUTION} "${DIRECTORY}/lockscreen.png"
 fi
 
+### Link the image
+ln -fs "${FILE}" "${POSITION}"
+
+### Run xrandr-adjust to reload wallpapers
+${HOME}/.bin/xrandr-adjust

@@ -29,9 +29,11 @@ else
 fi
 
 ### Set wallpapers (see bin/wallpaper)
+DIRECTORY="${XDG_DATA_HOME:-$HOME/.local/share}/wallpapers"
 if [[ -e $HOME/.wallpaper1 ]]; then
-	xwallpaper --output $PRI --zoom $HOME/.wallpaper0 --output $EXT --zoom $HOME/.wallpaper1
+	xwallpaper --output $PRI --zoom $DIRECTORY/wallpaper0 \
+	           --output $EXT --zoom $DIRECTORY/wallpaper1
 else
-	xwallpaper --zoom "$HOME/.wallpaper0"
+	xwallpaper --zoom "$DIRECTORY/wallpaper0"
 fi
 
