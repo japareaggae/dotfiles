@@ -15,5 +15,9 @@ export AURDEST="$HOME/Development/pkgbuilds"
 export PASSWORD_STORE_CLIP_TIME=15
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
 
+### less
+export LESS="FRMi"
+export SYSTEMD_LESS="${LESS}S"
+
 ### GPG agent as SSH agent
 ( hash gpgconf 2> /dev/null) && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
