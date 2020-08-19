@@ -3,21 +3,20 @@
 
 # ----- AUTOSTARTS
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec dropbox
 
 # ----- APPEARANCE
 # -- Font
-font pango:Sans 8
+font pango:DejaVu Sans 8
 
 # -- Borders
-new_window pixel 2
+default_border pixel 2
 
 # ----- KEYBINDINGS
 # -- Modkey
 # Mod1 = Alt; Mod4 = Super
 set $mod Mod4
 
-# -- Floating Keybinds
+# -- Floating
 floating_modifier $mod
 bindsym $mod+Shift+n floating toggle
 bindsym $mod+n focus mode_toggle
@@ -33,7 +32,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# -- Moving Windows
+# -- Moving
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
@@ -44,19 +43,17 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# -- Splitting Containers
+# -- Splitting
 bindsym $mod+c split h
 bindsym $mod+v split v
-bindsym $mod+o layout toggle split
 
-# -- Changing Container Layout
+# -- Changing container layout
 bindsym $mod+q layout tabbed
 bindsym $mod+w layout stacking
-bindsym $mod+e layout default
-bindsym $mod+p layout toggle
+bindsym $mod+e layout toggle split
 bindsym $mod+F11 fullscreen
 
-# -- Parent/Child Container
+# -- Parent/child container
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
@@ -100,53 +97,64 @@ bindsym $mod+Shift+comma move workspace to output left
 # -- Kill focused window
 bindsym $mod+Shift+q kill
 
-# -- General Keybinds
+# -- Reload and restart
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-# -- Resize Mode keybinds
+# -- Resize mode
 mode "resize" {
 	# These bindings trigger as soon as you enter the resize mode
 	# Left/Right: Shrink/Grow Width
 	# Up/Down: Shrink/Grow Height
-	bindsym h resize shrink width 10 px or 10 ppt
-	bindsym j resize grow height 10 px or 10 ppt
-	bindsym k resize shrink height 10 px or 10 ppt
-	bindsym l resize grow width 10 px or 10 ppt
+	bindsym Shift+h resize shrink width 10 px or 10 ppt
+	bindsym Shift+j resize grow height 10 px or 10 ppt
+	bindsym Shift+k resize shrink height 10 px or 10 ppt
+	bindsym Shift+l resize grow width 10 px or 10 ppt
 
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-	bindsym Up resize shrink height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
+	bindsym Shift+Left resize shrink width 10 px or 10 ppt
+	bindsym Shift+Down resize grow height 10 px or 10 ppt
+	bindsym Shift+Up resize shrink height 10 px or 10 ppt
+	bindsym Shift+Right resize grow width 10 px or 10 ppt
+
+	bindsym h resize shrink width 2 px or 2 ppt
+	bindsym j resize grow height 2 px or 2 ppt
+	bindsym k resize shrink height 2 px or 2 ppt
+	bindsym l resize grow width 2 px or 2 ppt
+
+	bindsym Left resize shrink width 2 px or 2 ppt
+	bindsym Down resize grow height 2 px or 2 ppt
+	bindsym Up resize shrink height 2 px or 2 ppt
+	bindsym Right resize grow width 2 px or 2 ppt
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
-
-# -- Border
-#bindsym $mod+b border toggle
 
 # -- Scratchpad
 bindsym $mod+Shift+m move scratchpad
 bindsym $mod+m scratchpad show
 
 # ----- APPLICATION KEYBINDS -----
-# -- dmenu (launches programs)
-bindsym $mod+Shift+space exec dmenu_run
-bindsym $mod+space       exec j4-dmenu-desktop --no-generic
+set $terminal alacritty
 
-# -- Terminal/File Manager
+# -- Application launchers
+bindsym $mod+Shift+space exec rofi -show run
+bindsym $mod+space exec rofi -show drun
+#bindsym $mod+F1 exec xfce4-appfinder
+
+# -- Terminal and file manager
+#bindsym $mod+Return exec $terminal
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec GDK_BACKEND=x11 thunar
+bindsym $mod+Shift+Return exec $terminal -e ranger
 
-# -- Session Menu
+# -- Session menu
 bindsym $mod+Shift+Delete exec ~/.bin/dmenu-session
+bindsym XF86ScreenSaver   exec ~/.bin/dmenu-session lock
 
 # -- NetworkManager
-bindsym $mod+F12 exec alacritty -t "NetworkManager TUI" -e nmtui
+bindsym $mod+F12 exec $terminal -e nmtui
 
 # -- Screenshotting
 bindsym Print exec $HOME/.bin/wscreenshot region
@@ -158,14 +166,18 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioStop exec mpc stop
 
 # -- Brightness
-bindsym XF86MonBrightnessDown exec $HOME/.bin/brightness dec
-bindsym XF86MonBrightnessUp   exec $HOME/.bin/brightness inc
+bindsym XF86MonBrightnessDown exec brightnessctl -e -q -n set 5%-
+bindsym XF86MonBrightnessUp   exec brightnessctl -e -q set +5%
 
-# -- Volume / PulseAudio Volume Control
-bindsym XF86AudioMute        exec ponymix toggle && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec ponymix decrease 5 && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioRaiseVolume exec ponymix increase 5 && pkill -RTMIN+1 i3blocks
-bindsym $mod+F6 exec pavucontrol
+# -- PulseAudio volume control
+bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym $mod+XF86AudioMute   exec $terminal pulsemixer
+
+# -- ThinkVantage button
+bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 
 # ----- WINDOW RULES
 #for_window [class="Gcolor3"] floating enable
@@ -177,16 +189,14 @@ assign [class="^TeamSpeak 3$"] 10
 assign [class="^TelegramDesktop$"] 7
 
 # ----- WORKSPACE RULES
-workspace 8 output  HDMI-A-1
-workspace 9 output  HDMI-A-1
-workspace 10 output HDMI-A-1
+# are set by hostname instead of globally
 
 # ----- INFORMATION BAR
 bar {
-	status_command i3blocks
+	status_command i3status
 	position top
 	tray_output all
-	font pango:Sans 8
+	font pango:DejaVu Sans 8
 	colors {
 		background #000000
 		separator #202020
@@ -198,6 +208,9 @@ bar {
 		urgent_workspace   #880000 #880000 #ffffff
 	}
 }
+
+# ----- INPUT
+input * xkb_layout br
 
 # ----- INCLUDES
 include $(hostname).conf
