@@ -207,7 +207,7 @@ bindsym XF86AudioMute        $execb pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume $execb pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume $execb pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMicMute     $execb pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym $mod+XF86AudioMute   exec pavucontrol
+bindsym $mod+XF86AudioMute   $execb $terminal pulsemixer
 
 # -- ThinkVantage button
 bindsym XF86Launch1 $execb xdg-open "https://wiki.archlinux.org"
