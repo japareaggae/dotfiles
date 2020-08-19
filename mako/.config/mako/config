@@ -1,0 +1,6 @@
+# vim: set ft=dosini :
+font=Noto Sans 10
+padding=4
+icon-path=/usr/share/icons/Papirus
+default-timeout=10000
+
