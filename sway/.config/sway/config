@@ -144,8 +144,8 @@ bindsym $mod+m scratchpad show
 set $terminal alacritty
 
 # -- Application launchers
-bindsym $mod+Shift+space exec rofi -show run
-bindsym $mod+space exec rofi -show drun
+bindsym $mod+Shift+space exec wofi --show run
+bindsym $mod+space exec wofi --show drun
 #bindsym $mod+F1 exec xfce4-appfinder
 
 # -- Terminal and file manager
