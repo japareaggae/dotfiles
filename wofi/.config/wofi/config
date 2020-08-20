@@ -1,0 +1,8 @@
+# vim: set ft=dosini :
+show=drun
+sort_order=alphabetical
+insensitive=true
+term=alacritty
+allow_images=true
+image_size=16
+no_actions=true
