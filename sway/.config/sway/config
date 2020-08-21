@@ -190,7 +190,7 @@ bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 for_window [instance="screenshot preview"] floating enable
 
 assign [class="^TeamSpeak 3$"] 10
-assign [class="^TelegramDesktop$"] 7
+assign [app_id="telegramdesktop"] 7
 
 # ----- WORKSPACE RULES
 # are set by hostname instead of globally
