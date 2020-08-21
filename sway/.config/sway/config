@@ -11,6 +11,10 @@ exec swayidle timeout 300 'brightnessctl -q set 20%' resume 'brightnessctl -q se
 	before-sleep 'swaylock -f' \
 	lock 'swaylock -f'
 
+# <https://github.com/swaywm/sway/issues/3799>
+#exec udiskie -t --appindicator
+#exec nm-applet --indicator
+
 # ----- APPEARANCE
 # -- Font
 font pango:DejaVu Sans 8
