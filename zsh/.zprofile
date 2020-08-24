@@ -5,6 +5,7 @@ if systemctl -q is-active graphical.target && [[ $XDG_VTNR -eq 1 ]] && ( hash sw
 	fi
 	export QT_QPA_PLATFORM=wayland-egl
 	export MOZ_ENABLE_WAYLAND=1
+	[[ -d ~/.local/share/sway ]] || mkdir -p ~/.local/share/sway
 	exec sway &> ~/.local/share/sway/session.log
 elif systemctl -q is-active graphical.target && [[ $XDG_VTNR -eq 1 ]] && [[ ! $DISPLAY ]] && ( hash startx 2> /dev/null ); then
 	exec startx -- -keeptty &> ~/.local/share/xorg/session.log
