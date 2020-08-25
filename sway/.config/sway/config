@@ -219,4 +219,4 @@ bar {
 input * xkb_layout br
 
 # ----- INCLUDES
-include $(hostname).conf
+include "$(uname -n).conf"
