@@ -3,7 +3,6 @@
 
 # ----- AUTOSTARTS
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
 exec swayidle -w \
 	timeout 300 'brightnessctl -s set 20%' resume 'brightnessctl -q -r' \
 	timeout 600 'swaylock -f && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -151,12 +150,10 @@ set $terminal alacritty
 
 # -- Application launchers
 bindsym $mod+Shift+space exec wofi --show run
-bindsym $mod+space exec wofi --show drun
-#bindsym $mod+F1 exec xfce4-appfinder
+bindsym $mod+space       exec wofi --show drun
 
 # -- Terminal and file manager
-#bindsym $mod+Return exec $terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return       exec $terminal
 bindsym $mod+Shift+Return exec $terminal -e ranger
 
 # -- Session menu
