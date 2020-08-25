@@ -31,22 +31,16 @@ FILENAME="/tmp/$(date +%F_%H-%M-%S).png"
 # special keybinds for copying the screenshot to somewhere outside /tmp.
 FLAG="/tmp/screenshot.flag"
 
-process_screenshot(){
-	touch $FLAG
-	wl-copy < "$FILENAME"
-	sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
-	rm "$FILENAME"
-	rm "$FLAG"
-}
-
 case $1 in
 	"full")   grim "$FILENAME" ;;
 	"region") grim -g "$(slurp)" "$FILENAME" ;;
 	"*")      usage; exit 1;;
 esac
 
-if [[ -f "$FILENAME" ]]; then
-	process_screenshot
-fi
+touch $FLAG
+wl-copy < "$FILENAME"
+sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
+rm "$FILENAME"
+rm "$FLAG"
 
 
