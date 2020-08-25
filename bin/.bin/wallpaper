@@ -55,13 +55,22 @@ fi
 FILE="$(realpath "$1")"
 
 ### Create a lockscreen image if setting a primary wallpaper
-if [[ ${POSITION} == "${DIRECTORY}/wallpaper0" ]] && ( hash xrandr 2> /dev/null ) && ( hash convert 2> /dev/null ) ; then
-	RESOLUTION=$(xrandr | grep -w primary | awk -F'[ +]' '{print $4}' | head -n 1)
-	convert "${FILE}" ${LOCKSCREEN_OPTS} -resize ${RESOLUTION}^ -gravity center -extent ${RESOLUTION} "${DIRECTORY}/lockscreen.png"
+if [[ ${POSITION} == "${DIRECTORY}/wallpaper0" ]]; then
+	if [[ $WAYLAND_DISPLAY ]] && ( hash convert 2> /dev/null ); then
+		# swaylock has support for scaling images, no resizing headaches needed.
+		convert "${FILE}" ${LOCKSCREEN_OPTS} "${DIRECTORY}/lockscreen.png"
+	elif ( hash xrandr 2> /dev/null ) && ( hash convert 2> /dev/null ); then
+		# i3lock does not support scaling images, so we need to resize the wallpaper
+		# to our current resolution.
+		RESOLUTION=$(xrandr | grep -w primary | awk -F'[ +]' '{print $4}' | head -n 1)
+		convert "${FILE}" ${LOCKSCREEN_OPTS} -resize ${RESOLUTION}^ -gravity center -extent ${RESOLUTION} "${DIRECTORY}/lockscreen.png"
+	else
+		echo "Could not create a lockscreen image"
+	fi
 fi
 
 ### Link the image
 ln -fs "${FILE}" "${POSITION}"
 
 ### Run xrandr-adjust to reload wallpapers
-${HOME}/.bin/xrandr-adjust
+[[ $WAYLAND_DISPLAY ]] || ${HOME}/.bin/xrandr-adjust
