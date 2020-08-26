@@ -1,5 +1,4 @@
 #input {
-/*	background-color: @bg_color; */
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -11,9 +10,10 @@
 }
 
 #entry #img {
-	padding: 0px 6px;
+	padding: 0px 5px;
 }
 
-#entry #text {
-	padding-left: 3px;
+/* For run and dmenu modes */
+#entry #text:only-child {
+	padding-left: 26px;
 }
