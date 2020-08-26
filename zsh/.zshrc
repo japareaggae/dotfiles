@@ -135,6 +135,7 @@ alias gdd="gnome-disks --restore-disk-image"
 alias mpv-nv="mpv --no-video"
 alias udmount="udisksctl mount -b"
 alias udumount="udisksctl unmount -b"
+alias resolve="resolvectl query"
 
 if [[ -r /etc/debian_version ]] ; then
 	alias fd="fdfind"
