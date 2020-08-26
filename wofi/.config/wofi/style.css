@@ -1,0 +1,19 @@
+#input {
+/*	background-color: @bg_color; */
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+}
+
+#entry:selected {
+	border-radius: 0;
+}
+
+#entry #img {
+	padding: 0px 6px;
+}
+
+#entry #text {
+	padding-left: 3px;
+}
