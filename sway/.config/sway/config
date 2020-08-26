@@ -187,11 +187,9 @@ bindsym $mod+XF86AudioMute   exec $terminal pulsemixer
 bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 
 # ----- WINDOW RULES
-#for_window [class="Gcolor3"] floating enable
-#for_window [class="Lxpolkit"] floating enable
-#for_window [title="File Operation Progress"] floating enable
 for_window [instance="screenshot preview"] floating enable
 
+# ----- WINDOW ASSIGNMENTS
 assign [class="^TeamSpeak 3$"] 10
 assign [app_id="telegramdesktop"] 7
 
