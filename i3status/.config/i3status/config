@@ -25,39 +25,42 @@ order += "battery all"
 order += "time"
 
 cpu_usage {
+	format = " %usage"
 	degraded_threshold = 80
 	max_threshold = 95
 }
 
 cpu_temperature 0 {
-	format = "%degrees°C"
+	format = " %degrees°C"
+	format_above_threshold = " %degrees°C"
 	max_threshold = 80
 }
 
 memory {
-	format = "%used"
+	format = " %used"
 	memory_used_method = memavailable
 }
 
 disk "/" {
-	format = "%avail free"
+	format = " %avail free"
 	threshold_type = percentage_avail
 	low_threshold = 10
 }
 
 wireless _first_ {
-	format_up = "W (%essid): %ip"
+	format_up = " %essid: %ip"
 	format_down = ""
 }
 
 ethernet _first_ {
-	format_up = "E: %ip"
+	format_up = " %ip"
 	format_down = ""
 }
 
 volume master {
 	device = "pulse"
-	format_muted = "♪: %volume (M)"
+	format = " %volume"
+	format_muted = " %volume"
 }
 
 battery all {
