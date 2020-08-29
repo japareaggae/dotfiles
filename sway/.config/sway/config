@@ -10,7 +10,7 @@ exec swayidle -w \
 	lock 'swaylock -f'
 
 # <https://github.com/swaywm/sway/issues/3799>
-#exec udiskie -t --appindicator
+#exec udiskie -A -t --appindicator
 #exec nm-applet --indicator
 
 # ----- APPEARANCE
