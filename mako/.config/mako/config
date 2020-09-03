@@ -2,5 +2,6 @@
 font=Noto Sans 10
 padding=4
 icon-path=/usr/share/icons/Papirus
+max-icon-size=32
 default-timeout=10000
 
