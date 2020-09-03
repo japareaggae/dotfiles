@@ -4,7 +4,7 @@
 # ----- AUTOSTARTS
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec swayidle -w \
-	timeout 300 'brightnessctl -s set 9%' resume 'brightnessctl -q -r' \
+	timeout 300 'brightnessctl -q -s set 9%' resume 'brightnessctl -q -r' \
 	timeout 600 'swaylock -f && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 	before-sleep 'swaylock -f' \
 	lock 'swaylock -f'
