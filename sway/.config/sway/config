@@ -191,6 +191,7 @@ for_window [instance="screenshot preview"] floating enable
 
 # ----- WINDOW ASSIGNMENTS
 assign [class="^TeamSpeak 3$"] 10
+assign [class="^discord$"] 9
 assign [app_id="telegramdesktop"] 7
 
 # ----- WORKSPACE RULES
