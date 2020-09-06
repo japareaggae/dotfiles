@@ -63,7 +63,7 @@ handle_extension() {
             ## Avoid password prompt by providing empty password
             7z l -p -- "${FILE_PATH}" && exit 5
             exit 1;;
-        epub|zip)
+        zip)
             unzip -l "${FILE_PATH}" && exit 5
             exit 1;;
 
