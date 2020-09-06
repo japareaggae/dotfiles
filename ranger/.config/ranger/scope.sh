@@ -121,7 +121,7 @@ handle_extension() {
 
         ## ISO
         iso)
-            iso-info --no-header -f "${FILE_PATH}"
+            iso-info --no-header -f "${FILE_PATH}" && exit 5
             ;;
     esac
 }
