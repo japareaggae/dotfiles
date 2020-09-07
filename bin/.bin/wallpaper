@@ -72,5 +72,9 @@ fi
 ### Link the image
 ln -fs "${FILE}" "${POSITION}"
 
-### Run xrandr-adjust to reload wallpapers
-[[ $WAYLAND_DISPLAY ]] || ${HOME}/.bin/xrandr-adjust
+### Reload wallpapers
+if [[ $SWAYSOCK ]]; then
+	swaymsg reload
+elif [[ $DISPLAY ]]; then
+	${HOME}/.bin/xrandr-adjust
+fi
