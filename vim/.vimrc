@@ -14,6 +14,10 @@ set ignorecase
 set smartcase
 set confirm
 set grepprg=grep\ -nH\ $*
+set showcmd
+set display=truncate
+set ttimeout
+set ttimeoutlen=100
 
 " ----- Appearance
 set background=dark
