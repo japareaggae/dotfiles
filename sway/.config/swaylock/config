@@ -1,3 +1,6 @@
 image=$HOME/.local/share/wallpapers/lockscreen.png
 scaling=fill
-font=DejaVu Sans
+font=Noto Sans
+indicator-radius=75
+indicator-thickness=12
+inside-color=00000000
