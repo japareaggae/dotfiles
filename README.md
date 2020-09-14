@@ -19,8 +19,8 @@ on Debian, for example).
 Other configurations
 -----
 
-* Firefox and derivatives: Set `browser.download.lastDir.savePerSite`
-to false
+See the zzz-others directory for configuration files that can't be
+used as Stow packages.
 
 License
 -----
