@@ -87,3 +87,13 @@ pkgpop() {
 		curl -s "https://pkgstats.archlinux.de/api/packages/${(@)^pkgs}" | jq -rs 'sort_by(-.count)[] | "\(.name): \t\(.popularity)\t%"' | column -ts $'\t' -o '' -R1,2
 	fi
 }
+
+### ISO (un)mounting
+iso-mount() {
+	[[ -d ~/.mnt/iso ]] || mkdir -p ~/.mnt/iso
+	fuseiso $1 ~/.mnt/iso
+}
+
+iso-unmount() {
+	fusermount -u ~/.mnt/iso
+}
