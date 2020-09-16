@@ -97,3 +97,13 @@ iso-mount() {
 iso-unmount() {
 	fusermount -u ~/.mnt/iso
 }
+
+### SSHFS (un)mounting
+ssh-mount() {
+	[[ -d ~/.mnt/ssh ]] || mkdir -p ~/.mnt/ssh
+	sshfs $1 ~/.mnt/ssh
+}
+
+ssh-unmount() {
+	fusermount -u ~/.mnt/ssh
+}
