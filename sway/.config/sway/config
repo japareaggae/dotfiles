@@ -10,8 +10,8 @@ exec swayidle -w \
 	lock 'swaylock -f'
 
 # <https://github.com/swaywm/sway/issues/3799>
-#exec udiskie -A -t --appindicator
-#exec nm-applet --indicator
+exec udiskie -A -t --appindicator
+exec nm-applet --indicator
 
 # ----- APPEARANCE
 # -- Font
@@ -202,6 +202,7 @@ bar {
 	status_command i3status
 	position top
 	font pango:DejaVu Sans 8
+	icon_theme Papirus-Dark
 	colors {
 		background #000000
 		separator #202020
