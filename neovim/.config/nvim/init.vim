@@ -12,6 +12,7 @@ set number
 """ Syntax highlighting
 if $TERM !~ "^linux.*"
 	set termguicolors
+	colorscheme base16-tomorrow-night
 endif
 
 """ Windows
