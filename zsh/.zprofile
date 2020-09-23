@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 # ~/.zprofile - Commands to run when starting a login Z shell
 
-if [[ $XDG_VTNR -eq 1 ]] && hash sway 2> /dev/null; then
+if [[ $XDG_VTNR -eq 1 ]] && [[ ! $WAYLAND_DISPLAY ]] && hash sway 2> /dev/null; then
 	# qt5ct -- This is on xprofile too but Wayland doesn't use that
 	if hash qt5ct 2> /dev/null && ! hash plasmashell 2> /dev/null; then
 		export QT_QPA_PLATFORMTHEME=qt5ct
