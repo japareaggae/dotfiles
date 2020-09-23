@@ -34,4 +34,4 @@ set autowrite
 set autoread
 
 """ Command line editing
-"set wildmode=longest,full
+set wildmode=longest,full
