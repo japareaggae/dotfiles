@@ -36,3 +36,9 @@ set autoread
 
 """ Command line editing
 set wildmode=longest,full
+
+""" Keybinds
+nmap ,( :tabp<CR>
+nmap ,) :tabn<CR>
+nmap ,[ ;bprevious<CR>
+nmap ,] :bnext<CR>
