@@ -12,7 +12,8 @@ Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
 ! --- Terminal Colors
-#include ".config/xcolors/linux"
+*background: #000000
+*foreground: #AAAAAA
 
 ! --- XTerm
 xterm*termName: xterm-256color
