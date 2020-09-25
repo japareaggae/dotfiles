@@ -1,5 +1,7 @@
 #!/bin/sh
-echo "--- pacman updates ---"
+BOLD="\e[1m"
+RESET="\e[0m"
+echo -e "${BOLD}==> Checking for pacman updates${RESET}"
 checkupdates
-echo "--- AUR updates ---"
+echo -e "${BOLD}==> Checking for AUR updates${RESET}"
 pacman -Qm | aur vercmp
