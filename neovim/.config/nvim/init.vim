@@ -38,7 +38,7 @@ set autoread
 set wildmode=longest,full
 
 """ Keybinds
-nmap ,( :tabp<CR>
-nmap ,) :tabn<CR>
+nmap ,( :tabprevious<CR>
+nmap ,) :tabnext<CR>
 nmap ,[ ;bprevious<CR>
 nmap ,] :bnext<CR>
