@@ -1,5 +1,11 @@
 " init.vim - neovim configuration
 
+""" Plugins
+call plug#begin(stdpath('data').'/plugged')
+Plug 'ap/vim-buftabline'
+Plug 'chriskempson/base16-vim'
+call plug#end()
+
 """ Searching
 set ignorecase
 set smartcase
