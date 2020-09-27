@@ -5,7 +5,7 @@ set ignorecase
 set smartcase
 
 """ Displaying
-exec "set listchars=tab:\uBB\uB7,trail:\uB7,nbsp:~,extends:$,precedes:$"
+set listchars=tab:»·,trail:·,nbsp:·,extends:$,precedes:$
 set list
 set number
 
