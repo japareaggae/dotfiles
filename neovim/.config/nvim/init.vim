@@ -46,5 +46,5 @@ set wildmode=longest,full
 """ Keybinds
 nmap ,( :tabprevious<CR>
 nmap ,) :tabnext<CR>
-nmap ,[ ;bprevious<CR>
+nmap ,[ :bprevious<CR>
 nmap ,] :bnext<CR>
