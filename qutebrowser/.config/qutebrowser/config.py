@@ -71,8 +71,8 @@ c.fonts.web.family.standard = c.fonts.web.family.serif
 
 # Keybinds
 config.bind(';p', 'hint links spawn mpv {hint-url}')
-config.bind(',p', 'spawn --userscript qute-pass -U secret -u \'Username: (.*)\' ')
-config.bind(',P', 'spawn passme')
+config.bind(',p', 'spawn --userscript qute-pass -d dmenu -U secret -u \'Username: (.*)\' ')
+config.bind(',P', 'spawn --userscript qute-pass -d dmenu --password-only')
 
 # Aliases
 c.aliases['mpv'] = "spawn --userscript view-in-mpv"
