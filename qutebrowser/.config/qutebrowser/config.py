@@ -77,7 +77,6 @@ config.bind(',P', 'spawn passme')
 
 # Aliases
 c.aliases['mpv'] = "spawn --userscript view-in-mpv"
-c.aliases['private'] = "set -t content.private_browsing true ;; open -w ;; set -t content.private_browsing false"
 c.aliases['qrcode'] = "spawn --userscript qrcode"
 
 # Nouveau hack
