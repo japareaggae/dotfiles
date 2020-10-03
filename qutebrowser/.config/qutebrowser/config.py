@@ -41,7 +41,6 @@ c.url.searchengines = {
     "pkg":     "https://repology.org/projects/?search={}",
     "yt":      "https://www.youtube.com/results?search_query={}",
     "w":       "https://en.wikipedia.org/w/index.php?search={}&title=Special:Search&go=Go",
-    "warframe": "https://warframe.fandom.com/wiki/Special:Search?query={}&go=Go"
 }
 
 # Colors
