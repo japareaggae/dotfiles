@@ -11,7 +11,7 @@ set ignorecase
 set smartcase
 
 """ Displaying
-set listchars=tab:»·,trail:·,nbsp:·,extends:$,precedes:$
+set listchars=tab:→\ ,trail:·,nbsp:·,extends:$,precedes:$
 set list
 set number
 
