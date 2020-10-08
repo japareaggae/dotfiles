@@ -216,7 +216,13 @@ bar {
 }
 
 # ----- INPUT
-input * xkb_layout br
+input type:keyboard xkb_layout br
+input type:touchpad natural_scroll enabled
+input type:touchpad tap enabled
+
+# ----- OUTPUT
+output * background ~/.local/share/wallpapers/wallpaper0 fill
 
 # ----- INCLUDES
+# Generally for overriding input/output configuration.
 include "$(uname -n).conf"
