@@ -1,6 +1,6 @@
 # vim: set ft=dosini :
 show=drun
-sort_order=alphabetical
+#sort_order=alphabetical
 insensitive=true
 term=alacritty
 allow_images=true
