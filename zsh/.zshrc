@@ -129,6 +129,7 @@ fi
 alias cget="curl -OLC-"
 alias gdd="gnome-disks --restore-disk-image"
 alias mpv-nv="mpv --no-video"
+alias pkgchanges="pacolog -l 10"
 alias udmount="udisksctl mount -b"
 alias udumount="udisksctl unmount -b"
 alias resolve="resolvectl query"
