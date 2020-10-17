@@ -68,6 +68,10 @@ battery all {
 	format_down = ""
 	low_threshold = 15
 	threshold_type = percentage
+	status_full = ""
+	status_bat = ""
+	status_chr = ""
+	status_unk = ""
 }
 
 time {
