@@ -31,6 +31,5 @@
 	s = status -sb
 
 	fortune = !cowsay $(curl -s http://whatthecommit.com/index.txt)
-	going = push origin master
 	graph = log --graph --format=format:'%C(yellow)%h%Creset %C(bold blue)(%ar)%Creset - %C(bold green)%an%Creset - %s%C(bold red)%d%Creset'
 
