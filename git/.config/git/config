@@ -7,6 +7,7 @@
 
 [init]
 	defaultBranch = main
+	templateDir = ~/.config/git/template
 
 [push]
 	default = simple
