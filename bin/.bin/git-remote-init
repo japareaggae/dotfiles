@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ ! $1 ]] || [[ ! $2 ]]; then
+echo \
+"Usage: ${0##*/} (remote) (directory)
+
+Remote will be accessed via SSH, and a bare git repo will be created on
+the specified directory."
+else
+	ssh $1 git init --bare "$2"
+fi
