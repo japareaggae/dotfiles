@@ -181,13 +181,14 @@ bindsym XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym $mod+XF86AudioMute   exec $terminal pulsemixer
+bindsym $mod+XF86AudioMute   exec $terminal --class pulsemixer -d 100 24 -e pulsemixer
 
 # -- ThinkVantage button
 bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 
 # ----- WINDOW RULES
 for_window [instance="screenshot preview"] floating enable
+for_window [app_id="pulsemixer"] floating enable
 
 # ----- WINDOW ASSIGNMENTS
 assign [class="^TeamSpeak 3$"] 10
