@@ -197,6 +197,7 @@ font pango:DejaVu Sans 8
 
 # -- Borders
 default_border pixel 1
+default_floating_border normal 1
 hide_edge_borders --i3 smart
 
 # -- Colors
