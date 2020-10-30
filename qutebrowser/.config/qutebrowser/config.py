@@ -72,6 +72,7 @@ c.fonts.web.family.fantasy = c.fonts.web.family.serif
 c.fonts.web.family.cursive = c.fonts.web.family.serif
 
 # Keybinds
+config.bind('po', 'set-cmd-text -s :open -p')
 config.bind(';p', 'hint links spawn mpv {hint-url}')
 config.bind(',p', 'spawn --userscript qute-pass -d dmenu -U secret -u \'Username: (.*)\' ')
 config.bind(',P', 'spawn --userscript qute-pass -d dmenu --password-only')
