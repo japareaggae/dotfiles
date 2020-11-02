@@ -5,6 +5,7 @@ call plug#begin(stdpath('data').'/plugged')
 Plug 'ap/vim-buftabline'
 Plug 'chriskempson/base16-vim'
 Plug 'cespare/vim-toml'
+Plug 'chrisbra/unicode.vim'
 call plug#end()
 
 """ Searching
