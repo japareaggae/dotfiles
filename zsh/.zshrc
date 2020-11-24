@@ -126,6 +126,10 @@ else
 	alias lsnew="ls -l -r -t"
 	alias lsold="ls -l -t"
 fi
+alias mv="mv -iv"
+alias cp="cp -riv" # will break on bsd
+alias mkdir="mkdir -vp"
+
 alias cget="curl -OLC-"
 alias gdd="gnome-disks --restore-disk-image"
 alias mpv-nv="mpv --no-video"
