@@ -182,6 +182,7 @@ bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 # ----- WINDOW RULES
 for_window [instance="screenshot preview"] floating enable
 for_window [app_id="pulsemixer"] floating enable
+for_window [app_id="org.speedcrunch.speedcrunch"] floating enable
 
 # ----- WINDOW ASSIGNMENTS
 assign [class="^TeamSpeak 3$"] 10
