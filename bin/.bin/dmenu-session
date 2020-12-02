@@ -4,14 +4,10 @@
 # Released under the public domain <http://unlicense.org/UNLICENSE>
 
 _getOut(){
-	(pgrep 'i3' > /dev/null) && i3 exit
-	(pgrep 'bspwm' > /dev/null) && bspc quit
-	(pgrep 'openbox' > /dev/null) && openbox --exit
-	# For this to work, you need to add a file to /etc/sway/security.d
-	# to add the "ipc" context to the "exit" command. Read the
-	# 00-defaults file in that folder and the sway-security(7) manpage
-	# for more information.
-	(pgrep 'sway' > /dev/null) && swaymsg exit
+	( pgrep 'i3' > /dev/null )      && i3 exit
+	( pgrep 'bspwm' > /dev/null )   && bspc quit
+	( pgrep 'openbox' > /dev/null ) && openbox --exit
+	( pgrep 'sway' > /dev/null )    && swaymsg exit
 }
 
 _lock(){
@@ -28,7 +24,6 @@ _lock(){
 		$HOME/.bin/i3locker
 	fi
 }
-
 
 # Enable hibernation options on list only if there's a resume partition
 grep 'resume=' /proc/cmdline && HIBERNATE_OPTIONS="hibernate\nhybrid-sleep\n"
