@@ -11,14 +11,14 @@ _getOut(){
 }
 
 _lock(){
-	if (pgrep 'xss-lock' > /dev/null); then
-		# xss-lock works together with loginctl
-		xset dpms force standby; loginctl lock-session
-	elif (pgrep 'light-locker' > /dev/null); then
+	if ( pgrep 'xss-lock' > /dev/null ) || ( pgrep 'swayidle' > /dev/null ); then
+		# xss-lock and swayidle listen to lock-session calls from logind.
+		loginctl lock-session
+	elif ( pgrep 'light-locker' > /dev/null ); then
+		# Used mostly in Xfce/Xubuntu.
+		# TODO: Check if they still use this today, or if they also have logind
+		# integration
 		light-locker-command -l
-	elif [[ $SWAYSOCK ]]; then
-		# sway has it's own locker
-		$HOME/.bin/swaylocker
 	else
 		# i3lock is WM-agnostic enough to use as a catchall
 		$HOME/.bin/i3locker
