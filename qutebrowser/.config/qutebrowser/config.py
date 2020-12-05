@@ -45,21 +45,7 @@ c.url.searchengines = {
 }
 
 # Colors
-c.colors.statusbar.private.bg = "#400040"
-c.colors.statusbar.command.private.bg = c.colors.statusbar.private.bg
-c.colors.tabs.odd.bg = "black"
-c.colors.tabs.odd.fg = "white"
-c.colors.tabs.selected.odd.bg = "white"
-c.colors.tabs.selected.odd.fg = "black"
-c.colors.tabs.even.bg = c.colors.tabs.odd.bg
-c.colors.tabs.even.fg = c.colors.tabs.odd.fg
-c.colors.tabs.selected.even.bg = c.colors.tabs.selected.odd.bg
-c.colors.tabs.selected.even.fg = c.colors.tabs.selected.odd.fg
-c.colors.tabs.pinned.selected.odd.bg = "white"
-c.colors.tabs.pinned.selected.odd.fg = "black"
-c.colors.tabs.pinned.selected.even.bg = c.colors.tabs.pinned.selected.odd.bg
-c.colors.tabs.pinned.selected.even.fg = c.colors.tabs.pinned.selected.odd.fg
-c.colors.messages.warning.fg = "black"
+config.source('colors.py')
 
 # Fonts
 c.fonts.default_size = "9pt"
