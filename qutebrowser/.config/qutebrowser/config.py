@@ -4,6 +4,7 @@ c.confirm_quit = ["downloads"]
 c.content.autoplay = False
 c.content.notifications = False
 c.colors.webpage.prefers_color_scheme_dark = True
+c.editor.command = ["alacritty", "-e", "nvim", "-c", "normal {line}G{column0}l", "{file}"]
 
 # Completion
 c.completion.height = "40%"
