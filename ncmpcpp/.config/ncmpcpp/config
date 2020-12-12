@@ -5,6 +5,8 @@ ncmpcpp_directory = ~/.local/share/ncmpcpp
 lyrics_directory  = ~/.lyrics
 
 ### MPD Connection ###
+# Comment this out if you're not using MPD as a systemd user service
+mpd_host = /run/user/1000/mpd/socket
 mpd_music_dir = ~/Music
 
 ### Visualizer ###
