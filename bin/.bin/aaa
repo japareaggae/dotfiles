@@ -16,6 +16,32 @@ RESET="$(tput sgr0)"
 
 WHERE=${AURDEST:-$HOME/Development/pkgbuilds}
 
+_usage(){
+cat << EOF
+Usage: $MYNAME (action) [options] (package)
+
+Actions:
+    changes    - View the latest commits for this package on the AUR
+    check      - Check installed packages for AUR updates
+    clean      - Remove built packages and source tarballs
+                 Add -p to only print files that would be deleted
+    clone      - Clones the repository for a package
+                 Add -d to clone the package and its dependencies
+    download   - Download a snapshot of the package's repository
+                 Add -d to download the package and its dependencies
+    info       - Shows information for specified package
+    search     - Search for the specified keyword
+    update     - Update PKGBUILDs for installed AUR packages
+    update-vcs - Update PKGBUILDs for VCS packages and rebuilds them
+
+The search, check, update, clone (with -d) and download (with -d) actions
+require aurutils.
+The info action requires jq.
+
+EOF
+}
+
+### Helper functions
 _check_jq(){
 	if ! ( hash jq 2> /dev/null )
 	then
@@ -32,30 +58,14 @@ _check_aurutils(){
 	fi
 }
 
-_usage(){
-cat << EOF
-Usage: $MYNAME (action) [options] (package)
-
-Actions:
-    search   - Search for the specified keyword
-    info     - Shows information for specified package
-    clone    - Clones the repository for a package
-               Add -d to clone the package and its dependencies
-    download - Download a snapshot of the package's repository
-               Add -d to download the package and its dependencies
-    check    - Check installed packages for AUR updates
-               Add -v to show packages which have lower versions on AUR
-    update   - Update PKGBUILDs for installed AUR packages
-    changes  - View the latest commits for this package on the AUR
-    clean    - Remove built packages and source tarballs
-               Add -p to only print files that would be deleted
-
-The search, check, update, clone (with -d) and download (with -d) actions
-require aurutils.
-The info action requires jq.
-
-EOF
+_update_pkgbuilds(){
+	echo "${BOLD}==> Updating PKGBUILD for $1${RESET}"
+	cd $WHERE/$1
+	git checkout master # switch to upstream branch
+	git checkout HEAD . # remove all modifications (you are using a branch for that, right?)
+	git pull --ff-only  # get pkgbuild changes from AUR
 }
+#####
 
 _search(){
 	_check_aurutils || exit 1
@@ -84,7 +94,6 @@ _info(){
 	POPULARITY="$(printf "$JSON" | jq -r '.results|.[0]|.Popularity')"
 	VOTES="$(printf "$JSON" | jq -r '.results|.[0]|.NumVotes')"
 	UPDATED="$(printf "$JSON" | jq -r '.results|.[0]|.LastModified')"
-
 	OOD="$(printf "$JSON" | jq -r '.results|.[0]|.OutOfDate')"
 	if [[ "$OOD" == "null" ]]; then
 		VERSION="${BOLD}${GREEN}${VERSION}${RESET}"
@@ -159,11 +168,16 @@ _check(){
 _update(){
 	for PACKAGE in $(_check | cut -d: -f1 )
 	do
-		echo "${BOLD}==> Updating PKGBUILD for $PACKAGE${RESET}"
-		cd $WHERE/$PACKAGE
-		git checkout master # switch to upstream branch
-		git checkout HEAD . # remove all modifications (you are using a branch for that, right?)
-		git pull --ff-only  # get pkgbuild changes from AUR
+		_update_pkgbuilds $PACKAGE
+	done
+}
+
+_update_vcs(){
+	### TODO: This is "update_vcs" but only updates git packages...
+	for PACKAGE in $(pacman -Qqm | grep -- '-git')
+	do
+		_update_pkgbuilds $PACKAGE
+		makepkg -sic --noconfirm
 	done
 }
 
@@ -194,6 +208,7 @@ case $1 in
 	"download") shift; _download $1 $2 ;;
 	"check")  shift; _check $1 ;;
 	"update") shift; _update ;;
+	"update-vcs") shift; _update_vcs ;;
 	"changes") shift; _changes $1 ;;
 	"clean")  shift; _clean $1 ;;
 	*)        _usage ;;
