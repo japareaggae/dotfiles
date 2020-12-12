@@ -85,16 +85,14 @@ message_delay_time = 1
 #
 # To end an attribute, add a slash before the letter: '$b%t$/b'
 #
-song_list_format = {[%l] }{{$7%a$9 - }{$3%t$9}}|{%f}$R{#{%d-}%n - }{$4%b$9}
-song_status_format = {$3%a$9 // }{$3%t$9}{ //{ #{%d-}%n from} $3%b$9}
+song_list_format = {%a - }$b{%t}|{%f}$/b$R{$6(%l)$9}
+song_status_format = {$3%a$9 :: }{$3%t$9}{ :: $3%b$9{ (#{%d-}%n)}}
 
 alternative_header_first_line_format = $b{%t}|{%f}$/b
-alternative_header_second_line_format = {$3$b%a$/b$9}{ ::{ $4$b#{%d-}%N$/b$9 from} $7$b%b$/b$9}
+alternative_header_second_line_format = {$7$b%a$/b$9}{ :: $7$b%b$/b$9{ (#{%d-}%n})}
 
 current_item_prefix = $(green)$r
 current_item_suffix = $/r$(end)
-current_item_inactive_column_prefix = $(white)$r
-current_item_inactive_column_suffix = $/r$(end)
 
 ### Columns ###
 # Syntax: (width)[color]{tag} (width)[color]{tag} (width)[color]{tag}...
@@ -112,7 +110,7 @@ current_item_inactive_column_suffix = $/r$(end)
 # You can define alternate tags to use: '{a|c|p}' will attempt to display
 # artist first, then composer, then performer.
 #
-song_columns_list_format = (6f)[]{l} (25)[cyan]{a} (40)[green]{t|f} (25)[yellow]{b} (6f)[yellow]{n}
+song_columns_list_format = (25)[]{a} (45)[]{t|f:Title} (4f)[cyan]{NE:#} (20)[cyan]{b} (5f)[magenta]{l}
 
 ### Display Modes ###
 playlist_display_mode        = columns
@@ -122,7 +120,6 @@ playlist_editor_display_mode = columns
 
 ### Progress bar ###
 progressbar_look     = ═█
-#progressbar_boldness = yes
 
 ### Screens ###
 screen_switcher_mode = playlist, media_library
@@ -145,29 +142,23 @@ fetch_lyrics_for_current_song_in_background = no
 ignore_leading_the = yes
 
 ### Colors ###
-# Default, black, red, green, yellow, blue, magenta, cyan, white
+# Colors and attributes are the same as in song formats
+# Attributes may be set by appending ":<attr>"
+#
+# It is possible to set a background color by setting a color value
+# "<foreground>_<background>", e.g. red_black will set foregound color to red
+# and background color to black.
+#
+# In addition, for terminals that support 256 colors it is possible to set one
+# of them by using a number in range [1, 256] instead of color name,
+# e.g. numerical value corresponding to red_black is 2_1. To find out if the
+# terminal supports 256 colors, run ncmpcpp and check out the bottom of the
+# help screen for list of available colors and their numerical values.
+
 colors_enabled = yes
 
 main_window_color           = default
-#main_window_highlight_color = white
-#active_column_color         = green
-header_window_color         = default
-volume_color                = default
-state_line_color            = default
-state_flags_color           = default
-
 progressbar_color         = white
 progressbar_elapsed_color = green:b
-statusbar_color           = default
-
-window_border_color  = green
-active_window_border = red
-
-color1 = white
-color2 = green
-
-#visualizer_color = default
-
 alternative_ui_separator_color = default
-
 empty_tag_color = yellow
