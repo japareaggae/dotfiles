@@ -33,6 +33,23 @@ save_screenshot() {
 	fi
 }
 
+kdeconnect-send() {
+	DEVICE_COUNT=$(kdeconnect-cli --list-available --name-only | wc -l)
+	if [[ $DEVICE_COUNT -eq 0 ]]; then
+		echo "No devices found"
+		exit 1
+	elif [[ $DEVICE_COUNT -eq 1 ]]; then
+		while read file; do
+			kdeconnect-cli --share "$file" -n "$(kdeconnect-cli --list-available --name-only)"
+		done
+	else
+		DEVICE=$(kdeconnect-cli --list-available --name-only | dmenu)
+		while read file; do
+			[[ "$DEVICE" ]] && kdeconnect-cli --share "$file" -n "$DEVICE"
+		done
+	fi
+}
+
 case "$1" in
 "y")        xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
 "C-c")      while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
@@ -42,5 +59,6 @@ case "$1" in
 "C-period") rotate  90 ;;
 "C-slash")  rotate 180 ;;
 "s")        save_screenshot ;;
+"k")        kdeconnect-send ;;
 esac
 
