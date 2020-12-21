@@ -199,7 +199,8 @@ bindsym XF86ScreenSaver   exec ~/.bin/dmenu-session lock
 bindsym $mod+F12 exec $terminal -e nmtui
 
 # -- Screenshotting
-bindsym Print exec $HOME/.bin/wscreenshot region
+bindsym Print exec      $HOME/.bin/wscreenshot region
+bindsym $mod+Print exec $HOME/.bin/wscreenshot window
 
 # -- MPD
 bindsym XF86AudioPlay exec mpc toggle
