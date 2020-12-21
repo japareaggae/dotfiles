@@ -22,6 +22,7 @@ copying it to the clipboard, and sxiv for displaying the screenshot.
 Options:
   full     Take a screenshot of the entire desktop
   region   Take a screenshot of a selected region
+  window   Take a screenshot of a selected window
 EOF
 }
 
@@ -34,13 +35,16 @@ FLAG="/tmp/screenshot.flag"
 case $1 in
 	"full")   grim "$FILENAME" ;;
 	"region") grim -g "$(slurp)" "$FILENAME" ;;
-	"*")      usage; exit 1;;
+	"window") grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" "$FILENAME" ;;
+	*)      usage ; exit 1 ;;
 esac
 
-touch $FLAG
-wl-copy < "$FILENAME"
-sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
-rm "$FILENAME"
-rm "$FLAG"
+if [[ $? == 0 ]]; then
+	touch $FLAG
+	wl-copy < "$FILENAME"
+	sxiv -N "screenshot preview" -s h -g 320x240+24+48 "$FILENAME"
+	rm "$FILENAME"
+	rm "$FLAG"
+fi
 
 
