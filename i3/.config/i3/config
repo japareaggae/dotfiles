@@ -20,6 +20,41 @@ $execb skippy-xd --start-daemon
 #$execb mpd
 #$execb mpdscribble
 
+# ----- BASE16 COLORS
+# Also used by information bar and bemenu (application keybinds)
+# Currently set to Tomorrow Night
+set $base00 #1d1f21
+set $base01 #282a2e
+set $base02 #373b41
+set $base03 #969896
+set $base04 #b4b7b4
+set $base05 #c5c8c6
+set $base06 #e0e0e0
+set $base07 #ffffff
+set $base08 #cc6666
+set $base09 #de935f
+set $base0A #f0c674
+set $base0B #b5bd68
+set $base0C #8abeb7
+set $base0D #81a2be
+set $base0E #b294bb
+set $base0F #a3685a
+
+# ----- APPEARANCE
+# -- Font
+font pango:DejaVu Sans 8
+
+# -- Borders
+default_border pixel 2
+hide_edge_borders smart
+
+# -- Colors
+# Background is not used if border type is not normal
+# Class                 Border  Backgr. Text    Indicator
+client.focused          $base0D $base0D $base00 $base05 $base0D
+client.focused_inactive $base02 $base02 $base05 $base01 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
 
 # ----- KEYBINDINGS
 # -- Modkey
@@ -110,7 +145,6 @@ bindsym $mod+Shift+q kill
 # -- Reload and restart
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-#bindsym $mod+Shift+e $execb "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # -- Resize mode
 mode "resize" {
@@ -231,22 +265,6 @@ assign [class="^TelegramDesktop$"] 7
 #workspace 9  output HDMI-A-0
 #workspace 10 output HDMI-A-0
 
-# ----- APPEARANCE
-# -- Font
-font pango:DejaVu Sans 8
-
-# -- Borders
-default_border pixel 2
-hide_edge_borders smart
-
-# -- Colors
-# Background is not used if border type is not normal
-# Class                 Border  Backgr. Text    Indicator
-#client.focused          #204060 #204060 #FFFFFF #00AAAA
-#client.focused_inactive #202040 #202040 #888888 #006060
-#client.unfocused        #333333 #222222 #888888 #292d2e
-#client.urgent           #400000 #400000 #FFFFFF #800000
-
 # ----- INFORMATION BAR
 bar {
 	status_command i3status
@@ -254,14 +272,15 @@ bar {
 	tray_output primary
 	font pango:DejaVu Sans 8
 	colors {
-		background #000000
-		separator #202020
-		statusline #ffffff
+		background $base00
+		separator  $base01
+		statusline $base05
 		# Class            Border  Backgr. Text
-		focused_workspace  #444444 #444444 #ffffff
-		active_workspace   #444444 #444444 #888888
-		inactive_workspace #000000 #000000 #888888
-		urgent_workspace   #880000 #880000 #ffffff
+		focused_workspace  $base0D $base0D $base00
+		active_workspace   $base03 $base03 $base00
+		inactive_workspace $base00 $base00 $base05
+		urgent_workspace   $base08 $base08 $base00
+		binding_mode       $base0A $base0A $base00
 	}
 }
 
