@@ -223,6 +223,7 @@ bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 
 # ----- WINDOW RULES
 for_window [instance="screenshot preview"] floating enable
+for_window [instance="screenshot preview"] move position 24 32
 for_window [app_id="pulsemixer"] floating enable
 for_window [app_id="org.speedcrunch.speedcrunch"] floating enable
 
