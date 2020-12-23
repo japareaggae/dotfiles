@@ -1,0 +1,115 @@
+#!/bin/bash
+#
+# recovery: Synchronize an alternative, encrypted install of Arch Linux
+
+### Options
+# RECOVERY: Path to the recovery system root partition, inside a LUKS volume
+#RECOVERY="/dev/disk/by-uuid/ab12fa00-756d-4188-a9ec-8c5e2a532b61"
+
+# RECOVERY_BOOT: Path to the recovery system boot partition
+#RECOVERY_BOOT="/dev/disk/by-uuid/AAAA-A11A"
+
+# KEY: Text file containing the recovery system LUKS passphrase
+# Create with:
+# # printf 'super secret password' > /etc/recovery-key
+# # chmod 600 /etc/recovery-key
+KEY="/etc/recovery-key"
+
+# FOLDERS: Array of directories to be rsynced
+# You may need to change the rsync call in the script
+FOLDERS=(
+	"/home/aurantius/.gnupg"
+	"/home/aurantius/.password-store"
+	"/home/aurantius/.ssh"
+	"/home/aurantius/Documents/PC Files"
+	"/home/aurantius/Dropbox"
+)
+##########
+
+[[ $UID == 0 ]] || exit 1
+
+CBOLD=$(tput bold)
+CRESET=$(tput sgr0)
+readonly CBOLD CRESET
+
+message() {
+	local mesg=$1; shift
+	printf "${CBOLD}==> ${mesg}${CRESET}\n" "$@"
+}
+
+recovery_open() {
+	cryptsetup -d $KEY open $RECOVERY recovery
+	[[ -d /media/recovery ]] || mkdir -p /media/recovery
+	mount /dev/mapper/recovery /media/recovery
+	mount $RECOVERY_BOOT /media/recovery/boot
+}
+
+recovery_close() {
+	umount -R /media/recovery
+	cryptsetup close recovery
+}
+
+##########
+
+case $1 in
+	"open")
+		echo "Don't forget to close the partition later using '${0##*/} close'"
+		recovery_open
+		;;
+	"close") recovery_close ;;
+	"sync")
+		message "Upgrading main system"
+		pacman -Syu
+
+		message "Opening recovery system"
+		recovery_open
+
+		message "Synchronizing recovery script"
+		cp /usr/local/bin/recovery /media/recovery/usr/local/bin/recovery
+
+		message "Synchronizing personal files"
+		for folder in "${FOLDERS[@]}"; do
+			rsync -av "$folder" /media/recovery/home/aurantius
+		done
+
+		message "Synchronizing package caches"
+		cp -v -u /var/lib/pacman/sync/{core,extra,community}.db /media/recovery/var/lib/pacman/sync/
+		for i in $(pacman -Q $(pacman -Qq --root /media/recovery | grep -Fxvf <(pacman -Qqm --root /media/recovery) ) | sed 's/ /-/'); do
+			cp -v -n /var/cache/pacman/pkg/$i* /media/recovery/var/cache/pacman/pkg/
+		done
+
+		message "Upgrading recovery system"
+		arch-chroot /media/recovery pacman -Syu
+
+		message "Cleaning recovery system package cache"
+		arch-chroot /media/recovery paccache -vrk2
+		arch-chroot /media/recovery paccache -vruk0
+
+		message "Closing recovery system"
+		recovery_close
+		;;
+	"shell")
+		recovery_open
+		arch-chroot /media/recovery /usr/bin/zsh
+		recovery_close
+		;;
+	"compare")
+		recovery_open
+		message "Packages only in main system"
+		comm -23 <(pacman -Qqe | sort) <(pacman -Qqe --root /media/recovery | sort)
+		message "Packages only in recovery system"
+		comm -13 <(pacman -Qqe | sort) <(pacman -Qqe --root /media/recovery | sort)
+		recovery_close
+		;;
+	*)
+		cat << EOF
+Usage: recovery (open|close|sync|shell|compare)
+
+  open        Unlocks the recovery LUKS volume
+  close       Locks the recovery LUKS volume
+  sync        Synchronizes files and upgrades the recovery system
+  shell       Opens a shell in the recovery system
+  compare     Compare packages between the main and recovery systems
+EOF
+		;;
+esac
