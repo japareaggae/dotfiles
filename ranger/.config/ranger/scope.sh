@@ -66,6 +66,9 @@ handle_extension() {
         zip)
             unzip -l "${FILE_PATH}" && exit 5
             exit 1;;
+        zst|zstd)
+            tar --zstd -tvf "${FILE_PATH}" && exit 5
+            exit 1;;
 
         ## PDF
         pdf)
