@@ -5,7 +5,8 @@ typeset -U path
 path=($HOME/.bin $path[@])
 
 ### Preferred Applications
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 ### Arch Linux directories
 export ABSROOT="$HOME/Development/abs"
