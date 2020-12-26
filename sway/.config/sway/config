@@ -189,7 +189,7 @@ bindsym $mod+space exec j4-dmenu-desktop --no-generic --term=$terminal --dmenu="
 
 # -- Terminal and file manager
 bindsym $mod+Return       exec $terminal
-bindsym $mod+Shift+Return exec nautilus
+bindsym $mod+Shift+Return exec $terminal -e ranger
 
 # -- Session menu
 bindsym $mod+Shift+Delete exec ~/.bin/dmenu-session
