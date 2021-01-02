@@ -1,0 +1,21 @@
+#!/bin/bash
+# An update-motd.d script to check system status and failed units
+# Copy to /etc/update-motd.d and login/logout
+
+echo
+case $(systemctl is-system-running) in
+	"running")
+		echo "All services are operational."
+		;;
+	"degraded")
+		echo "One or more services have failed:"
+		systemctl list-units --state=failed --no-pager
+		;;
+	"starting")
+		echo "The system is still starting, can't check for failed services yet."
+		;;
+	*)
+		echo "systemd status is unknown."
+		;;
+esac
+
