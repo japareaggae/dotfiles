@@ -130,6 +130,10 @@ alias mv="mv -iv"
 alias cp="cp -riv" # will break on bsd
 alias mkdir="mkdir -vp"
 
+if ! ( hash tree 2> /dev/null ); then
+	alias tree="exa -T"
+fi
+
 alias cget="curl -OLC-"
 alias gdd="gnome-disks --restore-disk-image"
 alias mpv-nv="mpv --no-video"
