@@ -6,19 +6,11 @@ set $execb exec --no-startup-id
 
 $execb dunst
 $execb $HOME/.bin/xrandr-adjust
-$execb picom
-$execb blueman-applet
-$execb syncthing-gtk -m
 $execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.local/share/wallpapers/lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb udiskie -A -t
 $execb nm-applet
 $execb skippy-xd --start-daemon
-
-# Consider using systemd user sessions for autostarting these applications.
-#$execb start-pulseaudio-x11
-#$execb mpd
-#$execb mpdscribble
 
 # ----- BASE16 COLORS
 # Also used by information bar and bemenu (application keybinds)
