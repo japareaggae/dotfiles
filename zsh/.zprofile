@@ -37,7 +37,7 @@ if [[ $XDG_VTNR -eq 1 ]] && [[ ! $WAYLAND_DISPLAY ]] && [[ ! $DISPLAY ]] && hash
 	export base0E="#b294bb"
 	export base0F="#a3685a"
 	export BEMENU_OPTS="--fb=$base00 --ff=$base05 --nb=$base00 --nf=$base05 --hb=$base0D --hf=$base00 --tb=$base0D --tf=$base00"
-	unset base00 base01 base02 base03 base04 base05 base06 base07 base08 base09 base0A base0B base0C base0D base0E base0F
+	unset base0{0..9} base0{A..F}
 
 	# Use a directory for keeping sway logs (like on Xorg)
 	[[ -d ~/.local/share/sway ]] || mkdir -p ~/.local/share/sway
