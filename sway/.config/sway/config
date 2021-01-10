@@ -17,7 +17,7 @@ exec nm-applet --indicator
 exec_always {
 	gsettings set org.gnome.desktop.interface gtk-theme  'Arc-Dark'
 	gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-	gsettings set org.gnome.desktop.interface font-name  'Cantarell 10'
+	gsettings set org.gnome.desktop.interface font-name  'DejaVu Sans 9'
 }
 
 # ----- BASE16 COLORS
