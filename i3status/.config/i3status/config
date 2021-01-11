@@ -15,7 +15,6 @@ general {
 }
 
 order += "cpu_usage"
-order += "cpu_temperature 0"
 order += "memory"
 order += "disk /"
 order += "wireless _first_"
@@ -28,12 +27,6 @@ cpu_usage {
 	format = " %usage"
 	degraded_threshold = 80
 	max_threshold = 95
-}
-
-cpu_temperature 0 {
-	format = " %degrees°C"
-	format_above_threshold = " %degrees°C"
-	max_threshold = 80
 }
 
 memory {
