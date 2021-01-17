@@ -4,6 +4,9 @@ setopt autocd
 setopt correct
 setopt completeinword
 setopt autocontinue
+setopt longlistjobs
+setopt autopushd pushdminus pushdsilent pushdtohome
+setopt interactivecomments
 
 ### History
 HISTFILE=~/.zsh_history
