@@ -2,46 +2,7 @@
 # ~/.zprofile - Commands to run when starting a login Z shell
 
 if [[ $XDG_VTNR -eq 1 ]] && [[ ! $WAYLAND_DISPLAY ]] && [[ ! $DISPLAY ]] && hash sway 2> /dev/null; then
-	# qt5ct -- This is on xprofile too but Wayland doesn't use that
-	if hash qt5ct 2> /dev/null && ! hash plasmashell 2> /dev/null; then
-		export QT_QPA_PLATFORMTHEME=qt5ct
-	fi
-
-	# Export XDG environment for applications
-	# <https://man.sr.ht/~kennylevinsen/greetd/#how-to-set-xdg_session_typewayland>
-	export XDG_SESSION_TYPE=wayland
-	export XDG_SESSION_DESKTOP=sway
-	export XDG_CURRENT_DESKTOP=sway
-
-	# Use Wayland in certain toolkits
-	export QT_QPA_PLATFORM=wayland
-	export CLUTTER_BACKEND=wayland
-	export MOZ_ENABLE_WAYLAND=1
-
-	# bemenu options
-	# TODO: Find a better place to put these colors (hardcode them?)
-	export base00="#1d1f21"
-	export base01="#282a2e"
-	export base02="#373b41"
-	export base03="#969896"
-	export base04="#b4b7b4"
-	export base05="#c5c8c6"
-	export base06="#e0e0e0"
-	export base07="#ffffff"
-	export base08="#cc6666"
-	export base09="#de935f"
-	export base0A="#f0c674"
-	export base0B="#b5bd68"
-	export base0C="#8abeb7"
-	export base0D="#81a2be"
-	export base0E="#b294bb"
-	export base0F="#a3685a"
-	export BEMENU_OPTS="--fb=$base00 --ff=$base05 --nb=$base00 --nf=$base05 --hb=$base0D --hf=$base00 --tb=$base0D --tf=$base00"
-	unset base0{0..9} base0{A..F}
-
-	# Use a directory for keeping sway logs (like on Xorg)
-	[[ -d ~/.local/share/sway ]] || mkdir -p ~/.local/share/sway
-	exec sway &> ~/.local/share/sway/session.log
+	exec startsway
 elif [[ $XDG_VTNR -eq 1 ]] && [[ ! $DISPLAY ]] && hash startx 2> /dev/null; then
 	exec startx -- -keeptty &> ~/.local/share/xorg/session.log
 fi
