@@ -50,7 +50,7 @@ c.colors.contextmenu.selected.fg = base05
 c.colors.downloads.bar.bg = base00
 c.colors.downloads.start.bg = base00
 c.colors.downloads.start.fg = base00
-c.colors.downloads.stop.bg = base0D
+c.colors.downloads.stop.bg = base0B
 c.colors.downloads.stop.fg = base00
 c.colors.downloads.error.fg = base08
 
