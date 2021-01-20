@@ -78,6 +78,11 @@ bindkey -- "${terminfo[knp]}"   history-beginning-search-forward-end
 bindkey -s "^[OM" "^M"
 
 ### Completions
+# fzf
+if (( $+commands[fzf] )); then
+	source /usr/share/fzf/*.zsh
+fi
+
 autoload -Uz compinit
 compinit
 
