@@ -80,18 +80,38 @@ bindkey -s "^[OM" "^M"
 ### Completions
 autoload -Uz compinit
 compinit
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' special-dirs true
-zstyle ':completion:*' rehash true
-zstyle ':completion:*:descriptions' format $'%F{green}completing %B%d%b%f'
-zstyle ':completion:*:matches'      group 'yes'
-zstyle ':completion:*'              group-name ''
-zstyle ':completion:*:messages'     format '%d'
-zstyle ':completion:*:options'      auto-description '%d'
-zstyle ':completion:*:manuals'      separate-sections true
-zstyle ':completion:*:manuals.*'    insert-sections   true
+
+zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
+zstyle ':completion:*:correct:*'       insert-unambiguous true
+zstyle ':completion:*:corrections'     format $'%F{cyan}%d (errors: %e)%f'
+zstyle ':completion:*:correct:*'       original true
+zstyle ':completion:*:default'         list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:descriptions'    format $'%F{cyan}completing %B%d%b%f'
+zstyle ':completion:*:expand:*'        tag-order all-expansions
+zstyle ':completion:*:history-words'   list false
+zstyle ':completion:*:history-words'   menu yes
+zstyle ':completion:*:history-words'   remove-all-dups yes
+zstyle ':completion:*:history-words'   stop yes
+zstyle ':completion:*'                 matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:matches'         group 'yes'
+zstyle ':completion:*'                 group-name ''
+zstyle ':completion:*'                 menu select=5
+zstyle ':completion:*:messages'        format '%d'
+zstyle ':completion:*:options'         auto-description '%d'
+zstyle ':completion:*:options'         description 'yes'
 zstyle ':completion:*:processes'       command 'ps -au$USER'
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*'                 verbose true
+zstyle ':completion:*:-command-:*:'    verbose false
+zstyle ':completion:*:warnings'        format $'%F{red}No matches for:%f %d'
+zstyle ':completion:*:*:zcompile:*'    ignored-patterns '(*~|*.zwc)'
+zstyle ':completion:correct:'          prompt 'correct to: %e'
+zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'
+zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
+zstyle ':completion:*:manuals'    separate-sections true
+zstyle ':completion:*:manuals.*'  insert-sections   true
+zstyle ':completion:*:man:*'      menu yes select
+zstyle ':completion:*' special-dirs ..
 
 ### Prompt
 if [[ $EUID -eq 0 ]]; then
