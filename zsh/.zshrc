@@ -95,6 +95,7 @@ zstyle ':completion:*:messages'     format '%d'
 zstyle ':completion:*:options'      auto-description '%d'
 zstyle ':completion:*:manuals'      separate-sections true
 zstyle ':completion:*:manuals.*'    insert-sections   true
+zstyle ':completion:*:processes'       command 'ps -au$USER'
 
 ### Prompt
 if [[ $EUID -eq 0 ]]; then
