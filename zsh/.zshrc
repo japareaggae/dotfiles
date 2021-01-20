@@ -7,6 +7,7 @@ setopt autocontinue
 setopt longlistjobs
 setopt autopushd pushdminus pushdsilent pushdtohome
 setopt interactivecomments
+setopt completealiases
 
 ### History
 HISTFILE=~/.zsh_history
