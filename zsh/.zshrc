@@ -169,7 +169,7 @@ fi
 alias mv="mv -iv"
 alias mkdir="mkdir -vp"
 
-if (( $+commands[tree] )); then
+if ! (( $+commands[tree] )); then
 	alias tree="exa -T"
 fi
 
