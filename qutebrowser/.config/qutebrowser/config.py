@@ -37,7 +37,7 @@ c.url.searchengines = {
     "bemani":  "https://remywiki.com/index.php?search={}&title=Special:Search&go=Go",
     "g":       "https://google.com/search?hl=en&q={}",
     "gh":      "https://github.com/search?q={}",
-    "man":     "https://jlk.fjfi.cvut.cz/arch/manpages/search?q={}",
+    "man":     "https://man.archlinux.org/search?q={}",
     "mdn":     "https://developer.mozilla.org/en-US/search?q={}",
     "ml":      "https://lista.mercadolivre.com.br/{}",
     "pkg":     "https://repology.org/projects/?search={}",
