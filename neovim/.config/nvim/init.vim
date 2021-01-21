@@ -6,6 +6,7 @@ Plug 'ap/vim-buftabline'
 Plug 'chriskempson/base16-vim'
 Plug 'cespare/vim-toml'
 Plug 'chrisbra/unicode.vim'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 """ Searching
