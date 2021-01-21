@@ -160,8 +160,13 @@ else
 	alias lsnew="ls -l -r -t"
 	alias lsold="ls -l -t"
 fi
+
+if [[ $OSTYPE == darwin* ]] || [[ $OSTYPE == *bsd* ]]; then
+	alias cp="cp -Riv"
+else
+	alias cp="cp -riv"
+fi
 alias mv="mv -iv"
-alias cp="cp -riv" # will break on bsd
 alias mkdir="mkdir -vp"
 
 if (( $+commands[tree] )); then
