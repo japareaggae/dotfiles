@@ -9,6 +9,8 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 setopt interactivecomments
 setopt completealiases
 
+CORRECT_IGNORE='_*'
+
 ### History
 HISTFILE=~/.zsh_history
 HISTSIZE=8192
