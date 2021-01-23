@@ -205,10 +205,10 @@ bindsym $mod+F3 $execb ~/.bin/toggle-sleep
 bindsym --release Print $execb flameshot gui
 
 # -- MPD
-bindsym XF86AudioPlay $execb mpc toggle
-bindsym XF86AudioPrev $execb mpc prev
-bindsym XF86AudioNext $execb mpc next
-bindsym XF86AudioStop $execb mpc stop
+bindsym XF86AudioPlay $execb playerctl play-pause
+bindsym XF86AudioPrev $execb playerctl previous
+bindsym XF86AudioNext $execb playerctl next
+bindsym XF86AudioStop $execb playerctl stop
 
 # -- Brightness
 bindsym XF86MonBrightnessDown $execb brightnessctl -e -q -n set 5%-
