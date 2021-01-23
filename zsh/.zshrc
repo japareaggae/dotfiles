@@ -108,7 +108,7 @@ zstyle ':completion:*:history-words'   list false
 zstyle ':completion:*:history-words'   menu yes
 zstyle ':completion:*:history-words'   remove-all-dups yes
 zstyle ':completion:*:history-words'   stop yes
-zstyle ':completion:*'                 matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*'                 matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:matches'         group 'yes'
 zstyle ':completion:*'                 group-name ''
 zstyle ':completion:*'                 menu select=5
