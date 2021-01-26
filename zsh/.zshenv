@@ -22,3 +22,6 @@ export SYSTEMD_LESS="${LESS}S"
 
 ### GPG agent as SSH agent
 (( $+commands[gpgconf] )) && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+
+### Wine
+export WINEDLLOVERRIDES=winemenubuilder.exe=d
