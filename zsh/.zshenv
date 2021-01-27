@@ -25,3 +25,8 @@ export SYSTEMD_LESS="${LESS}S"
 
 ### Wine
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
+
+### XDG Base Directory support
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
