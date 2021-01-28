@@ -1,3 +1,6 @@
+# Autoconfig loading
+config.load_autoconfig()
+
 # General
 c.auto_save.session = True
 c.confirm_quit = ["downloads"]
@@ -77,6 +80,3 @@ with open('/proc/modules', 'r') as file:
             c.qt.force_software_rendering = "chromium"
             break
 
-# Load autoconfig.yml
-# At the bottom, so it can override our configuration when necessary
-config.load_autoconfig()
