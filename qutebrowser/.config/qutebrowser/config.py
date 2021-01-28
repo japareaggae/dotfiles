@@ -67,6 +67,7 @@ config.bind('po', 'set-cmd-text -s :open -p')
 config.bind(';p', 'hint links spawn mpv {hint-url}')
 config.bind(',p', 'spawn --userscript qute-pass -d dmenu -U secret -u \'Username: (.*)\' ')
 config.bind(',P', 'spawn --userscript qute-pass -d dmenu --password-only')
+config.bind(',q', 'spawn --userscript qr')
 
 # Aliases
 c.aliases['mpv'] = "spawn --userscript view-in-mpv"
