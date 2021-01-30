@@ -27,6 +27,12 @@ export SYSTEMD_LESS="${LESS}S"
 export WINEDLLOVERRIDES=winemenubuilder.exe=d
 
 ### XDG Base Directory support
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export GEM_HOME="$XDG_DATA_HOME/gem"
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+if [[ $OSTYPE == linux* ]]; then
+	[[ -z $XDG_CONFIG_HOME ]] && export XDG_CONFIG_HOME="$HOME/.config"
+	[[ -z $XDG_DATA_HOME   ]] && export XDG_DATA_HOME="$HOME/.local/share"
+	[[ -z $XDG_CACHE_HOME  ]] && export XDG_CACHE_HOME="$HOME/.cache"
+
+	export CARGO_HOME="$XDG_DATA_HOME/cargo"
+	export GEM_HOME="$XDG_DATA_HOME/gem"
+	export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+fi
