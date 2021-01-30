@@ -46,6 +46,7 @@ c.url.searchengines = {
     "pkg":     "https://repology.org/projects/?search={}",
     "yt":      "https://www.youtube.com/results?search_query={}",
     "w":       "https://en.wikipedia.org/w/index.php?search={}&title=Special:Search&go=Go",
+    "minecraft": "https://minecraft.gamepedia.com/Special:Search?search={}&go=Go"
 }
 
 # Colors
