@@ -1,6 +1,6 @@
 # .zshfunc
 
-# smart cd function from grml, allows switching to /etc when running 'cd /etc/fstab'
+### smart cd function from grml, allows switching to /etc when running 'cd /etc/fstab'
 function cd () {
 	if (( ${#argv} == 1 )) && [[ -f ${1} ]]; then
 		[[ ! -e ${1:h} ]] && return 1
@@ -51,7 +51,7 @@ nls() {
 
 ### IIDX SUDDEN+ calculator
 # <https://remywiki.com/CS_GOLD#General_Information_.2F_Changes>
-greennumber() {
+suddenplus() {
 	local green_number=300
 	local bpm
 	local hispeed
@@ -60,25 +60,22 @@ greennumber() {
 		echo "Usage: suddenplus (BPM) [Green number]"
 		return 1
 	fi
-
 	bpm=$1
+
 	if [[ $2 ]]; then
 		green_number=$2
 	fi
 
-	echo "Target green number: $green_number"
-	echo "BPM: $bpm"
+	echo "Green number: $green_number"
 	echo "Hi-speed │ Lane cover"
 	echo "─────────┼───────────"
-	for i in 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0; do
-		printf "     $i │ "
-		hispeed=$i
+	for hispeed in 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0; do
 		lane_cover=$(( 1000 - $hispeed * $green_number * $bpm / 174 ))
 		if (( $lane_cover < 0 )); then
-			echo "This Hi-speed setting is too fast for the green number"
+			echo "     $hispeed | Too fast!"
 			break
 		else
-			echo "$lane_cover"
+			echo "     $hispeed │ ${lane_cover%.*}"
 		fi
 	done
 
