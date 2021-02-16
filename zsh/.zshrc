@@ -182,6 +182,7 @@ alias pkgchanges="pacolog -l 10"
 alias udmount="udisksctl mount -b"
 alias udumount="udisksctl unmount -b"
 alias resolve="resolvectl query"
+alias rsyncp="rsync --archive -hh --partial --info=stats1,progress2"
 
 if [[ -r /etc/debian_version ]] ; then
 	alias fd="fdfind"
