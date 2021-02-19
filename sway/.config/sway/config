@@ -188,15 +188,15 @@ bindsym $mod+Return       exec $terminal
 bindsym $mod+Shift+Return exec $terminal -e ranger
 
 # -- Session menu
-bindsym $mod+Shift+Delete exec ~/.bin/dmenu-session
-bindsym XF86ScreenSaver   exec ~/.bin/dmenu-session lock
+bindsym $mod+Shift+Delete exec dmenu-session
+bindsym XF86ScreenSaver   exec dmenu-session lock
 
 # -- NetworkManager
 bindsym $mod+F12 exec $terminal -e nmtui
 
 # -- Screenshotting
-bindsym Print exec      $HOME/.bin/wscreenshot region
-bindsym $mod+Print exec $HOME/.bin/wscreenshot window
+bindsym Print      exec wscreenshot region
+bindsym $mod+Print exec wscreenshot window
 
 # -- MPD
 bindsym XF86AudioPlay exec playerctl play-pause

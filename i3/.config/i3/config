@@ -5,8 +5,8 @@
 set $execb exec --no-startup-id
 
 $execb dunst
-$execb $HOME/.bin/xrandr-adjust
-$execb xss-lock -l -n $HOME/.bin/dim-screen -- i3lock -n -c 404040 -i $HOME/.local/share/wallpapers/lockscreen.png
+$execb xrandr-adjust
+$execb xss-lock -l -n dim-screen -- i3lock -n -c 404040 -i $HOME/.local/share/wallpapers/lockscreen.png
 $execb /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $execb udiskie -A -t
 $execb nm-applet
@@ -186,8 +186,8 @@ bindsym $mod+Return $execb $terminal
 bindsym $mod+Shift+Return $execb $terminal -e ranger
 
 # -- Session menu
-bindsym $mod+Shift+Delete $execb ~/.bin/dmenu-session
-bindsym XF86ScreenSaver   $execb ~/.bin/dmenu-session lock
+bindsym $mod+Shift+Delete $execb dmenu-session
+bindsym XF86ScreenSaver   $execb dmenu-session lock
 
 # -- NetworkManager
 bindsym $mod+F12 $execb $terminal -e nmtui
@@ -195,11 +195,11 @@ bindsym $mod+F12 $execb $terminal -e nmtui
 # --- Monitors
 bindsym XF86Display exec arandr
 bindsym $mod+Shift+F4 exec arandr
-bindsym $mod+F4 $execb ~/.bin/xrandr-adjust
+bindsym $mod+F4 $execb xrandr-adjust
 
 # -- Sleep toggle
-bindsym XF86Battery $execb ~/.bin/toggle-sleep
-bindsym $mod+F3 $execb ~/.bin/toggle-sleep
+bindsym XF86Battery $execb toggle-sleep
+bindsym $mod+F3     $execb toggle-sleep
 
 # -- Screenshotting
 bindsym --release Print $execb flameshot gui
