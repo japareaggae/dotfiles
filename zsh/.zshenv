@@ -2,7 +2,7 @@
 
 ### Path
 typeset -U path
-path=($HOME/.bin $path[@])
+path=("$HOME/.local/bin" $path[@])
 
 ### Preferred Applications
 export EDITOR=nvim
