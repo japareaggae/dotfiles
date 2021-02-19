@@ -15,6 +15,7 @@ export AURDEST="$HOME/Development/pkgbuilds"
 ### pass
 export PASSWORD_STORE_CLIP_TIME=15
 export PASSWORD_STORE_ENABLE_EXTENSIONS="true"
+export PASSWORD_STORE_EXTENSIONS_DIR="$HOME/.local/share/pass-extensions"
 
 ### less
 export LESS="FRMi"
