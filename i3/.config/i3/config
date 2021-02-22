@@ -37,12 +37,13 @@ set $base0F #a3685a
 font pango:DejaVu Sans 8
 
 # -- Borders
-default_border pixel 2
+default_border pixel 1
+default_floating_border normal 1
 hide_edge_borders smart
 
 # -- Colors
 # Background is not used if border type is not normal
-# Class                 Border  Backgr. Text    Indicator
+# Property Name         Border  Backgr. Text    Indic.  C.Border
 client.focused          $base0D $base0D $base00 $base05 $base0D
 client.focused_inactive $base02 $base02 $base05 $base01 $base01
 client.unfocused        $base01 $base00 $base05 $base01 $base01
@@ -179,7 +180,6 @@ set $terminal alacritty
 # -- Application launchers
 bindsym $mod+Shift+space $execb rofi -show run
 bindsym $mod+space $execb rofi -show drun
-bindsym $mod+F1 exec xfce4-appfinder
 
 # -- Terminal and file manager
 bindsym $mod+Return $execb $terminal
@@ -240,11 +240,6 @@ for_window [class="SpeedCrunch"] floating enable
 for_window [instance="xfce4-appfinder"] floating enable
 for_window [class="Pinentry-gtk-2"] floating enable
 for_window [class="Peek"] floating enable
-
-# -- Games
-#for_window [class="hl2_linux"] fullscreen
-#for_window [class="^LethalLeague$"] floating enable
-#for_window [instance="^LR2body.exe$"] floating enable
 
 # -- Workspace assignments
 assign [class="^TeamSpeak 3$"] 10
