@@ -42,6 +42,8 @@ default_border pixel 1
 default_floating_border normal 1
 hide_edge_borders --i3 smart
 
+# -- Colors
+# Background is not used if border type is not normal
 # Property Name         Border  Backgr. Text    Indic.  C.Border
 client.focused          $base0D $base0D $base00 $base05 $base0D
 client.focused_inactive $base02 $base02 $base05 $base01 $base01
