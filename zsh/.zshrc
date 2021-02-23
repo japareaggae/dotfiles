@@ -181,6 +181,7 @@ alias mpv-nv="mpv --no-video"
 alias pkgchanges="pacolog -l 10"
 alias udmount="udisksctl mount -b"
 alias udumount="udisksctl unmount -b"
+alias qemu="qemu-system-x86_64 -machine q35 -accel kvm -device intel-hda -device hda-duplex"
 alias resolve="resolvectl query"
 alias rsyncp="rsync --archive -hh --partial --info=stats1,progress2"
 
