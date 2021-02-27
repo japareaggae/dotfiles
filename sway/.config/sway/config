@@ -182,8 +182,8 @@ bindsym $mod+m scratchpad show
 set $terminal alacritty
 
 # -- Application launchers
-bindsym $mod+shift+space exec bemenu-run -i -m all -p Command --fb='$base00' --ff='$base05' --nb='$base00' --nf='$base05' --hb='$base0D' --hf='$base00' --tb='$base0D' --tf='$base00'
-bindsym $mod+space exec j4-dmenu-desktop --no-generic --term=$terminal --dmenu="bemenu -i -m all -p Applications --scrollbar=autohide --fb='$base00' --ff='$base05' --nb='$base00' --nf='$base05' --hb='$base0D' --hf='$base00' --tb='$base0D' --tf='$base00' --scb='$base00' --scf='$base05'"
+bindsym $mod+shift+space exec bemenu-run -i -m all -p Command
+bindsym $mod+space exec j4-dmenu-desktop --no-generic --term=$terminal --dmenu="bemenu -i -m all -p Applications"
 
 # -- Terminal and file manager
 bindsym $mod+Return       exec $terminal
