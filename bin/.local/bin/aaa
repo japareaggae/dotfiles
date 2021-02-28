@@ -25,6 +25,7 @@ Actions:
     check      - Check installed packages for AUR updates
     clean      - Remove built packages and source tarballs
                  Add -p to only print files that would be deleted
+    repo-clean - Remove repositories for uninstalled packages
     clone      - Clones the repository for a package
                  Add -d to clone the package and its dependencies
     download   - Download a snapshot of the package's repository
@@ -201,6 +202,13 @@ _clean(){
 	fi
 }
 
+_repo-clean(){
+	for repo in $(grep -Fvf <(pacman -Qqm) <(fd . $WHERE -td -d1)); do
+		echo "Removing $repo"
+		rm -rfI $repo
+	done
+}
+
 case $1 in
 	"search") shift; _search $1 ;;
 	"info")   shift; _info $1 ;;
@@ -211,6 +219,7 @@ case $1 in
 	"update-vcs") shift; _update_vcs ;;
 	"changes") shift; _changes $1 ;;
 	"clean")  shift; _clean $1 ;;
+	"repo-clean")  shift; _repo-clean ;;
 	*)        _usage ;;
 esac
 
