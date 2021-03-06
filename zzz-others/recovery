@@ -9,6 +9,10 @@
 # RECOVERY_BOOT: Path to the recovery system boot partition
 #RECOVERY_BOOT="/dev/disk/by-uuid/AAAA-A11A"
 
+# MOUNTPOINT: Where the recovery system will be mounted.
+# The RECOVERY_BOOT partition will be mounted on a /boot directory here.
+MOUNTPOINT="/media/recovery"
+
 # KEY: Text file containing the recovery system LUKS passphrase
 # Create with:
 # # printf 'super secret password' > /etc/recovery-key
@@ -17,16 +21,21 @@ KEY="/etc/recovery-key"
 
 # FOLDERS: Array of directories to be rsynced
 # You may need to change the rsync call in the script
-FOLDERS=(
+SYNC_FOLDERS=(
 	"/home/aurantius/.gnupg"
 	"/home/aurantius/.password-store"
 	"/home/aurantius/.ssh"
 	"/home/aurantius/Documents/PC Files"
 	"/home/aurantius/Dropbox"
 )
+
+SYNC_DESTINATION="/media/recovery/home/aurantius"
 ##########
 
-[[ $UID == 0 ]] || exit 1
+if [[ $UID != 0 ]]; then
+	echo "This script requires root privileges."
+	exit 1
+fi
 
 CBOLD=$(tput bold)
 CRESET=$(tput sgr0)
@@ -39,14 +48,27 @@ message() {
 
 recovery_open() {
 	cryptsetup -d $KEY open $RECOVERY recovery
-	[[ -d /media/recovery ]] || mkdir -p /media/recovery
-	mount /dev/mapper/recovery /media/recovery
-	mount $RECOVERY_BOOT /media/recovery/boot
+	if [[ $? != 0 ]]; then
+		echo "ERROR: cryptsetup failed to open recovery system"
+		exit 1
+	fi
+	[[ -d "$MOUNTPOINT" ]] || mkdir -p $MOUNTPOINT
+	mount /dev/mapper/recovery $MOUNTPOINT
+	mount $RECOVERY_BOOT $MOUNTPOINT/boot
 }
 
 recovery_close() {
-	umount -R /media/recovery
+	umount -R $MOUNTPOINT
 	cryptsetup close recovery
+}
+
+try_chroot() {
+	if ( hash arch-chroot 2> /dev/null ); then
+		arch-chroot "$@"
+	else
+		echo "ERROR: arch-chroot is not present, skipping"
+		return 1
+	fi
 }
 
 ##########
@@ -65,40 +87,40 @@ case $1 in
 		recovery_open
 
 		message "Synchronizing recovery script"
-		cp /usr/local/bin/recovery /media/recovery/usr/local/bin/recovery
+		cp /usr/local/bin/recovery $MOUNTPOINT/usr/local/bin/recovery
 
 		message "Synchronizing personal files"
-		for folder in "${FOLDERS[@]}"; do
-			rsync -av "$folder" /media/recovery/home/aurantius
+		for folder in "${SYNC_FOLDERS[@]}"; do
+			rsync -av "$folder" $SYNC_DESTINATION
 		done
 
 		message "Synchronizing package caches"
-		cp -v -u /var/lib/pacman/sync/{core,extra,community}.db /media/recovery/var/lib/pacman/sync/
-		for i in $(pacman -Q $(pacman -Qq --root /media/recovery | grep -Fxvf <(pacman -Qqm --root /media/recovery) ) | sed 's/ /-/'); do
-			cp -v -n /var/cache/pacman/pkg/$i* /media/recovery/var/cache/pacman/pkg/
+		cp -v -u /var/lib/pacman/sync/{core,extra,community}.db $MOUNTPOINT/var/lib/pacman/sync/
+		for i in $(pacman -Q $(pacman -Qq --root $MOUNTPOINT | grep -Fxvf <(pacman -Qqm --root $MOUNTPOINT) ) | sed 's/ /-/'); do
+			cp -v -n /var/cache/pacman/pkg/$i* $MOUNTPOINT/var/cache/pacman/pkg/
 		done
 
 		message "Upgrading recovery system"
-		arch-chroot /media/recovery pacman -Syu
+		try_chroot $MOUNTPOINT pacman -Syu
 
 		message "Cleaning recovery system package cache"
-		arch-chroot /media/recovery paccache -vrk2
-		arch-chroot /media/recovery paccache -vruk0
+		try_chroot $MOUNTPOINT paccache -vrk2
+		try_chroot $MOUNTPOINT paccache -vruk0
 
 		message "Closing recovery system"
 		recovery_close
 		;;
 	"shell")
 		recovery_open
-		arch-chroot /media/recovery /usr/bin/zsh
+		try_chroot $MOUNTPOINT /usr/bin/zsh
 		recovery_close
 		;;
 	"compare")
 		recovery_open
 		message "Packages only in main system"
-		comm -23 <(pacman -Qqe | sort) <(pacman -Qqe --root /media/recovery | sort)
+		comm -23 <(pacman -Qqe | sort) <(pacman -Qqe --root $MOUNTPOINT | sort)
 		message "Packages only in recovery system"
-		comm -13 <(pacman -Qqe | sort) <(pacman -Qqe --root /media/recovery | sort)
+		comm -13 <(pacman -Qqe | sort) <(pacman -Qqe --root $MOUNTPOINT | sort)
 		recovery_close
 		;;
 	*)
