@@ -16,8 +16,6 @@ export QT_QPA_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 
-export GTK_THEME='Adwaita:dark'
-
 # bemenu options
 # TODO: Find a better place to put these colors (hardcode them?)
 export base00="#1d1f21"
