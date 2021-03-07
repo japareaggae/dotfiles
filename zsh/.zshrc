@@ -175,12 +175,20 @@ if ! (( $+commands[tree] )); then
 	alias tree="exa -T"
 fi
 
+if (( $+commands[udiskie] )); then
+	alias udmount="udiskie-mount"
+	alias udumount="udiskie-umount"
+	compdef udmount="udiskie-mount"
+	compdef udumount="udiskie-umount"
+else
+	alias udmount="udisksctl mount -b"
+	alias udumount="udisksctl unmount -b"
+fi
+
 alias cget="curl -OLC-"
 alias gdd="gnome-disks --restore-disk-image"
 alias mpv-nv="mpv --no-video"
 alias pkgchanges="pacolog -l 10"
-alias udmount="udisksctl mount -b"
-alias udumount="udisksctl unmount -b"
 alias qemu="qemu-system-x86_64 -machine q35 -accel kvm -device intel-hda -device hda-duplex"
 alias resolve="resolvectl query"
 alias rsyncp="rsync --archive -hh --partial --info=stats1,progress2"
