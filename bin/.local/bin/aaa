@@ -204,8 +204,12 @@ _clean(){
 
 _repo-clean(){
 	for repo in $(grep -Fvf <(pacman -Qqm) <(fd . $WHERE -td -d1)); do
-		echo "Removing $repo"
-		rm -rfI $repo
+		printf "Remove $repo? [Y/n] "
+		read yesno
+		if [[ -z $yesno ]] || [[ $yesno == "y"* ]]; then
+			echo "Removing $repo"
+			rm -rf $repo
+		fi
 	done
 }
 
