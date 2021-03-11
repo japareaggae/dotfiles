@@ -170,6 +170,9 @@ _update(){
 	for PACKAGE in $(_check | cut -d: -f1 )
 	do
 		_update_pkgbuilds $PACKAGE
+		if [[ $1 == "-b" ]]; then
+			makepkg -sic
+		fi
 	done
 }
 
@@ -219,7 +222,7 @@ case $1 in
 	"clone")  shift; _clone $@ ;;
 	"download") shift; _download $1 $2 ;;
 	"check")  shift; _check $1 ;;
-	"update") shift; _update ;;
+	"update") shift; _update $1 ;;
 	"update-vcs") shift; _update_vcs ;;
 	"changes") shift; _changes $1 ;;
 	"clean")  shift; _clean $1 ;;
