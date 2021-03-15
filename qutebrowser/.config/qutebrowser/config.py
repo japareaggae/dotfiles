@@ -8,6 +8,9 @@ c.content.autoplay = False
 c.content.notifications = False
 c.colors.webpage.preferred_color_scheme = "dark"
 c.editor.command = ["nvim-qt", "--nofork", "{file}", "--", "-c", "normal {line}G{column0}l"]
+c.fileselect.handler = "external"
+c.fileselect.multiple_files.command = ['alacritty', '--class', 'ranger-picker', '-e', 'ranger', '--choosefiles={}']
+c.fileselect.single_file.command    = ['alacritty', '--class', 'ranger-picker', '-e', 'ranger', '--choosefile={}']
 c.input.partial_timeout = 0
 c.spellcheck.languages = ["en-US", "pt-BR"]
 

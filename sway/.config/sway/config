@@ -225,6 +225,8 @@ bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 for_window [instance="screenshot preview"] floating enable
 for_window [instance="screenshot preview"] move position 24 32
 for_window [app_id="pulsemixer"] floating enable
+for_window [app_id="ranger-picker"] floating enable
+for_window [app_id="ranger-picker"] border normal
 for_window [app_id="org.speedcrunch.speedcrunch"] floating enable
 
 # ----- WINDOW ASSIGNMENTS
