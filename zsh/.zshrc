@@ -128,6 +128,7 @@ zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 zstyle ':completion:*' special-dirs ..
+zstyle ':completion:*' rehash true
 
 ### Prompt
 if [[ $EUID -eq 0 ]]; then
