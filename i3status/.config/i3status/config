@@ -17,6 +17,7 @@ general {
 order += "cpu_usage"
 order += "memory"
 order += "disk /"
+order += "disk /media/stash"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "volume master"
@@ -38,6 +39,10 @@ disk "/" {
 	format = " %avail free"
 	threshold_type = percentage_avail
 	low_threshold = 10
+}
+
+disk "/media/stash" {
+	format = " %avail free"
 }
 
 wireless _first_ {
