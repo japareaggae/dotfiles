@@ -114,6 +114,15 @@ md5rename() {
 
 ### Show Arch Linux package popularity stats
 pkgpop() {
+	if [[ ! $1 ]]; then
+		cat << EOF
+Usage: pkgpop [-g] package [packages...]
+
+    -g | --graph : Open a web page with a popularity graph
+EOF
+	return 1
+	fi
+
 	local graph
 	if [[ $1 == "-g" || $1 == "--graph" ]]; then
 		graph=1
