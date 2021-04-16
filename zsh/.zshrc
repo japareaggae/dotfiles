@@ -188,6 +188,7 @@ fi
 
 alias cget="curl -OLC-"
 alias gdd="gnome-disks --restore-disk-image"
+alias go2windows="systemctl --boot-loader-entry=auto-windows reboot"
 alias mpv-nv="mpv --no-video"
 alias pkgchanges="pacolog -l 10"
 alias qemu="qemu-system-x86_64 -machine q35 -accel kvm -device intel-hda -device hda-duplex"
