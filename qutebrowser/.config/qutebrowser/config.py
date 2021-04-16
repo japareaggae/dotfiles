@@ -5,7 +5,6 @@ config.load_autoconfig()
 c.auto_save.session = True
 c.confirm_quit = ["downloads"]
 c.content.autoplay = False
-c.content.notifications = False
 c.colors.webpage.preferred_color_scheme = "dark"
 c.editor.command = ["nvim-qt", "--nofork", "{file}", "--", "-c", "normal {line}G{column0}l"]
 c.fileselect.handler = "external"
