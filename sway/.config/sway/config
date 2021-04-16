@@ -12,6 +12,7 @@ exec swayidle -w \
 # <https://github.com/swaywm/sway/issues/3799>
 exec udiskie -A -t --appindicator
 exec nm-applet --indicator
+exec mako
 
 # ----- BASE16 COLORS
 # Also used by information bar and bemenu (application keybinds)
