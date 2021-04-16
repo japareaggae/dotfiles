@@ -12,7 +12,11 @@ exec swayidle -w \
 # <https://github.com/swaywm/sway/issues/3799>
 exec udiskie -A -t --appindicator
 exec nm-applet --indicator
-exec mako
+
+# Workaround for this commit:
+# <https://github.com/swaywm/sway/commit/65a751a21f61b30808b7e703257c6ca3b71f50eb>
+# This is probably a bad idea if you're doing some weird multiseating
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP QT_QPA_PLATFORM
 
 # ----- BASE16 COLORS
 # Also used by information bar and bemenu (application keybinds)
