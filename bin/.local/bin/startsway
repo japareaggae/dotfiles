@@ -34,7 +34,7 @@ export base0C="#8abeb7"
 export base0D="#81a2be"
 export base0E="#b294bb"
 export base0F="#a3685a"
-export BEMENU_OPTS="--fb=$base00 --ff=$base05 --nb=$base00 --nf=$base05 --hb=$base0D --hf=$base00 --tb=$base0D --tf=$base00"
+export BEMENU_OPTS="--fb=$base00 --ff=$base05 --nb=$base00 --nf=$base05 --hb=$base0D --hf=$base00 --tb=$base0D --tf=$base00 -m all"
 unset base0{0..9} base0{A..F}
 
 # Use a directory for keeping sway logs (like on Xorg)
