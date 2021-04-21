@@ -238,8 +238,9 @@ for_window [app_id="ranger-picker"] border normal
 for_window [app_id="org.speedcrunch.speedcrunch"] floating enable
 
 # ----- WINDOW ASSIGNMENTS
-assign [class="^TeamSpeak 3$"] 10
-assign [class="^discord$"] 9
+assign [class="^TeamSpeak 3$"]    10
+assign [title="^TeamSpeak$"]      10
+assign [class="^discord$"]        10
 assign [app_id="telegramdesktop"] 7
 
 # ----- WORKSPACE RULES
