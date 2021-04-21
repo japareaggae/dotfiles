@@ -1,5 +1,5 @@
 configuration {
-	modi:  "run,drun,window";
+	modi:  "";
 	font:  "Monospace 10";
 	theme: "base16-tomorrow-night";
 	disable-history: true;
