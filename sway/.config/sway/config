@@ -229,6 +229,9 @@ bindsym $mod+XF86AudioMute   exec $terminal --class pulsemixer --option window.d
 # -- ThinkVantage button
 bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 
+# -- rofimoji
+bindsym $mod+semicolon exec rofimoji
+
 # ----- WINDOW RULES
 for_window [instance="screenshot preview"] floating enable
 for_window [instance="screenshot preview"] move position 24 32
