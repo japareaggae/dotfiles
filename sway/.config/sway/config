@@ -13,14 +13,12 @@ exec swayidle -w \
 exec udiskie -A -t --appindicator
 exec nm-applet --indicator
 
-# Workaround for this commit:
-# <https://github.com/swaywm/sway/commit/65a751a21f61b30808b7e703257c6ca3b71f50eb>
-# This is probably a bad idea if you're doing some weird multiseating
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP QT_QPA_PLATFORM
+# Import sway environment into systemd
+exec systemctl --user import-environment SWAYSOCK DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP QT_QPA_PLATFORM
+exec dbus-update-activation-environment --systemd SWAYSOCK DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP QT_QPA_PLATFORM
 
-# ----- BASE16 COLORS
-# Also used by information bar and bemenu (application keybinds)
-# Currently set to Tomorrow Night
+# ----- APPEARANCE
+# -- base16 colors (Tomorrow Night)
 set $base00 #1d1f21
 set $base01 #282a2e
 set $base02 #373b41
@@ -38,7 +36,6 @@ set $base0D #81a2be
 set $base0E #b294bb
 set $base0F #a3685a
 
-# ----- APPEARANCE
 # -- Font
 font pango:DejaVu Sans 8
 
