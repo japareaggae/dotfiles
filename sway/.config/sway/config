@@ -191,8 +191,8 @@ bindsym $mod+m scratchpad show
 set $terminal alacritty
 
 # -- Application launchers
-bindsym $mod+shift+space exec bemenu-run -i -m all -p Command
-bindsym $mod+space exec j4-dmenu-desktop --no-generic --term=$terminal --dmenu="bemenu -i -m all -p Applications"
+bindsym $mod+space       exec rofi -show drun
+bindsym $mod+shift+space exec rofi -show run
 
 # -- Terminal and file manager
 bindsym $mod+Return       exec $terminal
