@@ -139,20 +139,26 @@ EOF
 
 ### ISO (un)mounting
 iso-mount() {
-	[[ -d ~/.mnt/iso ]] || mkdir -p ~/.mnt/iso
-	fuseiso $1 ~/.mnt/iso
+	local MOUNTPOINT="$XDG_RUNTIME_DIR/fuseiso"
+	[[ -d $MOUNTPOINT ]] || mkdir -p $MOUNTPOINT
+	fuseiso $1 $MOUNTPOINT && cd $MOUNTPOINT
 }
 
 iso-unmount() {
-	fusermount -u ~/.mnt/iso
+	local MOUNTPOINT="$XDG_RUNTIME_DIR/fuseiso"
+	[[ $PWD == $MOUNTPOINT ]] && cd $HOME
+	fusermount -u $MOUNTPOINT
 }
 
 ### SSHFS (un)mounting
 ssh-mount() {
-	[[ -d ~/.mnt/ssh ]] || mkdir -p ~/.mnt/ssh
-	sshfs $1 ~/.mnt/ssh
+	local MOUNTPOINT="$XDG_RUNTIME_DIR/sshfs"
+	[[ -d $MOUNTPOINT ]] || mkdir -p $MOUNTPOINT
+	sshfs $1 $MOUNTPOINT && cd $MOUNTPOINT
 }
 
 ssh-unmount() {
-	fusermount -u ~/.mnt/ssh
+	local MOUNTPOINT="$XDG_RUNTIME_DIR/sshfs"
+	[[ $PWD == $MOUNTPOINT ]] && cd $HOME
+	fusermount -u $MOUNTPOINT
 }
