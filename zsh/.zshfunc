@@ -15,9 +15,9 @@ function cd () {
 # <https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Not_in_a_specified_group_or_repository>
 pacexplicit() {
 	if (( $+commands[fzf] )); then
-		pacman -Qqe | grep -Fxv "$( ( pactree -u base; pacman -Qqg base-devel ) | sort -u ) " | fzf --layout=reverse-list --preview 'pacman -Qii {}' --preview-window=':75%:wrap'
+		pacman -Qqe | fzf --preview 'pacman -Qiil {}' --preview-window=':75%:wrap:' --layout=reverse-list --bind 'enter:execute(pacman -Qiil {} | less)'
 	else
-		pacman -Qqe | grep -Fxv "$( ( pactree -u base; pacman -Qqg base-devel ) | sort -u ) "
+		pacman -Qqe | less
 	fi
 }
 
