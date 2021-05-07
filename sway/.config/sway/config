@@ -15,8 +15,8 @@ exec nm-applet --indicator
 exec blueman-applet
 
 # Import sway environment into systemd
-exec systemctl --user import-environment SWAYSOCK DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP QT_QPA_PLATFORM
-exec dbus-update-activation-environment --systemd SWAYSOCK DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP QT_QPA_PLATFORM
+exec systemctl --user import-environment          SWAYSOCK DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP QT_QPA_PLATFORM
+exec dbus-update-activation-environment --systemd SWAYSOCK DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP XDG_CURRENT_DESKTOP QT_QPA_PLATFORM
 
 # ----- APPEARANCE
 # -- base16 colors (Tomorrow Night)
