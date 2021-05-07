@@ -12,6 +12,7 @@ exec swayidle -w \
 # <https://github.com/swaywm/sway/issues/3799>
 exec udiskie -A -t --appindicator
 exec nm-applet --indicator
+exec blueman-applet
 
 # Import sway environment into systemd
 exec systemctl --user import-environment SWAYSOCK DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_SESSION_DESKTOP QT_QPA_PLATFORM
