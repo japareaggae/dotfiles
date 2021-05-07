@@ -238,6 +238,13 @@ for_window [app_id="ranger-picker"] floating enable
 for_window [app_id="ranger-picker"] border normal
 for_window [app_id="org.speedcrunch.speedcrunch"] floating enable
 
+# This is a little buggy. Sometimes the indicator floats with its original size
+# and looks terrible.
+# <https://www.reddit.com/r/swaywm/comments/iva00z/hi_help_needed_why_is_mic_indicator_appearing_as/>
+for_window [title="Firefox — Sharing Indicator"] floating enable
+for_window [title="Firefox — Sharing Indicator"] sticky enable
+for_window [title="Firefox — Sharing Indicator"] move position 5 ppt 5 ppt
+
 # ----- WINDOW ASSIGNMENTS
 assign [class="^TeamSpeak 3$"]    10
 assign [title="^TeamSpeak$"]      10
