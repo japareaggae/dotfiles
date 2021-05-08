@@ -2,7 +2,7 @@
 # Please read sway(5) for a complete reference!
 
 # ----- AUTOSTARTS
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec lxqt-policykit-agent
 exec swayidle -w \
 	timeout 300 'brightnessctl -q -s set 9%' resume 'brightnessctl -q -r' \
 	timeout 600 'swaylock -f && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -237,6 +237,7 @@ for_window [app_id="pulsemixer"] floating enable
 for_window [app_id="ranger-picker"] floating enable
 for_window [app_id="ranger-picker"] border normal
 for_window [app_id="org.speedcrunch.speedcrunch"] floating enable
+for_window [app_id="lxqt-policykit-agent"] floating enable
 
 # This is a little buggy. Sometimes the indicator floats with its original size
 # and looks terrible.
