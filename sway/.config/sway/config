@@ -186,22 +186,20 @@ bindsym $mod+Shift+m move scratchpad
 bindsym $mod+m scratchpad show
 
 # ----- APPLICATION KEYBINDS -----
-set $terminal alacritty
-
 # -- Application launchers
 bindsym $mod+space       exec rofi -show drun
 bindsym $mod+shift+space exec rofi -show run
 
 # -- Terminal and file manager
-bindsym $mod+Return       exec $terminal
-bindsym $mod+Shift+Return exec $terminal -e ranger
+bindsym $mod+Return       exec alacritty
+bindsym $mod+Shift+Return exec alacritty -e ranger
 
 # -- Session menu
 bindsym $mod+Shift+Delete exec dmenu-session
 bindsym XF86ScreenSaver   exec dmenu-session lock
 
 # -- NetworkManager
-bindsym $mod+F12 exec $terminal -e nmtui
+bindsym $mod+F12 exec alacritty -e nmtui
 
 # -- Screenshotting
 bindsym Print      exec wscreenshot region
@@ -222,7 +220,7 @@ bindsym --locked XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym $mod+XF86AudioMute   exec $terminal --class pulsemixer --option window.dimensions.columns=100 --option window.dimensions.lines=24 -e pulsemixer
+bindsym          $mod+XF86AudioMute   exec alacritty --class pulsemixer --option window.dimensions.columns=100 --option window.dimensions.lines=24 -e pulsemixer
 
 # -- ThinkVantage button
 bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
