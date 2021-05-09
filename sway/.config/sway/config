@@ -231,20 +231,29 @@ bindsym XF86Launch1 exec xdg-open "https://wiki.archlinux.org"
 bindsym $mod+semicolon exec rofimoji
 
 # ----- WINDOW RULES
-for_window [instance="screenshot preview"] floating enable
-for_window [instance="screenshot preview"] move position 24 32
 for_window [app_id="pulsemixer"] floating enable
-for_window [app_id="ranger-picker"] floating enable
-for_window [app_id="ranger-picker"] border normal
 for_window [app_id="org.speedcrunch.speedcrunch"] floating enable
 for_window [app_id="lxqt-policykit-agent"] floating enable
+for_window [app_id="code" title="Open File"] floating enable
+
+for_window [instance="screenshot preview"] {
+	floating enable
+	move position 24 32
+}
+
+for_window [app_id="ranger-picker"] {
+	floating enable
+	border normal
+}
 
 # This is a little buggy. Sometimes the indicator floats with its original size
 # and looks terrible.
 # <https://www.reddit.com/r/swaywm/comments/iva00z/hi_help_needed_why_is_mic_indicator_appearing_as/>
-for_window [title="Firefox — Sharing Indicator"] floating enable
-for_window [title="Firefox — Sharing Indicator"] sticky enable
-for_window [title="Firefox — Sharing Indicator"] move position 5 ppt 5 ppt
+for_window [title="Firefox — Sharing Indicator"] {
+	floating enable
+	sticky enable
+	move position 5 ppt 5 ppt
+}
 
 # ----- WINDOW ASSIGNMENTS
 assign [class="^TeamSpeak 3$"]    10
