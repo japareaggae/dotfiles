@@ -16,6 +16,8 @@ export QT_QPA_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Use a directory for keeping sway logs (like on Xorg)
 [[ -d ~/.local/share/sway ]] || mkdir -p ~/.local/share/sway
 exec sway &> ~/.local/share/sway/session.log
