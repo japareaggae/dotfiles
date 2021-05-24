@@ -50,8 +50,16 @@ kdeconnect-send() {
 	fi
 }
 
+copy-path() {
+	if [[ $WAYLAND_DISPLAY ]]; then
+		wl-copy
+	else
+		xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard
+	fi
+}
+
 case "$1" in
-"y")        xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
+"y")        copy-path ;;
 "C-c")      while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
 "C-g")      tr '\n' '\0' | xargs -0 gimp & ;;
 "C-comma")  rotate 270 ;;
