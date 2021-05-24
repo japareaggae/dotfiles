@@ -1,0 +1,4 @@
+#!/bin/sh
+# https://duckduckgo.com/?q=g2460pf+no+signal
+swaymsg output DP-1 disable
+swaymsg output DP-1 enable
