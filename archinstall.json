@@ -17,7 +17,6 @@
 	"nic": {
 		"NetworkManager": true
 	},
-	"ntp": true,
 	"packages": [
 		"alacritty",
 		"dbus-broker",
@@ -47,7 +46,8 @@
 	"profile": "minimal",
 	"!root-password": "?????",
 	"services": [
-		"dbus-broker"
+		"dbus-broker",
+		"systemd-timesyncd"
 	],
 	"superusers": {
 		"?????": {
