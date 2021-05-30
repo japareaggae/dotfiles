@@ -1,0 +1,64 @@
+{
+	"audio": "pipewire",
+	"bootloader": "systemd-bootctl",
+	"custom-commands": [
+		"systemctl --global enable dbus-broker.service"
+	],
+	"filesystem": "btrfs",
+	"harddrive": {
+		"path": "/dev/?????"
+	},
+	"hostname": "?????",
+	"kernels": [
+		"linux-zen"
+	],
+	"keyboard-language": "br-abnt2",
+	"mirror-region": {
+		"Brazil": {},
+		"Worldwide": {}
+	},
+	"nic": {
+		"NetworkManager": true
+	},
+	"ntp": true,
+	"packages": [
+		"alacritty",
+		"dbus-broker",
+		"exa",
+		"fd",
+		"firefox",
+		"git",
+		"htop",
+		"mpv",
+		"neovim",
+		"noto-fonts-emoji",
+		"noto-fonts",
+		"pulsemixer",
+		"ranger",
+		"ripgrep",
+		"stow",
+		"sway",
+		"swayidle",
+		"swaylock",
+		"ttf-dejavu",
+		"ttf-hack",
+		"ttf-liberation",
+		"wl-clipboard",
+		"xorg-xwayland",
+		"zsh"
+	],
+	"profile": "minimal",
+	"!root-password": "?????",
+	"services": [
+		"dbus-broker"
+	],
+	"superusers": {
+		"?????": {
+			"!password": "?????"
+		}
+	},
+	"sys-encoding": "utf-8",
+	"sys-language": "en_US",
+	"timezone": "America/Porto_Velho",
+	"users": {}
+}
