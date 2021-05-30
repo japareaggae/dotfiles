@@ -13,10 +13,7 @@
 		"linux-zen"
 	],
 	"keyboard-language": "br-abnt2",
-	"mirror-region": {
-		"Brazil": {},
-		"Worldwide": {}
-	},
+	"mirror-region": "United States",
 	"nic": {
 		"NetworkManager": true
 	},
