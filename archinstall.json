@@ -42,7 +42,8 @@
 		"ttf-liberation",
 		"wl-clipboard",
 		"xorg-xwayland",
-		"zsh"
+		"zsh",
+		"zram-generator"
 	],
 	"profile": "minimal",
 	"!root-password": "?????",
