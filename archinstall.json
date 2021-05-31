@@ -3,7 +3,7 @@
 	"bootloader": "systemd-bootctl",
 	"custom-commands": [
 		"curl -o /etc/systemd/zram-generator.conf https://raw.githubusercontent.com/japareaggae/dotfiles/main/zzz-others/zram-generator.conf",
-		"sed -i 's/myhostname/myhostname mdns_minimal [NOTFOUND=return]/' nsswitch.conf",
+		"sed -i 's/myhostname/myhostname mdns_minimal [NOTFOUND=return]/' /etc/nsswitch.conf",
 		"systemctl --global enable dbus-broker.service"
 	],
 	"filesystem": "btrfs",
