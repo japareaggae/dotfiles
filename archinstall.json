@@ -47,6 +47,7 @@
 	"profile": "minimal",
 	"!root-password": "?????",
 	"services": [
+		"avahi-daemon",
 		"dbus-broker",
 		"systemd-timesyncd"
 	],
