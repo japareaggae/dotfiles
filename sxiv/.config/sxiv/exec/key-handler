@@ -58,9 +58,17 @@ copy-path() {
 	fi
 }
 
+copy-file() {
+	if [[ $WAYLAND_DISPLAY ]]; then
+		while read file; do wl-copy < "$file"; done
+	else
+		while read file; do xclip -selection clipboard -target image/png "$file"; done
+	fi
+}
+
 case "$1" in
 "y")        copy-path ;;
-"C-c")      while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
+"C-c")      copy-file ;;
 "C-g")      tr '\n' '\0' | xargs -0 gimp & ;;
 "C-comma")  rotate 270 ;;
 "C-period") rotate  90 ;;
