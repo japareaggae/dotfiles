@@ -255,6 +255,7 @@ for_window [title="Firefox — Sharing Indicator"] {
 
 for_window [class="payday2_release"] inhibit_idle open
 for_window [app_id="mpv"] inhibit_idle open
+for_window [class="^discord$"] inhibit_idle visible
 
 # ----- WINDOW ASSIGNMENTS
 assign [class="^TeamSpeak 3$"]    10
